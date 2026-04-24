@@ -20,7 +20,7 @@ import os
 /// The matching `.begin` lives in TFTMacApp's hotkey handler.
 struct TierListPopover: View {
     let tierList: TierList
-    @State private var iconsPreloaded: Bool = true  // Task 1.9 will default false until assets warm
+    @State private var iconsPreloaded: Bool = true  // Phase 2 flips to false until icons warm
 
     var body: some View {
         VStack(spacing: 0) {
