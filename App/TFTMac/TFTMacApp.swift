@@ -30,9 +30,6 @@ struct TFTMacApp: App {
     // for app lifetime" — fresh instances would drop the Carbon binding.
     private let hotkeyRegistrar = HotkeyRegistrar()
 
-    private static let signpostLog = OSLog(subsystem: "asia.lab3.tftmac", category: "popover")
-    private static let signpostID = OSSignpostID(log: signpostLog)
-
     init() {
         // Wire failure callbacks *before* register() so they fire on the first
         // register attempt if permission is missing / conflict exists.
@@ -55,8 +52,8 @@ struct TFTMacApp: App {
         // on the menu bar icon is one step away". Task 1.10 may explore
         // direct popover toggling via a bridged NSStatusItem if warranted.
         _ = hotkeyRegistrar.register {
-            os_signpost(.begin, log: Self.signpostLog, name: "popover.open",
-                        signpostID: Self.signpostID, "Hotkey fired")
+            os_signpost(.begin, log: PopoverSignpost.log, name: PopoverSignpost.name,
+                        signpostID: PopoverSignpost.id, "Hotkey fired")
             NSApp.activate(ignoringOtherApps: true)
         }
     }

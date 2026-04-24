@@ -23,9 +23,6 @@ struct TierListPopover: View {
     let tierList: TierList
     @State private var iconsPreloaded: Bool = true  // Task 1.9 will default false until assets warm
 
-    private static let signpostLog = OSLog(subsystem: "asia.lab3.tftmac", category: "popover")
-    private static let signpostID = OSSignpostID(log: signpostLog)
-
     var body: some View {
         VStack(spacing: 0) {
             HeaderBar(
@@ -44,8 +41,8 @@ struct TierListPopover: View {
         .frame(width: 440, height: 600)
         .background(Theme.Colors.bgPopover)
         .onAppear {
-            os_signpost(.end, log: Self.signpostLog, name: "popover.open",
-                        signpostID: Self.signpostID,
+            os_signpost(.end, log: PopoverSignpost.log, name: PopoverSignpost.name,
+                        signpostID: PopoverSignpost.id,
                         "TierListPopover visible, %d comps rendered", tierList.comps.count)
         }
     }

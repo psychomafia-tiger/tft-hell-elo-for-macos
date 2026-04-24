@@ -21,6 +21,7 @@
 		6899337443B12C07ADE1DA2D /* HotkeyRegistrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBBA191062ECDC03605031 /* HotkeyRegistrar.swift */; };
 		75B2AB63499D9C566AC6FDB7 /* TierList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84741D0080D548EB46DC80AE /* TierList.swift */; };
 		82C77C462537CA4736AAEE4F /* SampleTierListFixtureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5922CE792B63A94194529F5 /* SampleTierListFixtureTests.swift */; };
+		84F19EACE8C94224C494514B /* SignpostChannels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E63EFABEA1FFA9B454004C3 /* SignpostChannels.swift */; };
 		8AB0A49631F5C661E3AEC9DE /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D7C79D860555BA5D5B3D8E /* Champion.swift */; };
 		A1B4D5038BD9119C1FDFDB0B /* HeaderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA60817F3702455F05C8CE /* HeaderBar.swift */; };
 		B2852316DED135C63D69798A /* TFTMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFB2BEA4E98364F73C8834 /* TFTMacApp.swift */; };
@@ -67,6 +68,7 @@
 		903FB369DDE0BBE4B8A7726E /* TierListDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierListDecodingTests.swift; sourceTree = "<group>"; };
 		97D7C79D860555BA5D5B3D8E /* Champion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Champion.swift; sourceTree = "<group>"; };
 		99B28BDF2730EE506D4EC3F5 /* HotkeyRegistrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyRegistrationTests.swift; sourceTree = "<group>"; };
+		9E63EFABEA1FFA9B454004C3 /* SignpostChannels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignpostChannels.swift; sourceTree = "<group>"; };
 		AA74AA61E19A17A0D70054DE /* SchemaVersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaVersionTests.swift; sourceTree = "<group>"; };
 		B5922CE792B63A94194529F5 /* SampleTierListFixtureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTierListFixtureTests.swift; sourceTree = "<group>"; };
 		C0EA60817F3702455F05C8CE /* HeaderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderBar.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			children = (
 				66D86BC5ED70D3AD253DEE69 /* DataManager.swift */,
 				3BEBBA191062ECDC03605031 /* HotkeyRegistrar.swift */,
+				9E63EFABEA1FFA9B454004C3 /* SignpostChannels.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				6899337443B12C07ADE1DA2D /* HotkeyRegistrar.swift in Sources */,
 				299DD890745772F1130FC723 /* MenuBarIcon.swift in Sources */,
 				1F4757346973F944761750C6 /* SchemaVersion.swift in Sources */,
+				84F19EACE8C94224C494514B /* SignpostChannels.swift in Sources */,
 				B2852316DED135C63D69798A /* TFTMacApp.swift in Sources */,
 				306D7AE684A5A69394BA387B /* Theme.swift in Sources */,
 				75B2AB63499D9C566AC6FDB7 /* TierList.swift in Sources */,
