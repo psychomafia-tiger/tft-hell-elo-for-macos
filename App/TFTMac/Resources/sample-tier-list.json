@@ -1,0 +1,342 @@
+{
+  "schema_version": "1.0.0",
+  "patch_version": "16.8",
+  "last_updated": "2026-04-24T12:00:00Z",
+  "data_window_hours": 12,
+  "elo_bracket": "CHALLENGER",
+  "total_matches_sampled": 98,
+  "comps": [
+    {
+      "comp_id": "storm-quickdraw",
+      "name": "Storm Quickdraw",
+      "tier": "S",
+      "play_rate": 0.127,
+      "avg_placement": 3.82,
+      "top_4_rate": 0.58,
+      "sample_size": 125,
+      "champions": [
+        {
+          "id": "TFT17_Viktor",
+          "cost": 5,
+          "is_carry": true,
+          "items": [
+            {"id": "TFT_Item_JeweledGauntlet", "agreement": 0.77},
+            {"id": "TFT_Item_ArchangelsStaff", "agreement": 0.55}
+          ]
+        },
+        {
+          "id": "TFT17_Illaoi",
+          "cost": 3,
+          "is_carry": false,
+          "items": [{"id": "TFT_Item_GargoyleStoneplate", "agreement": 0.59}]
+        },
+        {
+          "id": "TFT17_Rhaast",
+          "cost": 4,
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "id": "TFT17_Aatrox",
+          "cost": 4,
+          "is_carry": false,
+          "items": [{"id": "TFT_Item_Redemption", "agreement": 0.62}]
+        }
+      ]
+    },
+    {
+      "comp_id": "heavenly-fortune",
+      "name": "Heavenly Fortune",
+      "tier": "S",
+      "play_rate": 0.118,
+      "avg_placement": 3.91,
+      "top_4_rate": 0.56,
+      "sample_size": 116,
+      "champions": [
+        {
+          "id": "TFT17_KaiSa",
+          "cost": 5,
+          "is_carry": true,
+          "items": [
+            {"id": "TFT_Item_InfinityEdge", "agreement": 0.81},
+            {"id": "TFT_Item_LastWhisper", "agreement": 0.63}
+          ]
+        },
+        {
+          "id": "TFT17_Nami",
+          "cost": 2,
+          "is_carry": false,
+          "items": [{"id": "TFT_Item_BlueBuff", "agreement": 0.70}]
+        },
+        {
+          "id": "TFT17_Ahri",
+          "cost": 3,
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "id": "TFT17_Syndra",
+          "cost": 4,
+          "is_carry": false,
+          "items": [{"id": "TFT_Item_Shojin", "agreement": 0.58}]
+        }
+      ]
+    },
+    {
+      "comp_id": "sentinel-varus",
+      "name": "Sentinel Varus",
+      "tier": "S",
+      "play_rate": 0.113,
+      "avg_placement": 3.95,
+      "top_4_rate": 0.55,
+      "sample_size": 111,
+      "champions": [
+        {
+          "id": "TFT17_Varus",
+          "cost": 4,
+          "is_carry": true,
+          "items": [
+            {"id": "TFT_Item_StatikkShiv", "agreement": 0.74},
+            {"id": "TFT_Item_GiantSlayer", "agreement": 0.60}
+          ]
+        },
+        {
+          "id": "TFT17_Morgana",
+          "cost": 3,
+          "is_carry": false,
+          "items": [{"id": "TFT_Item_IonicSpark", "agreement": 0.65}]
+        },
+        {
+          "id": "TFT17_Jinx",
+          "cost": 2,
+          "is_carry": false,
+          "items": [{"id": "TFT_Item_Runaans", "agreement": 0.53}]
+        }
+      ]
+    },
+    {
+      "comp_id": "gwen-reroll",
+      "name": "Gwen Reroll",
+      "tier": "S",
+      "play_rate": 0.105,
+      "avg_placement": 3.98,
+      "top_4_rate": 0.53,
+      "sample_size": 103,
+      "champions": [
+        {
+          "id": "TFT17_Gwen",
+          "cost": 3,
+          "is_carry": true,
+          "items": [
+            {"id": "TFT_Item_TitansResolve", "agreement": 0.78},
+            {"id": "TFT_Item_HandOfJustice", "agreement": 0.61}
+          ]
+        },
+        {
+          "id": "TFT17_Illaoi",
+          "cost": 3,
+          "is_carry": false,
+          "items": [{"id": "TFT_Item_AdaptiveHelm", "agreement": 0.49}]
+        },
+        {
+          "id": "TFT17_Aatrox",
+          "cost": 4,
+          "is_carry": false,
+          "items": []
+        }
+      ]
+    },
+    {
+      "comp_id": "warden-yasuo",
+      "name": "Warden Yasuo",
+      "tier": "A",
+      "play_rate": 0.092,
+      "avg_placement": 4.11,
+      "top_4_rate": 0.50,
+      "sample_size": 90,
+      "champions": [
+        {
+          "id": "TFT17_Yasuo",
+          "cost": 4,
+          "is_carry": true,
+          "items": [
+            {"id": "TFT_Item_InfinityEdge", "agreement": 0.72},
+            {"id": "TFT_Item_LastWhisper", "agreement": 0.58}
+          ]
+        },
+        {
+          "id": "TFT17_Nami",
+          "cost": 2,
+          "is_carry": false,
+          "items": [{"id": "TFT_Item_BlueBuff", "agreement": 0.66}]
+        },
+        {
+          "id": "TFT17_Morgana",
+          "cost": 3,
+          "is_carry": false,
+          "items": [{"id": "TFT_Item_SunfireCape", "agreement": 0.51}]
+        }
+      ]
+    },
+    {
+      "comp_id": "reroll-sivir",
+      "name": "Reroll Sivir",
+      "tier": "A",
+      "play_rate": 0.081,
+      "avg_placement": 4.18,
+      "top_4_rate": 0.48,
+      "sample_size": 79,
+      "champions": [
+        {
+          "id": "TFT17_Sivir",
+          "cost": 2,
+          "is_carry": true,
+          "items": [
+            {"id": "TFT_Item_Runaans", "agreement": 0.80},
+            {"id": "TFT_Item_StatikkShiv", "agreement": 0.67}
+          ]
+        },
+        {
+          "id": "TFT17_Jinx",
+          "cost": 2,
+          "is_carry": false,
+          "items": [{"id": "TFT_Item_GiantSlayer", "agreement": 0.54}]
+        },
+        {
+          "id": "TFT17_Varus",
+          "cost": 4,
+          "is_carry": false,
+          "items": []
+        }
+      ]
+    },
+    {
+      "comp_id": "xerath-mage",
+      "name": "Xerath Mage",
+      "tier": "A",
+      "play_rate": 0.074,
+      "avg_placement": 4.22,
+      "top_4_rate": 0.46,
+      "sample_size": 73,
+      "champions": [
+        {
+          "id": "TFT17_Xerath",
+          "cost": 4,
+          "is_carry": true,
+          "items": [
+            {"id": "TFT_Item_RabadonsDeathcap", "agreement": 0.83},
+            {"id": "TFT_Item_JeweledGauntlet", "agreement": 0.69}
+          ]
+        },
+        {
+          "id": "TFT17_Syndra",
+          "cost": 4,
+          "is_carry": false,
+          "items": [{"id": "TFT_Item_Shojin", "agreement": 0.57}]
+        },
+        {
+          "id": "TFT17_Ahri",
+          "cost": 3,
+          "is_carry": false,
+          "items": [{"id": "TFT_Item_BlueBuff", "agreement": 0.60}]
+        }
+      ]
+    },
+    {
+      "comp_id": "kaisa-hyper",
+      "name": "KaiSa Hyper",
+      "tier": "A",
+      "play_rate": 0.063,
+      "avg_placement": 4.28,
+      "top_4_rate": 0.44,
+      "sample_size": 62,
+      "champions": [
+        {
+          "id": "TFT17_KaiSa",
+          "cost": 5,
+          "is_carry": true,
+          "items": [
+            {"id": "TFT_Item_InfinityEdge", "agreement": 0.75},
+            {"id": "TFT_Item_ArchangelsStaff", "agreement": 0.52}
+          ]
+        },
+        {
+          "id": "TFT17_Viktor",
+          "cost": 5,
+          "is_carry": false,
+          "items": [{"id": "TFT_Item_IonicSpark", "agreement": 0.48}]
+        },
+        {
+          "id": "TFT17_Gwen",
+          "cost": 3,
+          "is_carry": false,
+          "items": []
+        }
+      ]
+    },
+    {
+      "comp_id": "aatrox-frontline",
+      "name": "Aatrox Frontline",
+      "tier": "B",
+      "play_rate": 0.045,
+      "avg_placement": 4.51,
+      "top_4_rate": 0.40,
+      "sample_size": 44,
+      "champions": [
+        {
+          "id": "TFT17_Aatrox",
+          "cost": 4,
+          "is_carry": true,
+          "items": [
+            {"id": "TFT_Item_TitansResolve", "agreement": 0.73},
+            {"id": "TFT_Item_GargoyleStoneplate", "agreement": 0.62}
+          ]
+        },
+        {
+          "id": "TFT17_Illaoi",
+          "cost": 3,
+          "is_carry": false,
+          "items": [{"id": "TFT_Item_SunfireCape", "agreement": 0.55}]
+        },
+        {
+          "id": "TFT17_Rhaast",
+          "cost": 4,
+          "is_carry": false,
+          "items": [{"id": "TFT_Item_AdaptiveHelm", "agreement": 0.47}]
+        }
+      ]
+    },
+    {
+      "comp_id": "nami-support",
+      "name": "Nami Support",
+      "tier": "B",
+      "play_rate": 0.028,
+      "avg_placement": 4.65,
+      "top_4_rate": 0.37,
+      "sample_size": 27,
+      "champions": [
+        {
+          "id": "TFT17_Nami",
+          "cost": 2,
+          "is_carry": true,
+          "items": [
+            {"id": "TFT_Item_BlueBuff", "agreement": 0.76},
+            {"id": "TFT_Item_Shojin", "agreement": 0.59}
+          ]
+        },
+        {
+          "id": "TFT17_Morgana",
+          "cost": 3,
+          "is_carry": false,
+          "items": [{"id": "TFT_Item_HandOfJustice", "agreement": 0.50}]
+        },
+        {
+          "id": "TFT17_Ahri",
+          "cost": 3,
+          "is_carry": false,
+          "items": []
+        }
+      ]
+    }
+  ]
+}

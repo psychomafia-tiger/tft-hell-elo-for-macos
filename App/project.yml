@@ -37,6 +37,7 @@ targets:
           - "**/.gitkeep"
     resources:
       - path: TFTMac/Assets.xcassets
+      - path: TFTMac/Resources/sample-tier-list.json
     info:
       path: TFTMac/Resources/Info.plist
       properties:

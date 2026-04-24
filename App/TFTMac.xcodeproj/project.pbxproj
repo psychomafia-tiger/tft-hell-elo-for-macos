@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0969AD5F3AD9FC366F0DADD0 /* Comp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5ABAB08CC8CA23E71E2ED6 /* Comp.swift */; };
 		1F4757346973F944761750C6 /* SchemaVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C122A4919B84DE756F8F8 /* SchemaVersion.swift */; };
 		28052BC883E79ECF09F73814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19EEE04064D94531D37DBA18 /* Assets.xcassets */; };
 		306D7AE684A5A69394BA387B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2924AF422FD54F123FC278 /* Theme.swift */; };
 		469A1936BFF5647A9A0859E1 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 0803FDD71794EA03FA6D96FA /* HotKey */; };
+		47FBC478CC0318655F47B82B /* TierListDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903FB369DDE0BBE4B8A7726E /* TierListDecodingTests.swift */; };
 		531088914ED113C13B273139 /* SchemaVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74AA61E19A17A0D70054DE /* SchemaVersionTests.swift */; };
+		75B2AB63499D9C566AC6FDB7 /* TierList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84741D0080D548EB46DC80AE /* TierList.swift */; };
+		82C77C462537CA4736AAEE4F /* SampleTierListFixtureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5922CE792B63A94194529F5 /* SampleTierListFixtureTests.swift */; };
+		8AB0A49631F5C661E3AEC9DE /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D7C79D860555BA5D5B3D8E /* Champion.swift */; };
 		B2852316DED135C63D69798A /* TFTMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFB2BEA4E98364F73C8834 /* TFTMacApp.swift */; };
+		CFB841EB1AAC813D8560F604 /* sample-tier-list.json in Resources */ = {isa = PBXBuildFile; fileRef = 35895F55BCB1220D4060B8C0 /* sample-tier-list.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,12 +43,18 @@
 		19EEE04064D94531D37DBA18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		220C122A4919B84DE756F8F8 /* SchemaVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaVersion.swift; sourceTree = "<group>"; };
 		2D404D2578DD4ABD7A666458 /* TFTMacUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TFTMacUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		35895F55BCB1220D4060B8C0 /* sample-tier-list.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "sample-tier-list.json"; sourceTree = "<group>"; };
 		3D2924AF422FD54F123FC278 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		440359D9C1275EF88836858D /* TFTMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TFTMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F5ABAB08CC8CA23E71E2ED6 /* Comp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comp.swift; sourceTree = "<group>"; };
 		7AAFB2BEA4E98364F73C8834 /* TFTMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFTMacApp.swift; sourceTree = "<group>"; };
 		7BA344AB7AA03C301EF4BB59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		84741D0080D548EB46DC80AE /* TierList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierList.swift; sourceTree = "<group>"; };
 		8C91D03ECF3874347C0DA128 /* TFTMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TFTMac.entitlements; sourceTree = "<group>"; };
+		903FB369DDE0BBE4B8A7726E /* TierListDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierListDecodingTests.swift; sourceTree = "<group>"; };
+		97D7C79D860555BA5D5B3D8E /* Champion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Champion.swift; sourceTree = "<group>"; };
 		AA74AA61E19A17A0D70054DE /* SchemaVersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaVersionTests.swift; sourceTree = "<group>"; };
+		B5922CE792B63A94194529F5 /* SampleTierListFixtureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTierListFixtureTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +72,10 @@
 		245B78B6B065316AD728132D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				97D7C79D860555BA5D5B3D8E /* Champion.swift */,
+				6F5ABAB08CC8CA23E71E2ED6 /* Comp.swift */,
 				220C122A4919B84DE756F8F8 /* SchemaVersion.swift */,
+				84741D0080D548EB46DC80AE /* TierList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -79,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				AA74AA61E19A17A0D70054DE /* SchemaVersionTests.swift */,
+				903FB369DDE0BBE4B8A7726E /* TierListDecodingTests.swift */,
+				CB5C90FFA1FA06CE6EAFB0F1 /* regression */,
 			);
 			path = TFTMacTests;
 			sourceTree = "<group>";
@@ -87,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				7BA344AB7AA03C301EF4BB59 /* Info.plist */,
+				35895F55BCB1220D4060B8C0 /* sample-tier-list.json */,
 				8C91D03ECF3874347C0DA128 /* TFTMac.entitlements */,
 				3D2924AF422FD54F123FC278 /* Theme.swift */,
 			);
@@ -119,6 +137,14 @@
 			children = (
 			);
 			path = TFTMacUITests;
+			sourceTree = "<group>";
+		};
+		CB5C90FFA1FA06CE6EAFB0F1 /* regression */ = {
+			isa = PBXGroup;
+			children = (
+				B5922CE792B63A94194529F5 /* SampleTierListFixtureTests.swift */,
+			);
+			path = regression;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28052BC883E79ECF09F73814 /* Assets.xcassets in Resources */,
+				CFB841EB1AAC813D8560F604 /* sample-tier-list.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +275,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82C77C462537CA4736AAEE4F /* SampleTierListFixtureTests.swift in Sources */,
 				531088914ED113C13B273139 /* SchemaVersionTests.swift in Sources */,
+				47FBC478CC0318655F47B82B /* TierListDecodingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,9 +285,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AB0A49631F5C661E3AEC9DE /* Champion.swift in Sources */,
+				0969AD5F3AD9FC366F0DADD0 /* Comp.swift in Sources */,
 				1F4757346973F944761750C6 /* SchemaVersion.swift in Sources */,
 				B2852316DED135C63D69798A /* TFTMacApp.swift in Sources */,
 				306D7AE684A5A69394BA387B /* Theme.swift in Sources */,
+				75B2AB63499D9C566AC6FDB7 /* TierList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
