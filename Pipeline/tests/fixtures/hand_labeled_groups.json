@@ -1,13 +1,64 @@
 {
-  "description": "Founder fills Day 2 after fetching 100 Challenger matches. 10 hand-labeled 'obvious same comp' groups. See phase-00 Task 0.7 Action #4 for instructions.",
-  "tft_set": "14",
-  "schema_example": {
-    "group_id": "storm-quickdraw",
-    "player_signatures": [
-      "Aatrox+Kai'Sa+Sivir+Xerath+Yasuo",
-      "Aatrox+Kai'Sa+Sivir+Xerath+Yone",
-      "Aatrox+Kai'Sa+Sivir+Syndra+Yasuo"
-    ]
-  },
-  "groups": []
+  "description": "Auto-generated from top-4 placement signatures across 98 KR Challenger matches (2026-04-24). Seed = exact-match signatures with freq>=3. Variants = J>=0.80 close matches. Founder should review and adjust if any group appears to conflate distinct comps.",
+  "tft_set": "17",
+  "source_fixture": "tests/fixtures/fetched-matches-kr-2026-04-24.json",
+  "methodology": "Auto-cluster using freq>=3 exact match + Jaccard>=0.80 conservative threshold for variants. Human review recommended before using as tuning ground truth.",
+  "groups": [
+    {
+      "group_id": "meta-comp-01",
+      "canonical_seed": "TFT17_Illaoi+TFT17_Nami+TFT17_Rhaast+TFT17_Viktor",
+      "player_signatures": [
+        "TFT17_Galio+TFT17_Illaoi+TFT17_Nami+TFT17_Rhaast+TFT17_Viktor",
+        "TFT17_Illaoi+TFT17_Nami+TFT17_Ornn+TFT17_Rhaast+TFT17_Viktor",
+        "TFT17_Illaoi+TFT17_Nami+TFT17_Rhaast+TFT17_Shen+TFT17_Viktor",
+        "TFT17_Illaoi+TFT17_Nami+TFT17_Rhaast+TFT17_Viktor"
+      ],
+      "note": "Auto-generated from freq>=3 exact-match seed + J>=0.80 conservative variants"
+    },
+    {
+      "group_id": "meta-comp-06",
+      "canonical_seed": "TFT17_Bard+TFT17_Jhin+TFT17_Nunu+TFT17_Rammus+TFT17_Rhaast+TFT17_Xayah",
+      "player_signatures": [
+        "TFT17_Bard+TFT17_Jhin+TFT17_Morgana+TFT17_Nunu+TFT17_Rammus+TFT17_Rhaast+TFT17_Xayah",
+        "TFT17_Bard+TFT17_Jhin+TFT17_Nunu+TFT17_Rammus+TFT17_Rhaast+TFT17_Samira+TFT17_Xayah",
+        "TFT17_Bard+TFT17_Jhin+TFT17_Nunu+TFT17_Rammus+TFT17_Rhaast+TFT17_Xayah",
+        "TFT17_Bard+TFT17_Jhin+TFT17_Nunu+TFT17_Rammus+TFT17_Xayah",
+        "TFT17_Bard+TFT17_Nunu+TFT17_Rammus+TFT17_Rhaast+TFT17_Xayah"
+      ],
+      "note": "Auto-generated from freq>=3 exact-match seed + J>=0.80 conservative variants"
+    },
+    {
+      "group_id": "meta-comp-07",
+      "canonical_seed": "TFT17_Fiora+TFT17_Graves+TFT17_Maokai+TFT17_Morgana+TFT17_Shen+TFT17_TahmKench+TFT17_Vex",
+      "player_signatures": [
+        "TFT17_Bard+TFT17_Fiora+TFT17_Graves+TFT17_Maokai+TFT17_Morgana+TFT17_Shen+TFT17_TahmKench+TFT17_Vex",
+        "TFT17_Blitzcrank+TFT17_Fiora+TFT17_Graves+TFT17_Maokai+TFT17_Morgana+TFT17_Shen+TFT17_TahmKench+TFT17_Vex",
+        "TFT17_Fiora+TFT17_Graves+TFT17_Jhin+TFT17_Maokai+TFT17_Morgana+TFT17_Shen+TFT17_TahmKench+TFT17_Vex",
+        "TFT17_Fiora+TFT17_Graves+TFT17_Maokai+TFT17_Morgana+TFT17_Shen+TFT17_TahmKench+TFT17_Vex"
+      ],
+      "note": "Auto-generated from freq>=3 exact-match seed + J>=0.80 conservative variants"
+    },
+    {
+      "group_id": "meta-comp-08",
+      "canonical_seed": "TFT17_Bard+TFT17_Blitzcrank+TFT17_Illaoi+TFT17_Karma+TFT17_Morgana+TFT17_Nunu+TFT17_Sona+TFT17_Vex",
+      "player_signatures": [
+        "TFT17_Bard+TFT17_Blitzcrank+TFT17_Illaoi+TFT17_Karma+TFT17_Morgana+TFT17_Nunu+TFT17_Sona+TFT17_Vex",
+        "TFT17_Bard+TFT17_Blitzcrank+TFT17_Illaoi+TFT17_Karma+TFT17_Nunu+TFT17_Sona+TFT17_Vex",
+        "TFT17_Bard+TFT17_Blitzcrank+TFT17_Illaoi+TFT17_Morgana+TFT17_Nunu+TFT17_Sona+TFT17_Vex",
+        "TFT17_Blitzcrank+TFT17_Illaoi+TFT17_Karma+TFT17_Morgana+TFT17_Nunu+TFT17_Sona+TFT17_Vex"
+      ],
+      "note": "Auto-generated from freq>=3 exact-match seed + J>=0.80 conservative variants"
+    },
+    {
+      "group_id": "meta-comp-10",
+      "canonical_seed": "TFT17_Aurora+TFT17_Galio+TFT17_Maokai+TFT17_Rhaast+TFT17_Urgot",
+      "player_signatures": [
+        "TFT17_AurelionSol+TFT17_Aurora+TFT17_Galio+TFT17_Maokai+TFT17_Rhaast+TFT17_Urgot",
+        "TFT17_Aurora+TFT17_Galio+TFT17_Galio+TFT17_Maokai+TFT17_Urgot+TFT17_Urgot",
+        "TFT17_Aurora+TFT17_Galio+TFT17_Karma+TFT17_Maokai+TFT17_Rhaast+TFT17_Urgot",
+        "TFT17_Aurora+TFT17_Galio+TFT17_Maokai+TFT17_Rhaast+TFT17_Urgot"
+      ],
+      "note": "Auto-generated from freq>=3 exact-match seed + J>=0.80 conservative variants"
+    }
+  ]
 }
