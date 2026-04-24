@@ -3,9 +3,13 @@ import XCTest
 /// Track A — cold launch latency gate.
 ///
 /// Why a full XCTestCase for one measure block: `XCTApplicationLaunchMetric()`
-/// only works inside `measure(metrics:)` and that APIs requires a live
+/// only works inside `measure(metrics:)` and that API requires a live
 /// `XCTestCase` host. The 5-launch average (SDK default) gives a stable
 /// baseline the dogfood tester cannot replicate with a stopwatch.
+///
+/// Note: XCTest baselines are stored per-machine in a local plist (not
+/// checked in). A fresh CI runner or new dev laptop records its own
+/// baseline on first run; baselines are not portable across hosts.
 ///
 /// Track B (popover-open latency) is measured via `os_signpost` emitted by
 /// `TFTMacApp.register(onFire:)` and `TierListPopover.onAppear`. See
