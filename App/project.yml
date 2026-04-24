@@ -25,7 +25,7 @@ settings:
 packages:
   HotKey:
     url: https://github.com/soffes/HotKey.git
-    from: "0.2.0"
+    exactVersion: "0.2.1"   # pinned — soffes/HotKey last meaningful release ~2020, guard against surprise bumps
 
 targets:
   TFTMac:

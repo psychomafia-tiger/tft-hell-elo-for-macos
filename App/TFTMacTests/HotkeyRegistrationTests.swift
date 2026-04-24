@@ -3,12 +3,15 @@ import XCTest
 
 final class HotkeyRegistrationTests: XCTestCase {
 
+    /// Stub token class — any AnyObject will do; we just need something ARC-retainable.
+    private final class StubToken {}
+
     // MARK: - Happy path
 
     func testRegisterCmdShiftTSucceeds() {
         let registrar = HotkeyRegistrar(
             trustedCheck: { true },
-            registerImpl: { _ in "stub-token" }
+            registerImpl: { _ in StubToken() }
         )
 
         let result = registrar.register { }
@@ -23,7 +26,7 @@ final class HotkeyRegistrationTests: XCTestCase {
     func testRegisterTwiceReturnsConflict() {
         let registrar = HotkeyRegistrar(
             trustedCheck: { true },
-            registerImpl: { _ in "stub-token" }
+            registerImpl: { _ in StubToken() }
         )
 
         _ = registrar.register { } // first — succeeds
@@ -37,7 +40,7 @@ final class HotkeyRegistrationTests: XCTestCase {
     func testConflictInvokesWarningCallback() {
         let registrar = HotkeyRegistrar(
             trustedCheck: { true },
-            registerImpl: { _ in "stub-token" }
+            registerImpl: { _ in StubToken() }
         )
 
         var conflictCallbackFired = false
@@ -54,7 +57,7 @@ final class HotkeyRegistrationTests: XCTestCase {
     func testAccessibilityDeniedInvokesPermissionCallback() {
         let registrar = HotkeyRegistrar(
             trustedCheck: { false },  // TCC not granted
-            registerImpl: { _ in "stub-token" }
+            registerImpl: { _ in StubToken() }
         )
 
         var permissionCallbackFired = false
@@ -78,7 +81,7 @@ final class HotkeyRegistrationTests: XCTestCase {
             trustedCheck: { false },
             registerImpl: { _ in
                 registerImplCalled = true
-                return "stub-token"
+                return StubToken()
             }
         )
 

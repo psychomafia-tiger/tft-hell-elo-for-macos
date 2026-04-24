@@ -17,6 +17,12 @@ import HotKey
 ///
 /// Injectable impls (`trustedCheck`, `registerImpl`) let tests stub
 /// system-dependent behavior. Production defaults wire to real APIs.
+///
+/// **Lifecycle**: hold ONE instance for the app lifetime. Do not reconstruct
+/// per view — the `registrationToken` state tracks whether Carbon has an
+/// active binding, and a fresh instance would lose that tracking. Task 1.8
+/// wires this as a module-level singleton or SwiftUI `@StateObject` on the
+/// root scene.
 final class HotkeyRegistrar {
 
     enum RegistrationError: Error, Equatable {
@@ -25,19 +31,33 @@ final class HotkeyRegistrar {
     }
 
     typealias TrustedCheck = () -> Bool
-    typealias RegisterImpl = (_ onFire: @escaping () -> Void) -> Any  // returns opaque token (HotKey in prod)
+    typealias RegisterImpl = (_ onFire: @escaping () -> Void) -> AnyObject  // returns opaque token (HotKey in prod)
 
     /// Invoked if register() attempted while AXIsProcessTrusted == false.
     /// Task 1.8 wires this to a SwiftUI alert with deep-link.
+    ///
+    /// **Signaling contract**: fires *in addition to* the `.failure(.accessibilityDenied)`
+    /// return from `register()`. Wire this for UX side-effects (alert, logging).
+    /// Use the `Result` return for programmatic flow (unit tests, analytics).
+    ///
+    /// **Memory**: use `[weak self]` when capturing self — registrar is typically
+    /// a singleton that outlives SwiftUI view lifecycles.
     var onPermissionDenied: (() -> Void)?
 
     /// Invoked if register() called after already-successful register.
     /// Task 1.8 wires to an alert warning user another app holds the hotkey.
+    ///
+    /// **Signaling contract**: fires *in addition to* the `.failure(.alreadyRegistered)`
+    /// return from `register()`. Wire this for UX side-effects (alert, logging).
+    /// Use the `Result` return for programmatic flow (unit tests, analytics).
+    ///
+    /// **Memory**: use `[weak self]` when capturing self — registrar is typically
+    /// a singleton that outlives SwiftUI view lifecycles.
     var onConflict: (() -> Void)?
 
     private let trustedCheck: TrustedCheck
     private let registerImpl: RegisterImpl
-    private var registrationToken: Any?
+    private var registrationToken: AnyObject?
 
     init(trustedCheck: @escaping TrustedCheck = { AXIsProcessTrusted() },
          registerImpl: @escaping RegisterImpl = HotkeyRegistrar.defaultRegister) {
@@ -48,6 +68,10 @@ final class HotkeyRegistrar {
     /// Attempt to register the Cmd+Shift+T toggle.
     /// - Parameter onFire: Called when hotkey fires in production.
     /// - Returns: Result indicating success or which failure path triggered.
+    ///
+    /// On failure, the corresponding callback (`onPermissionDenied` or `onConflict`)
+    /// fires BEFORE this method returns, giving UX handlers a chance to react
+    /// in the same run-loop tick as the Result arrives.
     @discardableResult
     func register(onFire: @escaping () -> Void) -> Result<Void, RegistrationError> {
         guard trustedCheck() else {
@@ -62,15 +86,21 @@ final class HotkeyRegistrar {
         return .success(())
     }
 
-    /// Opens the System Settings → Privacy & Security → Accessibility pane.
-    /// Intended to be called from the permission-denied alert's primary button.
+    /// Opens System Settings → Privacy & Security → Accessibility pane.
+    /// Falls back to Settings root if the direct deep-link is rejected by the
+    /// current macOS version (Apple deprecated some schemes in Ventura+ rewrite).
     func openAccessibilitySettings() {
-        guard let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility") else { return }
-        NSWorkspace.shared.open(url)
+        let deepLink = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!
+        if !NSWorkspace.shared.open(deepLink) {
+            // Fallback: open System Settings root; user manually navigates to Privacy → Accessibility.
+            // Better than silent failure which leaves user staring at an unchanged screen.
+            let fallback = URL(string: "x-apple.systempreferences:")!
+            NSWorkspace.shared.open(fallback)
+        }
     }
 
     /// Production register impl — wraps HotKey package for Cmd+Shift+T.
-    private static func defaultRegister(onFire: @escaping () -> Void) -> Any {
+    private static func defaultRegister(onFire: @escaping () -> Void) -> AnyObject {
         let hotKey = HotKey(key: .t, modifiers: [.command, .shift])
         hotKey.keyDownHandler = onFire
         return hotKey  // retain to keep binding alive; caller (HotkeyRegistrar) stores in registrationToken
