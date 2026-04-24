@@ -31,21 +31,35 @@ final class OverlayWindowController: ObservableObject {
     private var panel: OverlayPanel?
 
     /// Default overlay size (width matches D4 decision: 520px for overlay, 440 popover).
-    /// Height matches popover 600 for Wave 5b placeholder — Wave 5c may tune once
-    /// CompCardV2 layout settles.
+    /// Height matches popover 600; dynamic card heights inside CompListView scroll.
     static let defaultSize = NSSize(width: 520, height: 600)
 
-    init(skipPanelInstantiation: Bool = false) {
+    /// Injected tier list used to render `CompListView` inside the panel.
+    /// Optional so tests (and Wave 5b skip-init path) can construct a
+    /// controller without tier data. Production wiring in `TFTMacApp`
+    /// passes the loaded bundle snapshot.
+    private let tierList: TierList?
+
+    init(tierList: TierList? = nil, skipPanelInstantiation: Bool = false) {
+        self.tierList = tierList
         // Tests pass `skipPanelInstantiation: true` to avoid creating a real NSPanel
         // when only verifying state machine logic. Production always instantiates.
         guard !skipPanelInstantiation else { return }
         instantiatePanel()
     }
 
-    /// Build the NSPanel + SwiftUI content. Wave 5b uses a placeholder
-    /// `OverlayPlaceholderContent`; Wave 5c swaps to shared `CompListView(width: 520)`.
+    /// Build the NSPanel + SwiftUI content. Wave 5c wires the shared
+    /// `CompListView(width: 520)` so overlay and popover render identical
+    /// card layout. If no tier list is injected (test / pre-data init),
+    /// renders the Wave 5b placeholder.
     private func instantiatePanel() {
-        let hosting = NSHostingView(rootView: OverlayPlaceholderContent())
+        let hosting: NSHostingView<AnyView>
+        if let tierList = tierList {
+            let content = AnyView(CompListView(tierList: tierList, width: Self.defaultSize.width))
+            hosting = NSHostingView(rootView: content)
+        } else {
+            hosting = NSHostingView(rootView: AnyView(OverlayPlaceholderContent()))
+        }
         hosting.frame = NSRect(origin: .zero, size: Self.defaultSize)
 
         // Initial position: top-right quadrant of main screen, inset 40px.

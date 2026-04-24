@@ -23,25 +23,24 @@ struct TFTMacApp: App {
     // Synchronous bundle load. DataManager fatalError's on missing resource,
     // which is a build-time bug (impossible in shipped build; CI would fail
     // first). No async wrapper needed — the decode is <10ms on M1.
-    private let tierList: TierList = DataManager.loadBundledJSON()
+    private let tierList: TierList
 
     // HotkeyRegistrar held as stored property so its lifetime matches the
     // app process. See HotkeyRegistrar class-level doc: "hold ONE instance
     // for app lifetime" — fresh instances would drop the Carbon binding.
-    private let hotkeyRegistrar = HotkeyRegistrar()
+    private let hotkeyRegistrar: HotkeyRegistrar
 
-    // Wave 5b (F1 dogfood fix) — eager-instantiate OverlayWindowController at app
-    // launch (D2 decision). Panel lives for the app's entire lifetime; show/hide
-    // merely orderFront/orderOut. First Cmd+Shift+T shows in <50ms because
-    // NSPanel + NSHostingView are already built.
-    //
-    // Why a stored `let` (not `@StateObject`): TFTMacApp.init runs before SwiftUI
-    // scene graph attaches observability. Scene body (Wave 5c) will adopt the
-    // instance via `.environmentObject(Self.overlayController)` when popover +
-    // overlay share CompListView, propagating isVisible updates to both.
-    private let overlayController = OverlayWindowController()
+    // Wave 5b eager-init + Wave 5c tier-list injection: the overlay panel is
+    // built at app launch (D2) with the same `CompListView` the popover uses
+    // (D4), so first Cmd+Shift+T shows in <50ms rendering identical cards.
+    private let overlayController: OverlayWindowController
 
     init() {
+        let loadedTierList = DataManager.loadBundledJSON()
+        self.tierList = loadedTierList
+        self.hotkeyRegistrar = HotkeyRegistrar()
+        self.overlayController = OverlayWindowController(tierList: loadedTierList)
+
         // Skip hotkey registration when running as XCTest host. Every rebuild
         // produces a new bundle signature, so TCC treats the test-host binary
         // as a fresh app and `AXIsProcessTrusted()` returns false — which
