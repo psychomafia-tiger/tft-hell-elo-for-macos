@@ -31,6 +31,14 @@ struct TFTMacApp: App {
     private let hotkeyRegistrar = HotkeyRegistrar()
 
     init() {
+        // Skip hotkey registration when running as XCTest host. Every rebuild
+        // produces a new bundle signature, so TCC treats the test-host binary
+        // as a fresh app and `AXIsProcessTrusted()` returns false — which
+        // would trigger `openAccessibilitySettings()` and spam System Settings
+        // on every test run. Tests exercise HotkeyRegistrar via injected stubs
+        // (HotkeyRegistrationTests), not via this production path.
+        if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil { return }
+
         // Wire failure callbacks *before* register() so they fire on the first
         // register attempt if permission is missing / conflict exists.
         hotkeyRegistrar.onPermissionDenied = { [hotkeyRegistrar] in
