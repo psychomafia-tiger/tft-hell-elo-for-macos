@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02EBBB7E015E608365E806FA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D86BC5ED70D3AD253DEE69 /* DataManager.swift */; };
 		0969AD5F3AD9FC366F0DADD0 /* Comp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5ABAB08CC8CA23E71E2ED6 /* Comp.swift */; };
 		1F4757346973F944761750C6 /* SchemaVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C122A4919B84DE756F8F8 /* SchemaVersion.swift */; };
 		28052BC883E79ECF09F73814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19EEE04064D94531D37DBA18 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 		82C77C462537CA4736AAEE4F /* SampleTierListFixtureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5922CE792B63A94194529F5 /* SampleTierListFixtureTests.swift */; };
 		8AB0A49631F5C661E3AEC9DE /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D7C79D860555BA5D5B3D8E /* Champion.swift */; };
 		B2852316DED135C63D69798A /* TFTMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFB2BEA4E98364F73C8834 /* TFTMacApp.swift */; };
+		CF887DD8148A02F5F16660DE /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A5E961A14C1907B7415058 /* DataManagerTests.swift */; };
 		CFB841EB1AAC813D8560F604 /* sample-tier-list.json in Resources */ = {isa = PBXBuildFile; fileRef = 35895F55BCB1220D4060B8C0 /* sample-tier-list.json */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +48,7 @@
 		35895F55BCB1220D4060B8C0 /* sample-tier-list.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "sample-tier-list.json"; sourceTree = "<group>"; };
 		3D2924AF422FD54F123FC278 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		440359D9C1275EF88836858D /* TFTMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TFTMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		66D86BC5ED70D3AD253DEE69 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		6F5ABAB08CC8CA23E71E2ED6 /* Comp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comp.swift; sourceTree = "<group>"; };
 		7AAFB2BEA4E98364F73C8834 /* TFTMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFTMacApp.swift; sourceTree = "<group>"; };
 		7BA344AB7AA03C301EF4BB59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 		97D7C79D860555BA5D5B3D8E /* Champion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Champion.swift; sourceTree = "<group>"; };
 		AA74AA61E19A17A0D70054DE /* SchemaVersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaVersionTests.swift; sourceTree = "<group>"; };
 		B5922CE792B63A94194529F5 /* SampleTierListFixtureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTierListFixtureTests.swift; sourceTree = "<group>"; };
+		E0A5E961A14C1907B7415058 /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 		56EDCDCB3C726A9A73FB37FD /* TFTMacTests */ = {
 			isa = PBXGroup;
 			children = (
+				E0A5E961A14C1907B7415058 /* DataManagerTests.swift */,
 				AA74AA61E19A17A0D70054DE /* SchemaVersionTests.swift */,
 				903FB369DDE0BBE4B8A7726E /* TierListDecodingTests.swift */,
 				CB5C90FFA1FA06CE6EAFB0F1 /* regression */,
@@ -118,6 +123,7 @@
 				7AAFB2BEA4E98364F73C8834 /* TFTMacApp.swift */,
 				245B78B6B065316AD728132D /* Models */,
 				6A1604540A91A0670B5836C1 /* Resources */,
+				DE5CBD938B64A339D08CA19F /* Services */,
 			);
 			path = TFTMac;
 			sourceTree = "<group>";
@@ -145,6 +151,14 @@
 				B5922CE792B63A94194529F5 /* SampleTierListFixtureTests.swift */,
 			);
 			path = regression;
+			sourceTree = "<group>";
+		};
+		DE5CBD938B64A339D08CA19F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				66D86BC5ED70D3AD253DEE69 /* DataManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF887DD8148A02F5F16660DE /* DataManagerTests.swift in Sources */,
 				82C77C462537CA4736AAEE4F /* SampleTierListFixtureTests.swift in Sources */,
 				531088914ED113C13B273139 /* SchemaVersionTests.swift in Sources */,
 				47FBC478CC0318655F47B82B /* TierListDecodingTests.swift in Sources */,
@@ -287,6 +302,7 @@
 			files = (
 				8AB0A49631F5C661E3AEC9DE /* Champion.swift in Sources */,
 				0969AD5F3AD9FC366F0DADD0 /* Comp.swift in Sources */,
+				02EBBB7E015E608365E806FA /* DataManager.swift in Sources */,
 				1F4757346973F944761750C6 /* SchemaVersion.swift in Sources */,
 				B2852316DED135C63D69798A /* TFTMacApp.swift in Sources */,
 				306D7AE684A5A69394BA387B /* Theme.swift in Sources */,
