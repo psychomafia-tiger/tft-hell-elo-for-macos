@@ -1,0 +1,578 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		28052BC883E79ECF09F73814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19EEE04064D94531D37DBA18 /* Assets.xcassets */; };
+		306D7AE684A5A69394BA387B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2924AF422FD54F123FC278 /* Theme.swift */; };
+		469A1936BFF5647A9A0859E1 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 0803FDD71794EA03FA6D96FA /* HotKey */; };
+		B2852316DED135C63D69798A /* TFTMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFB2BEA4E98364F73C8834 /* TFTMacApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4468E496C6EFBF84C0D64A38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F6958DC0D6F28CCD7474467 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C4D0C3F6E4107B384AB434BA;
+			remoteInfo = TFTMac;
+		};
+		7483C4681965A1796AFFAB35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F6958DC0D6F28CCD7474467 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C4D0C3F6E4107B384AB434BA;
+			remoteInfo = TFTMac;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		126E3335E4F268A09940758B /* TFTMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TFTMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		19EEE04064D94531D37DBA18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2D404D2578DD4ABD7A666458 /* TFTMacUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TFTMacUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D2924AF422FD54F123FC278 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		440359D9C1275EF88836858D /* TFTMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TFTMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AAFB2BEA4E98364F73C8834 /* TFTMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFTMacApp.swift; sourceTree = "<group>"; };
+		7BA344AB7AA03C301EF4BB59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8C91D03ECF3874347C0DA128 /* TFTMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TFTMac.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C117C1FFD7AEF00B9EB6FBBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				469A1936BFF5647A9A0859E1 /* HotKey in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4EBAA274E01C6790969F8582 = {
+			isa = PBXGroup;
+			children = (
+				76F2D5868C9F8AAE4A3B0D02 /* TFTMac */,
+				56EDCDCB3C726A9A73FB37FD /* TFTMacTests */,
+				B95BA957731902F9C9E8F49E /* TFTMacUITests */,
+				9E3E53AF55FCAF3FC8BB1214 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		56EDCDCB3C726A9A73FB37FD /* TFTMacTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TFTMacTests;
+			sourceTree = "<group>";
+		};
+		6A1604540A91A0670B5836C1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7BA344AB7AA03C301EF4BB59 /* Info.plist */,
+				8C91D03ECF3874347C0DA128 /* TFTMac.entitlements */,
+				3D2924AF422FD54F123FC278 /* Theme.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		76F2D5868C9F8AAE4A3B0D02 /* TFTMac */ = {
+			isa = PBXGroup;
+			children = (
+				19EEE04064D94531D37DBA18 /* Assets.xcassets */,
+				7AAFB2BEA4E98364F73C8834 /* TFTMacApp.swift */,
+				6A1604540A91A0670B5836C1 /* Resources */,
+			);
+			path = TFTMac;
+			sourceTree = "<group>";
+		};
+		9E3E53AF55FCAF3FC8BB1214 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				126E3335E4F268A09940758B /* TFTMac.app */,
+				440359D9C1275EF88836858D /* TFTMacTests.xctest */,
+				2D404D2578DD4ABD7A666458 /* TFTMacUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B95BA957731902F9C9E8F49E /* TFTMacUITests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TFTMacUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5E7267300D393DD27A68DD07 /* TFTMacUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39A1E06B6D6B012614EB56BC /* Build configuration list for PBXNativeTarget "TFTMacUITests" */;
+			buildPhases = (
+				495364D95CBBC23D0BC7EF1A /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2A7DE213FF1620C6191DC64 /* PBXTargetDependency */,
+			);
+			name = TFTMacUITests;
+			packageProductDependencies = (
+			);
+			productName = TFTMacUITests;
+			productReference = 2D404D2578DD4ABD7A666458 /* TFTMacUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		88978D2DBB9356FCC54FFB0C /* TFTMacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B56343366A5A8CD3556C0F5D /* Build configuration list for PBXNativeTarget "TFTMacTests" */;
+			buildPhases = (
+				5FFA2D65BF00E742A5E9790D /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CFC8A9B0D528FC6004E83250 /* PBXTargetDependency */,
+			);
+			name = TFTMacTests;
+			packageProductDependencies = (
+			);
+			productName = TFTMacTests;
+			productReference = 440359D9C1275EF88836858D /* TFTMacTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C4D0C3F6E4107B384AB434BA /* TFTMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 036F1782B6D46A2615F84389 /* Build configuration list for PBXNativeTarget "TFTMac" */;
+			buildPhases = (
+				A5778A9EDBE4CBFA2FB2A7B4 /* Sources */,
+				F2A667E15977792D0C5D4C87 /* Resources */,
+				C117C1FFD7AEF00B9EB6FBBB /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TFTMac;
+			packageProductDependencies = (
+				0803FDD71794EA03FA6D96FA /* HotKey */,
+			);
+			productName = TFTMac;
+			productReference = 126E3335E4F268A09940758B /* TFTMac.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1F6958DC0D6F28CCD7474467 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					5E7267300D393DD27A68DD07 = {
+						ProvisioningStyle = Manual;
+						TestTargetID = C4D0C3F6E4107B384AB434BA;
+					};
+					88978D2DBB9356FCC54FFB0C = {
+						ProvisioningStyle = Manual;
+					};
+					C4D0C3F6E4107B384AB434BA = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 9F64928A5439B376D59241AD /* Build configuration list for PBXProject "TFTMac" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 4EBAA274E01C6790969F8582;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				80C760BAD772E4905C7E5F9A /* XCRemoteSwiftPackageReference "HotKey" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 9E3E53AF55FCAF3FC8BB1214 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C4D0C3F6E4107B384AB434BA /* TFTMac */,
+				88978D2DBB9356FCC54FFB0C /* TFTMacTests */,
+				5E7267300D393DD27A68DD07 /* TFTMacUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F2A667E15977792D0C5D4C87 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28052BC883E79ECF09F73814 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		495364D95CBBC23D0BC7EF1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FFA2D65BF00E742A5E9790D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5778A9EDBE4CBFA2FB2A7B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2852316DED135C63D69798A /* TFTMacApp.swift in Sources */,
+				306D7AE684A5A69394BA387B /* Theme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CFC8A9B0D528FC6004E83250 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C4D0C3F6E4107B384AB434BA /* TFTMac */;
+			targetProxy = 4468E496C6EFBF84C0D64A38 /* PBXContainerItemProxy */;
+		};
+		D2A7DE213FF1620C6191DC64 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C4D0C3F6E4107B384AB434BA /* TFTMac */;
+			targetProxy = 7483C4681965A1796AFFAB35 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		12A22D144D594F5B817DA9E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = asia.lab3.tftmac.tests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TFTMac.app/Contents/MacOS/TFTMac";
+			};
+			name = Debug;
+		};
+		3C7BEC37BADA1E077F60C80F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = asia.lab3.tftmac.tests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TFTMac.app/Contents/MacOS/TFTMac";
+			};
+			name = Release;
+		};
+		584253D8CB8B95B5676EC2C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TFTMac/Resources/TFTMac.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = TFTMac/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = asia.lab3.tftmac;
+				PRODUCT_NAME = TFTMac;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5FFABD310EB1DFE86C052DEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = asia.lab3.tftmac.uitests;
+				SDKROOT = macosx;
+				TEST_TARGET_NAME = TFTMac;
+			};
+			name = Release;
+		};
+		684A5C1FB98868174802712B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = asia.lab3.tftmac.uitests;
+				SDKROOT = macosx;
+				TEST_TARGET_NAME = TFTMac;
+			};
+			name = Debug;
+		};
+		A644730A90BE99DC1339A391 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		BF402301786360008BF05AB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		C799409D18664D73546AE610 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TFTMac/Resources/TFTMac.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = TFTMac/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = asia.lab3.tftmac;
+				PRODUCT_NAME = TFTMac;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		036F1782B6D46A2615F84389 /* Build configuration list for PBXNativeTarget "TFTMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				584253D8CB8B95B5676EC2C7 /* Debug */,
+				C799409D18664D73546AE610 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		39A1E06B6D6B012614EB56BC /* Build configuration list for PBXNativeTarget "TFTMacUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				684A5C1FB98868174802712B /* Debug */,
+				5FFABD310EB1DFE86C052DEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9F64928A5439B376D59241AD /* Build configuration list for PBXProject "TFTMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A644730A90BE99DC1339A391 /* Debug */,
+				BF402301786360008BF05AB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B56343366A5A8CD3556C0F5D /* Build configuration list for PBXNativeTarget "TFTMacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12A22D144D594F5B817DA9E5 /* Debug */,
+				3C7BEC37BADA1E077F60C80F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		80C760BAD772E4905C7E5F9A /* XCRemoteSwiftPackageReference "HotKey" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/soffes/HotKey.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0803FDD71794EA03FA6D96FA /* HotKey */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 80C760BAD772E4905C7E5F9A /* XCRemoteSwiftPackageReference "HotKey" */;
+			productName = HotKey;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 1F6958DC0D6F28CCD7474467 /* Project object */;
+}

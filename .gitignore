@@ -15,12 +15,18 @@ DerivedData/
 *.xcuserstate
 *.xcscmblueprint
 *.xccheckout
+App/build/
+App/TFTMac.xcodeproj/xcuserdata/
+App/TFTMac.xcodeproj/project.xcworkspace/xcuserdata/
 
 # Swift Package Manager
 .build/
 Packages/
 Package.resolved
 .swiftpm/
+
+# Keep Xcode-managed Package.resolved committed for reproducible dep pinning
+!App/TFTMac.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
 
 # CocoaPods / Carthage
 Pods/
