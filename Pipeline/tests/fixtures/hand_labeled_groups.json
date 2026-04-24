@@ -1,0 +1,13 @@
+{
+  "description": "Founder fills Day 2 after fetching 100 Challenger matches. 10 hand-labeled 'obvious same comp' groups. See phase-00 Task 0.7 Action #4 for instructions.",
+  "tft_set": "14",
+  "schema_example": {
+    "group_id": "storm-quickdraw",
+    "player_signatures": [
+      "Aatrox+Kai'Sa+Sivir+Xerath+Yasuo",
+      "Aatrox+Kai'Sa+Sivir+Xerath+Yone",
+      "Aatrox+Kai'Sa+Sivir+Syndra+Yasuo"
+    ]
+  },
+  "groups": []
+}
