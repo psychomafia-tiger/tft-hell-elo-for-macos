@@ -67,6 +67,12 @@ enum Theme {
         static let gapCards: CGFloat = 8
         /// Horizontal gap between champion portrait icons — 6 px.
         static let gapChampionIcons: CGFloat = 6
+        /// Tier badge diameter — 28 px (full circle, radius 14).
+        static let tierBadge: CGFloat = 28
+        /// Standard card height — 120 px.
+        static let cardHeight: CGFloat = 120
+        /// Champion portrait diameter — 32 px.
+        static let championPortrait: CGFloat = 32
     }
 
     // MARK: - Radii

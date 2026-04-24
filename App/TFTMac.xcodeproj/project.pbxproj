@@ -23,10 +23,14 @@
 		82C77C462537CA4736AAEE4F /* SampleTierListFixtureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5922CE792B63A94194529F5 /* SampleTierListFixtureTests.swift */; };
 		84F19EACE8C94224C494514B /* SignpostChannels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E63EFABEA1FFA9B454004C3 /* SignpostChannels.swift */; };
 		8AB0A49631F5C661E3AEC9DE /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D7C79D860555BA5D5B3D8E /* Champion.swift */; };
+		903B6572525FB94D64C8383B /* ChampionCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D223214CE5BBB8334A6287F /* ChampionCatalog.swift */; };
 		A1B4D5038BD9119C1FDFDB0B /* HeaderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA60817F3702455F05C8CE /* HeaderBar.swift */; };
+		A9027777B0523CA947209767 /* CompCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81B6A52A9E119D2454B51B0 /* CompCard.swift */; };
 		B2852316DED135C63D69798A /* TFTMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFB2BEA4E98364F73C8834 /* TFTMacApp.swift */; };
+		C9E98F3531DE78284F06F3DB /* CompCardItemsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79793825BE7037DF55727D3D /* CompCardItemsRow.swift */; };
 		CF887DD8148A02F5F16660DE /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A5E961A14C1907B7415058 /* DataManagerTests.swift */; };
 		CFB841EB1AAC813D8560F604 /* sample-tier-list.json in Resources */ = {isa = PBXBuildFile; fileRef = 35895F55BCB1220D4060B8C0 /* sample-tier-list.json */; };
+		D78C78C997974A720C094ED6 /* ItemCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B493F9514E092B07EE3AFE2B /* ItemCatalog.swift */; };
 		F865CBC2186506E1F75209AB /* TierListPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CB1DC7266A4354ED2CF025 /* TierListPopover.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D223214CE5BBB8334A6287F /* ChampionCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionCatalog.swift; sourceTree = "<group>"; };
 		126E3335E4F268A09940758B /* TFTMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TFTMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		192C52B5E5B0BD973AF4A5EA /* MenuBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarIcon.swift; sourceTree = "<group>"; };
 		19EEE04064D94531D37DBA18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,6 +65,7 @@
 		66D86BC5ED70D3AD253DEE69 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		68CB1DC7266A4354ED2CF025 /* TierListPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierListPopover.swift; sourceTree = "<group>"; };
 		6F5ABAB08CC8CA23E71E2ED6 /* Comp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comp.swift; sourceTree = "<group>"; };
+		79793825BE7037DF55727D3D /* CompCardItemsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompCardItemsRow.swift; sourceTree = "<group>"; };
 		7AAFB2BEA4E98364F73C8834 /* TFTMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFTMacApp.swift; sourceTree = "<group>"; };
 		7BA344AB7AA03C301EF4BB59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8245189EAD6AB976B704EC62 /* Banners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banners.swift; sourceTree = "<group>"; };
@@ -70,7 +76,9 @@
 		99B28BDF2730EE506D4EC3F5 /* HotkeyRegistrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyRegistrationTests.swift; sourceTree = "<group>"; };
 		9E63EFABEA1FFA9B454004C3 /* SignpostChannels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignpostChannels.swift; sourceTree = "<group>"; };
 		AA74AA61E19A17A0D70054DE /* SchemaVersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaVersionTests.swift; sourceTree = "<group>"; };
+		B493F9514E092B07EE3AFE2B /* ItemCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCatalog.swift; sourceTree = "<group>"; };
 		B5922CE792B63A94194529F5 /* SampleTierListFixtureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTierListFixtureTests.swift; sourceTree = "<group>"; };
+		B81B6A52A9E119D2454B51B0 /* CompCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompCard.swift; sourceTree = "<group>"; };
 		C0EA60817F3702455F05C8CE /* HeaderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderBar.swift; sourceTree = "<group>"; };
 		E0A5E961A14C1907B7415058 /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +104,15 @@
 				84741D0080D548EB46DC80AE /* TierList.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3157A4328ADF5015684E9D0E /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				0D223214CE5BBB8334A6287F /* ChampionCatalog.swift */,
+				B493F9514E092B07EE3AFE2B /* ItemCatalog.swift */,
+			);
+			path = Generated;
 			sourceTree = "<group>";
 		};
 		4EBAA274E01C6790969F8582 = {
@@ -136,6 +153,7 @@
 			children = (
 				19EEE04064D94531D37DBA18 /* Assets.xcassets */,
 				7AAFB2BEA4E98364F73C8834 /* TFTMacApp.swift */,
+				3157A4328ADF5015684E9D0E /* Generated */,
 				245B78B6B065316AD728132D /* Models */,
 				6A1604540A91A0670B5836C1 /* Resources */,
 				DE5CBD938B64A339D08CA19F /* Services */,
@@ -165,6 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				8245189EAD6AB976B704EC62 /* Banners.swift */,
+				B81B6A52A9E119D2454B51B0 /* CompCard.swift */,
+				79793825BE7037DF55727D3D /* CompCardItemsRow.swift */,
 				C0EA60817F3702455F05C8CE /* HeaderBar.swift */,
 				192C52B5E5B0BD973AF4A5EA /* MenuBarIcon.swift */,
 				68CB1DC7266A4354ED2CF025 /* TierListPopover.swift */,
@@ -332,10 +352,14 @@
 			files = (
 				2B40DE17A381B29CE515D301 /* Banners.swift in Sources */,
 				8AB0A49631F5C661E3AEC9DE /* Champion.swift in Sources */,
+				903B6572525FB94D64C8383B /* ChampionCatalog.swift in Sources */,
 				0969AD5F3AD9FC366F0DADD0 /* Comp.swift in Sources */,
+				A9027777B0523CA947209767 /* CompCard.swift in Sources */,
+				C9E98F3531DE78284F06F3DB /* CompCardItemsRow.swift in Sources */,
 				02EBBB7E015E608365E806FA /* DataManager.swift in Sources */,
 				A1B4D5038BD9119C1FDFDB0B /* HeaderBar.swift in Sources */,
 				6899337443B12C07ADE1DA2D /* HotkeyRegistrar.swift in Sources */,
+				D78C78C997974A720C094ED6 /* ItemCatalog.swift in Sources */,
 				299DD890745772F1130FC723 /* MenuBarIcon.swift in Sources */,
 				1F4757346973F944761750C6 /* SchemaVersion.swift in Sources */,
 				84F19EACE8C94224C494514B /* SignpostChannels.swift in Sources */,
