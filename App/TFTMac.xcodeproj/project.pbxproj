@@ -11,6 +11,7 @@
 		0969AD5F3AD9FC366F0DADD0 /* Comp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5ABAB08CC8CA23E71E2ED6 /* Comp.swift */; };
 		1F4757346973F944761750C6 /* SchemaVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C122A4919B84DE756F8F8 /* SchemaVersion.swift */; };
 		28052BC883E79ECF09F73814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19EEE04064D94531D37DBA18 /* Assets.xcassets */; };
+		299DD890745772F1130FC723 /* MenuBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192C52B5E5B0BD973AF4A5EA /* MenuBarIcon.swift */; };
 		306D7AE684A5A69394BA387B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2924AF422FD54F123FC278 /* Theme.swift */; };
 		469A1936BFF5647A9A0859E1 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 0803FDD71794EA03FA6D96FA /* HotKey */; };
 		47FBC478CC0318655F47B82B /* TierListDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903FB369DDE0BBE4B8A7726E /* TierListDecodingTests.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		126E3335E4F268A09940758B /* TFTMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TFTMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		192C52B5E5B0BD973AF4A5EA /* MenuBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarIcon.swift; sourceTree = "<group>"; };
 		19EEE04064D94531D37DBA18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		220C122A4919B84DE756F8F8 /* SchemaVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaVersion.swift; sourceTree = "<group>"; };
 		2D404D2578DD4ABD7A666458 /* TFTMacUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TFTMacUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +126,7 @@
 				245B78B6B065316AD728132D /* Models */,
 				6A1604540A91A0670B5836C1 /* Resources */,
 				DE5CBD938B64A339D08CA19F /* Services */,
+				BB92296FBF31C5A2A0069095 /* Views */,
 			);
 			path = TFTMac;
 			sourceTree = "<group>";
@@ -143,6 +146,14 @@
 			children = (
 			);
 			path = TFTMacUITests;
+			sourceTree = "<group>";
+		};
+		BB92296FBF31C5A2A0069095 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				192C52B5E5B0BD973AF4A5EA /* MenuBarIcon.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		CB5C90FFA1FA06CE6EAFB0F1 /* regression */ = {
@@ -303,6 +314,7 @@
 				8AB0A49631F5C661E3AEC9DE /* Champion.swift in Sources */,
 				0969AD5F3AD9FC366F0DADD0 /* Comp.swift in Sources */,
 				02EBBB7E015E608365E806FA /* DataManager.swift in Sources */,
+				299DD890745772F1130FC723 /* MenuBarIcon.swift in Sources */,
 				1F4757346973F944761750C6 /* SchemaVersion.swift in Sources */,
 				B2852316DED135C63D69798A /* TFTMacApp.swift in Sources */,
 				306D7AE684A5A69394BA387B /* Theme.swift in Sources */,
