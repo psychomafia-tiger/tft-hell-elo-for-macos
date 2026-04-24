@@ -60,5 +60,11 @@ final class SampleTierListFixtureTests: XCTestCase {
         // --- Tier ordering preserved (S first in sorted fixture) ---
         XCTAssertEqual(tierList.comps.first?.tier, .S, "First comp must be S-tier")
         XCTAssertEqual(tierList.comps.last?.tier, .B, "Last comp must be B-tier")
+
+        // --- Statistical sanity: no comp can appear in more matches than were sampled ---
+        XCTAssertTrue(
+            tierList.comps.allSatisfy { $0.sampleSize <= tierList.totalMatchesSampled },
+            "Individual comp sample_size cannot exceed total matches sampled"
+        )
     }
 }

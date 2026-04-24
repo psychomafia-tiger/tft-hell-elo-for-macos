@@ -105,7 +105,11 @@ final class TierListDecodingTests: XCTestCase {
         """.data(using: .utf8)!
 
         XCTAssertThrowsError(try decoder().decode(TierList.self, from: json)) { error in
-            XCTAssert(error is DecodingError, "Expected DecodingError, got \(error)")
+            guard case DecodingError.keyNotFound(let key, _) = error else {
+                return XCTFail("Expected .keyNotFound DecodingError, got: \(error)")
+            }
+            XCTAssertEqual(key.stringValue, "patchVersion",
+                           "Expected missing key to be 'patchVersion' (after .convertFromSnakeCase)")
         }
     }
 
@@ -143,20 +147,14 @@ final class TierListDecodingTests: XCTestCase {
     // MARK: - Test 5: Fixture file decodes without error
 
     func testFixtureDecodes() throws {
-        // Bundle.main resolves to the app bundle when TEST_HOST is set (unit test host model).
-        let url = Bundle(for: type(of: self)).url(forResource: "sample-tier-list", withExtension: "json")
-            ?? Bundle.main.url(forResource: "sample-tier-list", withExtension: "json")
-
-        guard let fixtureURL = url else {
-            XCTFail("sample-tier-list.json not found in any bundle")
+        guard let fixtureURL = Bundle.main.url(forResource: "sample-tier-list", withExtension: "json") else {
+            XCTFail("sample-tier-list.json not found in main bundle (check project.yml resources)")
             return
         }
-
         let data = try Data(contentsOf: fixtureURL)
         let tierList = try decoder().decode(TierList.self, from: data)
-
         XCTAssertEqual(tierList.comps.count, 10, "Fixture should contain 10 comps")
         XCTAssertTrue(tierList.comps.allSatisfy { $0.sampleSize > 0 })
-        XCTAssertEqual(tierList.comps.first?.tier, .S, "First comp should be S-tier")
+        XCTAssertEqual(tierList.comps.first?.tier, .S)
     }
 }
