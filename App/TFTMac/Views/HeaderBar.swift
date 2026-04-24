@@ -27,6 +27,7 @@ struct HeaderBar: View {
                 .font(.system(size: 16))
                 .foregroundStyle(Theme.Colors.textMuted)
                 .frame(width: 28, height: 28)
+                .accessibilityHidden(true)  // No tap action yet — Phase 2 Settings sheet will wire this
         }
         .padding(.horizontal, Theme.Spacing.paddingPopover)
         .frame(height: 56)

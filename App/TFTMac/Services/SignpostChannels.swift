@@ -13,6 +13,13 @@ import os.signpost
 /// and ID. BEGIN in TFTMacApp.register(onFire:) and END in TierListPopover.onAppear
 /// now form a matched pair in Instruments.
 ///
+/// **Phase 1 semantic**: single shared ID for the whole app session = measures
+/// "one logical popover-open op" per launch. Repeated opens emit nested
+/// BEGIN/END pairs with the same ID (Instruments renders overlapping
+/// intervals). Acceptable for Phase 1 single-shot latency measurement.
+/// Phase 2+ "median of N opens" analysis will require per-event `OSSignpostID`
+/// generation — upgrade at that point, not now (YAGNI).
+///
 /// Task 1.10 Track B measurement flow:
 /// 1. `log collect --start "5 min ago" --output popover.logarchive` captures
 ///    signposts emitted during dogfood session
