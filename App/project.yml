@@ -13,9 +13,13 @@ settings:
     ONLY_ACTIVE_ARCH: NO
     SWIFT_VERSION: "5.9"
     MACOSX_DEPLOYMENT_TARGET: "13.0"
-    ENABLE_HARDENED_RUNTIME: YES
     ENABLE_APP_SANDBOX: NO
     DEAD_CODE_STRIPPING: YES
+  configs:
+    Debug:
+      ENABLE_HARDENED_RUNTIME: NO
+    Release:
+      ENABLE_HARDENED_RUNTIME: YES
 
 packages:
   HotKey:
@@ -35,17 +39,6 @@ targets:
       - path: TFTMac/Assets.xcassets
     info:
       path: TFTMac/Resources/Info.plist
-      properties:
-        CFBundleName: TFTMac
-        CFBundleDisplayName: TFT Mac
-        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
-        CFBundleShortVersionString: "0.1.0"
-        CFBundleVersion: "1"
-        CFBundlePackageType: APPL
-        LSUIElement: true
-        LSMinimumSystemVersion: "13.0"
-        NSPrincipalClass: NSApplication
-        NSHighResolutionCapable: true
     entitlements:
       path: TFTMac/Resources/TFTMac.entitlements
       properties:
@@ -76,6 +69,10 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: asia.lab3.tftmac.tests
         GENERATE_INFOPLIST_FILE: YES
+        # TODO(Phase 3 CI): when wiring GitHub Actions, pass
+        # CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO on xcodebuild cmd line,
+        # or add a CI xcconfig overlay. Ad-hoc "-" identity works locally per
+        # docs/pre-spike-xcuitest-menubar.md but breaks on CI runners.
         CODE_SIGN_IDENTITY: "-"
         CODE_SIGN_STYLE: Manual
         BUNDLE_LOADER: "$(TEST_HOST)"
@@ -95,6 +92,10 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: asia.lab3.tftmac.uitests
         GENERATE_INFOPLIST_FILE: YES
+        # TODO(Phase 3 CI): when wiring GitHub Actions, pass
+        # CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO on xcodebuild cmd line,
+        # or add a CI xcconfig overlay. Ad-hoc "-" identity works locally per
+        # docs/pre-spike-xcuitest-menubar.md but breaks on CI runners.
         CODE_SIGN_IDENTITY: "-"
         CODE_SIGN_STYLE: Manual
         TEST_TARGET_NAME: TFTMac

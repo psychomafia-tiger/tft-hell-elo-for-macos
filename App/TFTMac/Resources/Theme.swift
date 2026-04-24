@@ -6,6 +6,9 @@ import SwiftUI
 /// Phase 1 Views (Tasks 1.4, 1.6, 1.9) must reference these tokens instead of
 /// hard-coding colors, fonts, or spacing. Any change here ripples to every
 /// screen — intentional, so the wireframe stays authoritative.
+///
+/// Color is applied at call-site via `.foregroundStyle()`, not baked into Font
+/// tokens. For example: `Text(value).font(Theme.Fonts.monoCaption).foregroundStyle(Theme.Colors.accentGold)`.
 enum Theme {
 
     // MARK: - Colors
@@ -46,10 +49,9 @@ enum Theme {
         static let title = Font.system(size: 14, weight: .semibold, design: .default)
         /// Metadata row / subtitle — SF Pro Regular 11.
         static let caption = Font.system(size: 11, weight: .regular, design: .default)
-        /// Item rows — SF Mono Regular 10 (muted).
+        /// Item rows and percentages — SF Mono Regular 10.
+        /// Apply emphasis color at call-site: `.foregroundStyle(Theme.Colors.accentGold)`.
         static let monoCaption = Font.system(size: 10, weight: .regular, design: .monospaced)
-        /// Item percentages — SF Mono Regular 10 (gold, apply color at call site).
-        static let monoEmphasis = Font.system(size: 10, weight: .regular, design: .monospaced)
         /// Tier badge label — SF Pro Bold 14 (black fg on tier bg).
         static let badge = Font.system(size: 14, weight: .bold, design: .default)
     }
