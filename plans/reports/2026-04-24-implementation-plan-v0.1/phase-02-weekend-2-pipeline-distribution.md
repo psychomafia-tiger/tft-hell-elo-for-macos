@@ -92,12 +92,21 @@ Distribution/
 - **★ REGRESSION**: 2-cost 3-star Ezreal reroll với manual override → is_carry=True
 - Override trumps heuristic (if `comp-names.json` has `manual_carry_override`)
 
-### Task 2.5: TDD augment aggregator (spec §Suggested Augments)
+### Task 2.5: TDD BIS items aggregator (spec §BIS Items Derivation)
+
+Replaces original augment aggregator after Set 17 finding (see `docs/pre-spike-api-verify.md`).
+
+**Inputs**: list of participant records matching a canonical comp signature (top-4 placements only).
+
 **Test cases**:
-- 1884 matches, 4 augments with sample ≥30 → top 3 by avg_place
-- Tied avg_place → deterministic secondary sort (alphabetical)
-- All augments sample <30 → empty result
-- Augment avg_place WORSE than comp baseline → excluded
+- 22 matching boards, Viktor carries Jeweled Gauntlet in 17 boards → agreement 77% → include (above 40% threshold)
+- 22 matching boards, Rhaast items all ≤4 occurrences (max 18%) → 0 items above threshold → return empty list (UI renders "Flex" label)
+- Item prefix filter: `TFT17_Item_PsyOpsDroneMod` appears 11/22 on Viktor → EXCLUDED (set emblem, `TFT17_Item_` prefix)
+- Only `TFT_Item_*` prefix counted (core items); `TFT5_Item_*`, `TFT17_EkkoOffering_*`, `TFT17_AnimaSquadItem_*` excluded
+- Only count units with `tier >= 2` (2-star+) — 1-star slot-fillers don't represent investment intent
+- Tied agreement → deterministic secondary sort by item ID alphabetical
+- Sort descending by agreement, take top 3 per core champion
+- Filter out summoned units (`character_id == 'TFT17_Summon'`) before aggregating items
 
 ### Task 2.6: TDD lockfile (Eng review §1.5)
 **Test cases**:

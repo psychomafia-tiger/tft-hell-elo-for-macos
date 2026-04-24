@@ -36,7 +36,7 @@ App/                                       # Xcode project root
 │   │   └── HotkeyRegistrar.swift          # HotKey package wrapper
 │   ├── Generated/
 │   │   └── ChampionCatalog.swift          # Static TFT Set 14 lookup
-│   ├── Assets.xcassets/                   # Champion/item/augment icons
+│   ├── Assets.xcassets/                   # Champion + core item icons (no augment icons per 2026-04-24 pivot)
 │   └── Resources/
 │       ├── Info.plist                     # LSUIElement=true
 │       └── sample-tier-list.json          # Hardcoded v0.0.1 dogfood data
@@ -121,8 +121,9 @@ test -f docs/wireframe-v0.1-standard-card.md || { echo "BLOCKED: wireframe missi
 
 - Per wireframe (Phase 0 Action #6)
 - 8 champion icons với carry highlight
-- Items per carry (up to 3)
-- 2-3 suggested augment icons
+- **BIS items per core champion (up to 3 items, with agreement % badge)** — replaces previous "items per carry + suggested augment icons"
+- Agreement display: `"77%"` small badge next to each item icon (e.g. Jeweled Gauntlet 77%)
+- "Flex" label shown when a core champion has empty items array (no item ≥ 40% agreement in aggregated top-4 boards)
 - Tier badge color (S=gold, A=silver, B=bronze, C=gray)
 - Gray-out styling khi sample_size < 100 (opacity 0.5 + "Low confidence" badge)
 

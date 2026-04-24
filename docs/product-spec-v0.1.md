@@ -5,6 +5,18 @@
 **Status** APPROVED (adversarial review 8.5/10, user approved)
 **Canonical copy** `~/.gstack/projects/TFTTACTICSFORMACS/mac-main-design-20260423-234139.md`
 
+## 2026-04-24 Update — Feature 1 pivot: augment suggestions → BIS items
+
+Phase 0 F3 (Riot API schema verification) discovered TFT production is now on **Set 17** (spec was written against Set 14). Set 17 removed the Augment mechanic entirely; the `participant.augments[]` field is absent from Match-v5 responses.
+
+Founder chose (2026-04-24) to replace "suggested augments" inside each comp card with **BIS (Best-in-Slot) items per core champion** — matches proven MetaTFT/TFTactics/LolChess pattern, and the data source is already validated (98 KR matches, `participant.units[].itemNames[]`). Sections updated below:
+- Feature 1 comp card definition (line ~28, line ~37)
+- JSON schema — `suggested_augments` removed, no new top-level field (items per core already present via `champions[].items`)
+- Algorithm section: "Suggested Augments Derivation" replaced with "BIS Items Derivation"
+- Out-of-scope table: "Augment cheat sheet" deferred from v0.1.1 to "v0.2+, conditional on Riot reintroducing augment mechanic"
+
+See `docs/pre-spike-api-verify.md` for the full F3 finding and `docs/pre-spike-algo-tuning.md` for threshold decision. Memory: `feature_2_pivot.md` in project memory.
+
 ---
 
 ## Executive Summary
@@ -25,7 +37,7 @@ v0.1 = native macOS menu bar popover (cửa sổ bật lên từ thanh menu) hi�
 2. Popover xuất hiện gần menu bar icon (~200ms)
 3. User thấy header "Patch X.Y · Based on N Challenger matches · Updated Xh ago"
 4. User scroll qua 10-15 comps xếp theo tier S/A/B/C
-5. User đọc comp card (thẻ comp): name, tier, play_rate, avg_placement, top_4_rate, 8 champion icons với carry marked (đánh dấu), items per carry, 2-3 suggested augments
+5. User đọc comp card (thẻ comp): name, tier, play_rate, avg_placement, top_4_rate, 8 champion icons với carry marked (đánh dấu), **BIS items per core champion với agreement %** (ví dụ "Viktor: Jeweled Gauntlet 77% · Archangel's Staff 55%")
 6. User press Cmd+Shift+T lần 2 (hoặc click ngoài popover) → popover đóng
 7. User quay lại TFT game với info đã thu thập
 
@@ -33,8 +45,11 @@ v0.1 = native macOS menu bar popover (cửa sổ bật lên từ thanh menu) hi�
 - Tier S, play_rate 12.7% (xuất hiện trong 1,884/14,832 matches)
 - avg_placement 3.82 (trung bình hạng 3-4 — trên top 4 line)
 - top_4_rate 0.58 (58% games hạng ≤4)
-- Main carry: Sivir (cost 4) với items Giant Slayer + Last Whisper + Runaan's Hurricane
-- Suggested augments: Electrocharge, Sniper
+- Core champions + BIS items (agreement % trên 22 matching top-4 boards):
+  - **Viktor (carry, cost 5)**: Jeweled Gauntlet 77%, Archangel's Staff 55%
+  - **Illaoi (tank, cost 3)**: Gargoyle Stoneplate 59%
+  - **Nami (support, cost 3)**: Statikk Shiv 45%
+  - **Rhaast (cost 4)**: Flex — no item ≥40% consensus (hiển thị label "Flex")
 
 **Acceptance criteria** (tiêu chí nghiệm thu):
 - [ ] Popover mở trong ≤300ms từ hotkey press
@@ -82,7 +97,7 @@ Explicit exclusions (loại trừ rõ ràng) để tránh scope creep (phình ph
 
 | Feature | Deferred to | Rationale (lý do) |
 |---|---|---|
-| Augment cheat sheet (bảng tra cứu augment) | v0.1.1 sau retention validated | Data pipeline riêng, scope creep. Validate 1 feature trước |
+| Augment / Anomaly cheat sheet | v0.2+ conditional | Set 17 removed augments (F3 finding 2026-04-24). Revisit if Riot reintroduces in future set, OR if Anomaly data becomes richer in Match-v5 exposure |
 | Floating sidebar overlay (cửa sổ nổi đè TFT) | v0.2 | Phụ thuộc P2 fullscreen verification chưa xong |
 | Live board tracker (theo dõi board realtime) | v0.3 | Phụ thuộc Riot Live Client API, coverage unknown |
 | VN localization (Việt hóa UI) | v0.2 nếu tester request | Champion names Riot default EN, UI VN gây inconsistent |
@@ -136,11 +151,15 @@ Explicit exclusions (loại trừ rõ ràng) để tránh scope creep (phình ph
       "top_4_rate": 0.58,
       "sample_size": 1884,
       "champions": [
-        {"id": "TFT14_Sivir", "cost": 4, "is_carry": true,
-         "items": ["TFT_Item_GiantSlayer", "TFT_Item_LastWhisper", "TFT_Item_RunaansHurricane"]},
-        {"id": "TFT14_Aatrox", "cost": 3, "is_carry": false, "items": []}
-      ],
-      "suggested_augments": ["TFT14_Augment_Electrocharge", "TFT14_Augment_Sniper"]
+        {"id": "TFT17_Viktor", "cost": 5, "is_carry": true,
+         "items": [
+           {"id": "TFT_Item_JeweledGauntlet", "agreement": 0.77},
+           {"id": "TFT_Item_ArchangelsStaff", "agreement": 0.55}
+         ]},
+        {"id": "TFT17_Illaoi", "cost": 3, "is_carry": false,
+         "items": [{"id": "TFT_Item_GargoyleStoneplate", "agreement": 0.59}]},
+        {"id": "TFT17_Rhaast", "cost": 4, "is_carry": false, "items": []}
+      ]
     }
   ]
 }
@@ -166,13 +185,14 @@ Explicit exclusions (loại trừ rõ ràng) để tránh scope creep (phình ph
 - `top_4_rate` (float 0-1) — tỷ lệ hạng ≤4
 - `sample_size` (int) — số match comp này xuất hiện. App gray out (làm mờ) comps <100 samples
 - `champions` (array) — 1-9 champion entries
-- `suggested_augments` (array of 2-4 strings) — augment IDs
 
 **Champion fields**:
-- `id` (string) — Riot format "TFT14_ChampionName". App có static lookup table cho name + icon URL
+- `id` (string) — Riot format `"TFT17_ChampionName"` (set number = current live set). App has static lookup table cho name + icon URL
 - `cost` (int 1-5) — champion tier cost
-- `is_carry` (bool) — main carry của comp
-- `items` (array of 0-3 strings) — item IDs. Empty nếu không phải carry
+- `is_carry` (bool) — main carry của comp (heuristic: cost ≥ 3 AND has ≥2 items across aggregated boards)
+- `items` (array of 0-3 objects) — BIS items with agreement:
+  - `id` (string) — item ID, `TFT_Item_*` prefix (core items only; trait emblems / radiant / Ornn excluded)
+  - `agreement` (float 0.4-1.0) — fraction of matching top-4 boards that equipped this item on this champion. Items below 0.40 threshold are excluded from array. Empty array = "Flex" label in UI (no strong consensus)
 
 ### Comp Detection Algorithm (thuật toán nhận diện comp)
 
@@ -237,25 +257,49 @@ is_carry = (champion.cost >= 3) AND (items.length >= 2)
 
 **Edge case**: Reroll comp (chiến thuật đổi liên tục) có 2-cost 3-star carry. Rule bỏ sót. **Workaround v0.1**: hand-curated carry list cho top 30 comp archetypes, overrides heuristic. V0.1.1 cải thiện với Star level detection (3-star = 9 copies same unit).
 
-### Suggested Augments Derivation (cách tính augment gợi ý)
+### BIS Items Derivation (cách tính top items per core champion)
 
-**Input**: Tất cả matches của 1 comp (ví dụ 1,884 Storm Quickdraw matches).
+**Input**: top-4 placement boards trong 1 comp group (ví dụ 22 matching boards của "Illaoi+Nami+Rhaast+Viktor").
+
 **Process**:
-1. Aggregate (tổng hợp) `participants[].augments[]` field — mỗi player chọn 3 augments trong game
-2. Count augment frequency trong comp's matches
-3. Filter augments với sample_size ≥30 (thống kê đủ tin cậy)
-4. Sort by (avg_placement of matches với augment này) ascending — lower placement = better
-5. Take top 3
+1. Filter boards: `placement ≤ 4` (top-4 = winning plays, bottom-4 can be early-eliminated incomplete boards)
+2. For mỗi champion trong canonical comp: aggregate `itemNames[]` on that champion's 2-star-or-higher instances (`tier >= 2` = đã invested đủ, 1-star slot-filler bỏ qua)
+3. Filter item prefix: only `TFT_Item_*` (core items). Exclude `TFT17_Item_*` (set emblems, conditional drops), `TFT5/4/7/9_Item_*` (legacy radiants, rare), `TFT17_EkkoOffering_*` (Anomaly drops, not player-built)
+4. Compute agreement = `count_boards_with_item / total_matching_boards`
+5. Keep items with agreement ≥ 0.40. Sort by agreement desc. Take top 3 per champion.
+6. If 0 items pass threshold for a champion → mark as "Flex" (empty `items` array in JSON)
 
-**Ví dụ concrete** — Storm Quickdraw 1,884 matches, augment aggregation:
+**Ví dụ concrete** — "Illaoi+Nami+Rhaast+Viktor" across 22 top-4 boards:
 ```
-Electrocharge: seen 342 times, avg_place 3.4 → BEST
-Sniper: seen 228 times, avg_place 3.6 → 2nd
-Combat Training: seen 189 times, avg_place 3.7 → 3rd
-Pandora's Items: seen 156 times, avg_place 4.1 → reject (avg_place worse than comp baseline 3.82)
+Viktor (main carry):
+  Jeweled Gauntlet    17/22  = 77%  → INCLUDE (#1)
+  Archangel's Staff   12/22  = 55%  → INCLUDE (#2)
+  PsyOps DroneMod     11/22  = 50%  → EXCLUDE (TFT17_Item_ prefix = set emblem, conditional)
+  Madred's Bloodrazor  7/22  = 32%  → EXCLUDE (below 40% threshold)
+
+Illaoi (tank):
+  Gargoyle Stoneplate 13/22  = 59%  → INCLUDE (#1)
+  Redemption           7/22  = 32%  → EXCLUDE (below threshold)
+
+Nami (support):
+  Statikk Shiv        10/22  = 45%  → INCLUDE (#1)
+  Jeweled Gauntlet     3/22  = 14%  → EXCLUDE
+
+Rhaast:
+  Gargoyle Stoneplate  4/22  = 18%  → EXCLUDE
+  Adaptive Helm        4/22  = 18%  → EXCLUDE
+  (no item passes 40% threshold) → "Flex" label
 ```
 
-Output: `suggested_augments: ["TFT14_Augment_Electrocharge", "TFT14_Augment_Sniper", "TFT14_Augment_CombatTraining"]`
+Output structure in tier-list.json `comps[].champions[].items[]`:
+```json
+"items": [
+  {"id": "TFT_Item_JeweledGauntlet", "agreement": 0.77},
+  {"id": "TFT_Item_ArchangelsStaff", "agreement": 0.55}
+]
+```
+
+**Why 40% threshold**: below this, recommending an item implies false confidence; above it, at least ⅖ of top-4 players chose it independently = genuine consensus. Tunable parameter — can revisit if empirical UX testing in v0.1 suggests too strict or too loose.
 
 ### Tier Calculation Rules (quy tắc tính tier)
 
