@@ -30,6 +30,17 @@ struct TFTMacApp: App {
     // for app lifetime" — fresh instances would drop the Carbon binding.
     private let hotkeyRegistrar = HotkeyRegistrar()
 
+    // Wave 5b (F1 dogfood fix) — eager-instantiate OverlayWindowController at app
+    // launch (D2 decision). Panel lives for the app's entire lifetime; show/hide
+    // merely orderFront/orderOut. First Cmd+Shift+T shows in <50ms because
+    // NSPanel + NSHostingView are already built.
+    //
+    // Why a stored `let` (not `@StateObject`): TFTMacApp.init runs before SwiftUI
+    // scene graph attaches observability. Scene body (Wave 5c) will adopt the
+    // instance via `.environmentObject(Self.overlayController)` when popover +
+    // overlay share CompListView, propagating isVisible updates to both.
+    private let overlayController = OverlayWindowController()
+
     init() {
         // Skip hotkey registration when running as XCTest host. Every rebuild
         // produces a new bundle signature, so TCC treats the test-host binary
@@ -54,15 +65,27 @@ struct TFTMacApp: App {
             NSLog("TFT Hell Elo: Cmd+Shift+T already bound by another app (Alfred/Raycast/Rectangle?)")
         }
 
-        // Register the global hotkey. MenuBarExtra does not expose a
-        // programmatic "open popover" API on macOS 14, so the hotkey's UX
-        // role for Phase 1 is "bring the app to front so the user's click
-        // on the menu bar icon is one step away". Task 1.10 may explore
-        // direct popover toggling via a bridged NSStatusItem if warranted.
-        _ = hotkeyRegistrar.register {
+        // Register the global hotkey with **dual-route** per Wave 5b D1 decision:
+        // every Cmd+Shift+T fires BOTH routes unconditionally (no TFT-process
+        // detection heuristic). User gets popover via menu bar activation AND
+        // fullscreen overlay via NSPanel toggle — whichever is reachable in the
+        // current display context renders.
+        //
+        // Popover route: NSApp.activate brings TFTMac to front; user still needs
+        // to click the menu bar icon (MenuBarExtra programmatic toggle is not
+        // public API on macOS 14). This is unchanged from Wave 1-4 behavior.
+        //
+        // Overlay route: OverlayWindowController.toggle flips NSPanel visibility
+        // via orderFront/orderOut — panel sits at overlayWindowLevel and renders
+        // above TFT's borderless/fullscreen window (the dogfood F1 blocker).
+        //
+        // Idempotency: 10 consecutive Cmd+Shift+T presses keep overlay state
+        // consistent (assert test: HotkeyDualRouteTests.testToggleTwentyFiresStable).
+        _ = hotkeyRegistrar.register { [overlayController] in
             os_signpost(.begin, log: PopoverSignpost.log, name: PopoverSignpost.name,
                         signpostID: PopoverSignpost.id, "Hotkey fired")
-            NSApp.activate(ignoringOtherApps: true)
+            NSApp.activate(ignoringOtherApps: true)  // popover route (existing)
+            overlayController.toggle()               // overlay route (Wave 5b new)
         }
     }
 
