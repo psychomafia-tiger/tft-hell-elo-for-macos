@@ -96,3 +96,11 @@ Khi invoke (gọi) office-hours, plan-ceo-review, plan-eng-review, design-consul
 ## Primary KPI
 
 10 người thật (founder + 9 testers) mở app ≥3 lần/tuần × 4 tuần liền. Retention (mức giữ chân) trước, revenue (doanh thu) sau.
+
+## Naming
+
+- **User-facing name**: `TFT Hell Elo` (display name, menu bar label, Finder/Dock)
+- **Bundle ID**: `io.psychomafia.tfthellelo` (owner `psychomafia-tiger`, indie prefix)
+- **Code target retained**: Xcode target `TFTMac`, `@main struct TFTMacApp`, scheme `TFTMac` — rename tầng code (đổi tên tầng code) sẽ break XCUITest hardcoded references + `@testable import TFTMac` trong 5+ test files, không đáng (not worth). Chỉ rename user-facing layer.
+- Rule: user-facing strings = "TFT Hell Elo"; code identifiers = "TFTMac" (legacy retained).
+- Details: `docs/naming-conventions.md` (migration note cho 10 existing testers).

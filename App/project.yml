@@ -1,6 +1,6 @@
 name: TFTMac
 options:
-  bundleIdPrefix: asia.lab3.tftmac
+  bundleIdPrefix: io.psychomafia.tfthellelo
   deploymentTarget:
     macOS: "13.0"
   createIntermediateGroups: true
@@ -42,7 +42,7 @@ targets:
     info:
       path: TFTMac/Resources/Info.plist
       properties:
-        CFBundleDisplayName: TFT Mac
+        CFBundleDisplayName: TFT Hell Elo
         CFBundleShortVersionString: 0.1.0
         CFBundleVersion: "1"
         CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
@@ -61,7 +61,7 @@ targets:
         com.apple.security.app-sandbox: false
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: asia.lab3.tftmac
+        PRODUCT_BUNDLE_IDENTIFIER: io.psychomafia.tfthellelo
         PRODUCT_NAME: TFTMac
         CODE_SIGN_ENTITLEMENTS: TFTMac/Resources/TFTMac.entitlements
         CODE_SIGN_STYLE: Automatic
@@ -81,7 +81,7 @@ targets:
           - "**/.gitkeep"
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: asia.lab3.tftmac.tests
+        PRODUCT_BUNDLE_IDENTIFIER: io.psychomafia.tfthellelo.tests
         GENERATE_INFOPLIST_FILE: YES
         # TODO(Phase 3 CI): when wiring GitHub Actions, pass
         # CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO on xcodebuild cmd line,
@@ -104,7 +104,7 @@ targets:
           - "**/.gitkeep"
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: asia.lab3.tftmac.uitests
+        PRODUCT_BUNDLE_IDENTIFIER: io.psychomafia.tfthellelo.uitests
         GENERATE_INFOPLIST_FILE: YES
         # TODO(Phase 3 CI): when wiring GitHub Actions, pass
         # CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO on xcodebuild cmd line,

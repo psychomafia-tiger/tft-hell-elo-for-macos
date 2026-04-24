@@ -28,7 +28,7 @@ import os.signpost
 /// 3. Duration between BEGIN (hotkey fire) and END (popover.onAppear) is the
 ///    measured latency target ≤300ms
 enum PopoverSignpost {
-    static let log = OSLog(subsystem: "asia.lab3.tftmac", category: "popover")
+    static let log = OSLog(subsystem: "io.psychomafia.tfthellelo", category: "popover")
     static let id = OSSignpostID(log: log)
     static let name: StaticString = "popover.open"
 }

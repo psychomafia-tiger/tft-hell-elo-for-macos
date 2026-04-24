@@ -45,13 +45,13 @@ struct TFTMacApp: App {
             // Direct remedy: open Accessibility pane. Phase 3 may wrap this in
             // a SwiftUI Alert scene for friendlier copy; for now, the system
             // settings open itself communicates the required action.
-            NSLog("TFT Mac: Accessibility permission denied — opening System Settings")
+            NSLog("TFT Hell Elo: Accessibility permission denied — opening System Settings")
             hotkeyRegistrar.openAccessibilitySettings()
         }
         hotkeyRegistrar.onConflict = {
             // Another app holds Cmd+Shift+T (Alfred/Raycast/Rectangle are the
             // usual suspects). Log so founder sees in Console during dogfood.
-            NSLog("TFT Mac: Cmd+Shift+T already bound by another app (Alfred/Raycast/Rectangle?)")
+            NSLog("TFT Hell Elo: Cmd+Shift+T already bound by another app (Alfred/Raycast/Rectangle?)")
         }
 
         // Register the global hotkey. MenuBarExtra does not expose a
@@ -67,7 +67,7 @@ struct TFTMacApp: App {
     }
 
     var body: some Scene {
-        MenuBarExtra("TFT Mac", systemImage: "chart.bar.xaxis") {
+        MenuBarExtra("TFT Hell Elo", systemImage: "chart.bar.xaxis") {
             TierListPopover(tierList: tierList)
         }
         .menuBarExtraStyle(.window)  // popover-style (window), not dropdown menu

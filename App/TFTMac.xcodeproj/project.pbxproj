@@ -16,6 +16,7 @@
 		299DD890745772F1130FC723 /* MenuBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192C52B5E5B0BD973AF4A5EA /* MenuBarIcon.swift */; };
 		2B40DE17A381B29CE515D301 /* Banners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8245189EAD6AB976B704EC62 /* Banners.swift */; };
 		306D7AE684A5A69394BA387B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2924AF422FD54F123FC278 /* Theme.swift */; };
+		40B36D9552E908B535C578FC /* BundleIdentifierRegressionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B86EC7F061753D7269BC112 /* BundleIdentifierRegressionTest.swift */; };
 		469A1936BFF5647A9A0859E1 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 0803FDD71794EA03FA6D96FA /* HotKey */; };
 		47FBC478CC0318655F47B82B /* TierListDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903FB369DDE0BBE4B8A7726E /* TierListDecodingTests.swift */; };
 		531088914ED113C13B273139 /* SchemaVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74AA61E19A17A0D70054DE /* SchemaVersionTests.swift */; };
@@ -65,6 +66,7 @@
 		3D2924AF422FD54F123FC278 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		4253A261F0CB1BD35211BA94 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		440359D9C1275EF88836858D /* TFTMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TFTMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B86EC7F061753D7269BC112 /* BundleIdentifierRegressionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleIdentifierRegressionTest.swift; sourceTree = "<group>"; };
 		66D86BC5ED70D3AD253DEE69 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		66E3A7AD5887C6F940A5C081 /* AppLaunchMetricTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchMetricTests.swift; sourceTree = "<group>"; };
 		68CB1DC7266A4354ED2CF025 /* TierListPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierListPopover.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		56EDCDCB3C726A9A73FB37FD /* TFTMacTests */ = {
 			isa = PBXGroup;
 			children = (
+				4B86EC7F061753D7269BC112 /* BundleIdentifierRegressionTest.swift */,
 				E0A5E961A14C1907B7415058 /* DataManagerTests.swift */,
 				99B28BDF2730EE506D4EC3F5 /* HotkeyRegistrationTests.swift */,
 				AA74AA61E19A17A0D70054DE /* SchemaVersionTests.swift */,
@@ -354,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40B36D9552E908B535C578FC /* BundleIdentifierRegressionTest.swift in Sources */,
 				CF887DD8148A02F5F16660DE /* DataManagerTests.swift in Sources */,
 				074C53FB79598B7787DBF0C3 /* HotkeyRegistrationTests.swift in Sources */,
 				82C77C462537CA4736AAEE4F /* SampleTierListFixtureTests.swift in Sources */,
@@ -416,7 +420,7 @@
 					"@loader_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_BUNDLE_IDENTIFIER = asia.lab3.tftmac.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.psychomafia.tfthellelo.tests;
 				SDKROOT = macosx;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TFTMac.app/Contents/MacOS/TFTMac";
 			};
@@ -436,7 +440,7 @@
 					"@loader_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_BUNDLE_IDENTIFIER = asia.lab3.tftmac.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.psychomafia.tfthellelo.tests;
 				SDKROOT = macosx;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TFTMac.app/Contents/MacOS/TFTMac";
 			};
@@ -457,7 +461,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_BUNDLE_IDENTIFIER = asia.lab3.tftmac;
+				PRODUCT_BUNDLE_IDENTIFIER = io.psychomafia.tfthellelo;
 				PRODUCT_NAME = TFTMac;
 				SDKROOT = macosx;
 			};
@@ -477,7 +481,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_BUNDLE_IDENTIFIER = asia.lab3.tftmac.uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.psychomafia.tfthellelo.uitests;
 				SDKROOT = macosx;
 				TEST_TARGET_NAME = TFTMac;
 			};
@@ -497,7 +501,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_BUNDLE_IDENTIFIER = asia.lab3.tftmac.uitests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.psychomafia.tfthellelo.uitests;
 				SDKROOT = macosx;
 				TEST_TARGET_NAME = TFTMac;
 			};
@@ -646,7 +650,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_BUNDLE_IDENTIFIER = asia.lab3.tftmac;
+				PRODUCT_BUNDLE_IDENTIFIER = io.psychomafia.tfthellelo;
 				PRODUCT_NAME = TFTMac;
 				SDKROOT = macosx;
 			};

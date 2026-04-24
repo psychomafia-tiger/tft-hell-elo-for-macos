@@ -15,7 +15,7 @@ struct HeaderBar: View {
     var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 2) {
-                Text("TFT Mac")
+                Text("TFT Hell Elo")
                     .font(Theme.Fonts.titleLarge)
                     .foregroundStyle(Theme.Colors.textPrimary)
                 Text("Patch \(patch) · \(totalMatches) Challenger matches · \(agoString)")
