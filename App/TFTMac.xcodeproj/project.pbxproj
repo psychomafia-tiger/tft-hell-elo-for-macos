@@ -13,6 +13,7 @@
 		1F4757346973F944761750C6 /* SchemaVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C122A4919B84DE756F8F8 /* SchemaVersion.swift */; };
 		28052BC883E79ECF09F73814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19EEE04064D94531D37DBA18 /* Assets.xcassets */; };
 		299DD890745772F1130FC723 /* MenuBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192C52B5E5B0BD973AF4A5EA /* MenuBarIcon.swift */; };
+		2B40DE17A381B29CE515D301 /* Banners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8245189EAD6AB976B704EC62 /* Banners.swift */; };
 		306D7AE684A5A69394BA387B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2924AF422FD54F123FC278 /* Theme.swift */; };
 		469A1936BFF5647A9A0859E1 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 0803FDD71794EA03FA6D96FA /* HotKey */; };
 		47FBC478CC0318655F47B82B /* TierListDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903FB369DDE0BBE4B8A7726E /* TierListDecodingTests.swift */; };
@@ -21,9 +22,11 @@
 		75B2AB63499D9C566AC6FDB7 /* TierList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84741D0080D548EB46DC80AE /* TierList.swift */; };
 		82C77C462537CA4736AAEE4F /* SampleTierListFixtureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5922CE792B63A94194529F5 /* SampleTierListFixtureTests.swift */; };
 		8AB0A49631F5C661E3AEC9DE /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D7C79D860555BA5D5B3D8E /* Champion.swift */; };
+		A1B4D5038BD9119C1FDFDB0B /* HeaderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA60817F3702455F05C8CE /* HeaderBar.swift */; };
 		B2852316DED135C63D69798A /* TFTMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAFB2BEA4E98364F73C8834 /* TFTMacApp.swift */; };
 		CF887DD8148A02F5F16660DE /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A5E961A14C1907B7415058 /* DataManagerTests.swift */; };
 		CFB841EB1AAC813D8560F604 /* sample-tier-list.json in Resources */ = {isa = PBXBuildFile; fileRef = 35895F55BCB1220D4060B8C0 /* sample-tier-list.json */; };
+		F865CBC2186506E1F75209AB /* TierListPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CB1DC7266A4354ED2CF025 /* TierListPopover.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,9 +57,11 @@
 		3D2924AF422FD54F123FC278 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		440359D9C1275EF88836858D /* TFTMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TFTMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66D86BC5ED70D3AD253DEE69 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		68CB1DC7266A4354ED2CF025 /* TierListPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierListPopover.swift; sourceTree = "<group>"; };
 		6F5ABAB08CC8CA23E71E2ED6 /* Comp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comp.swift; sourceTree = "<group>"; };
 		7AAFB2BEA4E98364F73C8834 /* TFTMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFTMacApp.swift; sourceTree = "<group>"; };
 		7BA344AB7AA03C301EF4BB59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8245189EAD6AB976B704EC62 /* Banners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banners.swift; sourceTree = "<group>"; };
 		84741D0080D548EB46DC80AE /* TierList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierList.swift; sourceTree = "<group>"; };
 		8C91D03ECF3874347C0DA128 /* TFTMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TFTMac.entitlements; sourceTree = "<group>"; };
 		903FB369DDE0BBE4B8A7726E /* TierListDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierListDecodingTests.swift; sourceTree = "<group>"; };
@@ -64,6 +69,7 @@
 		99B28BDF2730EE506D4EC3F5 /* HotkeyRegistrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyRegistrationTests.swift; sourceTree = "<group>"; };
 		AA74AA61E19A17A0D70054DE /* SchemaVersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaVersionTests.swift; sourceTree = "<group>"; };
 		B5922CE792B63A94194529F5 /* SampleTierListFixtureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTierListFixtureTests.swift; sourceTree = "<group>"; };
+		C0EA60817F3702455F05C8CE /* HeaderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderBar.swift; sourceTree = "<group>"; };
 		E0A5E961A14C1907B7415058 /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,7 +162,10 @@
 		BB92296FBF31C5A2A0069095 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8245189EAD6AB976B704EC62 /* Banners.swift */,
+				C0EA60817F3702455F05C8CE /* HeaderBar.swift */,
 				192C52B5E5B0BD973AF4A5EA /* MenuBarIcon.swift */,
+				68CB1DC7266A4354ED2CF025 /* TierListPopover.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -318,15 +327,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B40DE17A381B29CE515D301 /* Banners.swift in Sources */,
 				8AB0A49631F5C661E3AEC9DE /* Champion.swift in Sources */,
 				0969AD5F3AD9FC366F0DADD0 /* Comp.swift in Sources */,
 				02EBBB7E015E608365E806FA /* DataManager.swift in Sources */,
+				A1B4D5038BD9119C1FDFDB0B /* HeaderBar.swift in Sources */,
 				6899337443B12C07ADE1DA2D /* HotkeyRegistrar.swift in Sources */,
 				299DD890745772F1130FC723 /* MenuBarIcon.swift in Sources */,
 				1F4757346973F944761750C6 /* SchemaVersion.swift in Sources */,
 				B2852316DED135C63D69798A /* TFTMacApp.swift in Sources */,
 				306D7AE684A5A69394BA387B /* Theme.swift in Sources */,
 				75B2AB63499D9C566AC6FDB7 /* TierList.swift in Sources */,
+				F865CBC2186506E1F75209AB /* TierListPopover.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,8 +654,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/soffes/HotKey.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.0;
+				kind = exactVersion;
+				version = 0.2.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

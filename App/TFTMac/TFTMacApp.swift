@@ -1,22 +1,70 @@
 import SwiftUI
+import AppKit
+import os
 
 /// TFT Mac Companion — menu bar app entry point.
 ///
-/// Phase 1 Task 1.1 bootstrap: minimal @main stub. Task 1.8 will replace the
-/// `Settings` scene with a `MenuBarExtra` scene wiring up `HotkeyRegistrar` and
-/// the tier-list popover view. Keeping this file bare on purpose — the scope
-/// guardrail for Task 1.1 is "project compiles", not "app functions".
+/// Task 1.8 wires three subsystems together:
+/// 1. `DataManager.loadBundledJSON()` — synchronous decode of bundled sample
+///    (no Task.detached per eng review C1: the data is static, in-binary,
+///    ~8 KB — async machinery is over-engineering for ms-level work).
+/// 2. `MenuBarExtra(.window)` scene — popover-style rather than dropdown
+///    menu, matching the 440×600 wireframe card stack.
+/// 3. `HotkeyRegistrar` — held as an @main-scoped stored property so its
+///    Carbon binding lives for the app's entire lifetime. Reconstructing
+///    per view would lose the `registrationToken` state.
 ///
-/// `Settings` is used here instead of `WindowGroup` so no window is created on
-/// launch (Settings is invisible until explicitly opened). This preserves the
-/// ≤500ms launch-metric baseline for Task 1.10.
+/// **os_signpost Track B**: `.begin` emitted in the hotkey handler here and
+/// `.end` emitted in TierListPopover.onAppear. Task 1.10 reads the interval
+/// via Instruments Points of Interest to validate the hotkey-to-visible
+/// latency budget (<200ms target, matches SwiftUI "snappy" perception band).
 @main
 struct TFTMacApp: App {
-    var body: some Scene {
-        // Placeholder scene. Replaced in Task 1.8 by MenuBarExtra + popover content.
-        // Settings creates no window on launch; WindowGroup would flash a phantom window.
-        Settings {
-            EmptyView()
+    // Synchronous bundle load. DataManager fatalError's on missing resource,
+    // which is a build-time bug (impossible in shipped build; CI would fail
+    // first). No async wrapper needed — the decode is <10ms on M1.
+    private let tierList: TierList = DataManager.loadBundledJSON()
+
+    // HotkeyRegistrar held as stored property so its lifetime matches the
+    // app process. See HotkeyRegistrar class-level doc: "hold ONE instance
+    // for app lifetime" — fresh instances would drop the Carbon binding.
+    private let hotkeyRegistrar = HotkeyRegistrar()
+
+    private static let signpostLog = OSLog(subsystem: "asia.lab3.tftmac", category: "popover")
+    private static let signpostID = OSSignpostID(log: signpostLog)
+
+    init() {
+        // Wire failure callbacks *before* register() so they fire on the first
+        // register attempt if permission is missing / conflict exists.
+        hotkeyRegistrar.onPermissionDenied = { [hotkeyRegistrar] in
+            // Direct remedy: open Accessibility pane. Phase 3 may wrap this in
+            // a SwiftUI Alert scene for friendlier copy; for now, the system
+            // settings open itself communicates the required action.
+            NSLog("TFT Mac: Accessibility permission denied — opening System Settings")
+            hotkeyRegistrar.openAccessibilitySettings()
         }
+        hotkeyRegistrar.onConflict = {
+            // Another app holds Cmd+Shift+T (Alfred/Raycast/Rectangle are the
+            // usual suspects). Log so founder sees in Console during dogfood.
+            NSLog("TFT Mac: Cmd+Shift+T already bound by another app (Alfred/Raycast/Rectangle?)")
+        }
+
+        // Register the global hotkey. MenuBarExtra does not expose a
+        // programmatic "open popover" API on macOS 14, so the hotkey's UX
+        // role for Phase 1 is "bring the app to front so the user's click
+        // on the menu bar icon is one step away". Task 1.10 may explore
+        // direct popover toggling via a bridged NSStatusItem if warranted.
+        _ = hotkeyRegistrar.register {
+            os_signpost(.begin, log: Self.signpostLog, name: "popover.open",
+                        signpostID: Self.signpostID, "Hotkey fired")
+            NSApp.activate(ignoringOtherApps: true)
+        }
+    }
+
+    var body: some Scene {
+        MenuBarExtra("TFT Mac", systemImage: "chart.bar.xaxis") {
+            TierListPopover(tierList: tierList)
+        }
+        .menuBarExtraStyle(.window)  // popover-style (window), not dropdown menu
     }
 }
