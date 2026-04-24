@@ -844,14 +844,14 @@ git commit -m "feat(dist): add install.sh with bats test coverage (5 cases)"
   - **Decision gate**: Pick threshold with highest agreement. If all <80% → fall back to carry-signature algorithm (documented as `detect_via_carry_signature()` in Phase 2).
   - **Output**: `docs/pre-spike-algo-tuning.md` với numbers + locked threshold.
 
-- [ ] **Action #5 — P2 fullscreen overlay test** (founder, 15 min)
+- [x] **Action #5 — P2 fullscreen overlay test** (founder, 15 min) — **SKIPPED**, stub doc created (see `docs/pre-spike-p2-overlay-test.md`). Deferred to v0.2.
   - Launch TFT on Mac → Settings → Fullscreen mode
   - Start 1 match
   - Press Cmd+Space (Spotlight) — hiện được trên TFT fullscreen không? Screenshot.
   - Install Raycast (free) → hotkey → hiện được không? Screenshot.
   - **Output**: `docs/pre-spike-p2-overlay-test.md` với screenshots + conclusion (exclusive vs borderless). NOT v0.1 blocker — data cho v0.2.
 
-- [ ] **Action #6 — Wireframe Standard card** (founder+CC, 2-3h)
+- [x] **Action #6 — Wireframe Standard card** (founder+CC, 2-3h) — **DONE** 2026-04-24. Stitch v2 generated → `docs/wireframes/popover-styleA-v2.png` + locked dimensions in `docs/wireframe-v0.1-standard-card.md`.
   - Run `/design-consultation` trong Claude Code session
   - Input: spec §Feature 1 + NFR card dims
   - Output wireframe → lock layout decisions (width 400px? 480px? card height?)
@@ -905,8 +905,8 @@ Phase 0 COMPLETE when ALL of:
 - [ ] Action #1: Production key applied (founder confirms screenshot saved)
 - [ ] Action #3: `docs/pre-spike-api-verify.md` exists
 - [ ] Action #4: `docs/pre-spike-algo-tuning.md` exists với locked threshold
-- [ ] Action #5: `docs/pre-spike-p2-overlay-test.md` exists
-- [ ] **Action #6: `docs/wireframe-v0.1-standard-card.md` exists** ← HARD GATE cho Phase 1 Task 1.9
+- [x] Action #5: `docs/pre-spike-p2-overlay-test.md` exists (SKIPPED stub)
+- [x] **Action #6: `docs/wireframe-v0.1-standard-card.md` exists** ← HARD GATE cho Phase 1 Task 1.9 (PASSED 2026-04-24)
 
 ## Next Phase
 
