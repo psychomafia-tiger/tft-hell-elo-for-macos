@@ -5,6 +5,8 @@ import Foundation
 /// Phase 2 Task 2.13 will expand this into the full fallback chain:
 ///   R2 fetch (fresh) → cache (fresh) → cache (stale with banner)
 ///   → reject cache >7d → schema version mismatch guard.
+/// `loadBundledJSON()` remains as the terminal fallback leaf (shipped-with-
+/// binary last resort when all network/cache paths fail).
 ///
 /// For v0.1, data is baked into the app binary — DataManager's only job
 /// is to produce a TierList the popover can render on launch.
