@@ -96,9 +96,13 @@ After hotkey work in desktop, anh test 2 scenarios:
 cd "/Users/mac/Desktop/TFTTACTICS FOR MACS" && cat plans/reports/handoff-260425-1605-wave5d-hotkey-blocked.md
 ```
 
-## Unresolved questions
+## Anh's answers (từ session 2026-04-25 16:11)
 
-1. Anh có Apple Developer account không (cho stable signing)?
-2. macOS version chính xác (Sonoma 14.x hay Sequoia 15.x)? — affects TCC behavior
-3. HotKey package version trong Package.resolved — may need bump
-4. Có Alfred/Raycast/Rectangle/BetterTouchTool đang chạy chiếm Cmd+Shift+T không?
+1. **Apple Dev account**: CÓ — nhưng FREE tier (không trả phí). Implication: codesign với personal team OK nhưng binary expires sau 7 days dev-side; cho 10 testers dogfood phải hoặc (a) upgrade paid $99/year để notarize + stable identity, hoặc (b) ship adhoc + instruct user override Gatekeeper qua right-click → Open.
+2. **macOS**: **Tahoe 26.3.1** — bản mới hơn Sonoma 14 / Sequoia 15. TCC behavior trên Tahoe có thể stricter (Apple thường tighten privacy mỗi major). Pre-existing `tccutil reset` workflow vẫn work; nhưng adhoc-signing TCC entry có thể invalidate aggressive hơn — cần test xác minh.
+3. **Hotkey conflict**: Rectangle.app duy nhất đang chạy (verified via `ps aux`). Default Rectangle KHÔNG bind Cmd+Shift+T (default shortcuts dùng Ctrl+Option) nhưng anh có thể custom. **Diagnostic**: open Rectangle → Preferences → check shortcuts list cho Cmd+Shift+T. Nếu có conflict → rebind Rectangle hoặc đổi TFT Hell Elo hotkey sang Cmd+Option+T.
+
+## Unresolved (nguyên nhân chưa rõ)
+
+1. HotKey package version trong Package.resolved — may need bump cho Tahoe 26.3.1 compat
+2. Carbon Hot Key API behavior trên macOS Tahoe — có thể đã deprecated tighten
