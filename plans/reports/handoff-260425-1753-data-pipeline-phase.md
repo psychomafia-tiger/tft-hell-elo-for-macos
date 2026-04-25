@@ -53,8 +53,32 @@ Plain-language: hiện app như cuốn sách in cứng (bundled JSON). Phase nà
 
 - ✅ `.env.example` template committed (RIOT_API_KEY, RIOT_REGION=vn2, RIOT_ROUTING=sea)
 - ✅ `.env` already in `.gitignore` line 42
-- ⏳ Anh tạo `.env` ở root + paste RIOT_API_KEY
-- ⏳ Anh add `RIOT_API_KEY` vào GitHub repo Settings → Secrets (cần khi push remote + chạy Actions)
+- ✅ Anh đã tạo `.env` local + paste RIOT_API_KEY (verified gitignored)
+- ⏳ Anh chưa add `RIOT_API_KEY` vào GitHub repo Secrets — defer đến khi deploy cron Actions
+
+## Security context (CRITICAL — repo public)
+
+Repo `psychomafia-tiger/tft-hell-elo-for-macos` là **PUBLIC**. Khi deploy cron Actions, fresh session phải design workflow defensive vì:
+
+**Baseline an toàn của GitHub Secrets**:
+- Encrypted at rest, không readable cho ai (kể cả anh) sau set
+- Auto-redact trong logs — value xuất hiện thành `***`
+- Forks PR KHÔNG nhận secrets
+
+**Rủi ro public repo cần mitigate trong workflow**:
+| Risk | Required mitigation in `.github/workflows/tft-data-refresh.yml` |
+|---|---|
+| Workflow injection (PR title/body shell escape) | KHÔNG dùng `${{ github.event.* }}` trong `run:` commands |
+| `pull_request_target` trên fork PR | Dùng `pull_request` thường + `if: github.repository == 'psychomafia-tiger/tft-hell-elo-for-macos'` guard |
+| Third-party action compromised | Pin actions bằng SHA hash, không version tag (e.g. `actions/checkout@b4ffde65f...` not `@v4`) |
+| Schedule trigger từ fork | Schedule chỉ run trên default branch của base repo — không cần guard thêm |
+
+**Built-in safety net**: Riot Dev key auto-expire 24h. Steal max 24h damage window — đáng kể giảm stake.
+
+**3 options cho cron deployment** (anh chốt khi plan-eng-review):
+1. **Public repo + Secrets + defensive workflow** (recommended với 24h key rotation safety)
+2. **Toggle repo private đến v0.1 ship** (zero risk, 1 click trong Settings)
+3. **Cron local trên máy anh** (key không leave machine, cần máy awake 12h)
 
 ## Pre-implementation gate (CRITICAL — per memory rule)
 
