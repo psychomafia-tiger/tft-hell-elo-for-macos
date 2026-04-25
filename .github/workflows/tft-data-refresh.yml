@@ -1,0 +1,138 @@
+# TFT Hell Elo — data refresh workflow
+#
+# SECURITY DESIGN (public repo — do NOT simplify these measures away):
+#
+#   1. SHA-pinned actions only — tags are mutable; a compromised tag silently
+#      redirects all users (see: tj-actions/changed-files 2024 incident).
+#      SHAs are immutable; upgrade = explicit, auditable diff.
+#
+#   2. No ${{ github.event.* }} in any run: block — prevents workflow injection
+#      via PR title / body / commit message shell-escape payloads.
+#
+#   3. on: schedule + workflow_dispatch ONLY — no pull_request / pull_request_target.
+#      Fork PR runs never receive secrets; schedule only fires on default branch
+#      of the base repo (forks cannot trigger our schedule).
+#
+#   4. Repository guard on refresh job — belt-and-suspenders: even if a fork
+#      re-enables Actions, the if: condition blocks any secret access.
+#
+#   5. permissions: contents: write only — principle of least privilege.
+#      No id-token, no packages, no actions write.
+#
+#   6. PII grep guard before commit — catches aggregator bugs leaking PUUIDs or
+#      Riot API key fragments before they reach the public commit history.
+#
+#   7. Hand-rolled commit step — avoids third-party commit action supply-chain
+#      risk for a 6-line bash equivalent (KISS + defensive).
+#
+# SHA BUMP POLICY (manual, monthly):
+#   gh api repos/actions/checkout/git/refs/tags/v4 --jq .object.sha
+#   gh api repos/actions/setup-python/git/refs/tags/v5 --jq .object.sha
+#   Update SHA + version comment below, open PR, review upstream changelog.
+#
+# RIOT_API_KEY rotation: Dev key auto-expires 24h. Anh must re-paste in:
+#   Repo Settings → Secrets and variables → Actions → RIOT_API_KEY
+# Failure email sent to norway@lab3.asia via GitHub default notification.
+
+name: TFT data refresh
+
+on:
+  schedule:
+    # Run at 00:00 and 12:00 UTC every day (12h cadence)
+    # 730 runs/year × ~20 min/run ≈ 240 compute-hours/year
+    # Public repo = unlimited free Actions minutes; well within budget.
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+    # Manual trigger — anh uses this for first-run verification and
+    # after rotating the Riot API key mid-cycle.
+
+# Principle of least privilege: write access to contents (git push) only.
+# No id-token (no OIDC), no packages, no actions write.
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    name: Fetch Riot data → emit tier-list.json → commit
+    runs-on: ubuntu-latest
+
+    # SECURITY: Repository guard.
+    # Prevents a forked repo (with Actions re-enabled) from running this job
+    # and attempting to access our Secrets. Defense-in-depth — forks already
+    # cannot receive secrets via schedule, but this makes the intent explicit
+    # and protects against future GitHub policy edge cases.
+    if: github.repository == 'psychomafia-tiger/tft-hell-elo-for-macos'
+
+    steps:
+      # ── Checkout ──────────────────────────────────────────────────────────
+      # SHA-pinned: actions/checkout v4 (verified 2026-04-25 via gh api)
+      # Verify: gh api repos/actions/checkout/git/refs/tags/v4 --jq .object.sha
+      - name: Checkout repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5  # v4 — verified 2026-04-25
+
+      # ── Python setup ──────────────────────────────────────────────────────
+      # SHA-pinned: actions/setup-python v5 (verified 2026-04-25 via gh api)
+      # Verify: gh api repos/actions/setup-python/git/refs/tags/v5 --jq .object.sha
+      - name: Set up Python 3.11
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5 — verified 2026-04-25
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      # ── Install Pipeline package ──────────────────────────────────────────
+      - name: Install TFT pipeline package
+        run: pip install -e Pipeline/
+
+      # ── Run aggregator ────────────────────────────────────────────────────
+      # RIOT_API_KEY is scoped to this step only via env:.
+      # Actions auto-redacts the value in logs (shown as ***).
+      # The aggregator (Phase 01) never logs the full key — NF1 contract.
+      # If aggregator exits != 0 (e.g. 401 expired key, rate limit, parse error),
+      # this step fails and the workflow stops BEFORE any commit — last good
+      # data/tier-list.json is preserved in the repo untouched.
+      - name: Run aggregator
+        env:
+          RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
+        run: |
+          python -m tftmac_pipeline.run_aggregator \
+            --region vn2 \
+            --output data/tier-list.json
+
+      # ── PII grep guard ────────────────────────────────────────────────────
+      # C3 fix (code-reviewer audit 2026-04-25): catch aggregator bugs that
+      # accidentally embed PUUIDs, Riot IDs, or API key fragments in the JSON
+      # output BEFORE it reaches a public commit.
+      #
+      # Patterns guarded:
+      #   "puuid"          — Riot PUUID (player identifier, personal data)
+      #   "riotIdGameName" — Riot summoner name (personal data)
+      #   RGAPI-           — Riot API key fragment (credential)
+      #
+      # This is defense-in-depth on top of the 24h key auto-rotation damage cap.
+      - name: PII grep guard
+        run: |
+          if grep -qE '"puuid"|"riotIdGameName"|RGAPI-' data/tier-list.json; then
+            echo "::error::PII or key fragment detected in JSON output — refusing to commit"
+            exit 1
+          fi
+
+      # ── Commit refreshed data ─────────────────────────────────────────────
+      # Hand-rolled instead of stefanzweifel/git-auto-commit-action to avoid
+      # third-party action supply-chain risk for a 6-line bash equivalent.
+      #
+      # [skip ci] in commit message prevents downstream workflow triggers
+      # (e.g. a future test workflow) from firing on this data-only commit.
+      #
+      # If data/tier-list.json is byte-for-byte unchanged (rare — identical
+      # data window snapshot), git diff is quiet → we skip the commit silently.
+      - name: Commit refreshed tier-list
+        run: |
+          if git diff --quiet data/tier-list.json; then
+            echo "No changes to tier-list.json — skipping commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/tier-list.json
+          git commit -m "data: refresh tier-list.json [skip ci]"
+          git push

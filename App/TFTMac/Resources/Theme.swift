@@ -38,6 +38,8 @@ enum Theme {
         static let accentSilver = Theme.color(0xC0C0C0)
         /// B-tier accent — `#CD7F32` (bronze).
         static let accentBronze = Theme.color(0xCD7F32)
+        /// Anomaly chip background — `#3A3A3C` (system gray 5 equivalent in dark mode).
+        static let bgChip = Theme.color(0x3A3A3C)
     }
 
     // MARK: - Fonts

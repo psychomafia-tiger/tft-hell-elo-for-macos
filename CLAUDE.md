@@ -104,3 +104,18 @@ Khi invoke (gọi) office-hours, plan-ceo-review, plan-eng-review, design-consul
 - **Code target retained**: Xcode target `TFTMac`, `@main struct TFTMacApp`, scheme `TFTMac` — rename tầng code (đổi tên tầng code) sẽ break XCUITest hardcoded references + `@testable import TFTMac` trong 5+ test files, không đáng (not worth). Chỉ rename user-facing layer.
 - Rule: user-facing strings = "TFT Hell Elo"; code identifiers = "TFTMac" (legacy retained).
 - Details: `docs/naming-conventions.md` (migration note cho 10 existing testers).
+
+## Phase Completion Protocol (BẮT BUỘC)
+
+Sau mỗi phase complete, agent PHẢI update 4 files trong `docs/` (append-only cho changelog/bugs-log, không replace):
+
+1. **`docs/system-architecture.md`** — sync overall diagram nếu phase đổi cấu trúc cấp cao (high-level structure changes only)
+2. **`docs/{phase-name}-architecture.md`** — phase-specific deep-dive (Mermaid diagram + flow + design decisions). Example: `docs/data-pipeline-architecture.md`
+3. **`docs/project-changelog.md`** — APPEND entry với format `## [version-slug] — YYYY-MM-DD` + sections `### Added` / `### Changed` / `### Fixed` / `### Architecture impact`. NEVER replace previous entries.
+4. **`docs/bugs-log.md`** — APPEND bugs phát hiện trong phase với status `✅ Fixed` / `⏳ Deferred` / `❌ Unfixed`. Format: Bug #NNN — title, Status, Phase, Symptom, Root cause, Fix/Workaround, Lesson.
+
+**Verification trước commit**: `grep -c "^## " docs/project-changelog.md` phải tăng ≥1 so với HEAD~1.
+
+**Why**: mọi agent (bao gồm anh "ngày mai" sau context reset) đều cần ground truth (nguồn sự thật) để continue (tiếp tục) phase mà không reverse-engineer (ngược-kỹ thuật) từ git log. Bugs-log đặc biệt quan trọng — Wave 5d TCC cdhash bug mất 4 hours diagnose vì không có precedent log.
+
+**Scope**: rule này áp dụng cho tất cả implementation phases từ data-pipeline-real-riot trở đi. Skip cho hotfix nhỏ <5 LOC change (không tính là "phase").

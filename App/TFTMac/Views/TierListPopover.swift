@@ -6,28 +6,27 @@ import os
 /// Layout (top → bottom):
 /// 1. HeaderBar (56 px) — patch, match count, relative last-updated
 /// 2. Divider hairline
-/// 3. Banners slot (Phase 2 fills)
-/// 4. Comp list (scrollable) — full `CompCard` per wireframe.
+/// 3. Banners slot — driven by DataManager.bannerState
+/// 4. Comp list (scrollable) OR UpdateRequiredOverlay
 ///
-/// `iconsPreloaded` gate: reserved for when champion/item icon assets are
-/// downloaded from Community Data Dragon (Phase 2). For v0.1 the catalogs
-/// render placeholder cost-colored circles with initials, so we default
-/// `true` to bypass the gate. Keeping the state + conditional here now so
-/// Phase 2 is a single-line swap, not a view restructure.
+/// Phase 03: `tierList` parameter removed — data flows via `@EnvironmentObject
+/// DataManager` injected at TFTMacApp level. CompListView reads from it directly
+/// so live @Published updates trigger SwiftUI re-render without view replacement.
 ///
 /// **os_signpost**: `.end` emitted in `.onAppear` so Task 1.10 Track B can
 /// measure hotkey-to-visible latency via Instruments Points of Interest.
 /// The matching `.begin` lives in TFTMacApp's hotkey handler.
 struct TierListPopover: View {
-    let tierList: TierList
+    @EnvironmentObject private var dataManager: DataManager
 
     var body: some View {
-        CompListView(tierList: tierList, width: 440)
+        CompListView(width: 440)
             .frame(height: 600)
             .onAppear {
                 os_signpost(.end, log: PopoverSignpost.log, name: PopoverSignpost.name,
                             signpostID: PopoverSignpost.id,
-                            "TierListPopover visible, %d comps rendered", tierList.comps.count)
+                            "TierListPopover visible, %d comps rendered",
+                            dataManager.tierList.comps.count)
             }
     }
 }

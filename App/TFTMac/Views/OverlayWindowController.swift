@@ -34,28 +34,30 @@ final class OverlayWindowController: ObservableObject {
     /// Height matches popover 600; dynamic card heights inside CompListView scroll.
     static let defaultSize = NSSize(width: 520, height: 600)
 
-    /// Injected tier list used to render `CompListView` inside the panel.
-    /// Optional so tests (and Wave 5b skip-init path) can construct a
-    /// controller without tier data. Production wiring in `TFTMacApp`
-    /// passes the loaded bundle snapshot.
-    private let tierList: TierList?
+    /// DataManager injected for live @Published tierList updates.
+    /// Optional so tests (skipPanelInstantiation path) can construct without data.
+    /// Production wiring in TFTMacApp passes the @StateObject DataManager.
+    private let dataManager: DataManager?
 
-    init(tierList: TierList? = nil, skipPanelInstantiation: Bool = false) {
-        self.tierList = tierList
+    init(dataManager: DataManager? = nil, skipPanelInstantiation: Bool = false) {
+        self.dataManager = dataManager
         // Tests pass `skipPanelInstantiation: true` to avoid creating a real NSPanel
         // when only verifying state machine logic. Production always instantiates.
         guard !skipPanelInstantiation else { return }
         instantiatePanel()
     }
 
-    /// Build the NSPanel + SwiftUI content. Wave 5c wires the shared
-    /// `CompListView(width: 520)` so overlay and popover render identical
-    /// card layout. If no tier list is injected (test / pre-data init),
-    /// renders the Wave 5b placeholder.
+    /// Build the NSPanel + SwiftUI content. Phase 03 wires the shared
+    /// `CompListView(width: 520)` via EnvironmentObject so overlay and popover
+    /// render identical card layout driven by live DataManager updates.
+    /// If no DataManager is injected (test / pre-data init), renders placeholder.
     private func instantiatePanel() {
         let hosting: NSHostingView<AnyView>
-        if let tierList = tierList {
-            let content = AnyView(CompListView(tierList: tierList, width: Self.defaultSize.width))
+        if let dm = dataManager {
+            let content = AnyView(
+                CompListView(width: Self.defaultSize.width)
+                    .environmentObject(dm)
+            )
             hosting = NSHostingView(rootView: content)
         } else {
             hosting = NSHostingView(rootView: AnyView(OverlayPlaceholderContent()))

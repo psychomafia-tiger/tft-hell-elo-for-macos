@@ -1,0 +1,1206 @@
+{
+  "comps": [
+    {
+      "anomalies": [],
+      "avg_placement": 4.4118,
+      "champions": [
+        {
+          "cost": 5,
+          "id": "TFT17_Nami",
+          "is_carry": false,
+          "items": [
+            {
+              "agreement": 0.7941,
+              "id": "TFT_Item_JeweledGauntlet"
+            },
+            {
+              "agreement": 0.5294,
+              "id": "TFT_Item_SpearOfShojin"
+            }
+          ]
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Gwen",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Pantheon",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Riven",
+          "is_carry": false,
+          "items": [
+            {
+              "agreement": 0.8788,
+              "id": "TFT17_Item_SpaceGrooveEmblemItem"
+            },
+            {
+              "agreement": 0.8182,
+              "id": "TFT_Item_Bloodthirster"
+            },
+            {
+              "agreement": 0.4848,
+              "id": "TFT_Item_TitansResolve"
+            }
+          ]
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Blitzcrank",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_TahmKench",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 3,
+          "id": "TFT17_Ornn",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Shen",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "blitzcrank-nami-ornn-riven-shen-tahmkench",
+      "name": "Blitzcrank + Nami + Ornn + Riven + Shen + TahmKench",
+      "play_rate": 0.052632,
+      "sample_size": 34,
+      "tier": "B",
+      "top_4_rate": 0.4706
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 4.1,
+      "champions": [
+        {
+          "cost": 2,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Nunu",
+          "is_carry": false,
+          "items": [
+            {
+              "agreement": 0.7,
+              "id": "TFT_Item_FrozenHeart"
+            }
+          ]
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Xayah",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 0.8667,
+              "id": "TFT_Item_GuinsoosRageblade"
+            },
+            {
+              "agreement": 0.6333,
+              "id": "TFT_Item_RunaansHurricane"
+            }
+          ]
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Jax",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Rammus",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Jhin",
+          "is_carry": false,
+          "items": [
+            {
+              "agreement": 0.5714,
+              "id": "TFT_Item_InfinityEdge"
+            }
+          ]
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Gnar",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Bard",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "bard-jhin-nunu-rammus-rhaast-xayah",
+      "name": "Bard + Jhin + Nunu + Rammus + Rhaast + Xayah",
+      "play_rate": 0.04644,
+      "sample_size": 30,
+      "tier": "B",
+      "top_4_rate": 0.5667
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 3.8095,
+      "champions": [
+        {
+          "cost": 2,
+          "id": "TFT17_Milio",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Corki",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Riven",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 1,
+          "id": "TFT17_Caitlyn",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 1,
+          "id": "TFT17_TwistedFate",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 1.1765,
+              "id": "TFT_Item_Leviathan"
+            },
+            {
+              "agreement": 0.5294,
+              "id": "TFT_Item_RabadonsDeathcap"
+            }
+          ]
+        },
+        {
+          "cost": 1,
+          "id": "TFT17_Talon",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Jax",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 0.8824,
+              "id": "TFT_Item_GargoyleStoneplate"
+            },
+            {
+              "agreement": 0.5294,
+              "id": "TFT_Item_Crownguard"
+            }
+          ]
+        },
+        {
+          "cost": 1,
+          "id": "TFT17_Aatrox",
+          "is_carry": true,
+          "items": []
+        }
+      ],
+      "comp_id": "corki-riven",
+      "name": "Corki + Riven",
+      "play_rate": 0.032508,
+      "sample_size": 21,
+      "tier": "B",
+      "top_4_rate": 0.5714
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 4.25,
+      "champions": [
+        {
+          "cost": 3,
+          "id": "TFT17_Maokai",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Kindred",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 0.9,
+              "id": "TFT_Item_GuinsoosRageblade"
+            }
+          ]
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_TahmKench",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Fiora",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Akali",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_MasterYi",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 0.6316,
+              "id": "TFT_Item_GuardianAngel"
+            }
+          ]
+        },
+        {
+          "cost": 1,
+          "id": "TFT17_Aatrox",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Belveth",
+          "is_carry": true,
+          "items": []
+        }
+      ],
+      "comp_id": "fiora-kindred-maokai-masteryi-tahmkench",
+      "name": "Fiora + Kindred + Maokai + MasterYi + TahmKench",
+      "play_rate": 0.03096,
+      "sample_size": 20,
+      "tier": "B",
+      "top_4_rate": 0.55
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 2.75,
+      "champions": [
+        {
+          "cost": 7,
+          "id": "TFT17_Vex",
+          "is_carry": false,
+          "items": [
+            {
+              "agreement": 0.95,
+              "id": "TFT_Item_GuinsoosRageblade"
+            },
+            {
+              "agreement": 0.5,
+              "id": "TFT_Item_MadredsBloodrazor"
+            },
+            {
+              "agreement": 0.45,
+              "id": "TFT_Item_HextechGunblade"
+            }
+          ]
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 3,
+          "id": "TFT17_Illaoi",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Nunu",
+          "is_carry": false,
+          "items": [
+            {
+              "agreement": 0.6842,
+              "id": "TFT_Item_FrozenHeart"
+            }
+          ]
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Sona",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 10,
+          "id": "TFT17_Summon",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_IvernMinion",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Karma",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "bard-blitzcrank-illaoi-karma-nunu-sona-summon-vex",
+      "name": "Bard + Blitzcrank + Illaoi + Karma + Nunu + Sona + Summon + Vex",
+      "play_rate": 0.03096,
+      "sample_size": 20,
+      "tier": "B",
+      "top_4_rate": 0.75
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 4.7353,
+      "champions": [
+        {
+          "cost": 1,
+          "id": "TFT17_Lissandra",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 3,
+          "id": "TFT17_Illaoi",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 0.6176,
+              "id": "TFT_Item_GargoyleStoneplate"
+            },
+            {
+              "agreement": 0.4118,
+              "id": "TFT_Item_WarmogsArmor"
+            }
+          ]
+        },
+        {
+          "cost": 10,
+          "id": "TFT17_Summon",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 3,
+          "id": "TFT17_Viktor",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 0.75,
+              "id": "TFT_Item_JeweledGauntlet"
+            },
+            {
+              "agreement": 0.6562,
+              "id": "TFT17_Item_PsyOps_DroneMod"
+            },
+            {
+              "agreement": 0.5312,
+              "id": "TFT_Item_ArchangelsStaff"
+            }
+          ]
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_IvernMinion",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Pyke",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 3,
+          "id": "TFT17_Rhaast",
+          "is_carry": true,
+          "items": []
+        }
+      ],
+      "comp_id": "illaoi-nami-rhaast-summon-viktor",
+      "name": "Illaoi + Nami + Rhaast + Summon + Viktor",
+      "play_rate": 0.052632,
+      "sample_size": 34,
+      "tier": "C",
+      "top_4_rate": 0.5294
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 5.3636,
+      "champions": [
+        {
+          "cost": 2,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 3,
+          "id": "TFT17_Illaoi",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Nunu",
+          "is_carry": false,
+          "items": [
+            {
+              "agreement": 0.4545,
+              "id": "TFT_Item_FrozenHeart"
+            }
+          ]
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Leblanc",
+          "is_carry": false,
+          "items": [
+            {
+              "agreement": 0.9091,
+              "id": "TFT_Item_GuinsoosRageblade"
+            },
+            {
+              "agreement": 0.7273,
+              "id": "TFT_Item_MadredsBloodrazor"
+            },
+            {
+              "agreement": 0.4091,
+              "id": "TFT17_Item_ShieldTankEmblemItem"
+            }
+          ]
+        },
+        {
+          "cost": 10,
+          "id": "TFT17_Summon",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_IvernMinion",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Karma",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 1,
+          "id": "TFT17_Leona",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 0.4706,
+              "id": "TFT_Item_GargoyleStoneplate"
+            }
+          ]
+        }
+      ],
+      "comp_id": "illaoi-karma-leblanc-nunu-summon",
+      "name": "Illaoi + Karma + Leblanc + Nunu + Summon",
+      "play_rate": 0.034056,
+      "sample_size": 22,
+      "tier": "C",
+      "top_4_rate": 0.3182
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 5.0,
+      "champions": [
+        {
+          "cost": 5,
+          "id": "TFT17_Rammus",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_IvernMinion",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 3,
+          "id": "TFT17_Fizz",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 0.6842,
+              "id": "TFT_Item_JeweledGauntlet"
+            },
+            {
+              "agreement": 0.4211,
+              "id": "TFT_Item_Leviathan"
+            }
+          ]
+        },
+        {
+          "cost": 3,
+          "id": "TFT17_Kaisa",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 0.9474,
+              "id": "TFT_Item_InfinityEdge"
+            },
+            {
+              "agreement": 0.4211,
+              "id": "TFT_Item_BlueBuff"
+            },
+            {
+              "agreement": 0.4211,
+              "id": "TFT_Item_SpearOfShojin"
+            }
+          ]
+        },
+        {
+          "cost": 3,
+          "id": "TFT17_Ornn",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 3,
+          "id": "TFT17_Rhaast",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Karma",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Riven",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "fizz-kaisa-karma-ornn-rammus-rhaast",
+      "name": "Fizz + Kaisa + Karma + Ornn + Rammus + Rhaast",
+      "play_rate": 0.029412,
+      "sample_size": 19,
+      "tier": "C",
+      "top_4_rate": 0.3158
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 5.5333,
+      "champions": [
+        {
+          "cost": 3,
+          "id": "TFT17_Urgot",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 0.875,
+              "id": "TFT_Item_Quicksilver"
+            },
+            {
+              "agreement": 0.625,
+              "id": "TFT_Item_InfinityEdge"
+            }
+          ]
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Galio",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Akali",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 3,
+          "id": "TFT17_Maokai",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 0.4,
+              "id": "TFT_Item_GargoyleStoneplate"
+            }
+          ]
+        },
+        {
+          "cost": 3,
+          "id": "TFT17_Aurora",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 0.4286,
+              "id": "TFT_Item_RabadonsDeathcap"
+            }
+          ]
+        },
+        {
+          "cost": 3,
+          "id": "TFT17_Rhaast",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_IvernMinion",
+          "is_carry": false,
+          "items": [
+            {
+              "agreement": 1.0,
+              "id": "TFT_Item_ThiefsGloves"
+            },
+            {
+              "agreement": 1.0,
+              "id": "TFT_Item_SpectralGauntlet"
+            },
+            {
+              "agreement": 1.0,
+              "id": "TFT_Item_IonicSpark"
+            }
+          ]
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Karma",
+          "is_carry": false,
+          "items": [
+            {
+              "agreement": 1.0,
+              "id": "TFT_Item_Morellonomicon"
+            }
+          ]
+        }
+      ],
+      "comp_id": "aurora-galio-maokai-rhaast-urgot",
+      "name": "Aurora + Galio + Maokai + Rhaast + Urgot",
+      "play_rate": 0.02322,
+      "sample_size": 15,
+      "tier": "C",
+      "top_4_rate": 0.3333
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 3.9231,
+      "champions": [
+        {
+          "cost": 1,
+          "id": "TFT17_Teemo",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 1.1538,
+              "id": "TFT_Item_GuinsoosRageblade"
+            },
+            {
+              "agreement": 0.4615,
+              "id": "TFT_Item_MadredsBloodrazor"
+            },
+            {
+              "agreement": 0.4615,
+              "id": "TFT_Item_HextechGunblade"
+            }
+          ]
+        },
+        {
+          "cost": 1,
+          "id": "TFT17_Nasus",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 1,
+          "id": "TFT17_Leona",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 1.0,
+              "id": "TFT_Item_GargoyleStoneplate"
+            }
+          ]
+        },
+        {
+          "cost": 1,
+          "id": "TFT17_Lissandra",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 3,
+          "id": "TFT17_Illaoi",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Nami",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 10,
+          "id": "TFT17_Summon",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "illaoi-nami-summon",
+      "name": "Illaoi + Nami + Summon",
+      "play_rate": 0.020124,
+      "sample_size": 13,
+      "tier": "C",
+      "top_4_rate": 0.6923
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 4.9231,
+      "champions": [
+        {
+          "cost": 5,
+          "id": "TFT17_Nunu",
+          "is_carry": false,
+          "items": [
+            {
+              "agreement": 0.4286,
+              "id": "TFT_Item_FrozenHeart"
+            }
+          ]
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Blitzcrank",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Fiora",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Vex",
+          "is_carry": false,
+          "items": [
+            {
+              "agreement": 0.9231,
+              "id": "TFT_Item_GuinsoosRageblade"
+            },
+            {
+              "agreement": 0.5385,
+              "id": "TFT_Item_MadredsBloodrazor"
+            }
+          ]
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Graves",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 1,
+          "id": "TFT17_Aatrox",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Akali",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Shen",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "blitzcrank-fiora-graves-morgana-nunu-shen-vex",
+      "name": "Blitzcrank + Fiora + Graves + Morgana + Nunu + Shen + Vex",
+      "play_rate": 0.020124,
+      "sample_size": 13,
+      "tier": "C",
+      "top_4_rate": 0.4615
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 3.6154,
+      "champions": [
+        {
+          "cost": 3,
+          "id": "TFT17_Maokai",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_TahmKench",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Fiora",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Shen",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Morgana",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 1,
+          "id": "TFT17_Aatrox",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Akali",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Graves",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "fiora-graves-maokai-morgana-shen-tahmkench-vex",
+      "name": "Fiora + Graves + Maokai + Morgana + Shen + TahmKench + Vex",
+      "play_rate": 0.020124,
+      "sample_size": 13,
+      "tier": "C",
+      "top_4_rate": 0.7692
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 5.8333,
+      "champions": [
+        {
+          "cost": 1,
+          "id": "TFT17_Briar",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 1,
+          "id": "TFT17_RekSai",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 0.5,
+              "id": "TFT_Item_RedBuff"
+            }
+          ]
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Belveth",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 0.8333,
+              "id": "TFT_Item_Quicksilver"
+            },
+            {
+              "agreement": 0.5,
+              "id": "TFT_Item_MadredsBloodrazor"
+            },
+            {
+              "agreement": 0.5,
+              "id": "TFT_Item_RunaansHurricane"
+            }
+          ]
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Akali",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 0.5,
+              "id": "TFT_Item_UnstableConcoction"
+            },
+            {
+              "agreement": 0.4167,
+              "id": "TFT_Item_PowerGauntlet"
+            },
+            {
+              "agreement": 0.4167,
+              "id": "TFT_Item_GuardianAngel"
+            }
+          ]
+        },
+        {
+          "cost": 3,
+          "id": "TFT17_Maokai",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Kindred",
+          "is_carry": false,
+          "items": [
+            {
+              "agreement": 0.4167,
+              "id": "TFT_Item_GuinsoosRageblade"
+            }
+          ]
+        },
+        {
+          "cost": 1,
+          "id": "TFT17_Aatrox",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 1,
+          "id": "TFT17_Caitlyn",
+          "is_carry": true,
+          "items": []
+        }
+      ],
+      "comp_id": "kindred-maokai",
+      "name": "Kindred + Maokai",
+      "play_rate": 0.018576,
+      "sample_size": 12,
+      "tier": "C",
+      "top_4_rate": 0.25
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 5.3636,
+      "champions": [
+        {
+          "cost": 3,
+          "id": "TFT17_Samira",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 0.4762,
+              "id": "TFT_Item_SpearOfShojin"
+            },
+            {
+              "agreement": 0.4762,
+              "id": "TFT_Item_InfinityEdge"
+            }
+          ]
+        },
+        {
+          "cost": 3,
+          "id": "TFT17_Ornn",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Nunu",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Jax",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Xayah",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 1,
+          "id": "TFT17_Nasus",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 1,
+          "id": "TFT17_Leona",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Blitzcrank",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "nunu-ornn-ornn-samira-samira-xayah",
+      "name": "Nunu + Ornn + Ornn + Samira + Samira + Xayah",
+      "play_rate": 0.017028,
+      "sample_size": 11,
+      "tier": "C",
+      "top_4_rate": 0.3636
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 4.4545,
+      "champions": [
+        {
+          "cost": 3,
+          "id": "TFT17_Urgot",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_AurelionSol",
+          "is_carry": true,
+          "items": [
+            {
+              "agreement": 0.7273,
+              "id": "TFT_Item_JeweledGauntlet"
+            },
+            {
+              "agreement": 0.5455,
+              "id": "TFT_Item_PowerGauntlet"
+            },
+            {
+              "agreement": 0.4545,
+              "id": "TFT_Item_StatikkShiv"
+            }
+          ]
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Galio",
+          "is_carry": false,
+          "items": [
+            {
+              "agreement": 0.8182,
+              "id": "TFT_Item_GargoyleStoneplate"
+            },
+            {
+              "agreement": 0.6364,
+              "id": "TFT_Item_SteraksGage"
+            }
+          ]
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_TahmKench",
+          "is_carry": false,
+          "items": [
+            {
+              "agreement": 0.5455,
+              "id": "TFT_Item_WarmogsArmor"
+            }
+          ]
+        },
+        {
+          "cost": 5,
+          "id": "TFT17_Karma",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Fiora",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 7,
+          "id": "TFT17_Bard",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 2,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "aurelionsol-bard-fiora-galio-karma-tahmkench-urgot",
+      "name": "AurelionSol + Bard + Fiora + Galio + Karma + TahmKench + Urgot",
+      "play_rate": 0.017028,
+      "sample_size": 11,
+      "tier": "C",
+      "top_4_rate": 0.4545
+    }
+  ],
+  "data_window_hours": 12,
+  "elo_bracket": "CHALLENGER",
+  "last_updated": "2026-04-25T18:00:00Z",
+  "patch_version": "16.8",
+  "region": "KR",
+  "schema_version": "1.1.0",
+  "total_matches_sampled": 82
+}

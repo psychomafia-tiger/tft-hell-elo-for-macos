@@ -7,14 +7,18 @@ import SwiftUI
 /// The `width` parameter propagates down to `CompCardV2(width: cardWidth)` so card
 /// size scales with container.
 ///
+/// Phase 03: receives `DataManager` via `@EnvironmentObject` for live `@Published`
+/// updates. When `bannerState == .updateRequired`, renders `UpdateRequiredOverlay`
+/// instead of comp list (guards against rendering incompatible schema data).
+///
 /// Layout (top → bottom):
 /// 1. HeaderBar (56px) — patch, last updated, match count
 /// 2. Divider hairline
-/// 3. Banners slot (Phase 2)
-/// 4. FilterBar (3 tabs — Champions / Traits / Search)
-/// 5. Comp list (scrollable) — full `CompCardV2` per comp
+/// 3. Banners slot — driven by DataManager.bannerState
+/// 4. FilterBar (3 tabs — Champions / Traits / Search)  [hidden when updateRequired]
+/// 5. Comp list (scrollable) OR UpdateRequiredOverlay
 struct CompListView: View {
-    let tierList: TierList
+    @EnvironmentObject private var dataManager: DataManager
     let width: CGFloat
 
     /// Inner card width = container width minus popover/overlay horizontal padding
@@ -28,14 +32,18 @@ struct CompListView: View {
     var body: some View {
         VStack(spacing: 0) {
             HeaderBar(
-                patch: tierList.patchVersion,
-                lastUpdated: tierList.lastUpdated,
-                totalMatches: tierList.totalMatchesSampled
+                patch: dataManager.tierList.patchVersion,
+                lastUpdated: dataManager.tierList.lastUpdated,
+                totalMatches: dataManager.tierList.totalMatchesSampled
             )
             Divider().background(Theme.Colors.borderDefault)
-            Banners(tierList: tierList)
-            FilterBar(selection: $filterSelection)
-            compList
+            Banners(state: dataManager.bannerState)
+            if dataManager.bannerState == .updateRequired {
+                UpdateRequiredOverlay()
+            } else {
+                FilterBar(selection: $filterSelection)
+                compList
+            }
         }
         .frame(width: width)
         .background(Theme.Colors.bgPopover)
@@ -44,7 +52,7 @@ struct CompListView: View {
     private var compList: some View {
         ScrollView {
             VStack(spacing: Theme.Spacing.gapCards) {
-                ForEach(tierList.comps, id: \.compId) { comp in
+                ForEach(dataManager.tierList.comps, id: \.compId) { comp in
                     CompCardV2(comp: comp, width: cardWidth)
                 }
             }

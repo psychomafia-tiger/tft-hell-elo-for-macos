@@ -12,6 +12,7 @@ struct TierList: Codable {
     let dataWindowHours: Int
     let eloBracket: String
     let totalMatchesSampled: Int
+    let region: String          // NEW v1.1.0 — defaults to "VN2" for v1.0.0 bundled JSON
     let comps: [Comp]
 
     // Explicit keys required because schemaVersion needs custom string parsing.
@@ -24,6 +25,7 @@ struct TierList: Codable {
         case dataWindowHours
         case eloBracket
         case totalMatchesSampled
+        case region
         case comps
     }
 
@@ -43,6 +45,8 @@ struct TierList: Codable {
         self.dataWindowHours = try c.decode(Int.self, forKey: .dataWindowHours)
         self.eloBracket = try c.decode(String.self, forKey: .eloBracket)
         self.totalMatchesSampled = try c.decode(Int.self, forKey: .totalMatchesSampled)
+        // Forward-compat: `region` absent in v1.0.0 bundled JSON → default to "VN2"
+        self.region = (try? c.decodeIfPresent(String.self, forKey: .region)) ?? "VN2"
         self.comps = try c.decode([Comp].self, forKey: .comps)
     }
 }

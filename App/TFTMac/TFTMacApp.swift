@@ -4,15 +4,14 @@ import os
 
 /// TFT Mac Companion — menu bar app entry point.
 ///
-/// Task 1.8 wires three subsystems together:
-/// 1. `DataManager.loadBundledJSON()` — synchronous decode of bundled sample
-///    (no Task.detached per eng review C1: the data is static, in-binary,
-///    ~8 KB — async machinery is over-engineering for ms-level work).
-/// 2. `MenuBarExtra(.window)` scene — popover-style rather than dropdown
-///    menu, matching the 440×600 wireframe card stack.
-/// 3. `HotkeyRegistrar` — held as an @main-scoped stored property so its
-///    Carbon binding lives for the app's entire lifetime. Reconstructing
-///    per view would lose the `registrationToken` state.
+/// Phase 03 wiring:
+/// 1. `DataManager` (@StateObject) — orchestrates remote fetch + 12h poll +
+///    disk cache + bundled fallback. `.start()` called in DataManager.init().
+/// 2. `MenuBarExtra(.window)` scene — popover-style, 440×600 card stack.
+///    `TierListPopover` receives DataManager via `.environmentObject(dataManager)`.
+/// 3. `HotkeyRegistrar` — held as stored property so Carbon binding lives for
+///    app lifetime. Dual-route: overlay toggle + (future) popover.
+/// 4. `OverlayWindowController` — eager-init with same DataManager for live updates.
 ///
 /// **os_signpost Track B**: `.begin` emitted in the hotkey handler here and
 /// `.end` emitted in TierListPopover.onAppear. Task 1.10 reads the interval
@@ -20,26 +19,42 @@ import os
 /// latency budget (<200ms target, matches SwiftUI "snappy" perception band).
 @main
 struct TFTMacApp: App {
-    // Synchronous bundle load. DataManager fatalError's on missing resource,
-    // which is a build-time bug (impossible in shipped build; CI would fail
-    // first). No async wrapper needed — the decode is <10ms on M1.
-    private let tierList: TierList
+    // Phase 03: DataManager is @StateObject so SwiftUI manages its lifetime and
+    // propagates @Published changes to all views via environmentObject injection.
+    // .start() is called in DataManager.init() — immediate fetch on app launch
+    // without relying on onAppear (MenuBarExtra window may not appear until hotkey).
+    @StateObject private var dataManager = DataManager()
 
     // HotkeyRegistrar held as stored property so its lifetime matches the
     // app process. See HotkeyRegistrar class-level doc: "hold ONE instance
     // for app lifetime" — fresh instances would drop the Carbon binding.
     private let hotkeyRegistrar: HotkeyRegistrar
 
-    // Wave 5b eager-init + Wave 5c tier-list injection: the overlay panel is
-    // built at app launch (D2) with the same `CompListView` the popover uses
-    // (D4), so first Cmd+Shift+T shows in <50ms rendering identical cards.
+    // Wave 5b eager-init: overlay panel built at app launch (D2) so first
+    // Cmd+Shift+T shows in <50ms. Phase 03: passes DataManager for live updates.
+    // Note: @StateObject is not accessible in stored-property initializer, so
+    // overlayController is stored as var and assigned after super-init equivalent.
+    // Swift @main App doesn't have a designated init chain — we use a lazy pattern:
+    // overlayController is built in init() using a temporary DataManager reference
+    // captured via the hotkeyRegistrar closure. HOWEVER, @StateObject wrappedValue
+    // is not accessible before body — use a plain stored DataManager instead.
+    //
+    // Resolution: OverlayWindowController.dataManager is set post-init via
+    // a stored property approach. We create overlayController with nil dataManager
+    // first, then wire it after @StateObject is available via body. But that
+    // delays by one render cycle.
+    //
+    // KISS resolution: store overlayController with the DataManager directly.
+    // @StateObject projectedValue/_wrappedValue is available after init completes.
+    // We use a two-step: create DataManager eagerly as a plain let, pass to both
+    // overlayController and the @StateObject wrapper via _dataManager = StateObject(wrappedValue:).
     private let overlayController: OverlayWindowController
 
     init() {
-        let loadedTierList = DataManager.loadBundledJSON()
-        self.tierList = loadedTierList
+        let dm = DataManager()
+        _dataManager = StateObject(wrappedValue: dm)
         self.hotkeyRegistrar = HotkeyRegistrar()
-        self.overlayController = OverlayWindowController(tierList: loadedTierList)
+        self.overlayController = OverlayWindowController(dataManager: dm)
 
         // Skip hotkey registration when running as XCTest host. Every rebuild
         // produces a new bundle signature, so TCC treats the test-host binary
@@ -102,7 +117,8 @@ struct TFTMacApp: App {
 
     var body: some Scene {
         MenuBarExtra("TFT Hell Elo", systemImage: "chart.bar.xaxis") {
-            TierListPopover(tierList: tierList)
+            TierListPopover()
+                .environmentObject(dataManager)
         }
         .menuBarExtraStyle(.window)  // popover-style (window), not dropdown menu
     }
