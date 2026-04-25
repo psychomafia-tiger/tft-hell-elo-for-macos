@@ -62,11 +62,26 @@ final class OverlayWindowController: ObservableObject {
         }
         hosting.frame = NSRect(origin: .zero, size: Self.defaultSize)
 
-        // Initial position: top-right quadrant of main screen, inset 40px.
-        // Matches typical TFT player monitor arrangement (stats dashboards live
-        // top-right so main board center stays clear).
+        // Initial position: top-right quadrant of CURSOR screen (not NSScreen.main).
+        //
+        // Wave 5d hotfix: NSScreen.main = screen có key window — trên multi-monitor
+        // setup, key window thường ở Screen B (Finder/desktop), trong khi anh chơi
+        // TFT trên Screen A. Result: panel default hiện sang screen sai, anh phải
+        // drag thủ công.
+        //
+        // Plain-language: hình dung 2 màn hình (Screen A trái + Screen B phải).
+        // Game TFT trên Screen A. Cursor anh đang ở Screen A để play. Trước fix:
+        // panel show ở Screen B (NSScreen.main = key window screen) → anh phải
+        // drag panel sang trái. Sau fix: panel show ở Screen A (cursor screen),
+        // top-right corner — nơi stats dashboards thường nằm trong TFT layout.
+        //
+        // Fallback: nếu cursor không ở screen nào (edge case khi disconnect
+        // monitor), dùng NSScreen.main, rồi `screens.first`, rồi origin (100,100).
+        let targetScreen = Self.screenContainingCursor()
+            ?? NSScreen.main
+            ?? NSScreen.screens.first
         let origin: NSPoint
-        if let screen = NSScreen.main {
+        if let screen = targetScreen {
             let frame = screen.visibleFrame
             origin = NSPoint(
                 x: frame.maxX - Self.defaultSize.width - 40,
@@ -100,6 +115,23 @@ final class OverlayWindowController: ObservableObject {
         } else {
             show()
         }
+    }
+
+    /// Wave 5d helper — locate the NSScreen containing the current mouse cursor.
+    ///
+    /// Why: `NSScreen.main` returns the screen with the **key window** (focused),
+    /// which on multi-monitor + game scenario = wrong screen (key window often
+    /// is Finder on Screen B while anh chơi TFT trên Screen A). Cursor screen
+    /// = where anh đang nhìn → correct screen for overlay default position.
+    ///
+    /// Concrete example: anh có 2 màn hình ngang. Cursor ở (1500, 400) khi
+    /// anh đang play game. Screens: A = NSRect(0, 0, 1920, 1080), B = NSRect
+    /// (1920, 0, 1920, 1080). NSMouseInRect((1500,400), screenA.frame) = true
+    /// → returns Screen A (đúng game screen). NSScreen.main lúc đó có thể
+    /// trả về Screen B nếu key window ở đó.
+    static func screenContainingCursor() -> NSScreen? {
+        let cursor = NSEvent.mouseLocation  // global coordinate (Cocoa: origin bottom-left)
+        return NSScreen.screens.first { NSMouseInRect(cursor, $0.frame, false) }
     }
 }
 

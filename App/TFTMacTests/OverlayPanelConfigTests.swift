@@ -6,7 +6,9 @@ import AppKit
 ///
 /// Each assertion maps to a concrete dogfood failure we're protecting against:
 /// - `canBecomeKey=false` → mid-game "ff" typing stays in TFT (not panel)
-/// - `level == overlayWindowLevel` → renders above borderless TFT window
+/// - `level == screenSaver` → renders above borderless TFT (Wave 5d hotfix:
+///   bumped from `.overlayWindow` (102) → `.screenSaver` (1000) sau khi anh test
+///   confirm panel ở layer dưới TFT borderless trên cùng monitor)
 /// - `collectionBehavior.fullScreenAuxiliary` → shows on native-fullscreen Space
 /// - `hidesOnDeactivate=false` → doesn't vanish when TFT grabs focus
 /// - `.nonactivatingPanel` styleMask → showing panel doesn't app-switch away from TFT
@@ -31,10 +33,13 @@ final class OverlayPanelConfigTests: XCTestCase {
         super.tearDown()
     }
 
-    func testPanelLevelMatchesOverlayWindowKey() {
-        let expected = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.overlayWindow)))
-        XCTAssertEqual(panel.level, expected,
-                       "Panel must sit at overlayWindowLevel to render above borderless TFT")
+    func testPanelLevelMatchesScreenSaverLevel() {
+        // Wave 5d hotfix — bumped from overlayWindow (102) → screenSaver (1000).
+        // Verified: ở level 102, panel rơi xuống dưới TFT borderless trên cùng
+        // monitor. screenSaver level = bulletproof always-on-top.
+        XCTAssertEqual(panel.level, NSWindow.Level.screenSaver,
+                       "Panel must sit at screenSaver level (1000) to render above ALL "
+                       + "frontmost-app windows including TFT borderless game window")
     }
 
     func testCollectionBehaviorIncludesFullScreenAuxiliary() {

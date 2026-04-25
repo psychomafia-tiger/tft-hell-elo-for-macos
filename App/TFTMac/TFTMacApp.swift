@@ -80,11 +80,23 @@ struct TFTMacApp: App {
         //
         // Idempotency: 10 consecutive Cmd+Shift+T presses keep overlay state
         // consistent (assert test: HotkeyDualRouteTests.testToggleTwentyFiresStable).
+        // Wave 5d fix (F1 root cause): KHÔNG gọi NSApp.activate trong hotkey path.
+        // NSApp.activate(ignoringOtherApps:) steal focus từ TFT → game bị
+        // minimize/hide xuống (Borderless) hoặc panel show ở wrong Space
+        // (Fullscreen Native Spaces). Panel với .nonactivatingPanel styleMask +
+        // orderFrontRegardless() đã đủ để show panel ABOVE game mà KHÔNG cần
+        // app activation — đây là pattern overlay đúng (giống TFTactics Win:
+        // overlay đè lên game, game vẫn frontmost, keyboard vẫn vào game).
+        //
+        // Trade-off: MenuBarExtra popover route mất "auto-foreground" — user
+        // muốn mở popover phải click menu bar icon thủ công. Acceptable vì
+        // (a) overlay route render same content (CompListView shared), và
+        // (b) popover route chỉ là backup khi overlay disabled trong Settings
+        // (Phase 3 feature). Hotkey use case = trigger overlay over game.
         _ = hotkeyRegistrar.register { [overlayController] in
             os_signpost(.begin, log: PopoverSignpost.log, name: PopoverSignpost.name,
                         signpostID: PopoverSignpost.id, "Hotkey fired")
-            NSApp.activate(ignoringOtherApps: true)  // popover route (existing)
-            overlayController.toggle()               // overlay route (Wave 5b new)
+            overlayController.toggle()  // overlay-only — no app activation
         }
     }
 

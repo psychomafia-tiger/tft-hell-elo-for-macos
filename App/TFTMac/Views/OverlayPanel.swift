@@ -39,14 +39,20 @@ final class OverlayPanel: NSPanel {
         )
         // Order matters: `isFloatingPanel = true` internally writes `level = .floating`
         // (rawValue 3), so we must set level AFTER isFloatingPanel. Otherwise the
-        // overlayWindow level (102) silently downgrades to floating, which renders
-        // BELOW status bar windows — dogfood-breaking regression that
-        // `testPanelLevelMatchesOverlayWindowKey` guards against.
+        // screenSaver level silently downgrades to floating — dogfood-breaking
+        // regression that `testPanelLevelMatchesScreenSaverLevel` guards against.
         self.isFloatingPanel = true
-        // level: wrap CGWindowLevel (Int32) into NSWindow.Level (Int-backed).
-        // overlayWindow key sits above status bar (25), below screen saver (1000) —
-        // safe zone that macOS Sequoia has not changed since 10.x.
-        self.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.overlayWindow)))
+        // Level: `screenSaver` (rawValue 1000). Wave 5d hotfix bumped from
+        // `.overlayWindow` (102) → `.screenSaver` (1000) sau khi anh test multi-monitor:
+        // ở level 102 panel rơi xuống LAYER DƯỚI TFT borderless trên cùng màn hình.
+        // Plain-language: window level giống "tầng" trong tòa nhà —
+        //   - level 0 = tầng trệt (TFT borderless game window)
+        //   - level 24 = tầng menu bar macOS
+        //   - level 102 = overlayWindow (mình ban đầu, không đủ với cross-app frontmost)
+        //   - level 1000 = screenSaver (bulletproof always-on-top)
+        // Tradeoff: panel sẽ overlap menu bar macOS. Đó là feature mong muốn cho
+        // game overlay (giống TFTactics Win — overlay che mọi thứ phía dưới).
+        self.level = .screenSaver
         self.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary]
         self.hidesOnDeactivate = false
         self.isMovableByWindowBackground = true
