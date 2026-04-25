@@ -2,7 +2,7 @@
 
 **Date**: 2026-04-25 16:05 ICT
 **Branch**: `feat/v0.1-implementation`
-**Status**: Wave 5d code committed (WIP), F1 dogfood blocker still open
+**Status**: ~~Wave 5d code committed (WIP), F1 dogfood blocker still open~~ → **RESOLVED 2026-04-25 16:54** (see RESOLUTION section at bottom)
 **Last commit**: see HEAD; `git log -3` for context
 
 ## TL;DR
@@ -106,3 +106,43 @@ cd "/Users/mac/Desktop/TFTTACTICS FOR MACS" && cat plans/reports/handoff-260425-
 
 1. HotKey package version trong Package.resolved — may need bump cho Tahoe 26.3.1 compat
 2. Carbon Hot Key API behavior trên macOS Tahoe — có thể đã deprecated tighten
+
+---
+
+## RESOLUTION (2026-04-25 16:54 ICT)
+
+### Root cause confirmed: H2 — TCC adhoc-sign cdhash invalidation
+
+Diagnostic via `os.Logger` (NSLog không reach unified log trên Tahoe accessory apps) revealed:
+```
+register() entry — AXIsProcessTrusted=false
+register() result = failure(...accessibilityDenied)
+```
+
+Mechanism: macOS Tahoe TCC keys Accessibility permission by binary cdhash. Mỗi `xcodebuild` rebuild = adhoc-sign tạo cdhash mới. Settings UI vẫn hiện entry toggle ON (key=bundle ID), nhưng AXIsProcessTrusted() validate cdhash → mismatch → silent denial. Click menu bar work vì không cần TCC (chỉ LaunchServices).
+
+H1 (Carbon binding broken), H3 (HotKey package broken Tahoe), H4 (Rectangle conflict) — tất cả ruled out.
+
+### Fix applied
+1. **User action (anh)**: Settings → Accessibility → minus TFT Hell Elo entry → relaunch app → re-add → quit + relaunch lần 2 (init() chạy lại với granted state).
+2. **Verification**: `register() entry — AXIsProcessTrusted=true`, `register() result = success()`. Hotkey fire confirmed trong borderless mode.
+
+### Known v0.1 limitation discovered: TFT native fullscreen exclusive capture
+
+Test sau fix: hotkey work trong borderless ✅, KHÔNG fire trong native fullscreen ❌.
+- Evidence: 0 DIAG entries during fullscreen test (Carbon callback never invoked).
+- Cause: TFT/LoL native fullscreen mode (Cmd+Ctrl+F) tạo exclusive keyboard capture cho low-latency competitive input — keyboard events bypass macOS global event dispatch.
+- **Not a bug of TFT Hell Elo** — fundamental macOS gaming constraint. Stream Deck, Discord overlay, OBS đều cùng giới hạn.
+- **Decision (anh approved 16:54)**: ship v0.1 với borderless support. Defer fullscreen workaround (CGEventTap research) tới Phase 2.
+
+### Tech debt cho dev workflow (NOT blocking dogfood)
+- Mỗi `xcodebuild` rebuild = TCC permission lost (adhoc cdhash đổi). Anh phải re-grant manual.
+- **Testers KHÔNG bị**: họ install .app 1 lần, grant 1 lần, không rebuild.
+- **Anh's dev fix (defer)**: configure Apple Development signing với personal Apple ID team (free tier) — same Development cert mỗi build → same cdhash → TCC persists. ~30-60 phút setup.
+
+### Code changes
+- `App/TFTMac/Views/OverlayPanel.swift` — added v0.1 limitation note in docstring.
+- DIAG instrumentation reverted (added/removed within session, no diff).
+
+### Commit
+See git log feat/v0.1-implementation HEAD — fullscreen limitation note.

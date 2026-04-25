@@ -28,6 +28,15 @@ import AppKit
 /// Plain-language: analogy — overlay panel giống như 1 HUD (heads-up display) nổi
 /// trên màn hình game, user nhìn thấy nhưng game engine không cảm nhận nó. Khi
 /// user bấm "ff" → keystroke đi thẳng vào TFT, overlay chỉ hiển thị.
+///
+/// **v0.1 known limitation — TFT native fullscreen mode**: Carbon HotKey API
+/// (Cmd+Shift+T) không nhận được key event khi TFT trong native fullscreen
+/// (Cmd+Ctrl+F). Đây là exclusive keyboard capture của game cho low-latency
+/// competitive input — keyboard events bypass macOS global event dispatch,
+/// không phải bug của panel/registrar. Borderless mode work bình thường vì
+/// TFT là regular window ở Desktop Space → keyboard events đi qua route
+/// chuẩn macOS. Workaround cho user: dùng Borderless. Phase 2+ có thể explore
+/// CGEventTap (Input Monitoring TCC) hoặc auto-show on fullscreen change.
 final class OverlayPanel: NSPanel {
 
     init(contentRect: NSRect, contentView: NSView) {
