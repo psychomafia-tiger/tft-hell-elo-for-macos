@@ -16,9 +16,14 @@ from tftmac_pipeline.json_emitter import (
     ChampionEntry,
     CompEntry,
     ItemBuild,
+    SCHEMA_VERSION,
+    TraitEntry,
     TierListOutput,
     _check_pii,
+    _slugify,
+    _style_for,
     emit,
+    emit_comp,
     make_last_updated,
     tier_list_to_dict,
 )
@@ -27,7 +32,7 @@ from tftmac_pipeline.json_emitter import (
 @pytest.fixture
 def minimal_output() -> TierListOutput:
     return TierListOutput(
-        schema_version="1.1.0",
+        schema_version=SCHEMA_VERSION,
         patch_version="16.8",
         last_updated="2026-04-25T18:00:00Z",
         data_window_hours=12,
@@ -52,6 +57,10 @@ def minimal_output() -> TierListOutput:
                     )
                 ],
                 anomalies=[AnomalyEntry(id="TFT17_EkkoOffering_AnomalyItem", agreement=0.71)],
+                traits=[
+                    TraitEntry(name="Set17_Psionic", count=4, style="gold"),
+                    TraitEntry(name="Set17_Dominator", count=2, style="silver"),
+                ],
             )
         ],
     )
@@ -60,7 +69,7 @@ def minimal_output() -> TierListOutput:
 class TestTierListToDict:
     def test_schema_version_present(self, minimal_output: TierListOutput) -> None:
         d = tier_list_to_dict(minimal_output)
-        assert d["schema_version"] == "1.1.0"
+        assert d["schema_version"] == SCHEMA_VERSION  # "1.2.0"
 
     def test_region_present(self, minimal_output: TierListOutput) -> None:
         d = tier_list_to_dict(minimal_output)
@@ -92,13 +101,14 @@ class TestTierListToDict:
             sample_size=10, anomalies=[],
         )
         output = TierListOutput(
-            schema_version="1.1.0", patch_version="16.8",
+            schema_version=SCHEMA_VERSION, patch_version="16.8",
             last_updated="2026-04-25T00:00:00Z", data_window_hours=12,
             elo_bracket="CHALLENGER", region="VN2",
             total_matches_sampled=50, comps=[comp],
         )
         d = tier_list_to_dict(output)
         assert d["comps"][0]["anomalies"] == []  # not None — Swift requires non-optional array
+        assert d["comps"][0]["traits"] == []     # schema 1.2.0: traits[] must also be present
 
     def test_all_required_root_keys_present(self, minimal_output: TierListOutput) -> None:
         d = tier_list_to_dict(minimal_output)
@@ -108,6 +118,22 @@ class TestTierListToDict:
             "total_matches_sampled", "comps",
         }
         assert required.issubset(d.keys())
+
+    def test_comp_has_traits_array(self, minimal_output: TierListOutput) -> None:
+        """Schema 1.2.0: every comp must have a traits[] field."""
+        d = tier_list_to_dict(minimal_output)
+        comp = d["comps"][0]
+        assert "traits" in comp
+        assert isinstance(comp["traits"], list)
+        assert len(comp["traits"]) == 2
+
+    def test_trait_entry_has_name_count_style(self, minimal_output: TierListOutput) -> None:
+        """Schema 1.2.0: each trait entry must have name, count, style."""
+        d = tier_list_to_dict(minimal_output)
+        trait = d["comps"][0]["traits"][0]
+        assert "name" in trait
+        assert "count" in trait
+        assert "style" in trait
 
 
 class TestEmitDeterminism:
@@ -123,7 +149,7 @@ class TestEmitDeterminism:
         path = tmp_path / "output.json"
         emit(minimal_output, path)
         parsed = json.loads(path.read_text())
-        assert parsed["schema_version"] == "1.1.0"
+        assert parsed["schema_version"] == SCHEMA_VERSION  # "1.2.0"
 
     def test_keys_are_sorted(self, minimal_output: TierListOutput, tmp_path: Path) -> None:
         path = tmp_path / "output.json"
@@ -149,7 +175,7 @@ class TestEmitDeterminism:
 
 class TestPiiCheck:
     def test_clean_json_passes(self) -> None:
-        clean = '{"schema_version": "1.1.0", "region": "VN2"}'
+        clean = '{"schema_version": "1.2.0", "region": "VN2"}'
         _check_pii(clean)  # should not raise
 
     def test_rgapi_fragment_raises(self) -> None:
@@ -179,3 +205,104 @@ class TestMakeLastUpdated:
     def test_ends_with_z(self) -> None:
         ts = make_last_updated()
         assert ts.endswith("Z")
+
+
+class TestStyleFor:
+    """Schema 1.2.0 helper: map trait activation count → style string."""
+
+    def test_count_1_returns_bronze(self) -> None:
+        assert _style_for(1) == "bronze"
+
+    def test_count_2_returns_silver(self) -> None:
+        assert _style_for(2) == "silver"
+
+    def test_count_4_returns_gold(self) -> None:
+        assert _style_for(4) == "gold"
+
+    def test_count_6_returns_chromatic(self) -> None:
+        assert _style_for(6) == "chromatic"
+
+    def test_count_3_returns_silver(self) -> None:
+        # 3 < 4 → silver
+        assert _style_for(3) == "silver"
+
+    def test_count_5_returns_gold(self) -> None:
+        # 5 >= 4 but < 6 → gold
+        assert _style_for(5) == "gold"
+
+
+class TestSlugify:
+    """Schema 1.2.0 helper: human name → kebab-case ID."""
+
+    def test_spaces_become_hyphens(self) -> None:
+        assert _slugify("Psionic Carry") == "psionic-carry"
+
+    def test_apostrophes_removed(self) -> None:
+        assert _slugify("Viktor's Edge") == "viktors-edge"
+
+    def test_already_lowercase_unchanged(self) -> None:
+        assert _slugify("nami") == "nami"
+
+
+class TestEmitComp:
+    """Schema 1.2.0 emit_comp: trait-bucket → comp dict."""
+
+    @pytest.fixture
+    def sample_bucket(self) -> dict:
+        return {
+            "sample_size": 4,
+            "placements": [1, 2, 3, 5],
+            "trait_signature": (("Set17_Dominator", 2), ("Set17_Psionic", 4)),
+            "champion_freq": {"TFT17_Viktor": 4, "TFT17_Syndra": 3},
+            "items_per_champion": {
+                "TFT17_Viktor": {"TFT_Item_JeweledGauntlet": 3},
+            },
+        }
+
+    def test_comp_has_traits_list(self, sample_bucket: dict) -> None:
+        comp = emit_comp(sample_bucket, "Psionic Carry")
+        assert "traits" in comp
+        assert isinstance(comp["traits"], list)
+        assert len(comp["traits"]) == 2
+
+    def test_traits_have_correct_style(self, sample_bucket: dict) -> None:
+        comp = emit_comp(sample_bucket, "Psionic Carry")
+        styles = {t["name"]: t["style"] for t in comp["traits"]}
+        assert styles["Set17_Dominator"] == "silver"  # count=2
+        assert styles["Set17_Psionic"] == "gold"      # count=4
+
+    def test_comp_id_is_slugified_name(self, sample_bucket: dict) -> None:
+        comp = emit_comp(sample_bucket, "Psionic Carry")
+        assert comp["comp_id"] == "psionic-carry"
+
+    def test_avg_placement_correct(self, sample_bucket: dict) -> None:
+        comp = emit_comp(sample_bucket, "Psionic Carry")
+        # placements=[1,2,3,5] → avg=2.75
+        assert comp["avg_placement"] == 2.75
+
+    def test_top_4_rate_correct(self, sample_bucket: dict) -> None:
+        comp = emit_comp(sample_bucket, "Psionic Carry")
+        # 3 out of 4 placements <= 4 → 0.75
+        assert comp["top_4_rate"] == 0.75
+
+    def test_tier_placeholder_is_c(self, sample_bucket: dict) -> None:
+        # emit_comp sets placeholder tier="C"; caller fills downstream
+        comp = emit_comp(sample_bucket, "Psionic Carry")
+        assert comp["tier"] == "C"
+
+    def test_play_rate_placeholder_is_zero(self, sample_bucket: dict) -> None:
+        # emit_comp sets placeholder play_rate=0.0; caller fills downstream
+        comp = emit_comp(sample_bucket, "Psionic Carry")
+        assert comp["play_rate"] == 0.0
+
+    def test_sample_size_propagated(self, sample_bucket: dict) -> None:
+        comp = emit_comp(sample_bucket, "Psionic Carry")
+        assert comp["sample_size"] == 4
+
+    def test_anomalies_is_empty_list(self, sample_bucket: dict) -> None:
+        comp = emit_comp(sample_bucket, "Psionic Carry")
+        assert comp["anomalies"] == []
+
+    def test_champions_list_present(self, sample_bucket: dict) -> None:
+        comp = emit_comp(sample_bucket, "Psionic Carry")
+        assert isinstance(comp["champions"], list)

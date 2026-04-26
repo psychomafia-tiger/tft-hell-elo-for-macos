@@ -20,8 +20,8 @@ from tftmac_pipeline.comp_pipeline import (
     signature_for_participant,
 )
 from tftmac_pipeline.comp_grouping import group_signatures
-from tftmac_pipeline.json_emitter import emit, TierListOutput, make_last_updated
-from tftmac_pipeline.run_aggregator import build_parser
+from tftmac_pipeline.json_emitter import SCHEMA_VERSION, emit, TierListOutput, make_last_updated
+from tftmac_pipeline.run_aggregator import build_parser, build_tier_list_payload
 
 
 # ---------------------------------------------------------------------------
@@ -185,7 +185,7 @@ class TestPipelineOnKrFixture:
         """PII safety: emitted JSON must contain zero PUUID-like strings."""
         comps, _, patch = run_pipeline(ranked_kr_matches)
         output = TierListOutput(
-            schema_version="1.1.0",
+            schema_version=SCHEMA_VERSION,
             patch_version=patch,
             last_updated="2026-04-25T18:00:00Z",
             data_window_hours=12,
@@ -208,7 +208,7 @@ class TestPipelineOnKrFixture:
 
         def _make_output() -> TierListOutput:
             return TierListOutput(
-                schema_version="1.1.0",
+                schema_version=SCHEMA_VERSION,
                 patch_version=patch,
                 last_updated="2026-04-25T18:00:00Z",
                 data_window_hours=12,
@@ -225,23 +225,16 @@ class TestPipelineOnKrFixture:
         assert path1.read_text() == path2.read_text()
 
     def test_schema_version_in_output(self, ranked_kr_matches: list[dict], tmp_path: Path) -> None:
-        comps, _, patch = run_pipeline(ranked_kr_matches)
-        output = TierListOutput(
-            schema_version="1.1.0",
-            patch_version=patch,
-            last_updated="2026-04-25T18:00:00Z",
-            data_window_hours=12,
-            elo_bracket="CHALLENGER",
-            region="KR",
-            total_matches_sampled=len(ranked_kr_matches),
-            comps=comps,
-        )
-        out_path = tmp_path / "tier-list.json"
-        emit(output, out_path)
-        parsed = json.loads(out_path.read_text())
-        assert parsed["schema_version"] == "1.1.0"
-        assert parsed["region"] == "KR"
-        assert isinstance(parsed["comps"], list)
+        """build_tier_list_payload must emit schema 1.2.0 with traits[] in comps."""
+        payload = build_tier_list_payload(ranked_kr_matches, region="KR", patch="")
+        assert payload["schema_version"] == SCHEMA_VERSION  # "1.2.0"
+        assert payload["region"] == "KR"
+        assert isinstance(payload["comps"], list)
+        # schema 1.2.0: every comp must have traits[]
+        if payload["comps"]:
+            comp = payload["comps"][0]
+            assert "traits" in comp
+            assert isinstance(comp["traits"], list)
 
 
 # ---------------------------------------------------------------------------

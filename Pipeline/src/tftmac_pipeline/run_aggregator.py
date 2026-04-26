@@ -20,14 +20,17 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from tftmac_pipeline.comp_pipeline import run_pipeline
+from tftmac_pipeline.comp_grouping import group_comps_by_trait_signature
+from tftmac_pipeline.comp_name_resolver import resolve_comp_name
+from tftmac_pipeline.comp_pipeline import derive_patch_version
 from tftmac_pipeline.json_emitter import (
-    TierListOutput,
+    SCHEMA_VERSION,
+    emit_comp,
     emit_dict,
     make_last_updated,
-    tier_list_to_dict,
 )
 from tftmac_pipeline.riot_client import RiotAuthError, RiotClient
+from tftmac_pipeline.tier_calculator import classify
 
 logging.basicConfig(
     level=logging.INFO,
@@ -36,8 +39,24 @@ logging.basicConfig(
 )
 logger = logging.getLogger("tft-aggregate")
 
-_SCHEMA_VERSION = "1.1.0"
 _DATA_WINDOW_HOURS = 12
+
+# Minimum sample size to emit a comp (avoid statistical noise).
+# Concrete example: comp seen 9 times in 527 matches → play_rate ~0.2%, tier C
+# with too little data to trust — drop it to keep output clean.
+_MIN_SAMPLE_TO_EMIT = 10
+
+# Tier sort order for deterministic output
+_TIER_ORDER = {"S": 0, "A": 1, "B": 2, "C": 3}
+
+
+def _flatten_participants(matches: list[dict]) -> list[dict]:
+    """Extract all participant dicts from a list of raw Riot match dicts."""
+    participants = []
+    for m in matches:
+        for p in m.get("info", {}).get("participants", []):
+            participants.append(p)
+    return participants
 
 
 def build_tier_list_payload(
@@ -45,7 +64,10 @@ def build_tier_list_payload(
     region: str,
     patch: str,
 ) -> dict:
-    """Build the top-level tier-list payload dict.
+    """Build the top-level tier-list payload dict using trait-signature grouping.
+
+    Schema 1.2.0: comps are grouped by trait combo signature (T3), named via
+    resolve_comp_name (T2), and each comp dict includes a traits[] field.
 
     Bug #004 fix: ensure top-level metadata fields `updated_at` and
     `match_count` are always present so the macOS app's HeaderBar can render
@@ -54,6 +76,11 @@ def build_tier_list_payload(
     Both legacy keys (`last_updated`, `total_matches_sampled`) and new aliases
     (`updated_at`, `match_count`) are emitted for back-compat with shipped
     Swift decoders that already read the legacy names.
+
+    Concrete example: 527 matches × 8 participants = 4216 participant slots.
+    group_comps_by_trait_signature returns ~40-80 buckets; each bucket with
+    sample_size ≥ 10 becomes a comp. play_rate = bucket.sample_size / 4216.
+    tier_calculator assigns S/A/B/C based on play_rate + avg_placement.
 
     Args:
         matches: Raw Riot match dicts (post queue/version filtering).
@@ -65,26 +92,57 @@ def build_tier_list_payload(
         Plain dict ready for JSON emission. Empty `matches` produces a valid
         skeleton payload (comps=[]) so callers can rely on shape.
     """
-    if matches:
-        comps, _total_participants, derived_patch = run_pipeline(matches)
-        # Caller-supplied patch wins ("unknown" fallback only when caller
-        # didn't bother deriving it).
-        patch_version = patch or derived_patch
-    else:
-        comps = []
+    if not matches:
         patch_version = patch or "unknown"
+        comp_list: list[dict] = []
+    else:
+        # Derive patch from match data; caller-supplied patch wins over derived
+        derived_patch = derive_patch_version(matches)
+        patch_version = patch or derived_patch
 
-    output = TierListOutput(
-        schema_version=_SCHEMA_VERSION,
-        patch_version=patch_version,
-        last_updated=make_last_updated(),
-        data_window_hours=_DATA_WINDOW_HOURS,
-        elo_bracket="CHALLENGER",
-        region=region.upper() if region else "",
-        total_matches_sampled=len(matches),
-        comps=comps,
-    )
-    payload = tier_list_to_dict(output)
+        # T3: group all participants by trait combo signature
+        participants = _flatten_participants(matches)
+        total_participants = len(participants)
+        grouped = group_comps_by_trait_signature(participants)
+
+        comp_list = []
+        for _sig, bucket in grouped.items():
+            if bucket["sample_size"] < _MIN_SAMPLE_TO_EMIT:
+                continue
+
+            # T2: resolve human-readable name from signature tuple
+            sig_tuple = bucket["trait_signature"]
+            name = resolve_comp_name(sig_tuple) if sig_tuple else "Unknown Comp"
+
+            # Build comp dict via emit_comp (schema 1.2.0 shape + traits[])
+            comp = emit_comp(bucket, name)
+
+            # Fill play_rate and tier (downstream step in plan snippet)
+            play_rate = round(
+                bucket["sample_size"] / total_participants, 6
+            ) if total_participants else 0.0
+            comp["play_rate"] = play_rate
+            comp["tier"] = classify(
+                play_rate, comp["avg_placement"], bucket["sample_size"]
+            ).value
+
+            comp_list.append(comp)
+
+        # Sort: S → A → B → C, then by play_rate descending for determinism
+        comp_list.sort(
+            key=lambda c: (_TIER_ORDER.get(c["tier"], 9), -c["play_rate"])
+        )
+
+    payload: dict = {
+        "schema_version": SCHEMA_VERSION,
+        "patch_version": patch_version,
+        "last_updated": make_last_updated(),
+        "data_window_hours": _DATA_WINDOW_HOURS,
+        "elo_bracket": "CHALLENGER",
+        "region": region.upper() if region else "",
+        "total_matches_sampled": len(matches),
+        "comps": comp_list,
+    }
 
     # Bug #004 — additional top-level metadata expected by app's HeaderBar.
     # ISO 8601 with explicit "+00:00" offset (datetime.isoformat default for
@@ -98,7 +156,7 @@ def build_parser() -> argparse.ArgumentParser:
     """Build CLI argument parser."""
     p = argparse.ArgumentParser(
         prog="tft-aggregate",
-        description="Fetch VN2 Challenger TFT matches → emit tier-list.json (schema 1.1.0)",
+        description="Fetch VN2 Challenger TFT matches → emit tier-list.json (schema 1.2.0)",
     )
     p.add_argument(
         "--region", default=os.environ.get("RIOT_REGION", "vn2"),
