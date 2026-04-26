@@ -1,5 +1,6 @@
 """Resolve trait combo signatures to human-readable comp names."""
 import json
+import re
 from pathlib import Path
 from typing import Tuple
 
@@ -30,5 +31,9 @@ def resolve_comp_name(signature: Tuple[Tuple[str, int], ...]) -> str:
     return " ".join(_strip_prefix(name) for name, _ in top2)
 
 
+_PREFIX_RE = re.compile(r"^(Set|TFT)\d+_")
+
+
 def _strip_prefix(trait_name: str) -> str:
-    return trait_name.replace("Set17_", "")
+    """Strip Riot's set prefix (`Set17_`, `TFT17_`, future-proof for `Set18_`, `TFT18_`)."""
+    return _PREFIX_RE.sub("", trait_name)
