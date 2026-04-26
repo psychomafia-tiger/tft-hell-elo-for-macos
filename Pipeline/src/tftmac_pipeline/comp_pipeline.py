@@ -19,6 +19,12 @@ from tftmac_pipeline.tier_calculator import classify
 
 _GROUPING_THRESHOLD = 0.70
 
+# Comps observed fewer times than this are dropped as statistical noise.
+# (classify() returns Tier.C for sample < 50, but emitting every rare
+# combination — many of which produce 60+ char comp_ids — bloats output
+# and trips the PII heuristic in json_emitter for very-long IDs.)
+_MIN_SAMPLE_TO_EMIT = 10
+
 # Prefixes stripped when building human-readable names and kebab IDs
 _SET_PREFIXES = ("TFT17_", "TFT16_", "TFT15_", "TFT14_", "TFT_")
 
@@ -109,7 +115,7 @@ def build_comps_from_groups(
 ) -> list[CompEntry]:
     """Convert grouped signatures + participant data into CompEntry list.
 
-    Filters comps with tier=None (sample_size < 10).
+    Filters comps with sample_size < _MIN_SAMPLE_TO_EMIT (statistical noise).
     Sorts: S → A → B → C, then by play_rate desc for determinism.
     """
     tier_order = {"S": 0, "A": 1, "B": 2, "C": 3}
@@ -118,6 +124,9 @@ def build_comps_from_groups(
     for group in groups:
         canonical = group["canonical"]
         sample_size = group["frequency"]
+
+        if sample_size < _MIN_SAMPLE_TO_EMIT:
+            continue
 
         group_participants: list[dict] = []
         for variant in group["variants"]:
@@ -136,8 +145,6 @@ def build_comps_from_groups(
         top_4_rate = round(top4_count / len(placements), 4)
 
         tier = classify(play_rate, avg_placement, sample_size)
-        if tier is None:
-            continue
 
         raw_champions = aggregate_champions(group_participants)
         champion_entries = [
