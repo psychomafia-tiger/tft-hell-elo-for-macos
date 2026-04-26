@@ -5,6 +5,45 @@ Append-only — never replace or edit prior entries.
 
 ---
 
+## [phase-01-champion-portraits] — 2026-04-26
+
+### Added
+
+- `AssetCache` service (URLSession + 30-day disk cache, 50MB LRU eviction). SHA-256 URL → filename. Returns nil on 4xx/5xx/timeout for graceful UI fallback.
+- `ChampionAssetURL` builder for CommunityDragon Set 17 CDN. Pattern: `tft17_{lower}/hud/tft17_{lower}_square.tft_set17.png`.
+- Bundled `set17-champions.json` (59 Set 17 IDs with curated displayNames — Kai'Sa, Bel'Veth, Cho'Gath, etc.).
+- New tests: `AssetCacheTests`, `ChampionAssetURLTests`, `ChampionCatalogDataDrivenTests`, `test_aggregator_metadata`.
+
+### Changed
+
+- `ChampionPortrait` renders real CommunityDragon artwork via `.task` async load (was: cost-colored placeholder circles only).
+- `ChampionCatalog` now data-driven from bundled JSON (was: 15-entry hand-coded dict).
+- Tier thresholds relaxed: S = ≥5% play / ≤4.3 avg (was: ≥10% / ≤4.0). Live VN2 data now emits 2 S-tier comps.
+- Pipeline schema unchanged (`1.1.0`).
+
+### Fixed
+
+- **Bug #004**: aggregator now populates top-level `updated_at` + `match_count` fields. App's HeaderBar will show real "X min ago" timestamp on next pipeline run (was: "—").
+
+### Architecture impact
+
+- New Services layer member: `AssetCache.shared` singleton.
+- Disk cache directory: `~/Library/Caches/io.psychomafia.tfthellelo.assets/`.
+- Bundle size +3KB (`set17-champions.json`). No asset bundling — all artwork lazy-fetched.
+- New deep-dive doc: `docs/asset-pipeline-architecture.md`.
+
+### Commits
+
+- `3768b97` fix(pipeline): populate updated_at + match_count metadata (bug #004)
+- `3089cb5` test(pipeline): cover build_tier_list_payload with real matches
+- `d5874b4` tune(pipeline): relax S-tier to 5% play / 4.3 avg (VN2 meta — bug #C1)
+- `bf285a1` feat(app): ChampionAssetURL builder for CommunityDragon CDN
+- `e4004d5` feat(app): AssetCache service with disk persistence + LRU eviction
+- `b35a848` feat(app): data-driven Set 17 champion catalog (~50+ entries)
+- `6605802` feat(app): ChampionPortrait loads real Set 17 art from CommunityDragon
+
+---
+
 ## [v0.2-data-pipeline] — 2026-04-25
 
 ### Added

@@ -300,11 +300,11 @@ require 'xcodeproj'
 proj = Xcodeproj::Project.open('App/TFTMac.xcodeproj')
 target = proj.targets.find { |t| t.name == 'TFTMac' }
 group = proj.main_group.find_subpath('TFTMac/Services', true)
-file = group.new_file('App/TFTMac/Services/ChampionAssetURL.swift')
+file = group.new_file('ChampionAssetURL.swift')  # group-relative, NOT repo-relative
 target.add_file_references([file])
 test_target = proj.targets.find { |t| t.name == 'TFTMacTests' }
 test_group = proj.main_group.find_subpath('TFTMacTests', true)
-test_file = test_group.new_file('App/TFTMacTests/ChampionAssetURLTests.swift')
+test_file = test_group.new_file('ChampionAssetURLTests.swift')  # group-relative
 test_target.add_file_references([test_file])
 proj.save
 puts 'Registered'
@@ -478,11 +478,11 @@ require 'xcodeproj'
 proj = Xcodeproj::Project.open('App/TFTMac.xcodeproj')
 target = proj.targets.find { |t| t.name == 'TFTMac' }
 group = proj.main_group.find_subpath('TFTMac/Services', true)
-file = group.new_file('App/TFTMac/Services/AssetCache.swift')
+file = group.new_file('AssetCache.swift')  # group-relative
 target.add_file_references([file])
 test_target = proj.targets.find { |t| t.name == 'TFTMacTests' }
 test_group = proj.main_group.find_subpath('TFTMacTests', true)
-test_file = test_group.new_file('App/TFTMacTests/AssetCacheTests.swift')
+test_file = test_group.new_file('AssetCacheTests.swift')  # group-relative
 test_target.add_file_references([test_file])
 proj.save
 "
@@ -604,7 +604,7 @@ require 'xcodeproj'
 proj = Xcodeproj::Project.open('App/TFTMac.xcodeproj')
 target = proj.targets.find { |t| t.name == 'TFTMac' }
 group = proj.main_group.find_subpath('TFTMac/Resources', true)
-file = group.new_file('App/TFTMac/Resources/set17-champions.json')
+file = group.new_file('set17-champions.json')  # group-relative
 target.add_resources([file])
 proj.save
 "

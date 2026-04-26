@@ -73,3 +73,25 @@ Append-only log of bugs encountered, fixed, and deferred. New entries go at the 
 - **Fix**: Created `AppLog.diagnostics` (`os.Logger`) in `SignpostChannels.swift`. All diagnostic call sites use `\(value, privacy: .public)` interpolation, e.g., `AppLog.diagnostics.notice("hotkey register() initial result = \(String(describing: result), privacy: .public)")`.
 - **Lesson**: Default to `os.Logger` with explicit `.public` privacy for diagnostic logging in dev contexts. Reserve raw NSLog for messages that must always be private (auth tokens, user-entered data). Document the pattern in code-standards for future contributors.
 
+---
+
+## Bug #004 — Aggregator missing top-level metadata
+
+- **Status**: ✅ Fixed (Phase 1 Task 1, commits `3768b97` + `3089cb5`)
+- **Phase**: phase-01-champion-portraits
+- **Symptom**: `data/tier-list.json` missing `updated_at` + `match_count` keys; app's HeaderBar showed "—" for "X min ago".
+- **Root cause**: aggregator passed payload through `TierListOutput` dataclass → `tier_list_to_dict` without an explicit "build payload" assembly point. Top-level fields silently dropped.
+- **Fix**: extracted `build_tier_list_payload(matches, region, patch) → dict` in `run_aggregator.py`. Added `emit_dict()` helper in `json_emitter.py` to support pre-built dicts through atomic-write + PII gates.
+- **Lesson**: golden fixture test must assert ALL top-level keys, not just structural shape.
+
+---
+
+## Bug #C1 — Tier S unreachable on VN2 sample size
+
+- **Status**: ✅ Fixed (Phase 1 Task 2, commit `d5874b4`)
+- **Phase**: phase-01-champion-portraits
+- **Symptom**: 60 of 63 comps in `tier-list.json` classified C tier — no S, no A. UX implication: "tier list" without a top tier looks broken.
+- **Root cause**: original thresholds (≥10% play_rate, ≤4.0 avg_placement) calibrated against historical large-sample data. VN2 dogfood pulls 527 matches/cycle → no single comp can hit 10% play_rate when ~50 comps split the meta.
+- **Fix**: relaxed S threshold to ≥5% play AND ≤4.3 avg. Now emits 2 S-tier comps on live VN2 data.
+- **Lesson**: tier thresholds need calibration per region/sample-size — a single set of cutoffs doesn't scale across deployment scenarios.
+

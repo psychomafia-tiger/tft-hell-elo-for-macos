@@ -1,6 +1,6 @@
 # System Architecture — TFT Hell Elo
 
-Last updated: 2026-04-25
+Last updated: 2026-04-26
 
 ---
 
@@ -52,6 +52,9 @@ flowchart LR
 | `RemoteFetcher` | `Services/RemoteFetcher.swift` | `actor`; HTTPS fetch with 10s timeout + 1 retry |
 | `DiskCache` | `Services/DiskCache.swift` | Atomic read/write to `~/Library/Caches/io.psychomafia.tfthellelo/tier-list.json` |
 | `SchemaCompatibilityGate` | `Services/SchemaCompatibilityGate.swift` | Pure gate: `.ok` or `.updateRequired` based on major schema version |
+| `AssetCache` | `Services/AssetCache.swift` | URLSession + disk cache (~/Library/Caches/io.psychomafia.tfthellelo.assets/); 30-day TTL via mtime; 50MB LRU; SHA-256 URL→filename. Returns nil on 4xx/5xx/timeout for graceful UI fallback. |
+| `ChampionAssetURL` | `Services/ChampionAssetURL.swift` | Pure URL builder for CommunityDragon Set 17 portraits. Pattern: `tft17_{lower}/hud/tft17_{lower}_square.tft_set17.png`. |
+| `ChampionCatalog` | `Generated/ChampionCatalog.swift` | Data-driven from bundled `Resources/set17-champions.json` (59 entries). `displayName(forId:)` lookup. |
 
 **Fetch chain priority (refresh()):**
 1. `RemoteFetcher` → schema gate → cache write → publish `.fresh`
@@ -77,6 +80,7 @@ flowchart LR
 | `TierListPopover` | Root MenuBarExtra view. Reads `@EnvironmentObject DataManager`. |
 | `CompListView` | Scrollable comp list. Renders `BannerBar` + `UpdateRequiredOverlay`. |
 | `CompCard` (`CompCardV2`) | Per-comp card: header row + `CompCardItemsRow` + `CompCardAnomaliesRow`. |
+| `ChampionPortrait` | Renders Set 17 champion artwork via `AssetCache` async load (`.task` modifier). Falls back to cost-colored placeholder circle on cache miss / load failure. |
 | `CompCardAnomaliesRow` | Chip row for Set 17 EkkoOffering anomaly recommendations. Hidden when empty. |
 | `UpdateRequiredOverlay` | Full-screen overlay when `bannerState == .updateRequired`. |
 | `OverlayWindowController` | NSPanel lifecycle owner (eager-init for < 50ms first-show). |
@@ -144,7 +148,11 @@ App/TFTMac/
 │   ├── DataManager.swift          — fetch orchestrator, @Published state
 │   ├── RemoteFetcher.swift        — HTTPS actor
 │   ├── DiskCache.swift            — file-backed cache
-│   └── SchemaCompatibilityGate.swift
+│   ├── SchemaCompatibilityGate.swift
+│   ├── AssetCache.swift           — URLSession + disk cache for portraits (30d TTL, 50MB LRU)
+│   └── ChampionAssetURL.swift     — CommunityDragon Set 17 portrait URL builder
+├── Generated/
+│   └── ChampionCatalog.swift      — data-driven displayName lookup (loads bundled JSON)
 ├── Models/
 │   ├── TierList.swift
 │   ├── Comp.swift                 — forward-compat anomalies decoder
@@ -155,11 +163,13 @@ App/TFTMac/
 │   ├── TierListPopover.swift
 │   ├── CompListView.swift
 │   ├── CompCard.swift
+│   ├── ChampionPortrait.swift     — async portrait render via AssetCache
 │   ├── CompCardAnomaliesRow.swift
 │   ├── UpdateRequiredOverlay.swift
 │   └── OverlayWindowController.swift
 └── Resources/
-    └── sample-tier-list.json      — bundled fallback (schema 1.0.0)
+    ├── sample-tier-list.json      — bundled fallback (schema 1.0.0)
+    └── set17-champions.json       — 59 Set 17 champion IDs + display names
 
 Pipeline/src/tftmac_pipeline/
 ├── riot_client.py                 — async Riot API client
@@ -182,6 +192,7 @@ data/
 ## Cross-references
 
 - Data pipeline deep-dive: `docs/data-pipeline-architecture.md`
+- Asset pipeline deep-dive (Phase 1): `docs/asset-pipeline-architecture.md`
 - v0.1 design spec: `docs/design-v0.1-menu-bar-popover.md`
 - Naming conventions: `docs/naming-conventions.md`
 - Bugs log: `docs/bugs-log.md`
