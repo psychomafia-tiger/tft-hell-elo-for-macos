@@ -1,0 +1,9 @@
+{
+  "_comment": "Maps trait combo signatures to semantic comp names. Key = sorted trait names joined by '+'. Value = display name. Fallback: top 2 trait names joined.",
+  "Set17_Dominator+Set17_Marksman": "Dominator Marksmen",
+  "Set17_Psionic+Set17_Conduit": "Psionic Conduits",
+  "Set17_Storm+Set17_Quickdraw": "Storm Quickdraw",
+  "Set17_Marauder+Set17_Primordian": "Primordian Marauders",
+  "Set17_Bastion+Set17_Vanguard": "Bastion Wall",
+  "Set17_Sorcerer+Set17_Scholar": "Sorcerer Scholars"
+}
