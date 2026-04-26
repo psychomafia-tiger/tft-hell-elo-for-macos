@@ -149,8 +149,17 @@ def emit(output: TierListOutput, path: Path) -> None:
         output: Fully populated TierListOutput dataclass.
         path: Destination path (parent directory must exist).
     """
-    as_dict = tier_list_to_dict(output)
-    json_text = json.dumps(as_dict, sort_keys=True, indent=2, ensure_ascii=False)
+    emit_dict(tier_list_to_dict(output), path)
+
+
+def emit_dict(payload: dict, path: Path) -> None:
+    """Write a pre-built payload dict to path as deterministic JSON.
+
+    Same atomicity + PII guarantees as `emit()`. Used by callers that need
+    to attach extra top-level keys (e.g. bug #004 `updated_at` / `match_count`
+    aliases) before serialisation.
+    """
+    json_text = json.dumps(payload, sort_keys=True, indent=2, ensure_ascii=False)
 
     # PII safety gate — never write output containing raw identifiers
     _check_pii(json_text)
