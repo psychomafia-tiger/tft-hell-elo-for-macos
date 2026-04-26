@@ -3,7 +3,7 @@
 **Parent plan:** [plan.md](plan.md)
 **Status:** ⏳ Blocked by Phase 1
 **Effort:** 14-23h
-**Gaps closed:** A2 (semantic comp names), A3 (trait synergies + counts), B3 (trait icons), C2 (trait-combo aggregator rewrite)
+**Gaps closed:** A2 (semantic comp names), A3 (trait synergies + counts), B3 (trait icons), C2 (trait-combo aggregator rewrite), Bug #005 (star_level data + 3-star-only render)
 **Manual gate before:** Phase 1 merged + anh sees real portraits live
 **Manual gate after:** anh inspects 3 different comps, all show meaningful trait names ("Psionic Conduits") and trait chips with active counts
 
@@ -1045,6 +1045,146 @@ xcodebuild test -project App/TFTMac.xcodeproj -scheme TFTMac -destination 'platf
 ```bash
 git add App/TFTMac/Resources/sample-tier-list.json App/TFTMacTests/regression/SampleTierListFixtureTests.swift
 git commit -m "data: refresh bundled fixture to schema 1.2.0 (trait-aware)"
+```
+
+---
+
+## Task 10b: Bug #005 fix — star_level data + 3-star-only render (TDD)
+
+**Files:**
+- Modify: `Pipeline/src/tftmac_pipeline/champion_aggregator.py` — aggregate modal `tier` per champion
+- Modify: `Pipeline/src/tftmac_pipeline/json_emitter.py` — emit `star_level` in champion dict
+- Modify: `App/TFTMac/Models/Champion.swift` — add `starLevel: Int` with forward-compat default 1
+- Modify: `App/TFTMac/Views/StarLevelIndicator.swift` — render only when level >= 3
+- Modify: `App/TFTMac/Views/ChampionPortrait.swift` — pass `champion.starLevel` instead of `derivedLevel`
+- Test: `Pipeline/tests/test_star_level_aggregation.py` (CREATE)
+- Test: append to `App/TFTMacTests/CompCardV2Tests.swift` — assert star indicator hidden for 1/2-star
+
+- [ ] **Step 1: Pipeline test (TDD red)**
+
+```python
+# Pipeline/tests/test_star_level_aggregation.py
+"""Bug #005 — emit modal observed star_level per champion."""
+from tftmac_pipeline.champion_aggregator import extract_champions
+
+def test_star_level_modal_from_top4():
+    participants = [
+        {"placement": 1, "units": [{"character_id": "TFT17_Viktor", "tier": 3, "rarity": 2, "items": []}]},
+        {"placement": 2, "units": [{"character_id": "TFT17_Viktor", "tier": 3, "rarity": 2, "items": []}]},
+        {"placement": 3, "units": [{"character_id": "TFT17_Viktor", "tier": 2, "rarity": 2, "items": []}]},
+    ]
+    champs = extract_champions(participants)
+    viktor = next(c for c in champs if c["id"] == "TFT17_Viktor")
+    assert viktor["star_level"] == 3  # 2/3 vote → modal=3
+```
+
+- [ ] **Step 2: Pipeline implementation**
+
+In `champion_aggregator.py` extract function, add per-champion star aggregation:
+
+```python
+from collections import Counter
+
+# Inside the existing per-champion aggregation loop, alongside item collection:
+star_counts: Counter[int] = Counter()
+for p in top4_with_champ:
+    for u in p["units"]:
+        if u["character_id"] == cid:
+            tier = u.get("tier", 1)
+            if 1 <= tier <= 3:
+                star_counts[tier] += 1
+modal_star = star_counts.most_common(1)[0][0] if star_counts else 1
+
+# Add to emitted dict:
+{"id": cid, "cost": ..., "is_carry": ..., "star_level": modal_star, "items": [...]}
+```
+
+- [ ] **Step 3: Run pipeline tests**
+
+```bash
+cd Pipeline && .venv/bin/pytest tests/test_star_level_aggregation.py -v && .venv/bin/pytest -v
+```
+
+Expected: green.
+
+- [ ] **Step 4: Swift Champion model**
+
+In `App/TFTMac/Models/Champion.swift`, add property + forward-compat decode:
+
+```swift
+struct Champion: Codable {
+    let id: String
+    let cost: Int
+    let isCarry: Bool
+    let items: [ItemBuild]
+    let starLevel: Int   // NEW — 1, 2, or 3. Default 1 for legacy schema.
+
+    enum CodingKeys: String, CodingKey {
+        case id, cost, isCarry, items, starLevel
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try c.decode(String.self, forKey: .id)
+        self.cost = try c.decode(Int.self, forKey: .cost)
+        self.isCarry = try c.decode(Bool.self, forKey: .isCarry)
+        self.items = try c.decode([ItemBuild].self, forKey: .items)
+        self.starLevel = (try? c.decodeIfPresent(Int.self, forKey: .starLevel)) ?? 1
+    }
+}
+```
+
+- [ ] **Step 5: StarLevelIndicator — 3-star-only render**
+
+```swift
+struct StarLevelIndicator: View {
+    let level: Int
+
+    var body: some View {
+        if level >= 3 {
+            HStack(spacing: 1) {
+                ForEach(0..<3, id: \.self) { _ in
+                    Image(systemName: "star.fill")
+                        .font(.system(size: 7, weight: .bold))
+                        .foregroundStyle(Theme.Colors.accentGold)
+                }
+            }
+        }
+        // 1-star and 2-star: render nothing (TFTactics convention)
+    }
+
+    // Deprecated: kept for backward-compat during migration; remove after callers updated.
+    @available(*, deprecated, message: "Use champion.starLevel directly")
+    static func derivedLevel(for champion: Champion) -> Int {
+        champion.starLevel
+    }
+}
+```
+
+- [ ] **Step 6: ChampionPortrait wire**
+
+```swift
+StarLevelIndicator(level: champion.starLevel)  // was: StarLevelIndicator.derivedLevel(for: champion)
+```
+
+- [ ] **Step 7: Swift tests**
+
+Add test to verify hidden state:
+```swift
+func test_starIndicator_hiddenFor1Or2Star() {
+    let oneStar = Champion(id: "TFT17_X", cost: 1, isCarry: false, items: [], starLevel: 1)
+    let twoStar = Champion(id: "TFT17_X", cost: 2, isCarry: true, items: [], starLevel: 2)
+    let threeStar = Champion(id: "TFT17_X", cost: 1, isCarry: true, items: [], starLevel: 3)
+    // Render each via inspection (use ViewInspector or snapshot) — assert
+    // 1/2 star renders empty; 3-star renders 3 stars.
+}
+```
+
+- [ ] **Step 8: Commit**
+
+```bash
+git add Pipeline/ App/
+git commit -m "fix(app+pipeline): star_level data-driven, 3-star-only render (bug #005)"
 ```
 
 ---

@@ -86,6 +86,24 @@ Append-only log of bugs encountered, fixed, and deferred. New entries go at the 
 
 ---
 
+## Bug #005 — Champion star indicator wrong: shows on 1/2 star, missing on 3-star
+
+- **Status**: ⏳ Deferred (Phase 2 fold-in)
+- **Phase**: Surfaced post-Phase-1 (manual gate test 2026-04-26 20:24)
+- **Symptom**: Anh test popover sau Phase 1 — star overlay logic sai. Đúng convention TFTactics: **chỉ 3-star champions render ★★★ (gold)**; 1-star + 2-star champions render NOTHING. User mặc định hiểu "no stars = 1 hoặc 2 star, không quan trọng". Hiện code render stars cho carry (2 stars) và non-carry (1 star) tùm lum, dẫn đến visual noise sai chuẩn.
+- **Root cause** (2 layers):
+  1. **Pipeline** (`Pipeline/src/tftmac_pipeline/champion_aggregator.py`) không emit `star_level` per champion. Schema 1.1.0 `Champion` chỉ có `id`, `cost`, `is_carry`, `items`.
+  2. **App** (`App/TFTMac/Views/StarLevelIndicator.swift:32-34`): `derivedLevel(for:)` heuristic = `isCarry ? 2 : 1`. Hardcoded sai, render mọi champion bất kể actual star tier.
+- **Fix plan** (Phase 2 fold-in):
+  1. Pipeline: aggregate modal `tier` value (Riot Match-v5 `units[].tier` field, range 1-3) per champion across top-4 placements. Emit `star_level: int` in Champion JSON.
+  2. App: extend `Champion` Swift model với `starLevel: Int` (forward-compat default 1).
+  3. `StarLevelIndicator` body: `if level >= 3 { render 3 yellow stars } else { EmptyView() }` — bỏ clamp [1,3], thêm threshold check.
+  4. `derivedLevel(for:)` deprecated/removed sau khi `Champion.starLevel` available.
+  5. Schema bump 1.2.0 (cùng đợt với trait emission Phase 2).
+- **Lesson**: Heuristic placeholder (`isCarry → 2 stars`) leak through to user visual ngay cả khi "Phase 2 will fix" — should đã stub-rendered TBD/empty thay vì render data sai. Visual placeholders create false expectation rằng data thực.
+
+---
+
 ## Bug #C1 — Tier S unreachable on VN2 sample size
 
 - **Status**: ✅ Fixed (Phase 1 Task 2, commit `d5874b4`)
