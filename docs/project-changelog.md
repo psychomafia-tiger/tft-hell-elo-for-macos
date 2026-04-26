@@ -69,3 +69,27 @@ See `docs/bugs-log.md`:
 - Git history bloat mitigation (orphan branch / Git LFS / separate data repo)
 - SHA auto-bump tooling (Renovate/Dependabot)
 - Multi-region match pool (KR mix when shipping 9 testers)
+
+---
+
+## [v0.2-data-pipeline-hotfix-260426] — 2026-04-26
+
+### Fixed
+
+- **Bug #001b** — Over-defensive `AXIsProcessTrusted()` gate in `HotkeyRegistrar.register()` blocked Carbon hotkey registration despite Carbon `RegisterEventHotKey` not requiring Accessibility permission. Removed gate. Hotkey now binds on first launch without user grant. (See bugs-log Bug #001b for full reasoning.)
+- **Bug #001c** — All NSLog string interpolations redacted as `<private>` in unified log (macOS default privacy), making in-process diagnose impossible. Migrated diagnostic logging to `os.Logger` with explicit `\(value, privacy: .public)` interpolation. New shared logger: `AppLog.diagnostics` (subsystem `io.psychomafia.tfthellelo`, category `diagnostics`).
+
+### Changed
+
+- `HotkeyRegistrar.register()` no longer invokes `trustedCheck()` — parameter retained as dead-code for future opt-in (CGEventTap features in Phase 2).
+- Removed obsolete tests `testAccessibilityDeniedInvokesPermissionCallback` + `testPermissionDeniedBypassesRegistration`. Replaced with `testRegisterSucceedsEvenWhenTrustedCheckReturnsFalse` (asserts new contract).
+- `OverlayWindowController.toggle()` + `TFTMacApp` init NSLogs migrated to `AppLog.diagnostics.notice(_:)`.
+
+### Architecture impact
+
+- None at high-level (no new modules, no API surface change to public callers).
+- Internal: `SignpostChannels.swift` now hosts `AppLog` enum alongside `PopoverSignpost` (single shared logging namespace).
+
+### Test gate progress (founder dogfood)
+
+- ✅ Test 3 Cmd+Shift+T hotkey — verified 4 consecutive toggles, <1ms latency hotkey→toggle, state machine consistent

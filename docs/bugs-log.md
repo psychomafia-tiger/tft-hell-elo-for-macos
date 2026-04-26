@@ -52,3 +52,24 @@ Append-only log of bugs encountered, fixed, and deferred. New entries go at the 
 ## Phase audit log
 
 - 2026-04-25 — Phases 01–03 (data pipeline) completed: zero new bugs. 80/80 unit tests + 1/1 UI test pass. Build clean.
+
+## Bug #001b — Over-defensive AXIsProcessTrusted gate blocking Carbon hotkey
+
+- **Status**: ✅ Fixed (2026-04-26)
+- **Phase**: data-pipeline-real-riot Test 3
+- **Symptom**: Cmd+Shift+T silent fail. Diagnostic log shows `register() initial result = failure(.accessibilityDenied)` despite anh granting Accessibility multiple times. Even with valid TCC entry, register would bail on `trustedCheck()` returning false (TCC cdhash drift per rebuild — see Bug #001).
+- **Root cause**: `HotkeyRegistrar.register()` had a guard `guard trustedCheck() else { return .failure(.accessibilityDenied) }` based on incorrect assumption that Carbon hotkey needs Accessibility. **Carbon `RegisterEventHotKey` API does NOT require Accessibility permission** — it registers a (key+modifier) tuple with the Window Server at the syscall layer; only `CGEventTap` (HID-level interception) requires AX. Guard was over-defensive copy-paste from CGEventTap pattern.
+- **Fix**: Removed guard from `register()`. Carbon registration now proceeds unconditionally. `trustedCheck` parameter retained as dead code for Phase 2 CGEventTap features (e.g., Tab-key comp-suggestion overlay).
+- **Lesson**: Verify API requirements against authoritative docs BEFORE adding "defensive" checks. Apple's permission gates are API-specific; defending one with another's gate creates phantom failures invisible from outside. Cost = ~1 hour anh + agent time on TCC permission dance which solved nothing.
+
+---
+
+## Bug #001c — NSLog string interpolations redacted as `<private>` in unified log
+
+- **Status**: ✅ Fixed (2026-04-26)
+- **Phase**: data-pipeline-real-riot Test 3 diagnose
+- **Symptom**: NSLog calls like `NSLog("TFT Hell Elo: hotkey register result = \(result)")` appear in `log show` as `(Foundation) <private>` — message body fully redacted. No way to read diagnostic state without `sudo log config --mode "private_data:on"` (system-wide reboot-persistent change, not safe).
+- **Root cause**: macOS unified logging redacts string interpolations from NSLog (and all `os_log` without explicit privacy markers) by default. This is privacy-by-default — protects against credentials/PII leaking via app logs visible to other users on shared systems. Fine for production but blocks diagnose during dev.
+- **Fix**: Created `AppLog.diagnostics` (`os.Logger`) in `SignpostChannels.swift`. All diagnostic call sites use `\(value, privacy: .public)` interpolation, e.g., `AppLog.diagnostics.notice("hotkey register() initial result = \(String(describing: result), privacy: .public)")`.
+- **Lesson**: Default to `os.Logger` with explicit `.public` privacy for diagnostic logging in dev contexts. Reserve raw NSLog for messages that must always be private (auth tokens, user-entered data). Document the pattern in code-standards for future contributors.
+

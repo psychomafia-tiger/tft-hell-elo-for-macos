@@ -1,4 +1,5 @@
 import Foundation
+import os
 import os.signpost
 
 /// Shared OSLog + OSSignpostID for cross-file signpost correlation.
@@ -31,4 +32,12 @@ enum PopoverSignpost {
     static let log = OSLog(subsystem: "io.psychomafia.tfthellelo", category: "popover")
     static let id = OSSignpostID(log: log)
     static let name: StaticString = "popover.open"
+}
+
+/// Diagnostic logger with explicit `.public` privacy on all interpolations.
+/// Plain NSLog redacts string interpolations to `<private>` in unified log
+/// (macOS default), making bug diagnose impossible without `sudo log config`.
+/// Call sites must use `\(value, privacy: .public)` for visible output.
+enum AppLog {
+    static let diagnostics = Logger(subsystem: "io.psychomafia.tfthellelo", category: "diagnostics")
 }

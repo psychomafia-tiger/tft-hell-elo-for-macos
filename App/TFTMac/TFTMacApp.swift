@@ -70,13 +70,13 @@ struct TFTMacApp: App {
             // Direct remedy: open Accessibility pane. Phase 3 may wrap this in
             // a SwiftUI Alert scene for friendlier copy; for now, the system
             // settings open itself communicates the required action.
-            NSLog("TFT Hell Elo: Accessibility permission denied — opening System Settings")
+            AppLog.diagnostics.notice("Accessibility permission denied — opening System Settings")
             hotkeyRegistrar.openAccessibilitySettings()
         }
         hotkeyRegistrar.onConflict = {
             // Another app holds Cmd+Shift+T (Alfred/Raycast/Rectangle are the
             // usual suspects). Log so founder sees in Console during dogfood.
-            NSLog("TFT Hell Elo: Cmd+Shift+T already bound by another app (Alfred/Raycast/Rectangle?)")
+            AppLog.diagnostics.notice("Cmd+Shift+T already bound by another app (Alfred/Raycast/Rectangle?)")
         }
 
         // Register the global hotkey with **dual-route** per Wave 5b D1 decision:
@@ -108,10 +108,26 @@ struct TFTMacApp: App {
         // (a) overlay route render same content (CompListView shared), và
         // (b) popover route chỉ là backup khi overlay disabled trong Settings
         // (Phase 3 feature). Hotkey use case = trigger overlay over game.
-        _ = hotkeyRegistrar.register { [overlayController] in
+        let registerResult = hotkeyRegistrar.register { [overlayController] in
+            AppLog.diagnostics.notice("⌘⇧T fired — invoking overlay toggle")
             os_signpost(.begin, log: PopoverSignpost.log, name: PopoverSignpost.name,
                         signpostID: PopoverSignpost.id, "Hotkey fired")
             overlayController.toggle()  // overlay-only — no app activation
+        }
+        AppLog.diagnostics.notice("hotkey register() initial result = \(String(describing: registerResult), privacy: .public)")
+
+        // Bug #001b retry-after-grant: when first register() failed with
+        // .accessibilityDenied, openAccessibilitySettings() sent user to System
+        // Settings. Once they tick Allow and click back to TFT Hell Elo,
+        // didBecomeActive fires → retry the pending registration with the
+        // captured onFire closure. Avoids the "approve → quit → relaunch" dance
+        // that's especially painful during Xcode dev (every Cmd+R = new cdhash =
+        // TCC re-prompt). See Bug #001 (cdhash invalidation) in docs/bugs-log.md.
+        NotificationCenter.default.addObserver(forName: NSApplication.didBecomeActiveNotification,
+                                               object: nil, queue: .main) { [hotkeyRegistrar] _ in
+            if case .success = hotkeyRegistrar.retryIfPending() {
+                AppLog.diagnostics.notice("hotkey registration succeeded after Accessibility grant")
+            }
         }
     }
 

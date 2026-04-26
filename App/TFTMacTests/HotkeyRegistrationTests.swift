@@ -52,41 +52,25 @@ final class HotkeyRegistrationTests: XCTestCase {
         XCTAssertTrue(conflictCallbackFired, "onConflict should fire on second register attempt")
     }
 
-    // MARK: - Permission detection
+    // MARK: - Accessibility-not-required (Carbon hotkey)
+    //
+    // Removed earlier "permission denied" tests — Carbon RegisterEventHotKey
+    // does NOT require Accessibility permission. Earlier guard was overly
+    // defensive; see HotkeyRegistrar.register() doc-comment for full reasoning.
+    // Tests below verify register() proceeds regardless of trustedCheck value.
 
-    func testAccessibilityDeniedInvokesPermissionCallback() {
+    func testRegisterSucceedsEvenWhenTrustedCheckReturnsFalse() {
+        // Carbon doesn't need AX trust — registration proceeds and Carbon API
+        // does the actual work (or fails at Carbon level, surfaced separately).
         let registrar = HotkeyRegistrar(
-            trustedCheck: { false },  // TCC not granted
+            trustedCheck: { false },  // AX trust irrelevant for Carbon
             registerImpl: { _ in StubToken() }
         )
 
-        var permissionCallbackFired = false
-        registrar.onPermissionDenied = { permissionCallbackFired = true }
-
         let result = registrar.register { }
 
-        XCTAssertTrue(permissionCallbackFired, "onPermissionDenied should fire when trustedCheck returns false")
-        guard case .failure(.accessibilityDenied) = result else {
-            return XCTFail("Expected .accessibilityDenied error, got \(result)")
+        guard case .success = result else {
+            return XCTFail("Expected .success regardless of trustedCheck, got \(result)")
         }
-    }
-
-    // MARK: - Integration smoke
-
-    func testPermissionDeniedBypassesRegistration() {
-        // Verify that when permission denied, registerImpl is NOT called
-        // (no-op on registration — prevents empty-token state).
-        var registerImplCalled = false
-        let registrar = HotkeyRegistrar(
-            trustedCheck: { false },
-            registerImpl: { _ in
-                registerImplCalled = true
-                return StubToken()
-            }
-        )
-
-        _ = registrar.register { }
-
-        XCTAssertFalse(registerImplCalled, "registerImpl must not be invoked when permission denied")
     }
 }

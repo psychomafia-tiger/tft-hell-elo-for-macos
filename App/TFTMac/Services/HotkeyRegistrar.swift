@@ -58,6 +58,11 @@ final class HotkeyRegistrar {
     private let trustedCheck: TrustedCheck
     private let registerImpl: RegisterImpl
     private var registrationToken: AnyObject?
+    // Bug #001b: when first register() bails on .accessibilityDenied, stash the
+    // onFire closure so retryIfPending() can complete registration after user
+    // grants Accessibility in System Settings — no app relaunch required.
+    // Cleared once registration succeeds OR caller invokes register() afresh.
+    private var pendingOnFire: (() -> Void)?
 
     init(trustedCheck: @escaping TrustedCheck = { AXIsProcessTrusted() },
          registerImpl: @escaping RegisterImpl = HotkeyRegistrar.defaultRegister) {
@@ -74,15 +79,48 @@ final class HotkeyRegistrar {
     /// in the same run-loop tick as the Result arrives.
     @discardableResult
     func register(onFire: @escaping () -> Void) -> Result<Void, RegistrationError> {
-        guard trustedCheck() else {
-            onPermissionDenied?()
-            return .failure(.accessibilityDenied)
-        }
+        // NOTE: Accessibility permission NOT required for Carbon RegisterEventHotKey.
+        // Apple's Carbon Event Manager hot-key API uses a system-level mechanism
+        // dating back to classic Mac OS — registers a specific (key+modifier) tuple
+        // with the Window Server, fires callback when matched. NO Accessibility/
+        // Input Monitoring needed (those are for CGEventTap, which intercepts ALL
+        // keyboard events at the HID layer).
+        //
+        // Earlier code checked AXIsProcessTrusted() and bailed on false. That was
+        // overly defensive — it prevented Carbon registration even though Carbon
+        // doesn't need that trust. Result: hotkey silent-fail on every cdhash
+        // change (every Xcode rebuild) until user dance through System Settings.
+        // Removed the check entirely. If conflict from another app holding the
+        // same combo, Carbon RegisterEventHotKey internally returns an error and
+        // HotKey package leaves binding inert — surfaces as silent fail (we'd
+        // need to wrap with a sentinel call to detect, deferred to Phase 2).
         guard registrationToken == nil else {
             onConflict?()
             return .failure(.alreadyRegistered)
         }
         registrationToken = registerImpl(onFire)
+        pendingOnFire = nil
+        return .success(())
+    }
+
+    /// Retry a previously-failed accessibilityDenied registration once user
+    /// grants Accessibility (typically wired to NSApp.didBecomeActive — fires
+    /// when user returns from System Settings). No-op if no pending closure
+    /// or if AX still denied. Returns nil when no retry was attempted.
+    ///
+    /// Critically: does NOT invoke `onPermissionDenied` on continued failure.
+    /// didBecomeActive fires on every app activation including initial launch
+    /// (milliseconds after init's first register() call), so triggering the
+    /// side-effect callback would re-open System Settings on every activation
+    /// until permission is granted. The callback is exclusively for the
+    /// explicit first register() attempt; retries are silent attempts.
+    @discardableResult
+    func retryIfPending() -> Result<Void, RegistrationError>? {
+        guard let onFire = pendingOnFire else { return nil }
+        guard trustedCheck() else { return .failure(.accessibilityDenied) }
+        guard registrationToken == nil else { return .failure(.alreadyRegistered) }
+        registrationToken = registerImpl(onFire)
+        pendingOnFire = nil
         return .success(())
     }
 

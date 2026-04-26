@@ -112,6 +112,7 @@ final class OverlayWindowController: ObservableObject {
     /// Idempotent toggle used by the hotkey dual-route.
     /// Tests assert 10+ consecutive calls leave state consistent (no orphan panel).
     func toggle() {
+        AppLog.diagnostics.notice("OverlayWindowController.toggle() — isVisible=\(self.isVisible, privacy: .public) panel=\(self.panel == nil ? "nil" : "alive", privacy: .public)")
         if isVisible {
             hide()
         } else {
