@@ -46,9 +46,6 @@ on:
   # when patch drops mid-cycle. Same security posture as cron: only repo owner
   # can dispatch (forks can't trigger workflows in base repo).
   workflow_dispatch:
-  workflow_dispatch:
-    # Manual trigger — anh uses this for first-run verification and
-    # after rotating the Riot API key mid-cycle.
 
 # Principle of least privilege: write access to contents (git push) only.
 # No id-token (no OIDC), no packages, no actions write.
