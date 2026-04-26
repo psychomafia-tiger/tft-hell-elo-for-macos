@@ -13,6 +13,7 @@
 		0969AD5F3AD9FC366F0DADD0 /* Comp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5ABAB08CC8CA23E71E2ED6 /* Comp.swift */; };
 		1887F0E047449B1139366DAF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4253A261F0CB1BD35211BA94 /* README.md */; };
 		1CAD6845D6D43FDAD355B8F4 /* CompCardV2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE081998A8013D5EBA3CA19F /* CompCardV2Tests.swift */; };
+		1E8966B571334E674956495B /* set17-champions.json in Resources */ = {isa = PBXBuildFile; fileRef = D86BAA3006DAEF0F74B1DF37 /* set17-champions.json */; };
 		1F4757346973F944761750C6 /* SchemaVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C122A4919B84DE756F8F8 /* SchemaVersion.swift */; };
 		253A37CD9259A374546933DE /* ExpandedCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468C719BA17077DC5C43A33 /* ExpandedCardView.swift */; };
 		28052BC883E79ECF09F73814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19EEE04064D94531D37DBA18 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		D05034CEF7FF064879E49C1D /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C25CD32969743DAECB491F8 /* DiskCache.swift */; };
 		D78C78C997974A720C094ED6 /* ItemCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B493F9514E092B07EE3AFE2B /* ItemCatalog.swift */; };
 		E7E40C303317C1644A9EFE60 /* PlaystyleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E19F35778612EE67B70826 /* PlaystyleLabel.swift */; };
+		F0DED9E61C4B8D75354D190D /* ChampionCatalogDataDrivenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CEB6D5DC79E2A53B0C7F1F /* ChampionCatalogDataDrivenTests.swift */; };
 		F2510597F67D6344C3415A89 /* OverlayWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5D9991300696D33DE47790 /* OverlayWindowController.swift */; };
 		F67D9DB4BCF8DCEEC85A6B96 /* AppLaunchMetricTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3A7AD5887C6F940A5C081 /* AppLaunchMetricTests.swift */; };
 		F865CBC2186506E1F75209AB /* TierListPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CB1DC7266A4354ED2CF025 /* TierListPopover.swift */; };
@@ -108,6 +110,7 @@
 		541A42A38D5D2F3BBFEF72DB /* RemoteFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RemoteFetcherTests.swift; path = TFTMacTests/RemoteFetcherTests.swift; sourceTree = SOURCE_ROOT; };
 		54BF06670AEF4C39FDFA4219 /* AssetCacheTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssetCacheTests.swift; sourceTree = "<group>"; };
 		55FE238C626AABAC06C90DC0 /* SchemaCompatibilityGateTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SchemaCompatibilityGateTests.swift; sourceTree = "<group>"; };
+		61CEB6D5DC79E2A53B0C7F1F /* ChampionCatalogDataDrivenTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChampionCatalogDataDrivenTests.swift; sourceTree = "<group>"; };
 		66D86BC5ED70D3AD253DEE69 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		66E3A7AD5887C6F940A5C081 /* AppLaunchMetricTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchMetricTests.swift; sourceTree = "<group>"; };
 		68CB1DC7266A4354ED2CF025 /* TierListPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierListPopover.swift; sourceTree = "<group>"; };
@@ -137,6 +140,7 @@
 		C8BAC8263CA469DED267E340 /* ChampionAssetURLTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ChampionAssetURLTests.swift; sourceTree = "<group>"; };
 		CBA115C2517FEE2DCF4EE12B /* AssetCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssetCache.swift; sourceTree = "<group>"; };
 		D468C719BA17077DC5C43A33 /* ExpandedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedCardView.swift; sourceTree = "<group>"; };
+		D86BAA3006DAEF0F74B1DF37 /* set17-champions.json */ = {isa = PBXFileReference; includeInIndex = 1; path = "set17-champions.json"; sourceTree = "<group>"; };
 		DE081998A8013D5EBA3CA19F /* CompCardV2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompCardV2Tests.swift; sourceTree = "<group>"; };
 		DF5D9991300696D33DE47790 /* OverlayWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindowController.swift; sourceTree = "<group>"; };
 		E0A5E961A14C1907B7415058 /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 				55FE238C626AABAC06C90DC0 /* SchemaCompatibilityGateTests.swift */,
 				C8BAC8263CA469DED267E340 /* ChampionAssetURLTests.swift */,
 				54BF06670AEF4C39FDFA4219 /* AssetCacheTests.swift */,
+				61CEB6D5DC79E2A53B0C7F1F /* ChampionCatalogDataDrivenTests.swift */,
 			);
 			path = TFTMacTests;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 				35895F55BCB1220D4060B8C0 /* sample-tier-list.json */,
 				8C91D03ECF3874347C0DA128 /* TFTMac.entitlements */,
 				3D2924AF422FD54F123FC278 /* Theme.swift */,
+				D86BAA3006DAEF0F74B1DF37 /* set17-champions.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -417,6 +423,7 @@
 			files = (
 				28052BC883E79ECF09F73814 /* Assets.xcassets in Resources */,
 				CFB841EB1AAC813D8560F604 /* sample-tier-list.json in Resources */,
+				1E8966B571334E674956495B /* set17-champions.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +458,7 @@
 				681D4A66A22D74F87E3C80B6 /* SchemaCompatibilityGateTests.swift in Sources */,
 				8B44A03D3B0BB997D6B01AB7 /* ChampionAssetURLTests.swift in Sources */,
 				756EF50259C7167489CB1F6C /* AssetCacheTests.swift in Sources */,
+				F0DED9E61C4B8D75354D190D /* ChampionCatalogDataDrivenTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

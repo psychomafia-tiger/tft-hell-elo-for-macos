@@ -1,0 +1,238 @@
+[
+  {
+    "id": "TFT17_Aatrox",
+    "displayName": "Aatrox"
+  },
+  {
+    "id": "TFT17_Akali",
+    "displayName": "Akali"
+  },
+  {
+    "id": "TFT17_AurelionSol",
+    "displayName": "Aurelion Sol"
+  },
+  {
+    "id": "TFT17_Aurora",
+    "displayName": "Aurora"
+  },
+  {
+    "id": "TFT17_Bard",
+    "displayName": "Bard"
+  },
+  {
+    "id": "TFT17_Belveth",
+    "displayName": "Bel'Veth"
+  },
+  {
+    "id": "TFT17_Blitzcrank",
+    "displayName": "Blitzcrank"
+  },
+  {
+    "id": "TFT17_Briar",
+    "displayName": "Briar"
+  },
+  {
+    "id": "TFT17_Caitlyn",
+    "displayName": "Caitlyn"
+  },
+  {
+    "id": "TFT17_Chogath",
+    "displayName": "Cho'Gath"
+  },
+  {
+    "id": "TFT17_Corki",
+    "displayName": "Corki"
+  },
+  {
+    "id": "TFT17_Fiora",
+    "displayName": "Fiora"
+  },
+  {
+    "id": "TFT17_Fizz",
+    "displayName": "Fizz"
+  },
+  {
+    "id": "TFT17_Galio",
+    "displayName": "Galio"
+  },
+  {
+    "id": "TFT17_Gnar",
+    "displayName": "Gnar"
+  },
+  {
+    "id": "TFT17_Gragas",
+    "displayName": "Gragas"
+  },
+  {
+    "id": "TFT17_Graves",
+    "displayName": "Graves"
+  },
+  {
+    "id": "TFT17_Gwen",
+    "displayName": "Gwen"
+  },
+  {
+    "id": "TFT17_Illaoi",
+    "displayName": "Illaoi"
+  },
+  {
+    "id": "TFT17_IvernMinion",
+    "displayName": "Ivern Minion"
+  },
+  {
+    "id": "TFT17_Jax",
+    "displayName": "Jax"
+  },
+  {
+    "id": "TFT17_Jhin",
+    "displayName": "Jhin"
+  },
+  {
+    "id": "TFT17_Kaisa",
+    "displayName": "Kai'Sa"
+  },
+  {
+    "id": "TFT17_Karma",
+    "displayName": "Karma"
+  },
+  {
+    "id": "TFT17_Kindred",
+    "displayName": "Kindred"
+  },
+  {
+    "id": "TFT17_Leblanc",
+    "displayName": "LeBlanc"
+  },
+  {
+    "id": "TFT17_Leona",
+    "displayName": "Leona"
+  },
+  {
+    "id": "TFT17_Lissandra",
+    "displayName": "Lissandra"
+  },
+  {
+    "id": "TFT17_Maokai",
+    "displayName": "Maokai"
+  },
+  {
+    "id": "TFT17_MasterYi",
+    "displayName": "Master Yi"
+  },
+  {
+    "id": "TFT17_Milio",
+    "displayName": "Milio"
+  },
+  {
+    "id": "TFT17_Mordekaiser",
+    "displayName": "Mordekaiser"
+  },
+  {
+    "id": "TFT17_Morgana",
+    "displayName": "Morgana"
+  },
+  {
+    "id": "TFT17_Nami",
+    "displayName": "Nami"
+  },
+  {
+    "id": "TFT17_Nasus",
+    "displayName": "Nasus"
+  },
+  {
+    "id": "TFT17_Nunu",
+    "displayName": "Nunu"
+  },
+  {
+    "id": "TFT17_Ornn",
+    "displayName": "Ornn"
+  },
+  {
+    "id": "TFT17_Pantheon",
+    "displayName": "Pantheon"
+  },
+  {
+    "id": "TFT17_Poppy",
+    "displayName": "Poppy"
+  },
+  {
+    "id": "TFT17_Pyke",
+    "displayName": "Pyke"
+  },
+  {
+    "id": "TFT17_Rammus",
+    "displayName": "Rammus"
+  },
+  {
+    "id": "TFT17_RekSai",
+    "displayName": "Rek'Sai"
+  },
+  {
+    "id": "TFT17_Rhaast",
+    "displayName": "Rhaast"
+  },
+  {
+    "id": "TFT17_Riven",
+    "displayName": "Riven"
+  },
+  {
+    "id": "TFT17_Samira",
+    "displayName": "Samira"
+  },
+  {
+    "id": "TFT17_Shen",
+    "displayName": "Shen"
+  },
+  {
+    "id": "TFT17_Sona",
+    "displayName": "Sona"
+  },
+  {
+    "id": "TFT17_Summon",
+    "displayName": "Summon"
+  },
+  {
+    "id": "TFT17_TahmKench",
+    "displayName": "Tahm Kench"
+  },
+  {
+    "id": "TFT17_Talon",
+    "displayName": "Talon"
+  },
+  {
+    "id": "TFT17_Teemo",
+    "displayName": "Teemo"
+  },
+  {
+    "id": "TFT17_TwistedFate",
+    "displayName": "Twisted Fate"
+  },
+  {
+    "id": "TFT17_Urgot",
+    "displayName": "Urgot"
+  },
+  {
+    "id": "TFT17_Veigar",
+    "displayName": "Veigar"
+  },
+  {
+    "id": "TFT17_Vex",
+    "displayName": "Vex"
+  },
+  {
+    "id": "TFT17_Viktor",
+    "displayName": "Viktor"
+  },
+  {
+    "id": "TFT17_Xayah",
+    "displayName": "Xayah"
+  },
+  {
+    "id": "TFT17_Zoe",
+    "displayName": "Zoe"
+  },
+  {
+    "id": "tft17_bardfollower",
+    "displayName": "Bard Follower"
+  }
+]
