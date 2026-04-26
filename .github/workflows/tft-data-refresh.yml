@@ -42,6 +42,10 @@ on:
     # 730 runs/year × ~20 min/run ≈ 240 compute-hours/year
     # Public repo = unlimited free Actions minutes; well within budget.
     - cron: '0 */12 * * *'
+  # Manual trigger — needed for first run (founder dogfood) + ad-hoc refresh
+  # when patch drops mid-cycle. Same security posture as cron: only repo owner
+  # can dispatch (forks can't trigger workflows in base repo).
+  workflow_dispatch:
   workflow_dispatch:
     # Manual trigger — anh uses this for first-run verification and
     # after rotating the Riot API key mid-cycle.
