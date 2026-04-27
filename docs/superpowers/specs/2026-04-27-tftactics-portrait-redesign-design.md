@@ -81,16 +81,26 @@ ItemBadge.task →  ItemAssetURL.icon(for: itemId)  →  AssetCache.shared.data(
 
 ---
 
-## CDragon URL probe (Task 0 — BEFORE coding)
+## CDragon URL pattern (verified 2026-04-27 self-review)
 
-CommunityDragon item icon path chưa verify cho Set 17. 2 candidate (ứng viên):
+**Pattern locked**: derive URL from CDragon `en_us.json` icon path field.
 
-- **Pattern A** (guess): `https://raw.communitydragon.org/latest/game/assets/maps/particles/tft/item_icons/standard/<itemId_lower>.png`
-- **Pattern B** (proven path từ trait): từ `https://raw.communitydragon.org/latest/cdragon/tft/en_us.json` → `data['items']` → đọc real `iconPath` per item → derive URL exact
+Source-of-truth flow:
+1. Fetch `https://raw.communitydragon.org/latest/cdragon/tft/en_us.json` (~24MB, 3565 items total — needs `User-Agent: Mozilla/5.0` to bypass 403 on default Python urllib).
+2. For each item in `data['items']`: read `apiName` (e.g. `TFT_Item_GargoyleStoneplate`) and `icon` (e.g. `ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_GargoyleStoneplate.TFT_Set13.tex`).
+3. Convert icon path → URL:
+   ```
+   ASSETS/...    → game/assets/...
+   .tex          → .png
+   <lowercase entire path>
+   ```
+4. Final URL: `https://raw.communitydragon.org/latest/game/assets/maps/tft/icons/items/hexcore/tft_item_gargoylestoneplate.tft_set13.png` ← probe-verified 200 OK.
 
-**Strategy**: probe Pattern A bằng curl 2-3 known itemIds (`TFT_Item_GargoyleStoneplate`, `TFT_Item_StatikkShiv`, `TFT_Item_JeweledGauntlet`). Nếu fail (404) → default sang Pattern B.
+**Concrete example**: `TFT_Item_GargoyleStoneplate` icon path = `ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_GargoyleStoneplate.TFT_Set13.tex` → URL `.../tft_item_gargoylestoneplate.tft_set13.png` → 200 OK with PNG bytes. Even though Set 13 is in the suffix, the item is reused in Set 17 — Riot's icon naming reflects when the texture was last refreshed, not the active set.
 
-**Concrete example**: TraitAssetURL Phase 2 đã verify pattern `trait_icon_17_<token>.tft_set17.png` (KHÔNG phải `.png` thuần) qua probe. Items có thể có suffix tương tự. Pattern B ăn chắc 100% vì đọc direct từ CDragon metadata.
+**Scope (số lượng items)**: Pipeline emits top-3 items per champion × 8 champions × 37 comps = up to 888 item slots, with dedup likely <100 unique itemIds. Bundle metadata for items present in current `data/tier-list.json` + buffer (e.g. all items with `apiName` matching `^TFT_Item_[A-Z]` excluding augment/anomaly/component prefixes). Estimated ~80-150 entries → JSON ~30-50KB.
+
+**`iconToken` field**: derived from CDragon `icon` path during bundle generation — full lowercase relative path minus `.png` suffix (e.g. `tft_item_gargoylestoneplate.tft_set13`). `ItemAssetURL` builder concatenates: `BASE + path_prefix + iconToken + ".png"`.
 
 ---
 
@@ -145,9 +155,16 @@ Mapping per known item — manual hardcode trong `set17-items.json` build script
 
 ## Migration / rollback
 
-- `CompCardItemsRow.swift` deleted — internal view, không có external reference (đã grep verify).
+- `CompCardItemsRow.swift` deleted — only callsite is `CompCard.swift:45` (verified via grep). Comments in `CompCardAnomaliesRow.swift:5,12` reference `CompCardItemsRow` for layout pattern — update comments post-removal (cosmetic, ~1 LOC).
+- Tier-color border (S/A/B/C tint, applied to carry only) replaced by **cost-color border (always)**. Tier indicator visual signal not lost — tier badge already rendered as left-aligned circle ("A", "B" with colored fill) at top of each comp card — duplicate signal removed.
 - Card height giảm ~24pt (item row removed). Density tighter (gọn hơn) → list view fit nhiều comps cùng screen — UX win.
 - Schema không bump — full backward-compat (tương thích lùi). Nếu cần rollback: revert commit, fixture/cron data nguyên không touch.
+
+## Performance budget (self-review note)
+
+First-launch cold cache: 37 comps × 8 champions × (1 portrait + up to 3 items) = ~1184 fetches max. CDragon CDN p50 latency ~80-150ms per fetch; with `AssetCache` 2 parallel workers (URLSession default config) → cold launch ~30-60s to fully populate. UI degrades gracefully (placeholder shown until image arrives). After cold launch: cache hit rate >99% for steady-state (12h cron refresh changes <5% of comps).
+
+`AssetCache` LRU 50MB ceiling: items ~3-5KB each × 100 items = ~400KB; portraits ~10-15KB × 59 = ~700KB. Total <1.5MB. No eviction risk for v0.1 scale.
 
 ---
 
@@ -171,6 +188,25 @@ Total estimate: **~2 hours**.
 - Hover tooltip showing item name + agreement (UX bonus, defer)
 - Item upgrade indicators (radiant items, support items distinguished by glow) — TFTactics có; defer
 - Border color edge case for cost 6/7/10 (Riot rarity high values) — currently → `.black` fallback (acceptable)
+
+---
+
+## Self-review log (2026-04-27, before invoke writing-plans)
+
+Holes identified + resolution:
+
+| # | Hole | Resolution |
+|---|---|---|
+| 1 | CDragon item URL pattern unverified | Probed live — pattern locked: derive from `en_us.json[items][i].icon` field, lowercase + `.tex`→`.png` (200 OK on 2 known items). Spec section "CDragon URL pattern" updated with concrete derivation rule. |
+| 2 | `CompCardItemsRow` external refs not verified | Grep done — 1 callsite (`CompCard.swift:45`), 2 stale comments in `CompCardAnomaliesRow.swift`. Both addressed in Migration section. |
+| 3 | Star indicator vs cost border position conflict | Verified math: stars at `offset(y: -8)` above portrait, border `lineWidth: 2` on portrait edge — no overlap. ZStack frame `size + 6` already accommodates. |
+| 4 | Tests assuming `CompCardItemsRow` | Grep — only `TierListDecodingTests` matches item patterns; tests JSON decoding, not view tree. No breakage expected. |
+| 5 | "~50 items" assumption — actual count unknown | en_us.json has 3565 items total. Bundle scoped to items present in current `tier-list.json` + buffer (~80-150 entries, ~30-50KB JSON). |
+| 6 | Tier-color border drop = lost signal? | No — tier badge already rendered as standalone circle at comp card top. Duplicate signal. |
+| 7 | Performance: 1184 fetches first launch | Documented in Performance budget — async parallel, 30-60s cold launch acceptable, >99% cache hit steady-state. |
+| 8 | `iconToken` extraction method ambiguous | Spec'd: lowercase relative path minus `.png` suffix, derived from CDragon `icon` field. |
+
+No remaining blockers. Spec ready for writing-plans.
 
 ---
 
