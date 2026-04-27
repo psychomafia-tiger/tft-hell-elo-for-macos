@@ -57,6 +57,12 @@ def group_comps_by_trait_signature(participants: list[dict]) -> dict:
         "trait_signature": None,
         "champion_freq": defaultdict(int),
         "items_per_champion": defaultdict(lambda: defaultdict(int)),
+        # Bug #007 producer side — wire per-champion rarity (cost = rarity+1)
+        # and modal-star aggregation. Consumer is `_emit_champions_from_bucket`
+        # in json_emitter.py: reads `champion_rarity[cid]` and
+        # `champion_star_counts[cid]` (Counter of tier→count).
+        "champion_rarity": {},
+        "champion_star_counts": defaultdict(lambda: defaultdict(int)),
     })
     for p in participants:
         sig = trait_combo_signature(p)
@@ -71,6 +77,15 @@ def group_comps_by_trait_signature(participants: list[dict]) -> dict:
             if not cid:
                 continue
             b["champion_freq"][cid] += 1
+            # rarity is stable per champion (cost class 0-6); last write wins —
+            # all participants in this bucket should report the same value.
+            b["champion_rarity"][cid] = unit.get("rarity", 0)
+            # tier is the observed star level (1/2/3) on this participant's
+            # board. Modal across the bucket = "what star level players
+            # actually hit on this carry slot".
+            tier = unit.get("tier", 1)
+            if 1 <= tier <= 3:
+                b["champion_star_counts"][cid][tier] += 1
             for item in unit.get("items", []) or []:
                 # Riot returns ints (item ids) or dicts; normalize
                 item_id = item if isinstance(item, (str, int)) else item.get("id")
