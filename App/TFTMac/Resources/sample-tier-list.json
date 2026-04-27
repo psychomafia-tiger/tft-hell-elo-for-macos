@@ -5,58 +5,67 @@
       "avg_placement": 4.4,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Lissandra",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_IvernMinion",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Mordekaiser",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Illaoi",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Viktor",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Rhaast",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nami",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Summon",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Pyke",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "aptrait-darkstar",
@@ -118,58 +127,67 @@
       "avg_placement": 3.7778,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Teemo",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nasus",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Leona",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Lissandra",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Zoe",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Mordekaiser",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Illaoi",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nami",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Summon",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "shieldtank-spacegroove",
@@ -221,46 +239,53 @@
       "avg_placement": 5.8889,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_IvernMinion",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Fizz",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Kaisa",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Ornn",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Rhaast",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Rammus",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Karma",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "assassintrait-astronaut",
@@ -312,58 +337,67 @@
       "avg_placement": 4.75,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nunu",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Aatrox",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Akali",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Fiora",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Blitzcrank",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Vex",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Shen",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Graves",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Morgana",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "blitzcrankuniquetrait-drx",
@@ -435,52 +469,60 @@
       "avg_placement": 6.0,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Teemo",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nasus",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Leona",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Lissandra",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Zoe",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Mordekaiser",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Illaoi",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Summon",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "shieldtank-admin",
@@ -527,64 +569,74 @@
       "avg_placement": 3.8571,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Gwen",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Pantheon",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nami",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Riven",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_TahmKench",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Blitzcrank",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Shen",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Ornn",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nunu",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nasus",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "spacegroove-aptrait",
@@ -651,52 +703,60 @@
       "avg_placement": 6.6667,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Lissandra",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Pyke",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_IvernMinion",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Mordekaiser",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Illaoi",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Viktor",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Rhaast",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Summon",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "darkstar-flextrait",
@@ -748,70 +808,81 @@
       "avg_placement": 2.1667,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_IvernMinion",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Mordekaiser",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Illaoi",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Karma",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Bard",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Blitzcrank",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Sona",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Vex",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Summon",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nunu",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_PVE_ElderDragon",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "shieldtank-blitzcrankuniquetrait",
@@ -873,40 +944,46 @@
       "avg_placement": 5.0,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Akali",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Aurora",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Maokai",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Urgot",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Rhaast",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Galio",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "mecha-drx",
@@ -953,64 +1030,74 @@
       "avg_placement": 3.2,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Teemo",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nasus",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Leona",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Lissandra",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Zoe",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Mordekaiser",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Illaoi",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Blitzcrank",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Summon",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nunu",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "shieldtank-spacegroove",
@@ -1062,52 +1149,60 @@
       "avg_placement": 6.4,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Lissandra",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Pyke",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_IvernMinion",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Mordekaiser",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Illaoi",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Viktor",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nami",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Summon",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "aptrait-darkstar",
@@ -1164,46 +1259,53 @@
       "avg_placement": 5.4,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Aatrox",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Chogath",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Fizz",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Maokai",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Kaisa",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Ornn",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Rhaast",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "assassintrait-drx",
@@ -1255,52 +1357,60 @@
       "avg_placement": 4.4,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_IvernMinion",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Fizz",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Kaisa",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Ornn",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Rhaast",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Rammus",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Karma",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Riven",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "assassintrait-astronaut",
@@ -1352,58 +1462,67 @@
       "avg_placement": 6.25,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Aatrox",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Belveth",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Akali",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Maokai",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Kindred",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_TahmKench",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Fiora",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_MasterYi",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Caitlyn",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "drx-meleetrait",
@@ -1450,52 +1569,60 @@
       "avg_placement": 3.0,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Caitlyn",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Aatrox",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_TwistedFate",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Talon",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Jax",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Milio",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Corki",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Riven",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "fateweaver-assassintrait",
@@ -1542,52 +1669,60 @@
       "avg_placement": 4.0,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Pyke",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Gragas",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Gwen",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Milio",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_IvernMinion",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Pantheon",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Corki",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Riven",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "timebreaker-assassintrait",
@@ -1639,58 +1774,67 @@
       "avg_placement": 6.75,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Gwen",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Pantheon",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Ornn",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nami",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Riven",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_TahmKench",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Blitzcrank",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nunu",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nasus",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "spacegroove-aptrait",
@@ -1747,64 +1891,74 @@
       "avg_placement": 4.75,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Aatrox",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Akali",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Maokai",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_TahmKench",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Fiora",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Vex",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Shen",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Graves",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Morgana",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Bard",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "drx-fiorauniquetrait",
@@ -1871,52 +2025,60 @@
       "avg_placement": 5.25,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Urgot",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Karma",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_AurelionSol",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Galio",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_TahmKench",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Fiora",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Bard",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Viktor",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "mecha-fiorauniquetrait",
@@ -1968,52 +2130,60 @@
       "avg_placement": 7.0,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Briar",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Aatrox",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_RekSai",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Belveth",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Akali",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Maokai",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Kindred",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Caitlyn",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "drx-primordian",
@@ -2055,70 +2225,81 @@
       "avg_placement": 2.75,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Gwen",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Pantheon",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Ornn",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nami",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Riven",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_TahmKench",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Blitzcrank",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Shen",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nasus",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Samira",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nunu",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "spacegroove-aptrait",
@@ -2185,64 +2366,74 @@
       "avg_placement": 2.0,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Gwen",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Pantheon",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Ornn",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nami",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nunu",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Riven",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_TahmKench",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Blitzcrank",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Shen",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Morgana",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "spacegroove-aptrait",
@@ -2314,64 +2505,74 @@
       "avg_placement": 3.6667,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Poppy",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Veigar",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Lissandra",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_IvernMinion",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Mordekaiser",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Illaoi",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Rammus",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Summon",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Corki",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Fizz",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "astronaut-aptrait",
@@ -2418,40 +2619,46 @@
       "avg_placement": 6.6667,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Akali",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Aurora",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Maokai",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Urgot",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Rhaast",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Galio",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "drx-flextrait",
@@ -2498,58 +2705,67 @@
       "avg_placement": 5.0,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Gnar",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Jax",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Mordekaiser",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Rammus",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nunu",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Xayah",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Bard",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Jhin",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_PVE_ElderDragon",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "rangedtrait-astronaut",
@@ -2606,52 +2822,60 @@
       "avg_placement": 4.6667,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Briar",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_RekSai",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Belveth",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Akali",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Gwen",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Maokai",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Kindred",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Aatrox",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "primordian-astrait",
@@ -2703,52 +2927,60 @@
       "avg_placement": 4.3333,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Caitlyn",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Aatrox",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_TwistedFate",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Talon",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Jax",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Milio",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Corki",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Riven",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "fateweaver-assassintrait",
@@ -2795,70 +3027,81 @@
       "avg_placement": 1.0,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_IvernMinion",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Mordekaiser",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Illaoi",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Karma",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nunu",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Bard",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Blitzcrank",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Sona",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Vex",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Morgana",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Summon",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "shieldtank-blitzcrankuniquetrait",
@@ -2925,70 +3168,81 @@
       "avg_placement": 5.0,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Poppy",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Veigar",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Lissandra",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_IvernMinion",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Rammus",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Karma",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Summon",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Bard",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Sona",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Teemo",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Fizz",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "astronaut-aptrait",
@@ -3040,64 +3294,74 @@
       "avg_placement": 1.3333,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Aatrox",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Akali",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Maokai",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_TahmKench",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Fiora",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Blitzcrank",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Vex",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Shen",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Graves",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Morgana",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "blitzcrankuniquetrait-drx",
@@ -3174,58 +3438,67 @@
       "avg_placement": 4.6667,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_IvernMinion",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Mordekaiser",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Rammus",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Karma",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Bard",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Blitzcrank",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Vex",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Shen",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Morgana",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "astronaut-blitzcrankuniquetrait",
@@ -3297,64 +3570,74 @@
       "avg_placement": 3.0,
       "champions": [
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Gnar",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Jax",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Mordekaiser",
           "is_carry": true,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Rhaast",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Rammus",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Nunu",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Xayah",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Bard",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Jhin",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         },
         {
-          "cost": 0,
+          "cost": 1,
           "id": "TFT17_Morgana",
           "is_carry": false,
-          "items": []
+          "items": [],
+          "star_level": 1
         }
       ],
       "comp_id": "rangedtrait-astronaut",
@@ -3419,11 +3702,11 @@
   ],
   "data_window_hours": 12,
   "elo_bracket": "CHALLENGER",
-  "last_updated": "2026-04-27T07:09:52Z",
+  "last_updated": "2026-04-27T07:30:21Z",
   "match_count": 82,
   "patch_version": "16.8",
   "region": "KR",
   "schema_version": "1.2.0",
   "total_matches_sampled": 82,
-  "updated_at": "2026-04-27T07:09:52.460574+00:00"
+  "updated_at": "2026-04-27T07:30:21.491968+00:00"
 }

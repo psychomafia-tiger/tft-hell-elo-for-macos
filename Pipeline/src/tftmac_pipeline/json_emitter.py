@@ -51,6 +51,7 @@ class ChampionEntry:
     id: str
     cost: int
     is_carry: bool
+    star_level: int = 1
     items: list[ItemBuild] = field(default_factory=list)
 
 
@@ -96,6 +97,7 @@ def _champion_to_dict(champ: ChampionEntry) -> dict:
         "id": champ.id,
         "cost": champ.cost,
         "is_carry": champ.is_carry,
+        "star_level": champ.star_level,
         "items": [_item_to_dict(i) for i in champ.items],
     }
 
@@ -228,13 +230,22 @@ def _emit_champions_from_bucket(bucket: dict) -> list[dict]:
     """Build champions list from a trait-signature bucket (T3 shape).
 
     Bucket keys used: champion_freq (dict[cid → int]),
-    items_per_champion (dict[cid → dict[item_id → int]]).
+    items_per_champion (dict[cid → dict[item_id → int]]),
+    champion_rarity (dict[cid → int], optional — rarity 0-6 → cost = rarity+1),
+    champion_star_counts (dict[cid → dict[int → int]], optional — modal star level).
+
     A champion is considered carry if it appears in the top-3 by frequency.
     Items are filtered to those appearing in ≥40% of the bucket's appearances.
+
+    Cost: derived from rarity if bucket provides champion_rarity (rarity+1).
+    Fallback to 1 when rarity data absent (avoids the previous cost=0 placeholder).
+    Star level: modal observed tier from champion_star_counts; default 1.
     """
     sample_size = max(bucket["sample_size"], 1)
     champion_freq: dict = bucket.get("champion_freq", {})
     items_per_champ: dict = bucket.get("items_per_champion", {})
+    champion_rarity: dict = bucket.get("champion_rarity", {})
+    champion_star_counts: dict = bucket.get("champion_star_counts", {})
 
     # Sort by frequency descending; top-3 are considered potential carries
     sorted_champs = sorted(champion_freq.items(), key=lambda x: -x[1])
@@ -246,6 +257,18 @@ def _emit_champions_from_bucket(bucket: dict) -> list[dict]:
         if agreement < 0.25:
             # Skip champions that appear in fewer than 25% of instances
             continue
+
+        # Derive cost from rarity if available; else default 1 (not 0)
+        rarity = champion_rarity.get(cid)
+        cost = (rarity + 1) if rarity is not None else 1
+
+        # Modal star level from observed tier distribution; default 1
+        star_tier_counts: dict = champion_star_counts.get(cid, {})
+        if star_tier_counts:
+            star_level = max(star_tier_counts, key=lambda k: star_tier_counts[k])
+        else:
+            star_level = 1
+
         # Build item list filtered by ≥40% agreement
         raw_items = items_per_champ.get(cid, {})
         item_list = [
@@ -255,8 +278,9 @@ def _emit_champions_from_bucket(bucket: dict) -> list[dict]:
         ]
         result.append({
             "id": cid,
-            "cost": 0,        # cost not available in trait-bucket; filled downstream
+            "cost": cost,
             "is_carry": cid in carry_ids,
+            "star_level": star_level,
             "items": item_list,
         })
     return result

@@ -68,8 +68,9 @@ struct ChampionPortrait: View {
                 )
 
             // Star overlay pinned top; offsets push it above the portrait edge
-            // so it doesn't occlude the champion fill.
-            StarLevelIndicator(level: StarLevelIndicator.derivedLevel(for: champion))
+            // so it doesn't occlude the champion fill. Level comes directly from
+            // the data-driven champion.starLevel (pipeline schema 1.2.0+).
+            StarLevelIndicator(level: champion.starLevel)
                 .offset(y: -8)
         }
         .frame(height: size + 6)  // room for the offset star row

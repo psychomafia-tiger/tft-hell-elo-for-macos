@@ -32,6 +32,7 @@ def aggregate_champions(participants: list[dict]) -> list[dict]:
             "id": "TFT17_Viktor",
             "cost": 5,
             "is_carry": True,
+            "star_level": 2,
             "items": [{"id": "TFT_Item_JeweledGauntlet", "agreement": 0.82}, ...]
           }
     """
@@ -43,6 +44,12 @@ def aggregate_champions(participants: list[dict]) -> list[dict]:
     unit_rarity: dict[str, int] = {}
     # tier_sum[character_id] = sum of tier values across appearances
     tier_sum: dict[str, int] = defaultdict(int)
+    # star_counts[character_id] = Counter of observed tier values (star levels)
+    # Modal value = most common observed star level across all appearances.
+    # Example: Viktor observed 12× at tier=2, 3× at tier=3, 1× at tier=1
+    #          → star_counts["TFT17_Viktor"] = Counter({2:12, 3:3, 1:1})
+    #          → modal star_level = 2
+    star_counts: dict[str, Counter[int]] = defaultdict(Counter)
     # item counts per character (excluding anomaly items)
     item_counts: dict[str, Counter[str]] = defaultdict(Counter)
 
@@ -51,9 +58,11 @@ def aggregate_champions(participants: list[dict]) -> list[dict]:
             cid = unit.get("character_id", "")
             if not cid:
                 continue
+            tier_val = unit.get("tier", 1)
             unit_count[cid] += 1
             unit_rarity[cid] = unit.get("rarity", 0)
-            tier_sum[cid] += unit.get("tier", 1)
+            tier_sum[cid] += tier_val
+            star_counts[cid][tier_val] += 1
 
             for item_name in unit.get("itemNames", []):
                 if not item_name.startswith(_ANOMALY_PREFIX):
@@ -66,6 +75,10 @@ def aggregate_champions(participants: list[dict]) -> list[dict]:
         is_carry = avg_tier >= 2.0
         cost = unit_rarity.get(cid, 0) + 1
 
+        # Modal star level: most common observed tier value across appearances.
+        # Falls back to 1 if no data (should not occur if unit_count > 0).
+        modal_star = star_counts[cid].most_common(1)[0][0] if star_counts[cid] else 1
+
         # Build item list: top-3 items with agreement >= 0.40
         items = _build_item_list(item_counts[cid], appearances)
 
@@ -73,6 +86,7 @@ def aggregate_champions(participants: list[dict]) -> list[dict]:
             "id": cid,
             "cost": cost,
             "is_carry": is_carry,
+            "star_level": modal_star,
             "items": items,
         })
 
