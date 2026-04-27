@@ -1,342 +1,3429 @@
 {
-  "schema_version": "1.0.0",
-  "patch_version": "16.8",
-  "last_updated": "2026-04-24T12:00:00Z",
-  "data_window_hours": 12,
-  "elo_bracket": "CHALLENGER",
-  "total_matches_sampled": 1500,
   "comps": [
     {
-      "comp_id": "storm-quickdraw",
-      "name": "Storm Quickdraw",
-      "tier": "S",
-      "play_rate": 0.127,
-      "avg_placement": 3.82,
-      "top_4_rate": 0.58,
-      "sample_size": 190,
+      "anomalies": [],
+      "avg_placement": 4.4,
       "champions": [
         {
+          "cost": 0,
+          "id": "TFT17_Lissandra",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_IvernMinion",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Illaoi",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
           "id": "TFT17_Viktor",
-          "cost": 5,
-          "is_carry": true,
-          "items": [
-            {"id": "TFT_Item_JeweledGauntlet", "agreement": 0.77},
-            {"id": "TFT_Item_ArchangelsStaff", "agreement": 0.55}
-          ]
-        },
-        {
-          "id": "TFT17_Illaoi",
-          "cost": 3,
           "is_carry": false,
-          "items": [{"id": "TFT_Item_GargoyleStoneplate", "agreement": 0.59}]
+          "items": []
         },
         {
+          "cost": 0,
           "id": "TFT17_Rhaast",
-          "cost": 4,
           "is_carry": false,
           "items": []
         },
         {
-          "id": "TFT17_Aatrox",
-          "cost": 4,
-          "is_carry": false,
-          "items": [{"id": "TFT_Item_Redemption", "agreement": 0.62}]
-        }
-      ]
-    },
-    {
-      "comp_id": "heavenly-fortune",
-      "name": "Heavenly Fortune",
-      "tier": "S",
-      "play_rate": 0.118,
-      "avg_placement": 3.91,
-      "top_4_rate": 0.56,
-      "sample_size": 177,
-      "champions": [
-        {
-          "id": "TFT17_KaiSa",
-          "cost": 5,
-          "is_carry": true,
-          "items": [
-            {"id": "TFT_Item_InfinityEdge", "agreement": 0.81},
-            {"id": "TFT_Item_LastWhisper", "agreement": 0.63}
-          ]
-        },
-        {
+          "cost": 0,
           "id": "TFT17_Nami",
-          "cost": 2,
-          "is_carry": false,
-          "items": [{"id": "TFT_Item_BlueBuff", "agreement": 0.70}]
-        },
-        {
-          "id": "TFT17_Ahri",
-          "cost": 3,
           "is_carry": false,
           "items": []
         },
         {
-          "id": "TFT17_Syndra",
-          "cost": 4,
+          "cost": 0,
+          "id": "TFT17_Summon",
           "is_carry": false,
-          "items": [{"id": "TFT_Item_Shojin", "agreement": 0.58}]
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Pyke",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "aptrait-darkstar",
+      "name": "APTrait DarkStar",
+      "play_rate": 0.022866,
+      "sample_size": 15,
+      "tier": "C",
+      "top_4_rate": 0.6,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_APTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DarkStar",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_FlexTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ManaTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_PsyOps",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_RhaastUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShieldTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SpaceGroove",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SummonTrait",
+          "style": "bronze"
         }
       ]
     },
     {
-      "comp_id": "sentinel-varus",
-      "name": "Sentinel Varus",
-      "tier": "S",
-      "play_rate": 0.113,
-      "avg_placement": 3.95,
-      "top_4_rate": 0.55,
-      "sample_size": 170,
+      "anomalies": [],
+      "avg_placement": 3.7778,
       "champions": [
         {
-          "id": "TFT17_Varus",
-          "cost": 4,
+          "cost": 0,
+          "id": "TFT17_Teemo",
           "is_carry": true,
-          "items": [
-            {"id": "TFT_Item_StatikkShiv", "agreement": 0.74},
-            {"id": "TFT_Item_GiantSlayer", "agreement": 0.60}
-          ]
+          "items": []
         },
         {
-          "id": "TFT17_Morgana",
-          "cost": 3,
-          "is_carry": false,
-          "items": [{"id": "TFT_Item_IonicSpark", "agreement": 0.65}]
-        },
-        {
-          "id": "TFT17_Jinx",
-          "cost": 2,
-          "is_carry": false,
-          "items": [{"id": "TFT_Item_Runaans", "agreement": 0.53}]
-        }
-      ]
-    },
-    {
-      "comp_id": "gwen-reroll",
-      "name": "Gwen Reroll",
-      "tier": "S",
-      "play_rate": 0.105,
-      "avg_placement": 3.98,
-      "top_4_rate": 0.53,
-      "sample_size": 158,
-      "champions": [
-        {
-          "id": "TFT17_Gwen",
-          "cost": 3,
+          "cost": 0,
+          "id": "TFT17_Nasus",
           "is_carry": true,
-          "items": [
-            {"id": "TFT_Item_TitansResolve", "agreement": 0.78},
-            {"id": "TFT_Item_HandOfJustice", "agreement": 0.61}
-          ]
+          "items": []
         },
         {
+          "cost": 0,
+          "id": "TFT17_Leona",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Lissandra",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Zoe",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
           "id": "TFT17_Illaoi",
-          "cost": 3,
-          "is_carry": false,
-          "items": [{"id": "TFT_Item_AdaptiveHelm", "agreement": 0.49}]
-        },
-        {
-          "id": "TFT17_Aatrox",
-          "cost": 4,
           "is_carry": false,
           "items": []
-        }
-      ]
-    },
-    {
-      "comp_id": "warden-yasuo",
-      "name": "Warden Yasuo",
-      "tier": "A",
-      "play_rate": 0.092,
-      "avg_placement": 4.11,
-      "top_4_rate": 0.50,
-      "sample_size": 138,
-      "champions": [
-        {
-          "id": "TFT17_Yasuo",
-          "cost": 4,
-          "is_carry": true,
-          "items": [
-            {"id": "TFT_Item_InfinityEdge", "agreement": 0.72},
-            {"id": "TFT_Item_LastWhisper", "agreement": 0.58}
-          ]
         },
         {
+          "cost": 0,
           "id": "TFT17_Nami",
-          "cost": 2,
           "is_carry": false,
-          "items": [{"id": "TFT_Item_BlueBuff", "agreement": 0.66}]
+          "items": []
         },
         {
-          "id": "TFT17_Morgana",
-          "cost": 3,
-          "is_carry": false,
-          "items": [{"id": "TFT_Item_SunfireCape", "agreement": 0.51}]
-        }
-      ]
-    },
-    {
-      "comp_id": "reroll-sivir",
-      "name": "Reroll Sivir",
-      "tier": "A",
-      "play_rate": 0.081,
-      "avg_placement": 4.18,
-      "top_4_rate": 0.48,
-      "sample_size": 122,
-      "champions": [
-        {
-          "id": "TFT17_Sivir",
-          "cost": 2,
-          "is_carry": true,
-          "items": [
-            {"id": "TFT_Item_Runaans", "agreement": 0.80},
-            {"id": "TFT_Item_StatikkShiv", "agreement": 0.67}
-          ]
-        },
-        {
-          "id": "TFT17_Jinx",
-          "cost": 2,
-          "is_carry": false,
-          "items": [{"id": "TFT_Item_GiantSlayer", "agreement": 0.54}]
-        },
-        {
-          "id": "TFT17_Varus",
-          "cost": 4,
+          "cost": 0,
+          "id": "TFT17_Summon",
           "is_carry": false,
           "items": []
         }
-      ]
-    },
-    {
-      "comp_id": "xerath-mage",
-      "name": "Xerath Mage",
-      "tier": "A",
-      "play_rate": 0.074,
-      "avg_placement": 4.22,
-      "top_4_rate": 0.46,
-      "sample_size": 111,
-      "champions": [
+      ],
+      "comp_id": "shieldtank-spacegroove",
+      "name": "ShieldTank SpaceGroove",
+      "play_rate": 0.01372,
+      "sample_size": 9,
+      "tier": "C",
+      "top_4_rate": 0.6667,
+      "traits": [
         {
-          "id": "TFT17_Xerath",
-          "cost": 4,
-          "is_carry": true,
-          "items": [
-            {"id": "TFT_Item_RabadonsDeathcap", "agreement": 0.83},
-            {"id": "TFT_Item_JeweledGauntlet", "agreement": 0.69}
-          ]
+          "count": 1,
+          "name": "TFT17_ADMIN",
+          "style": "bronze"
         },
         {
-          "id": "TFT17_Syndra",
-          "cost": 4,
-          "is_carry": false,
-          "items": [{"id": "TFT_Item_Shojin", "agreement": 0.57}]
+          "count": 1,
+          "name": "TFT17_APTrait",
+          "style": "bronze"
         },
         {
-          "id": "TFT17_Ahri",
-          "cost": 3,
-          "is_carry": false,
-          "items": [{"id": "TFT_Item_BlueBuff", "agreement": 0.60}]
+          "count": 1,
+          "name": "TFT17_DarkStar",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ManaTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_ShieldTank",
+          "style": "silver"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_SpaceGroove",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SummonTrait",
+          "style": "bronze"
         }
       ]
     },
     {
-      "comp_id": "kaisa-hyper",
-      "name": "KaiSa Hyper",
-      "tier": "A",
-      "play_rate": 0.063,
-      "avg_placement": 4.28,
-      "top_4_rate": 0.44,
-      "sample_size": 95,
+      "anomalies": [],
+      "avg_placement": 5.8889,
       "champions": [
         {
-          "id": "TFT17_KaiSa",
-          "cost": 5,
+          "cost": 0,
+          "id": "TFT17_IvernMinion",
           "is_carry": true,
-          "items": [
-            {"id": "TFT_Item_InfinityEdge", "agreement": 0.75},
-            {"id": "TFT_Item_ArchangelsStaff", "agreement": 0.52}
-          ]
+          "items": []
         },
         {
+          "cost": 0,
+          "id": "TFT17_Fizz",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Kaisa",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Ornn",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Rhaast",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Rammus",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Karma",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "assassintrait-astronaut",
+      "name": "AssassinTrait Astronaut",
+      "play_rate": 0.01372,
+      "sample_size": 9,
+      "tier": "C",
+      "top_4_rate": 0.0,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_AssassinTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_Astronaut",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DarkStar",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_FlexTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ResistTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_RhaastUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SpaceGroove",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 4.75,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Nunu",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Aatrox",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Akali",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Fiora",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Blitzcrank",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Vex",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Shen",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Graves",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Morgana",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "blitzcrankuniquetrait-drx",
+      "name": "BlitzcrankUniqueTrait DRX",
+      "play_rate": 0.012195,
+      "sample_size": 8,
+      "tier": "C",
+      "top_4_rate": 0.5,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_BlitzcrankUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DRX",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_FioraUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_GravesTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_MeleeTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_MorganaUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ResistTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShenUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShieldTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SpaceGroove",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_VexUniqueTrait",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 6.0,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Teemo",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nasus",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Leona",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Lissandra",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Zoe",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Illaoi",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Summon",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "shieldtank-admin",
+      "name": "ShieldTank ADMIN",
+      "play_rate": 0.010671,
+      "sample_size": 7,
+      "tier": "C",
+      "top_4_rate": 0.2857,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_ADMIN",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DarkStar",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ManaTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_ShieldTank",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SpaceGroove",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SummonTrait",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 3.8571,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Gwen",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Pantheon",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nami",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Riven",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_TahmKench",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Blitzcrank",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Shen",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Ornn",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nunu",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nasus",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "spacegroove-aptrait",
+      "name": "SpaceGroove APTrait",
+      "play_rate": 0.010671,
+      "sample_size": 7,
+      "tier": "C",
+      "top_4_rate": 0.4286,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_APTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_AssassinTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_BlitzcrankUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_HPTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ResistTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShenUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShieldTank",
+          "style": "bronze"
+        },
+        {
+          "count": 3,
+          "name": "TFT17_SpaceGroove",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_TahmKenchUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_Timebreaker",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 6.6667,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Lissandra",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Pyke",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_IvernMinion",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Illaoi",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
           "id": "TFT17_Viktor",
-          "cost": 5,
-          "is_carry": false,
-          "items": [{"id": "TFT_Item_IonicSpark", "agreement": 0.48}]
-        },
-        {
-          "id": "TFT17_Gwen",
-          "cost": 3,
           "is_carry": false,
           "items": []
-        }
-      ]
-    },
-    {
-      "comp_id": "aatrox-frontline",
-      "name": "Aatrox Frontline",
-      "tier": "B",
-      "play_rate": 0.045,
-      "avg_placement": 4.51,
-      "top_4_rate": 0.40,
-      "sample_size": 68,
-      "champions": [
-        {
-          "id": "TFT17_Aatrox",
-          "cost": 4,
-          "is_carry": true,
-          "items": [
-            {"id": "TFT_Item_TitansResolve", "agreement": 0.73},
-            {"id": "TFT_Item_GargoyleStoneplate", "agreement": 0.62}
-          ]
         },
         {
-          "id": "TFT17_Illaoi",
-          "cost": 3,
-          "is_carry": false,
-          "items": [{"id": "TFT_Item_SunfireCape", "agreement": 0.55}]
-        },
-        {
+          "cost": 0,
           "id": "TFT17_Rhaast",
-          "cost": 4,
           "is_carry": false,
-          "items": [{"id": "TFT_Item_AdaptiveHelm", "agreement": 0.47}]
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Summon",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "darkstar-flextrait",
+      "name": "DarkStar FlexTrait",
+      "play_rate": 0.009146,
+      "sample_size": 6,
+      "tier": "C",
+      "top_4_rate": 0.1667,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_DarkStar",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_FlexTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ManaTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_PsyOps",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_RhaastUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShieldTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SummonTrait",
+          "style": "bronze"
         }
       ]
     },
     {
-      "comp_id": "nami-support",
-      "name": "Nami Support",
-      "tier": "B",
-      "play_rate": 0.028,
-      "avg_placement": 4.65,
-      "top_4_rate": 0.37,
-      "sample_size": 42,
+      "anomalies": [],
+      "avg_placement": 2.1667,
       "champions": [
         {
-          "id": "TFT17_Nami",
-          "cost": 2,
+          "cost": 0,
+          "id": "TFT17_IvernMinion",
           "is_carry": true,
-          "items": [
-            {"id": "TFT_Item_BlueBuff", "agreement": 0.76},
-            {"id": "TFT_Item_Shojin", "agreement": 0.59}
-          ]
+          "items": []
         },
         {
-          "id": "TFT17_Morgana",
-          "cost": 3,
-          "is_carry": false,
-          "items": [{"id": "TFT_Item_HandOfJustice", "agreement": 0.50}]
+          "cost": 0,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": true,
+          "items": []
         },
         {
-          "id": "TFT17_Ahri",
-          "cost": 3,
+          "cost": 0,
+          "id": "TFT17_Illaoi",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Karma",
           "is_carry": false,
           "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Bard",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Blitzcrank",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Sona",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Vex",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Summon",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nunu",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_PVE_ElderDragon",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "shieldtank-blitzcrankuniquetrait",
+      "name": "ShieldTank BlitzcrankUniqueTrait",
+      "play_rate": 0.009146,
+      "sample_size": 6,
+      "tier": "C",
+      "top_4_rate": 0.8333,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_BlitzcrankUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DarkStar",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_FlexTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ManaTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_ShieldTank",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SonaUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SpaceGroove",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SummonTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_VexUniqueTrait",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 5.0,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Akali",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Aurora",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Maokai",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Urgot",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Rhaast",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Galio",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "mecha-drx",
+      "name": "Mecha DRX",
+      "play_rate": 0.009146,
+      "sample_size": 6,
+      "tier": "C",
+      "top_4_rate": 0.5,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_DRX",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_FlexTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_HPTank",
+          "style": "bronze"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_Mecha",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_MeleeTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_RhaastUniqueTrait",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 3.2,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Teemo",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nasus",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Leona",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Lissandra",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Zoe",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Illaoi",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Blitzcrank",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Summon",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nunu",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "shieldtank-spacegroove",
+      "name": "ShieldTank SpaceGroove",
+      "play_rate": 0.007622,
+      "sample_size": 5,
+      "tier": "C",
+      "top_4_rate": 0.8,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_ADMIN",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_BlitzcrankUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DarkStar",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ManaTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 3,
+          "name": "TFT17_ShieldTank",
+          "style": "silver"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_SpaceGroove",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SummonTrait",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 6.4,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Lissandra",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Pyke",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_IvernMinion",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Illaoi",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Viktor",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nami",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Summon",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "aptrait-darkstar",
+      "name": "APTrait DarkStar",
+      "play_rate": 0.007622,
+      "sample_size": 5,
+      "tier": "C",
+      "top_4_rate": 0.2,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_APTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DarkStar",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_FlexTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ManaTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_PsyOps",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShieldTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SpaceGroove",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SummonTrait",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 5.4,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Aatrox",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Chogath",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Fizz",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Maokai",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Kaisa",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Ornn",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Rhaast",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "assassintrait-drx",
+      "name": "AssassinTrait DRX",
+      "play_rate": 0.007622,
+      "sample_size": 5,
+      "tier": "C",
+      "top_4_rate": 0.4,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_AssassinTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DRX",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DarkStar",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_HPTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ResistTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_RhaastUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SpaceGroove",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 4.4,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_IvernMinion",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Fizz",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Kaisa",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Ornn",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Rhaast",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Rammus",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Karma",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Riven",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "assassintrait-astronaut",
+      "name": "AssassinTrait Astronaut",
+      "play_rate": 0.007622,
+      "sample_size": 5,
+      "tier": "C",
+      "top_4_rate": 0.6,
+      "traits": [
+        {
+          "count": 2,
+          "name": "TFT17_AssassinTrait",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_Astronaut",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DarkStar",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_FlexTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ResistTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_RhaastUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SpaceGroove",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 6.25,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Aatrox",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Belveth",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Akali",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Maokai",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Kindred",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_TahmKench",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Fiora",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_MasterYi",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Caitlyn",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "drx-meleetrait",
+      "name": "DRX MeleeTrait",
+      "play_rate": 0.006098,
+      "sample_size": 4,
+      "tier": "C",
+      "top_4_rate": 0.0,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_ASTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_DRX",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_FioraUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_HPTank",
+          "style": "bronze"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_MeleeTrait",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_TahmKenchUniqueTrait",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 3.0,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Caitlyn",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Aatrox",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_TwistedFate",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Talon",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Jax",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Milio",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Corki",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Riven",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "fateweaver-assassintrait",
+      "name": "Fateweaver AssassinTrait",
+      "play_rate": 0.006098,
+      "sample_size": 4,
+      "tier": "C",
+      "top_4_rate": 0.75,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_AssassinTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DRX",
+          "style": "bronze"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_Fateweaver",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ResistTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_Stargazer_Serpent",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_Timebreaker",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 4.0,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Pyke",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Gragas",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Gwen",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Milio",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_IvernMinion",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Pantheon",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Corki",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Riven",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "timebreaker-assassintrait",
+      "name": "Timebreaker AssassinTrait",
+      "play_rate": 0.006098,
+      "sample_size": 4,
+      "tier": "C",
+      "top_4_rate": 0.5,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_AssassinTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_Fateweaver",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_FlexTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_HPTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_PsyOps",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SpaceGroove",
+          "style": "bronze"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_Timebreaker",
+          "style": "silver"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 6.75,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Gwen",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Pantheon",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Ornn",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nami",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Riven",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_TahmKench",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Blitzcrank",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nunu",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nasus",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "spacegroove-aptrait",
+      "name": "SpaceGroove APTrait",
+      "play_rate": 0.006098,
+      "sample_size": 4,
+      "tier": "C",
+      "top_4_rate": 0.0,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_APTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_AssassinTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_BlitzcrankUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_HPTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShieldTank",
+          "style": "bronze"
+        },
+        {
+          "count": 3,
+          "name": "TFT17_SpaceGroove",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_TahmKenchUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_Timebreaker",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 4.75,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Aatrox",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Akali",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Maokai",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_TahmKench",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Fiora",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Vex",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Shen",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Graves",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Morgana",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Bard",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "drx-fiorauniquetrait",
+      "name": "DRX FioraUniqueTrait",
+      "play_rate": 0.006098,
+      "sample_size": 4,
+      "tier": "C",
+      "top_4_rate": 0.75,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_DRX",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_FioraUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_GravesTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_HPTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_MeleeTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_MorganaUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ResistTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShenUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_TahmKenchUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_VexUniqueTrait",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 5.25,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Urgot",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Karma",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_AurelionSol",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Galio",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_TahmKench",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Fiora",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Bard",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Viktor",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "mecha-fiorauniquetrait",
+      "name": "Mecha FioraUniqueTrait",
+      "play_rate": 0.006098,
+      "sample_size": 4,
+      "tier": "C",
+      "top_4_rate": 0.25,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_FioraUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_FlexTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_HPTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ManaTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 3,
+          "name": "TFT17_Mecha",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_MeleeTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_TahmKenchUniqueTrait",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 7.0,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Briar",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Aatrox",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_RekSai",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Belveth",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Akali",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Maokai",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Kindred",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Caitlyn",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "drx-primordian",
+      "name": "DRX Primordian",
+      "play_rate": 0.006098,
+      "sample_size": 4,
+      "tier": "C",
+      "top_4_rate": 0.0,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_ASTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_DRX",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_HPTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_MeleeTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_Primordian",
+          "style": "silver"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 2.75,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Gwen",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Pantheon",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Ornn",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nami",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Riven",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_TahmKench",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Blitzcrank",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Shen",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nasus",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Samira",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nunu",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "spacegroove-aptrait",
+      "name": "SpaceGroove APTrait",
+      "play_rate": 0.006098,
+      "sample_size": 4,
+      "tier": "C",
+      "top_4_rate": 1.0,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_APTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_AssassinTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_BlitzcrankUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_HPTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ResistTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShenUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShieldTank",
+          "style": "bronze"
+        },
+        {
+          "count": 4,
+          "name": "TFT17_SpaceGroove",
+          "style": "gold"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_TahmKenchUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_Timebreaker",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 2.0,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Gwen",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Pantheon",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Ornn",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nami",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nunu",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Riven",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_TahmKench",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Blitzcrank",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Shen",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Morgana",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "spacegroove-aptrait",
+      "name": "SpaceGroove APTrait",
+      "play_rate": 0.004573,
+      "sample_size": 3,
+      "tier": "C",
+      "top_4_rate": 1.0,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_APTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_AssassinTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_BlitzcrankUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_HPTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_MorganaUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ResistTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShenUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShieldTank",
+          "style": "bronze"
+        },
+        {
+          "count": 3,
+          "name": "TFT17_SpaceGroove",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_TahmKenchUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_Timebreaker",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 3.6667,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Poppy",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Veigar",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Lissandra",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_IvernMinion",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Illaoi",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Rammus",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Summon",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Corki",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Fizz",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "astronaut-aptrait",
+      "name": "Astronaut APTrait",
+      "play_rate": 0.004573,
+      "sample_size": 3,
+      "tier": "C",
+      "top_4_rate": 0.6667,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_APTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_Astronaut",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DarkStar",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ResistTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShieldTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SummonTrait",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 6.6667,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Akali",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Aurora",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Maokai",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Urgot",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Rhaast",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Galio",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "drx-flextrait",
+      "name": "DRX FlexTrait",
+      "play_rate": 0.004573,
+      "sample_size": 3,
+      "tier": "C",
+      "top_4_rate": 0.0,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_DRX",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_FlexTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_HPTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_Mecha",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_MeleeTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_RhaastUniqueTrait",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 5.0,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Gnar",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Jax",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Rammus",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nunu",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Xayah",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Bard",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Jhin",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_PVE_ElderDragon",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "rangedtrait-astronaut",
+      "name": "RangedTrait Astronaut",
+      "play_rate": 0.004573,
+      "sample_size": 3,
+      "tier": "C",
+      "top_4_rate": 0.3333,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_Astronaut",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DarkStar",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_JhinUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ManaTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_RangedTrait",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ResistTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShieldTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_Stargazer_Serpent",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 4.6667,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Briar",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_RekSai",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Belveth",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Akali",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Gwen",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Maokai",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Kindred",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Aatrox",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "primordian-astrait",
+      "name": "Primordian ASTrait",
+      "play_rate": 0.004573,
+      "sample_size": 3,
+      "tier": "C",
+      "top_4_rate": 0.3333,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_ASTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_AssassinTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DRX",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_HPTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_MeleeTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_Primordian",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SpaceGroove",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 4.3333,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Caitlyn",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Aatrox",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_TwistedFate",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Talon",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Jax",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Milio",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Corki",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Riven",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "fateweaver-assassintrait",
+      "name": "Fateweaver AssassinTrait",
+      "play_rate": 0.004573,
+      "sample_size": 3,
+      "tier": "C",
+      "top_4_rate": 0.6667,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_AssassinTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DRX",
+          "style": "bronze"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_Fateweaver",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ResistTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_Stargazer_Medallion",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_Timebreaker",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 1.0,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_IvernMinion",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Illaoi",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Karma",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nunu",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Bard",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Blitzcrank",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Sona",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Vex",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Morgana",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Summon",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "shieldtank-blitzcrankuniquetrait",
+      "name": "ShieldTank BlitzcrankUniqueTrait",
+      "play_rate": 0.004573,
+      "sample_size": 3,
+      "tier": "C",
+      "top_4_rate": 1.0,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_BlitzcrankUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DarkStar",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_FlexTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ManaTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_MorganaUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_ShieldTank",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SonaUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SpaceGroove",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SummonTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_VexUniqueTrait",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 5.0,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Poppy",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Veigar",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Lissandra",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_IvernMinion",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Rammus",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Karma",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Summon",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Bard",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Sona",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Teemo",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Fizz",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "astronaut-aptrait",
+      "name": "Astronaut APTrait",
+      "play_rate": 0.004573,
+      "sample_size": 3,
+      "tier": "C",
+      "top_4_rate": 0.3333,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_APTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_Astronaut",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DarkStar",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_FlexTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ResistTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SonaUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SummonTrait",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 1.3333,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Aatrox",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Akali",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Maokai",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_TahmKench",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Fiora",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Blitzcrank",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Vex",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Shen",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Graves",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Morgana",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "blitzcrankuniquetrait-drx",
+      "name": "BlitzcrankUniqueTrait DRX",
+      "play_rate": 0.004573,
+      "sample_size": 3,
+      "tier": "C",
+      "top_4_rate": 1.0,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_BlitzcrankUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DRX",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_FioraUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_GravesTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_HPTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_MeleeTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_MorganaUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ResistTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShenUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SpaceGroove",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_TahmKenchUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_VexUniqueTrait",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 4.6667,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_IvernMinion",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Rammus",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Karma",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Bard",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Blitzcrank",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Vex",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Shen",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Morgana",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "astronaut-blitzcrankuniquetrait",
+      "name": "Astronaut BlitzcrankUniqueTrait",
+      "play_rate": 0.004573,
+      "sample_size": 3,
+      "tier": "C",
+      "top_4_rate": 0.3333,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_Astronaut",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_BlitzcrankUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DarkStar",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_FlexTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ManaTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_MorganaUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ResistTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShenUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShieldTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_SpaceGroove",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_VexUniqueTrait",
+          "style": "bronze"
+        }
+      ]
+    },
+    {
+      "anomalies": [],
+      "avg_placement": 3.0,
+      "champions": [
+        {
+          "cost": 0,
+          "id": "TFT17_Gnar",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Jax",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Mordekaiser",
+          "is_carry": true,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Rhaast",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Rammus",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Nunu",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Xayah",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Bard",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Jhin",
+          "is_carry": false,
+          "items": []
+        },
+        {
+          "cost": 0,
+          "id": "TFT17_Morgana",
+          "is_carry": false,
+          "items": []
+        }
+      ],
+      "comp_id": "rangedtrait-astronaut",
+      "name": "RangedTrait Astronaut",
+      "play_rate": 0.004573,
+      "sample_size": 3,
+      "tier": "C",
+      "top_4_rate": 0.6667,
+      "traits": [
+        {
+          "count": 1,
+          "name": "TFT17_Astronaut",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_DarkStar",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_JhinUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ManaTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_MorganaUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 2,
+          "name": "TFT17_RangedTrait",
+          "style": "silver"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ResistTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_RhaastUniqueTrait",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_ShieldTank",
+          "style": "bronze"
+        },
+        {
+          "count": 1,
+          "name": "TFT17_Stargazer_Wolf",
+          "style": "bronze"
         }
       ]
     }
-  ]
+  ],
+  "data_window_hours": 12,
+  "elo_bracket": "CHALLENGER",
+  "last_updated": "2026-04-27T07:09:52Z",
+  "match_count": 82,
+  "patch_version": "16.8",
+  "region": "KR",
+  "schema_version": "1.2.0",
+  "total_matches_sampled": 82,
+  "updated_at": "2026-04-27T07:09:52.460574+00:00"
 }

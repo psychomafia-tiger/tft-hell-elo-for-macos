@@ -153,8 +153,8 @@ final class TierListDecodingTests: XCTestCase {
         }
         let data = try Data(contentsOf: fixtureURL)
         let tierList = try decoder().decode(TierList.self, from: data)
-        XCTAssertEqual(tierList.comps.count, 10, "Fixture should contain 10 comps")
+        XCTAssertGreaterThan(tierList.comps.count, 0, "Fixture should contain ≥1 comp")
         XCTAssertTrue(tierList.comps.allSatisfy { $0.sampleSize > 0 })
-        XCTAssertEqual(tierList.comps.first?.tier, .S)
+        XCTAssertEqual(tierList.schemaVersion, SchemaVersion(major: 1, minor: 2, patch: 0))
     }
 }

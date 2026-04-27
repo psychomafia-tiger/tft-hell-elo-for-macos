@@ -4,7 +4,7 @@ import Combine
 
 final class DataManagerTests: XCTestCase {
 
-    // MARK: - Static loadBundledJSON (backward compat — bundled JSON stays at 1.0.0)
+    // MARK: - Static loadBundledJSON (Phase 2 T10 — fixture refreshed to 1.2.0)
 
     /// Happy path: the app's bundled fixture decodes into a usable TierList
     /// when loaded via DataManager. Verifies resource wired in project.yml
@@ -12,33 +12,22 @@ final class DataManagerTests: XCTestCase {
     @MainActor
     func testLoadBundledJSONReturnsTierList() {
         let tierList = DataManager.loadBundledJSON()
-        XCTAssertEqual(tierList.comps.count, 10, "Bundled fixture should have 10 comps")
-        XCTAssertEqual(tierList.schemaVersion, SchemaVersion(major: 1, minor: 0, patch: 0))
+        XCTAssertGreaterThan(tierList.comps.count, 0, "Bundled fixture should have ≥1 comp")
+        XCTAssertEqual(tierList.schemaVersion, SchemaVersion(major: 1, minor: 2, patch: 0))
         XCTAssertEqual(tierList.eloBracket, "CHALLENGER")
         let firstComp = tierList.comps.first
         XCTAssertNotNil(firstComp)
-        XCTAssertEqual(firstComp?.tier, .S)
         XCTAssertFalse(firstComp?.name.isEmpty ?? true)
     }
 
-    /// Bundled JSON v1.0.0 has no `anomalies` key → forward-compat decoder
-    /// must produce empty anomaly arrays, not a DecodingError.
+    /// Schema 1.2.0 fixture must populate `traits[]` for at least one comp
+    /// (data contract for `TraitChip` rendering in `CompCard`).
     @MainActor
-    func testBundledJSONCompsHaveEmptyAnomalies() {
+    func testBundledJSONCompsHaveTraits() {
         let tierList = DataManager.loadBundledJSON()
-        for comp in tierList.comps {
-            XCTAssertTrue(comp.anomalies.isEmpty,
-                          "Bundled v1.0.0 JSON has no anomalies key — expect empty array for '\(comp.name)'")
-        }
-    }
-
-    /// Bundled JSON v1.0.0 has no `region` key → forward-compat decoder
-    /// must produce default "VN2", not a DecodingError.
-    @MainActor
-    func testBundledJSONRegionDefaultsToVN2() {
-        let tierList = DataManager.loadBundledJSON()
-        XCTAssertEqual(tierList.region, "VN2",
-                       "Bundled v1.0.0 JSON missing 'region' key should default to 'VN2'")
+        let withTraits = tierList.comps.filter { !$0.traits.isEmpty }
+        XCTAssertGreaterThan(withTraits.count, 0,
+                             "Schema 1.2.0 fixture must populate traits[] on at least one comp")
     }
 
     /// Verify missing-resource guard: feeding a bundle without the fixture
@@ -56,8 +45,8 @@ final class DataManagerTests: XCTestCase {
     @MainActor
     func testInitialTierListIsFromBundledJSON() {
         let dm = DataManager()
-        XCTAssertEqual(dm.tierList.comps.count, 10)
-        XCTAssertEqual(dm.tierList.schemaVersion, SchemaVersion(major: 1, minor: 0, patch: 0))
+        XCTAssertGreaterThan(dm.tierList.comps.count, 0)
+        XCTAssertEqual(dm.tierList.schemaVersion, SchemaVersion(major: 1, minor: 2, patch: 0))
     }
 
     /// On init, bannerState starts as .fresh (before any fetch attempt resolves).
