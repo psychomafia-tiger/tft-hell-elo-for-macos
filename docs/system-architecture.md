@@ -1,6 +1,6 @@
 # System Architecture — TFT Hell Elo
 
-Last updated: 2026-04-26
+Last updated: 2026-04-27
 
 ---
 
@@ -16,14 +16,14 @@ TFT Hell Elo is a native macOS menu bar app (`MenuBarExtra(.window)`) that displ
 flowchart LR
     subgraph pipeline ["Data pipeline (GitHub Actions cron, 12h)"]
         R["Riot TFT API\n(League-v1 + Match-v1)"] --> AG["Python aggregator\ntftmac_pipeline"]
-        AG --> TL["data/tier-list.json\n(committed to repo, schema 1.1.0)"]
+        AG --> TL["data/tier-list.json\n(committed to repo, schema 1.2.0)"]
     end
 
     subgraph app ["macOS app (TFTMac target)"]
         TL -->|"HTTPS raw.githubusercontent.com"| RF["RemoteFetcher\n(actor, 10s timeout)"]
         RF --> DM["DataManager\n(@MainActor ObservableObject)"]
         DC["DiskCache\n(~/Library/Caches/…)"] <--> DM
-        BU["Bundled sample-tier-list.json\n(schema 1.0.0, fallback)"] --> DM
+        BU["Bundled sample-tier-list.json\n(schema 1.2.0, fallback)"] --> DM
         DM -->|"@Published tierList"| UI["SwiftUI views\n(TierListPopover + OverlayPanel)"]
     end
 
@@ -105,14 +105,14 @@ See `docs/data-pipeline-architecture.md` for the full deep-dive.
 flowchart LR
     A["Riot TFT-League-v1\nVN2 Challenger PUUIDs"] --> B["Riot TFT-Match-v1\nMatch IDs + Details"]
     B --> C["Python tftmac_pipeline\naggregator + tier_calculator\nanomaly_aggregator"]
-    C --> D["data/tier-list.json\nschema 1.1.0"]
+    C --> D["data/tier-list.json\nschema 1.2.0"]
     D --> E["GitHub Actions\ntft-data-refresh.yml\n12h cron"]
     E --> D
 ```
 
-- **Aggregator:** `Pipeline/src/tftmac_pipeline/` — 7 modules. Jaccard-based comp grouping, S/A/B/C tier classification, EkkoOffering anomaly aggregation.
+- **Aggregator:** `Pipeline/src/tftmac_pipeline/` — 8 modules. Trait-combo-signature comp grouping (Phase 2), S/A/B/C tier classification, EkkoOffering anomaly aggregation. Legacy Jaccard path (`comp_pipeline.run_pipeline`) retained but unused by `build_tier_list_payload`.
 - **Workflow:** `.github/workflows/tft-data-refresh.yml` — SHA-pinned, repo guard, PII grep guard, hand-rolled commit. Designed for public repo safety.
-- **Schema:** 1.1.0 (additive over 1.0.0). App uses forward-compat decoder; `appSchema = 1.0.0` in `SchemaCompatibilityGate` so both bundled (1.0.0) and remote (1.1.0) pass the gate.
+- **Schema:** 1.2.0 (additive over 1.1.0 — adds `comp.traits[]` array). App uses forward-compat decoder; `appSchema = 1.0.0` in `SchemaCompatibilityGate` so bundled (1.2.0) + legacy remote (1.0.0/1.1.0) all pass the gate.
 
 ---
 
@@ -152,33 +152,43 @@ App/TFTMac/
 │   ├── AssetCache.swift           — URLSession + disk cache for portraits (30d TTL, 50MB LRU)
 │   └── ChampionAssetURL.swift     — CommunityDragon Set 17 portrait URL builder
 ├── Generated/
-│   └── ChampionCatalog.swift      — data-driven displayName lookup (loads bundled JSON)
+│   ├── ChampionCatalog.swift      — data-driven displayName lookup (loads bundled JSON)
+│   ├── TraitCatalog.swift         — Set 17 trait apiName → display + iconToken (Phase 2)
+│   └── TraitAssetURL.swift        — CommunityDragon trait icon URL builder
 ├── Models/
 │   ├── TierList.swift
-│   ├── Comp.swift                 — forward-compat anomalies decoder
+│   ├── Comp.swift                 — forward-compat anomalies + traits decoder
 │   ├── Champion.swift
 │   ├── Anomaly.swift
+│   ├── TraitActivation.swift      — Phase 2 (name + count + tier_current)
 │   └── SchemaVersion.swift
 ├── Views/
 │   ├── TierListPopover.swift
 │   ├── CompListView.swift
-│   ├── CompCard.swift
+│   ├── CompCard.swift             — Phase 2: trait chips row
 │   ├── ChampionPortrait.swift     — async portrait render via AssetCache
+│   ├── TraitChip.swift            — Phase 2 trait badge with async icon
 │   ├── CompCardAnomaliesRow.swift
 │   ├── UpdateRequiredOverlay.swift
 │   └── OverlayWindowController.swift
 └── Resources/
-    ├── sample-tier-list.json      — bundled fallback (schema 1.0.0)
-    └── set17-champions.json       — 59 Set 17 champion IDs + display names
+    ├── sample-tier-list.json      — bundled fallback (schema 1.2.0)
+    ├── set17-champions.json       — 59 Set 17 champion IDs + display names
+    └── set17-traits.json          — 38 Set 17 traits (apiName → displayName + iconToken)
 
 Pipeline/src/tftmac_pipeline/
 ├── riot_client.py                 — async Riot API client
 ├── tier_calculator.py             — S/A/B/C classify()
 ├── anomaly_aggregator.py
 ├── champion_aggregator.py
-├── comp_pipeline.py
-├── json_emitter.py
-└── run_aggregator.py              — CLI entrypoint
+├── comp_pipeline.py               — legacy Jaccard path (retained, unused by build_tier_list_payload)
+├── comp_grouping.py               — Phase 2 trait-combo-signature grouping
+├── comp_name_resolver.py          — Phase 2 curated trait combo → semantic name
+├── json_emitter.py                — Phase 2: emits comp.traits[] + schema 1.2.0
+└── run_aggregator.py              — CLI entrypoint + build_tier_list_payload
+
+Pipeline/data/
+└── trait_name_map.json            — curated trait combo → semantic comp name (~6 entries)
 
 .github/workflows/
 └── tft-data-refresh.yml           — 12h cron, public-repo defensive design
@@ -193,6 +203,7 @@ data/
 
 - Data pipeline deep-dive: `docs/data-pipeline-architecture.md`
 - Asset pipeline deep-dive (Phase 1): `docs/asset-pipeline-architecture.md`
+- Trait aggregation deep-dive (Phase 2): `docs/trait-aggregation-architecture.md`
 - v0.1 design spec: `docs/design-v0.1-menu-bar-popover.md`
 - Naming conventions: `docs/naming-conventions.md`
 - Bugs log: `docs/bugs-log.md`

@@ -5,6 +5,65 @@ Append-only — never replace or edit prior entries.
 
 ---
 
+## [phase-02-trait-centric-comp] — 2026-04-27
+
+### Added
+
+- **Pipeline trait grouping**: `comp_grouping.py` (`group_comps_by_trait_signature`) replaces Jaccard-on-champion-set as primary comp identifier. Sorted-tuple-of-(name, tier_current) per participant.
+- **Pipeline name resolver**: `comp_name_resolver.py` (`resolve_comp_name`) reads curated `Pipeline/data/trait_name_map.json` (~6 entries, will grow). Falls back to top-2 trait apiNames stripped of `TFT17_` / `Set17_` prefix.
+- **Swift `TraitActivation` model** + `Comp.traits[]` field with forward-compat `decodeIfPresent ?? []`.
+- **Swift `TraitCatalog`** loads bundled `set17-traits.json` (38 Set 17 traits from CommunityDragon `cdragon/tft/en_us.json`). Maps `apiName → (displayName, iconToken)`.
+- **Swift `TraitAssetURL`** builder for CDragon trait icons (`trait_icon_17_<token>.tft_set17.png` — verified suffix via probe).
+- **Swift `TraitChip` view** — async-loading badge (count + 16pt icon + display name) using `AssetCache` + `Theme.Fonts.monoCaption`.
+- **Pipeline test**: `test_star_level_aggregation.py` — 16 cases covering modal star aggregation + cost-from-rarity fix in trait-bucket emission path.
+
+### Changed
+
+- **Schema 1.1.0 → 1.2.0** (additive). New field `comp.traits: [{name, count, tier_current}, ...]`. Forward-compat decoder retains 1.0.0/1.1.0 support — `traits[]` defaults to `[]` when key absent.
+- **`build_tier_list_payload`** rewires to use trait-signature grouping. Iterates buckets, calls `resolve_comp_name`, computes `play_rate = bucket.sample_size / total_participants`.
+- **`CompCard.body`** renders trait chips row between `topRow` and `championsRow`, sorted by activation count descending. Hidden when `comp.traits` is empty.
+- **`_strip_prefix` regex** handles both `Set17_` and `TFT17_` (Discovery: real Riot API uses `TFT17_*`, not `Set17_*` as the design doc assumed).
+- **Bundled fixture `sample-tier-list.json`** regenerated from KR fixture via `build_tier_list_payload` at schema 1.2.0 — 32 comps with populated traits[]. Threshold `min_sample` relaxed to 3 for small-fixture demo (production uses 10).
+- **Test suite refactor** — `SampleTierListFixtureTests`, `DataManagerTests`, `TierListDecodingTests` rewritten from hardcoded synthetic-fixture assertions (count=10, S=4 A=4 B=2) to invariant-based shape checks (≥1 comp, schema=1.2.0, traits[] non-empty for ≥1 comp). Future fixture refreshes no longer require test edits.
+
+### Fixed
+
+- **Bug #005 — star_level data-driven + 3-star-only render**:
+  - Pipeline: `aggregate_champions` aggregates modal `tier` per champion across top-4 placements (Riot Match-v5 `units[].tier`). Emits `star_level: int` in champion dict.
+  - `json_emitter._emit_champions_from_bucket` now derives real `cost` from rarity (was hardcoded 0 — handoff TODO #4) AND `star_level` from `champion_star_counts` (defaults 1 — full counts pending Phase 3 `comp_grouping.py` enrichment).
+  - Swift `Champion.starLevel: Int` (default 1) with custom `init(from:)` for forward-compat decode of legacy fixtures.
+  - `StarLevelIndicator` body: `if level >= 3 { 3 stars } else { EmptyView }` per TFTactics convention. `derivedLevel(for:)` marked `@available(*, deprecated)`.
+  - `ChampionPortrait` passes `champion.starLevel` directly (replaces placeholder `StarLevelIndicator.derivedLevel(for: champion)`).
+- **`Champion.CodingKeys` snake-case raw values** — removed mid-fix. Explicit `case isCarry = "is_carry"` short-circuited parent decoder's `.convertFromSnakeCase` strategy → keyNotFound at runtime. Strategy alone now handles snake/camel conversion.
+
+### Architecture impact
+
+- Pipeline grouping reshaped — comp count may collapse (trait similarity tighter than Jaccard). Tier thresholds may need re-tuning post-cron-run on production VN2 data.
+- Champion `cost` previously emitted 0 from new trait-bucket path — fixed in this phase. Real `cost` derived from `champion_rarity + 1`. `star_level` similarly emits from `champion_star_counts` modal (defaults to 1 in trait-bucket path until Phase 3 wires `champion_star_counts` into bucket dict from `comp_grouping.py`).
+- New deep-dive doc: `docs/trait-aggregation-architecture.md`.
+- Curated `trait_name_map.json` keys may MISS on real data (use semantic apiNames like `TFT17_Psionic+TFT17_Conduit`, but real API emits `TFT17_PsyOps`). Phase 3 action: regenerate keys from real apiNames after first cron run.
+
+### Bug fixes
+
+- Bug #005 (star_level over-render) — see `docs/bugs-log.md` (status updated ⏳ Deferred → ✅ Fixed).
+
+### Commits
+
+- `197e432` feat(app): render trait chips row in CompCard
+- `2012053` data: refresh bundled fixture to schema 1.2.0 (trait-aware)
+- `09a1290` fix(app+pipeline): star_level data-driven, 3-star-only render (bug #005)
+- `268be11` feat(app): TraitChip view with async icon load via TraitCatalog (predecessor session)
+- `299ac6d` feat(app): TraitCatalog + TraitAssetURL with verified Set 17 metadata (predecessor session)
+- `a7bc0d1` feat(app): explicit test for schema 1.2.0 acceptance (predecessor session)
+- `7ac2954` feat(app): TraitActivation model + Comp.traits with forward-compat decode (predecessor session)
+- `350d93b` fix(pipeline): TFT17_ prefix support (predecessor session)
+- `a4c1cad` feat(pipeline): wire trait grouping + schema 1.2.0 (predecessor session)
+- `55efa40` feat(pipeline): group_comps_by_trait_signature (predecessor session)
+- `693060b` feat(pipeline): comp_name_resolver curated map (predecessor session)
+- `e1cf46c` feat(pipeline): trait_combo_signature (predecessor session)
+
+---
+
 ## [phase-01-champion-portraits] — 2026-04-26
 
 ### Added
