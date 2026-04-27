@@ -38,6 +38,9 @@ struct CompCardV2: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             topRow
+            if !comp.traits.isEmpty {
+                traitsRow
+            }
             championsRow
             CompCardItemsRow(comp: comp)
             CompCardAnomaliesRow(anomalies: comp.anomalies)  // Phase 03: anomaly chips
@@ -83,6 +86,20 @@ struct CompCardV2: View {
             Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                 .font(.system(size: 12, weight: .semibold))
                 .foregroundStyle(Theme.Colors.textMuted)
+        }
+    }
+
+    /// Horizontal strip of `TraitChip` badges, one per active trait in the comp.
+    /// Sorted by activation count descending (most-active trait first) so the
+    /// dominant synergy reads left-to-right without scanning. Hidden when
+    /// `comp.traits` is empty — forward-compatible with v1.1.0 schema that
+    /// omits the `traits` key (defaults to `[]`).
+    private var traitsRow: some View {
+        HStack(spacing: 4) {
+            ForEach(comp.traits.sorted(by: { $0.count > $1.count }), id: \.name) { trait in
+                TraitChip(activation: trait)
+            }
+            Spacer(minLength: 0)
         }
     }
 
