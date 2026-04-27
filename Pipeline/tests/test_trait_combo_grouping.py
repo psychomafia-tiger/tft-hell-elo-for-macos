@@ -28,3 +28,25 @@ def test_different_trait_combos_separate():
     ]
     grouped = group_comps_by_trait_signature(participants)
     assert len(grouped) == 2
+
+
+def test_items_per_champion_uses_itemNames_not_items():
+    """Bug #008 — Riot Set 17 emits unit.itemNames (strings); unit.items (ints) always empty."""
+    participants = [{
+        "placement": 1,
+        "traits": [{"name": "TFT17_DarkStar", "tier_current": 2, "num_units": 4}],
+        "units": [{
+            "character_id": "TFT17_Karma",
+            "rarity": 4,
+            "tier": 2,
+            "items": [],
+            "itemNames": ["TFT_Item_JeweledGauntlet", "TFT_Item_SpearOfShojin"],
+        }],
+    }]
+    from tftmac_pipeline.comp_grouping import group_comps_by_trait_signature
+    buckets = group_comps_by_trait_signature(participants)
+    assert len(buckets) == 1
+    bucket = next(iter(buckets.values()))
+    items = bucket["items_per_champion"]["TFT17_Karma"]
+    assert items["TFT_Item_JeweledGauntlet"] == 1
+    assert items["TFT_Item_SpearOfShojin"] == 1

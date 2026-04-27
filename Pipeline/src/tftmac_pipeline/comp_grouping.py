@@ -86,9 +86,14 @@ def group_comps_by_trait_signature(participants: list[dict]) -> dict:
             tier = unit.get("tier", 1)
             if 1 <= tier <= 3:
                 b["champion_star_counts"][cid][tier] += 1
-            for item in unit.get("items", []) or []:
-                # Riot returns ints (item ids) or dicts; normalize
-                item_id = item if isinstance(item, (str, int)) else item.get("id")
+            # Bug #008 — Riot Set 17 leaves `items` (int IDs) empty; populates
+            # `itemNames` (strings like "TFT_Item_GargoyleStoneplate") instead.
+            # Prefer itemNames; fall back to items for older sets / safety.
+            raw_items = unit.get("itemNames") or unit.get("items") or []
+            for item in raw_items:
+                item_id = item if isinstance(item, str) else (
+                    item if isinstance(item, int) else item.get("id") if isinstance(item, dict) else None
+                )
                 if item_id is not None:
                     b["items_per_champion"][cid][item_id] += 1
     return dict(buckets)
