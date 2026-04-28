@@ -1,39 +1,31 @@
 import SwiftUI
 
-/// Phase 1 (P1.T6) upgrade: real CommunityDragon Set 17 artwork loaded async via
-/// `AssetCache` + `ChampionAssetURL`, with cost-colored placeholder fallback on
-/// miss/offline. Display name + star overlay rendered identically to Wave 5c.
+/// Phase 3 (TFTactics-style) upgrade: cost-color border on every champion (was
+/// tier-color, carry-only) + 3-item overlay on bottom of carry portraits
+/// (replaces separate `CompCardItemsRow` text path).
 ///
 /// Layout:
 /// ```
-///    ★★          ← StarLevelIndicator (top-overlay)
-///  ┌────┐
-///  │ IMG│        ← real portrait (or placeholder while loading / on miss)
-///  └────┘
-///   Jinx         ← Text(displayName)
+///    ⭐⭐⭐                ← StarLevelIndicator (top, only when starLevel >= 3)
+///   ┌──────┐
+///   │ FACE │             ← portrait image, costColor border ring 2pt (always)
+///   │ ┌──┐ │             ← 3 ItemBadge overlay bottom 30%, ZStack alignment .bottom
+///   │ │II│I│
+///   └──────┘
+///    Jinx                ← Text(displayName)
 /// ```
 ///
-/// Plain-language: trước Phase 1 user thấy avatar xám mặc định (như Slack chưa
-/// upload ảnh). Sau P1.T6: user thấy real portrait Aatrox/Viktor/Illaoi từ
-/// CommunityDragon CDN. Async load qua `.task` — nếu offline hoặc URL miss,
-/// fallback về placeholder cost-colored circle (ví dụ: 5-cost = vàng gold,
-/// 1-cost = xám) → user vẫn nhận diện được tier qua màu.
-///
-/// Caller contract preserved: `ChampionPortrait(champion:tierColor:)` —
-/// `size` parameter retained as optional default (40pt) for any future callers.
+/// Plain-language: trước Phase 3 user thấy portrait với border tier (S/A/B/C
+/// color) chỉ trên carry. Sau Phase 3: mọi champion có border màu theo cost
+/// (1=gray, 2=green, 3=blue, 4=purple, 5=gold) — match TFTactics web. Carry
+/// thêm 3 ô item nhỏ (12pt) overlay đáy portrait — user glance 0.3s nhận diện
+/// build (xây dựng) item carry mà không phải đọc text row riêng.
 struct ChampionPortrait: View {
     let champion: Champion
 
-    /// Tier color applied as border when `champion.isCarry == true`.
-    /// Non-carry champions render with no border.
-    let tierColor: Color
-
-    /// Portrait diameter. Default matches wireframe 40px (slightly larger than
-    /// v1's 32px to accommodate the star overlay + leave room for name).
+    /// Portrait diameter. Default matches wireframe 40px.
     var size: CGFloat = 40
 
-    /// Loaded NSImage cached in @State so re-renders don't re-fetch.
-    /// Nil before load completes / on URL miss / on network failure.
     @State private var image: NSImage?
 
     var body: some View {
@@ -46,9 +38,6 @@ struct ChampionPortrait: View {
                 .frame(maxWidth: size + 12)
         }
         .task {
-            // Guard re-fetch on view re-render (e.g. parent state change).
-            // Swift's task modifier already re-runs on .id() change, but @State
-            // image survives within the same identity — explicit guard is cheap.
             guard image == nil,
                   let url = ChampionAssetURL.squarePortrait(forChampionId: champion.id),
                   let data = try? await AssetCache.shared.data(for: url),
@@ -58,27 +47,39 @@ struct ChampionPortrait: View {
     }
 
     private var portraitStack: some View {
-        ZStack(alignment: .top) {
+        ZStack(alignment: .bottom) {
             portraitFill
                 .frame(width: size, height: size)
                 .clipShape(Circle())
                 .overlay(
                     Circle()
-                        .stroke(champion.isCarry ? tierColor : Color.clear, lineWidth: 2)
+                        .stroke(costBorderColor(champion.cost), lineWidth: 2)
                 )
 
-            // Star overlay pinned top; offsets push it above the portrait edge
-            // so it doesn't occlude the champion fill. Level comes directly from
-            // the data-driven champion.starLevel (pipeline schema 1.2.0+).
+            if champion.isCarry && !champion.items.isEmpty {
+                itemsOverlay
+                    .padding(.bottom, 2)  // tiny inset so badges don't kiss the border
+            }
+        }
+        .overlay(alignment: .top) {
+            // Star indicator only renders for starLevel >= 3 (per Phase 2 fix).
+            // Offset above portrait so it doesn't occlude the face fill.
             StarLevelIndicator(level: champion.starLevel)
                 .offset(y: -8)
         }
-        .frame(height: size + 6)  // room for the offset star row
+        .frame(height: size + 6)
     }
 
-    /// Renders real portrait if loaded; otherwise cost-colored placeholder.
-    /// Phase 2 may add a brief loading shimmer — current behavior swaps
-    /// instantly when image arrives (acceptable for cached/fast paths).
+    /// 3-item HStack overlay. Pipeline already filters top-3 ≥0.40 agreement,
+    /// but `.prefix(3)` is defensive in case more slip through.
+    private var itemsOverlay: some View {
+        HStack(spacing: 1) {
+            ForEach(champion.items.prefix(3), id: \.id) { item in
+                ItemBadge(itemId: item.id)
+            }
+        }
+    }
+
     @ViewBuilder
     private var portraitFill: some View {
         if let image {
@@ -90,19 +91,21 @@ struct ChampionPortrait: View {
         }
     }
 
-    /// Cost-colored fallback (1-cost gray → 5-cost gold). Matches TFT's in-game
-    /// shop tier colors so users can still identify champion cost while async
-    /// load is in flight or has failed.
+    /// Cost-colored placeholder fill (used when async load is in flight or
+    /// the URL miss). Keeps user able to identify cost while artwork resolves.
     private var placeholder: some View {
         ZStack {
-            Circle().fill(costColor(champion.cost))
+            Circle().fill(costBorderColor(champion.cost))
             Image(systemName: "person.fill")
                 .font(.system(size: size * 0.5))
                 .foregroundStyle(.white.opacity(0.7))
         }
     }
 
-    private func costColor(_ cost: Int) -> Color {
+    /// Cost → border color mapping. TFT canonical: 1=gray, 2=green, 3=blue,
+    /// 4=purple, 5=gold. Cost outside 1-5 (Riot edge cases for high-rarity
+    /// special units) → black fallback.
+    private func costBorderColor(_ cost: Int) -> Color {
         switch cost {
         case 1: return .gray
         case 2: return .green

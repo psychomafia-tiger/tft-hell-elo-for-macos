@@ -109,7 +109,7 @@ struct CompCardV2: View {
     private var championsRow: some View {
         HStack(spacing: Theme.Spacing.gapChampionIcons) {
             ForEach(comp.champions, id: \.id) { champ in
-                ChampionPortrait(champion: champ, tierColor: tierColor)
+                ChampionPortrait(champion: champ)
             }
             Spacer(minLength: 0)
         }
