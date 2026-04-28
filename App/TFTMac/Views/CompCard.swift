@@ -38,9 +38,6 @@ struct CompCardV2: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             topRow
-            if !comp.traits.isEmpty {
-                traitsRow
-            }
             championsRow
             CompCardAnomaliesRow(anomalies: comp.anomalies)  // Phase 03: anomaly chips
             if isExpanded {
