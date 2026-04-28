@@ -30,6 +30,7 @@
 		40B36D9552E908B535C578FC /* BundleIdentifierRegressionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B86EC7F061753D7269BC112 /* BundleIdentifierRegressionTest.swift */; };
 		41BA8DC58A431F183CD26322 /* OverlayPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97908C22E477CB38DEE794E1 /* OverlayPanel.swift */; };
 		446065B38EF3970E471E617C /* ItemBadgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603245372B84E254C4D6D75 /* ItemBadgeTests.swift */; };
+		4683DDAF597086F27D2C935B /* TraitBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166A61A82AA2EADD870457D9 /* TraitBadge.swift */; };
 		469A1936BFF5647A9A0859E1 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 0803FDD71794EA03FA6D96FA /* HotKey */; };
 		471AEAD45FB29AF924771442 /* Anomaly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09008D91D764EA968EAB5D13 /* Anomaly.swift */; };
 		47FBC478CC0318655F47B82B /* TierListDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903FB369DDE0BBE4B8A7726E /* TierListDecodingTests.swift */; };
@@ -103,6 +104,7 @@
 		0D223214CE5BBB8334A6287F /* ChampionCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionCatalog.swift; sourceTree = "<group>"; };
 		11A48FB6A1FFDBFBC5D65B11 /* CompListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompListView.swift; sourceTree = "<group>"; };
 		126E3335E4F268A09940758B /* TFTMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TFTMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		166A61A82AA2EADD870457D9 /* TraitBadge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TraitBadge.swift; sourceTree = "<group>"; };
 		192C52B5E5B0BD973AF4A5EA /* MenuBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarIcon.swift; sourceTree = "<group>"; };
 		19EEE04064D94531D37DBA18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DF3FA4B6CC40D8756710898 /* OverlayPanelConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPanelConfigTests.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				44646BD2DACAAFBE72693A49 /* UpdateRequiredOverlay.swift */,
 				539E5861C7FC73C5E9CE6468 /* TraitChip.swift */,
 				AF1F29C5CC72F79500436B72 /* ItemBadge.swift */,
+				166A61A82AA2EADD870457D9 /* TraitBadge.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				77ADF390D374839030212A62 /* TraitChip.swift in Sources */,
 				57E1AB0930EBE8BDC235DEAB /* ItemAssetURL.swift in Sources */,
 				2862D0BE2293896C960CDC44 /* ItemBadge.swift in Sources */,
+				4683DDAF597086F27D2C935B /* TraitBadge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

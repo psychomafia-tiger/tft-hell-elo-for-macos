@@ -34,6 +34,8 @@ struct ExpandedCardView: View {
         }
     }
 
+    /// Single-row icon-only badges — 26pt each, hover tooltip shows name.
+    /// All traits fit in one row (9 × 30px = 270px < 400px card width).
     @ViewBuilder
     private var traitsChipRows: some View {
         if sortedTraits.isEmpty {
@@ -42,18 +44,10 @@ struct ExpandedCardView: View {
                 .foregroundStyle(Theme.Colors.textMuted)
         } else {
             HStack(spacing: 4) {
-                ForEach(Array(sortedTraits.prefix(4)), id: \.name) { trait in
-                    TraitChip(activation: trait)
+                ForEach(sortedTraits, id: \.name) { trait in
+                    TraitBadge(activation: trait)
                 }
                 Spacer(minLength: 0)
-            }
-            if sortedTraits.count > 4 {
-                HStack(spacing: 4) {
-                    ForEach(Array(sortedTraits.dropFirst(4).prefix(4)), id: \.name) { trait in
-                        TraitChip(activation: trait)
-                    }
-                    Spacer(minLength: 0)
-                }
             }
         }
     }
