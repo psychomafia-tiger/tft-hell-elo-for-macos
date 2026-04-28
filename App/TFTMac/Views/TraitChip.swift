@@ -28,6 +28,7 @@ struct TraitChip: View {
             Text(displayLabel)
                 .font(Theme.Fonts.monoCaption)
                 .foregroundStyle(Theme.Colors.textPrimary)
+                .lineLimit(1)
         }
         .padding(.horizontal, 6)
         .padding(.vertical, 3)

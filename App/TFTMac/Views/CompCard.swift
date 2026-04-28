@@ -94,8 +94,11 @@ struct CompCardV2: View {
     /// `comp.traits` is empty — forward-compatible with v1.1.0 schema that
     /// omits the `traits` key (defaults to `[]`).
     private var traitsRow: some View {
-        HStack(spacing: 4) {
-            ForEach(comp.traits.sorted(by: { $0.count > $1.count }), id: \.name) { trait in
+        // Cap at 6 chips so an HStack with many low-count traits doesn't compress
+        // each chip below minimum width (which causes text to wrap vertically).
+        let top = Array(comp.traits.sorted(by: { $0.count > $1.count }).prefix(6))
+        return HStack(spacing: 4) {
+            ForEach(top, id: \.name) { trait in
                 TraitChip(activation: trait)
             }
             Spacer(minLength: 0)
