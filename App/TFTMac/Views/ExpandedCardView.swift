@@ -23,8 +23,14 @@ struct ExpandedCardView: View {
 
     // MARK: - Traits
 
+    /// Traits to show: sorted by count DESC, filtered to hide trivially-inactive
+    /// single-unit non-unique traits (matches TFTactics behavior of hiding
+    /// traits not yet at a meaningful breakpoint).
+    /// Unique champion traits (name contains "UniqueTrait") activate at 1 → keep.
     private var sortedTraits: [TraitActivation] {
-        comp.traits.sorted(by: { $0.count > $1.count })
+        comp.traits
+            .filter { $0.count >= 2 || $0.name.contains("UniqueTrait") }
+            .sorted(by: { $0.count > $1.count })
     }
 
     private var traitsSection: some View {

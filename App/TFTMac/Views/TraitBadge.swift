@@ -20,20 +20,19 @@ struct TraitBadge: View {
     private static let iconSize: CGFloat = 16
 
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
-            badgeTile
-            iconView
-            countPip
-        }
-        .frame(width: Self.badgeSize, height: Self.badgeSize)
-        .help("\(TraitCatalog.displayName(forApiName: activation.name)) (\(activation.count))")
-        .task {
-            guard iconImage == nil,
-                  let url = TraitAssetURL.icon(forApiName: activation.name),
-                  let data = try? await AssetCache.shared.data(for: url),
-                  let img = NSImage(data: data) else { return }
-            iconImage = img
-        }
+        badgeTile
+            .overlay { iconView }                                    // centered
+            .overlay(alignment: .bottomTrailing) { countPip }       // pip overflows corner
+            .frame(width: Self.badgeSize, height: Self.badgeSize)
+            .clipped()  // keep pip visible but stop overflow past frame
+            .help("\(TraitCatalog.displayName(forApiName: activation.name)) (\(activation.count))")
+            .task {
+                guard iconImage == nil,
+                      let url = TraitAssetURL.icon(forApiName: activation.name),
+                      let data = try? await AssetCache.shared.data(for: url),
+                      let img = NSImage(data: data) else { return }
+                iconImage = img
+            }
     }
 
     /// Tinted rounded-square background tile.
