@@ -90,18 +90,6 @@ struct CompCardV2: View {
     /// dominant synergy reads left-to-right without scanning. Hidden when
     /// `comp.traits` is empty — forward-compatible with v1.1.0 schema that
     /// omits the `traits` key (defaults to `[]`).
-    private var traitsRow: some View {
-        // Cap at 6 chips so an HStack with many low-count traits doesn't compress
-        // each chip below minimum width (which causes text to wrap vertically).
-        let top = Array(comp.traits.sorted(by: { $0.count > $1.count }).prefix(6))
-        return HStack(spacing: 4) {
-            ForEach(top, id: \.name) { trait in
-                TraitChip(activation: trait)
-            }
-            Spacer(minLength: 0)
-        }
-    }
-
     /// Horizontal row of ALL champion portraits in the comp. Wraps via HStack
     /// for v0.1 (max ~8 champions in TFT comps — fits 480px width at 40px
     /// portrait + gap). Phase 2 may adopt `LazyHStack` if 8+ emerges.

@@ -2,30 +2,66 @@ import SwiftUI
 
 /// Inline detail panel revealed when user taps a `CompCardV2`.
 ///
-/// Per plan "NOT in scope": hex-board positioning of champions is DEFERRED
-/// to v0.2 (vector math = 1 full weekend, YAGNI for v0.1). Wave 5c ships
-/// three sections that fit the available data:
+/// Sections:
+/// 1. **Traits** — chip row(s) sorted by activation count. Up to 2 rows × 4 chips
+///    (covers comps with ≤8 distinct traits). Empty comps show "—".
+/// 2. **Carousel picks** — 1st/2nd priority champions to grab from the carousel.
+/// 3. **LV.9 alternatives** — non-carry 4+ cost champions that flex as carries.
 ///
-/// 1. **Traits** — list of comp's trait bonuses + their thresholds. v0.1
-///    data fixture does not include traits, so we render a placeholder
-///    line acknowledging this; Phase 2 pipeline adds the field.
-/// 2. **Carousel picks** — 1st/2nd priority champions to grab from the
-///    carousel (derived: BIS carry → prio 1, other isCarry → prio 2).
-/// 3. **LV.9 alternatives** — names of non-carry champions that can flex
-///    as carries if RNG denies BIS. Derived: 4+ cost non-carry champions.
-///
-/// Visual: stacked labeled rows, caption-size text, minimal chrome to keep
-/// card height under 280px when expanded.
+/// Per plan: hex-board positioning and trait threshold tooltips deferred to v0.2.
 struct ExpandedCardView: View {
     let comp: Comp
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            section(title: "Traits", content: traitsText)
+            traitsSection
             section(title: "Carousel picks", content: carouselText)
             section(title: "LV.9 alternatives", content: lv9Text)
         }
     }
+
+    // MARK: - Traits
+
+    private var sortedTraits: [TraitActivation] {
+        comp.traits.sorted(by: { $0.count > $1.count })
+    }
+
+    /// Up to 2 rows of TraitChip, 4 per row, sorted by activation count DESC.
+    /// Row-split at 4 so each chip has ~100px — fits 400px card without compression.
+    private var traitsSection: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("TRAITS")
+                .font(.system(size: 9, weight: .semibold))
+                .foregroundStyle(Theme.Colors.textMuted)
+            traitsChipRows
+        }
+    }
+
+    @ViewBuilder
+    private var traitsChipRows: some View {
+        if sortedTraits.isEmpty {
+            Text("—")
+                .font(Theme.Fonts.caption)
+                .foregroundStyle(Theme.Colors.textMuted)
+        } else {
+            HStack(spacing: 4) {
+                ForEach(Array(sortedTraits.prefix(4)), id: \.name) { trait in
+                    TraitChip(activation: trait)
+                }
+                Spacer(minLength: 0)
+            }
+            if sortedTraits.count > 4 {
+                HStack(spacing: 4) {
+                    ForEach(Array(sortedTraits.dropFirst(4).prefix(4)), id: \.name) { trait in
+                        TraitChip(activation: trait)
+                    }
+                    Spacer(minLength: 0)
+                }
+            }
+        }
+    }
+
+    // MARK: - Text sections
 
     private func section(title: String, content: String) -> some View {
         VStack(alignment: .leading, spacing: 2) {
@@ -37,11 +73,6 @@ struct ExpandedCardView: View {
                 .foregroundStyle(Theme.Colors.textPrimary)
                 .lineLimit(2)
         }
-    }
-
-    /// Phase 2 will enrich `Comp` with traits; v0.1 placeholder.
-    private var traitsText: String {
-        "Trait breakdown available in v0.2 pipeline (Phase 2)"
     }
 
     /// Priority 1 = BIS carry (first isCarry).
