@@ -5,6 +5,47 @@ Append-only — never replace or edit prior entries.
 
 ---
 
+## [phase-03-tftactics-portrait-redesign] — 2026-04-28
+
+### Added
+
+- **Bundled `set17-items.json`** (183 entries: apiName → displayName + iconToken + itemClass) generated from CommunityDragon `en_us.json`.
+- **`ItemAssetURL.swift`** (Services/) — CDragon CDN URL builder using verified pattern `game/assets/maps/tft/icons/items/hexcore/<token>.png` (set suffix `.tft_set13` / `.tft_set17` preserved per item).
+- **`ItemBadge.swift`** (Views/) — 12×12pt async-loading view via `AssetCache` with class-tinted RoundedRectangle fallback (tank=blue, ad=red, ap=purple, utility=green, unknown=gray "?").
+- **`Pipeline/scripts/generate-set17-items.py`** — CDragon → set17-items.json gen script. Skips items with null/empty name (e.g. `TFT_Item_Blank`). Manual OVERRIDES dict for ~30 known items + keyword heuristic on description for itemClass.
+- **23 new tests** across phases: 1 pipeline (Phase 0 itemNames extraction), 3 ItemAssetURL + 6 ItemCatalog (Phase 1), 8 ItemBadge (Phase 2), 5 ChampionPortrait extensions (Phase 3).
+
+### Changed
+
+- **`ChampionPortrait` border ring**: tier-color (S/A/B/C, carry-only) → **cost-color (always)** per TFT canonical convention (1=gray, 2=green, 3=blue, 4=purple, 5=gold).
+- **Carry champions** now show 3 `ItemBadge`s overlaid on bottom of portrait (ZStack alignment `.bottom`).
+- **`ItemCatalog`** refactored from hardcoded 17-entry dict → bundled JSON load with `iconToken` and `itemClass` fields.
+- **Removed `tierColor:` parameter** from `ChampionPortrait.init` — all callers updated to drop argument.
+
+### Fixed
+
+- **Bug #008**: Pipeline `comp_grouping.py` now reads `unit.itemNames` (Set 17 string format like `TFT_Item_GargoyleStoneplate`) instead of `unit.items` (legacy int format that Riot leaves empty). `items[]` in `tier-list.json` is now populated for every champion.
+
+### Removed
+
+- **`CompCardItemsRow.swift`** — legacy text format ("Illaoi → Gargoyle Stoneplate 49%") replaced by portrait overlay. Plus stale comment refs in `CompCardAnomaliesRow.swift` and `ChampionPortrait.swift`.
+
+### Architecture impact
+
+- **New deep-dive doc**: `docs/portrait-redesign-architecture.md`.
+- **AssetCache cumulative footprint estimate**: ~1.5MB (champions + traits + items at typical scale). Well under 50MB LRU ceiling.
+- **Cold-launch fetch count**: ~1184 (37 comps × 8 champions × ≤4 fetches). Async parallel via URLSession default config; 30-60s to fully populate at typical CDragon p50 latency. Subsequent launches >99% cache hit.
+
+### Commits
+
+- `6bd35f9` fix(pipeline): read unit.itemNames (Set 17 Riot API) in trait-bucket producer (bug #008)
+- `7e88d2d` feat(app): set17 item asset metadata + CDragon URL builder
+- `24806a9` feat(app): ItemBadge view (12pt async icon + class-tinted fallback)
+- `601355f` feat(app): TFTactics-style portrait — cost border always, 3-item overlay on carry
+- `93ac39e` docs: handoff portrait redesign phase 0-3 done, phase 4 pending
+
+---
+
 ## [phase-02-trait-centric-comp] — 2026-04-27
 
 ### Added

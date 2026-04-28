@@ -1,6 +1,6 @@
 # System Architecture — TFT Hell Elo
 
-Last updated: 2026-04-27
+Last updated: 2026-04-28
 
 ---
 
@@ -79,8 +79,9 @@ flowchart LR
 |------|------|
 | `TierListPopover` | Root MenuBarExtra view. Reads `@EnvironmentObject DataManager`. |
 | `CompListView` | Scrollable comp list. Renders `BannerBar` + `UpdateRequiredOverlay`. |
-| `CompCard` (`CompCardV2`) | Per-comp card: header row + `CompCardItemsRow` + `CompCardAnomaliesRow`. |
-| `ChampionPortrait` | Renders Set 17 champion artwork via `AssetCache` async load (`.task` modifier). Falls back to cost-colored placeholder circle on cache miss / load failure. |
+| `CompCard` (`CompCardV2`) | Per-comp card: header row + traits row + champion row + anomalies row. |
+| `ChampionPortrait` | Renders Set 17 champion artwork via `AssetCache` async load. **Phase 3:** cost-color border (always, 1=gray/2=green/3=blue/4=purple/5=gold) + 3-item overlay on carry portraits. Falls back to cost-colored placeholder circle on cache miss / load failure. |
+| `ItemBadge` | 12×12pt async-loading item icon. Class-tinted fallback (tank=blue, ad=red, ap=purple, utility=green, unknown=gray). |
 | `CompCardAnomaliesRow` | Chip row for Set 17 EkkoOffering anomaly recommendations. Hidden when empty. |
 | `UpdateRequiredOverlay` | Full-screen overlay when `bannerState == .updateRequired`. |
 | `OverlayWindowController` | NSPanel lifecycle owner (eager-init for < 50ms first-show). |
@@ -150,11 +151,13 @@ App/TFTMac/
 │   ├── DiskCache.swift            — file-backed cache
 │   ├── SchemaCompatibilityGate.swift
 │   ├── AssetCache.swift           — URLSession + disk cache for portraits (30d TTL, 50MB LRU)
-│   └── ChampionAssetURL.swift     — CommunityDragon Set 17 portrait URL builder
+│   ├── ChampionAssetURL.swift     — CommunityDragon Set 17 portrait URL builder
+│   ├── TraitAssetURL.swift        — CommunityDragon trait icon URL builder
+│   └── ItemAssetURL.swift         — CommunityDragon item icon URL builder (Phase 3)
 ├── Generated/
 │   ├── ChampionCatalog.swift      — data-driven displayName lookup (loads bundled JSON)
 │   ├── TraitCatalog.swift         — Set 17 trait apiName → display + iconToken (Phase 2)
-│   └── TraitAssetURL.swift        — CommunityDragon trait icon URL builder
+│   └── ItemCatalog.swift          — Set 17 item apiName → display + iconToken + itemClass (Phase 3, JSON-driven)
 ├── Models/
 │   ├── TierList.swift
 │   ├── Comp.swift                 — forward-compat anomalies + traits decoder
@@ -166,15 +169,17 @@ App/TFTMac/
 │   ├── TierListPopover.swift
 │   ├── CompListView.swift
 │   ├── CompCard.swift             — Phase 2: trait chips row
-│   ├── ChampionPortrait.swift     — async portrait render via AssetCache
+│   ├── ChampionPortrait.swift     — Phase 3: cost border (always) + 3-item overlay on carry
 │   ├── TraitChip.swift            — Phase 2 trait badge with async icon
+│   ├── ItemBadge.swift            — Phase 3: 12pt async item badge with class-tinted fallback
 │   ├── CompCardAnomaliesRow.swift
 │   ├── UpdateRequiredOverlay.swift
 │   └── OverlayWindowController.swift
 └── Resources/
     ├── sample-tier-list.json      — bundled fallback (schema 1.2.0)
     ├── set17-champions.json       — 59 Set 17 champion IDs + display names
-    └── set17-traits.json          — 38 Set 17 traits (apiName → displayName + iconToken)
+    ├── set17-traits.json          — 38 Set 17 traits (apiName → displayName + iconToken)
+    └── set17-items.json           — Phase 3: 183 Set 17 items (apiName → displayName + iconToken + itemClass)
 
 Pipeline/src/tftmac_pipeline/
 ├── riot_client.py                 — async Riot API client
@@ -204,6 +209,7 @@ data/
 - Data pipeline deep-dive: `docs/data-pipeline-architecture.md`
 - Asset pipeline deep-dive (Phase 1): `docs/asset-pipeline-architecture.md`
 - Trait aggregation deep-dive (Phase 2): `docs/trait-aggregation-architecture.md`
+- Portrait redesign deep-dive (Phase 3): `docs/portrait-redesign-architecture.md`
 - v0.1 design spec: `docs/design-v0.1-menu-bar-popover.md`
 - Naming conventions: `docs/naming-conventions.md`
 - Bugs log: `docs/bugs-log.md`

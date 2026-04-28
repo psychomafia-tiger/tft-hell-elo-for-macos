@@ -135,3 +135,14 @@ Append-only log of bugs encountered, fixed, and deferred. New entries go at the 
 - **Fix**: enrich the bucket-emission consumer side — `_emit_champions_from_bucket` now reads `champion_rarity: dict[cid, int]` and `champion_star_counts: dict[cid, Counter[int]]` from the bucket dict to emit real `cost` (default 1 if rarity unknown) and `star_level` (modal observed, default 1). Producer side (`comp_grouping.py`) must be updated in Phase 3 to actually populate those keys — until then, emitted comps carry default values which still let the UI render correctly.
 - **Lesson**: when forking a data path (trait-bucket vs Jaccard), audit the **producer side** (grouping) and **consumer side** (emission) for parity. A stub that "compiles and emits valid JSON shape" can hide semantic regressions for an entire phase. Ground-truth comparisons against the legacy path's output catch this earlier than UI smoke tests.
 
+---
+
+## Bug #008 — Pipeline `items[]` empty in trait-bucket emission (Set 17 Riot field rename)
+
+- **Status**: ✅ Fixed (Phase 3 portrait redesign, Phase 0 task — commit `6bd35f9`, 2026-04-28)
+- **Phase**: phase-03-tftactics-portrait-redesign
+- **Symptom**: After Phase 2 `build_tier_list_payload` rewire, `tier-list.json` champions all had `"items": []` despite the pipeline emitting filter logic. UI items overlay had nothing to render — anh's manual smoke test could not see expected items even after Phase 2 ship.
+- **Root cause**: Riot Match-v5 for Set 17 rewrote the items shape — `unit.items` (legacy int IDs) is now always empty, replaced by `unit.itemNames` (string array like `["TFT_Item_GargoyleStoneplate"]`). `comp_grouping.py:73-78` was reading the old field, never populating `items_per_champion`. Verified by inspecting fixture `Pipeline/tests/fixtures/fetched-matches-kr-2026-04-24.json` — TFT17_Karma carry shows `items: []`, `itemNames: ['TFT_Item_JeweledGauntlet', 'TFT_Item_SpearOfShojin', 'TFT_Item_ArchangelsStaff']`.
+- **Fix**: changed loop in `comp_grouping.py` to prefer `unit.itemNames`, fall back to `unit.items` for older sets. Added a pipeline test that asserts non-empty `items[]` in the trait-bucket producer output.
+- **Lesson**: when forking a data path (Phase 2 trait-bucket vs legacy Jaccard), audit the **producer side** for parity with the legacy reader. The Jaccard path's `champion_aggregator.py` reads `itemNames` correctly; the new path missed the field. Same class as Bug #007 (cost: 0). Future phases that fork pipeline paths must run a quick output diff (e.g. unique itemId count) against legacy output before declaring parity.
+

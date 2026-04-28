@@ -42,7 +42,6 @@ struct CompCardV2: View {
                 traitsRow
             }
             championsRow
-            CompCardItemsRow(comp: comp)
             CompCardAnomaliesRow(anomalies: comp.anomalies)  // Phase 03: anomaly chips
             if isExpanded {
                 Divider().background(Theme.Colors.borderDefault)

@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Phase 3 (TFTactics-style) upgrade: cost-color border on every champion (was
 /// tier-color, carry-only) + 3-item overlay on bottom of carry portraits
-/// (replaces separate `CompCardItemsRow` text path).
+/// (replaces the legacy text-row item display).
 ///
 /// Layout:
 /// ```
