@@ -2,21 +2,22 @@ import SwiftUI
 
 /// Inline detail panel revealed when user taps a `CompCardV2`.
 ///
-/// Sections:
-/// 1. **Traits** — chip row(s) sorted by activation count. Up to 2 rows × 4 chips
-///    (covers comps with ≤8 distinct traits). Empty comps show "—".
-/// 2. **Carousel picks** — 1st/2nd priority champions to grab from the carousel.
-/// 3. **LV.9 alternatives** — non-carry 4+ cost champions that flex as carries.
+/// Sections (matching TFTactics expanded layout):
+/// 1. **Traits** — TraitChip rows (2 × max 4, sorted by count DESC).
+/// 2. **Carousel picks** — carry portrait icons with `>` separators.
+/// 3. **LV.9 options** — non-carry 4+ cost portrait icons with LV.9 label.
 ///
-/// Per plan: hex-board positioning and trait threshold tooltips deferred to v0.2.
+/// Per plan: hex-board positioning deferred to v0.2.
 struct ExpandedCardView: View {
     let comp: Comp
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 10) {
             traitsSection
-            section(title: "Carousel picks", content: carouselText)
-            section(title: "LV.9 alternatives", content: lv9Text)
+            Divider().background(Theme.Colors.borderDefault)
+            carouselSection
+            Divider().background(Theme.Colors.borderDefault)
+            lv9Section
         }
     }
 
@@ -26,13 +27,9 @@ struct ExpandedCardView: View {
         comp.traits.sorted(by: { $0.count > $1.count })
     }
 
-    /// Up to 2 rows of TraitChip, 4 per row, sorted by activation count DESC.
-    /// Row-split at 4 so each chip has ~100px — fits 400px card without compression.
     private var traitsSection: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("TRAITS")
-                .font(.system(size: 9, weight: .semibold))
-                .foregroundStyle(Theme.Colors.textMuted)
+            sectionHeader("Traits")
             traitsChipRows
         }
     }
@@ -61,43 +58,68 @@ struct ExpandedCardView: View {
         }
     }
 
-    // MARK: - Text sections
+    // MARK: - Carousel picks
 
-    private func section(title: String, content: String) -> some View {
-        VStack(alignment: .leading, spacing: 2) {
-            Text(title.uppercased())
-                .font(.system(size: 9, weight: .semibold))
-                .foregroundStyle(Theme.Colors.textMuted)
-            Text(content)
-                .font(Theme.Fonts.caption)
-                .foregroundStyle(Theme.Colors.textPrimary)
-                .lineLimit(2)
+    /// Priority order: carry champions first (BIS → secondary carry).
+    /// Shown as 32pt portraits with chevron separators, matching TFTactics.
+    private var carouselSection: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            sectionHeader("Carousel Picks")
+            HStack(spacing: 4) {
+                let carries = Array(comp.champions.filter(\.isCarry).prefix(3))
+                if carries.isEmpty {
+                    Text("—").font(Theme.Fonts.caption).foregroundStyle(Theme.Colors.textMuted)
+                } else {
+                    ForEach(Array(carries.enumerated()), id: \.element.id) { idx, champ in
+                        if idx > 0 {
+                            Image(systemName: "chevron.right")
+                                .font(.system(size: 9, weight: .semibold))
+                                .foregroundStyle(Theme.Colors.textMuted)
+                                .padding(.bottom, 12) // align with portrait center
+                        }
+                        ChampionPortrait(champion: champ, size: 32)
+                    }
+                }
+                Spacer(minLength: 0)
+            }
         }
     }
 
-    /// Priority 1 = BIS carry (first isCarry).
-    /// Priority 2 = any other carry, else first champion.
-    private var carouselText: String {
-        let carries = comp.champions.filter(\.isCarry)
-        let prio1 = carries.first.map { ChampionCatalog.displayName(forId: $0.id) } ?? "—"
-        let prio2Source = carries.dropFirst().first
-            ?? comp.champions.first(where: { !$0.isCarry })
-        let prio2 = prio2Source.map { ChampionCatalog.displayName(forId: $0.id) } ?? "—"
-        return "\(prio1) → \(prio2)"
+    // MARK: - LV.9 options
+
+    /// Non-carry 4+ cost champions shown as 32pt portraits with "LV.9 ›" prefix.
+    /// Falls back to first 3 non-carry champions if no 4+ cost found.
+    private var lv9Section: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            sectionHeader("LV.9 Options")
+            HStack(spacing: 4) {
+                Text("LV.9")
+                    .font(.system(size: 10, weight: .semibold))
+                    .foregroundStyle(Theme.Colors.textMuted)
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 9, weight: .semibold))
+                    .foregroundStyle(Theme.Colors.textMuted)
+                    .padding(.bottom, 12)
+                ForEach(lv9Champions.prefix(3), id: \.id) { champ in
+                    ChampionPortrait(champion: champ, size: 32)
+                }
+                Spacer(minLength: 0)
+            }
+        }
     }
 
-    /// Non-carry 4+ cost champions → flex-carry alternatives at LV.9.
-    /// If none qualify, fall back to all non-carry names.
-    private var lv9Text: String {
-        let nonCarryHighCost = comp.champions
-            .filter { !$0.isCarry && $0.cost >= 4 }
-            .map { ChampionCatalog.displayName(forId: $0.id) }
-        if nonCarryHighCost.isEmpty {
-            let nonCarryAny = comp.champions.filter { !$0.isCarry }
-                .prefix(3)
-                .map { ChampionCatalog.displayName(forId: $0.id) }
-            return nonCarryAny.isEmpty ? "—" : nonCarryAny.joined(separator: ", ")
-        }
-        return nonCarryHighCost.joined(separator: ", ")
+    private var lv9Champions: [Champion] {
+        let highCost = comp.champions.filter { !$0.isCarry && $0.cost >= 4 }
+        return highCost.isEmpty
+            ? Array(comp.champions.filter { !$0.isCarry }.prefix(3))
+            : highCost
+    }
+
+    // MARK: - Helpers
+
+    private func sectionHeader(_ title: String) -> some View {
+        Text(title.uppercased())
+            .font(.system(size: 9, weight: .semibold))
+            .foregroundStyle(Theme.Colors.textMuted)
     }
 }
