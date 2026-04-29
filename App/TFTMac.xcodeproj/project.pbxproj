@@ -13,6 +13,7 @@
 		04522707F20B5822B164ACE1 /* PositionDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8312C31F75F4E74ECB33800 /* PositionDecodingTests.swift */; };
 		074C53FB79598B7787DBF0C3 /* HotkeyRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B28BDF2730EE506D4EC3F5 /* HotkeyRegistrationTests.swift */; };
 		0969AD5F3AD9FC366F0DADD0 /* Comp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5ABAB08CC8CA23E71E2ED6 /* Comp.swift */; };
+		0CD936F10D3A2256C2A288F2 /* HexGridGeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1D99B422EA38FAE7ED5610 /* HexGridGeometryTests.swift */; };
 		1887F0E047449B1139366DAF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4253A261F0CB1BD35211BA94 /* README.md */; };
 		1CAD6845D6D43FDAD355B8F4 /* CompCardV2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE081998A8013D5EBA3CA19F /* CompCardV2Tests.swift */; };
 		1E8966B571334E674956495B /* set17-champions.json in Resources */ = {isa = PBXBuildFile; fileRef = D86BAA3006DAEF0F74B1DF37 /* set17-champions.json */; };
@@ -77,6 +78,7 @@
 		E7E40C303317C1644A9EFE60 /* PlaystyleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E19F35778612EE67B70826 /* PlaystyleLabel.swift */; };
 		E82217B9C29324B4A7E611F4 /* TraitActivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A7A6F79271F144219B84E1 /* TraitActivation.swift */; };
 		F0DED9E61C4B8D75354D190D /* ChampionCatalogDataDrivenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CEB6D5DC79E2A53B0C7F1F /* ChampionCatalogDataDrivenTests.swift */; };
+		F111E133D475AACA578CE343 /* HexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E9B385800FAB93FDE2BDBC /* HexCell.swift */; };
 		F2510597F67D6344C3415A89 /* OverlayWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5D9991300696D33DE47790 /* OverlayWindowController.swift */; };
 		F67D9DB4BCF8DCEEC85A6B96 /* AppLaunchMetricTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E3A7AD5887C6F940A5C081 /* AppLaunchMetricTests.swift */; };
 		F865CBC2186506E1F75209AB /* TierListPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CB1DC7266A4354ED2CF025 /* TierListPopover.swift */; };
@@ -158,6 +160,7 @@
 		AA74AA61E19A17A0D70054DE /* SchemaVersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaVersionTests.swift; sourceTree = "<group>"; };
 		AF1F29C5CC72F79500436B72 /* ItemBadge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ItemBadge.swift; sourceTree = "<group>"; };
 		B1CD26B39417A2B66F116F5D /* FilterBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBarTests.swift; sourceTree = "<group>"; };
+		B3E9B385800FAB93FDE2BDBC /* HexCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HexCell.swift; path = HexCell.swift; sourceTree = "<group>"; };
 		B493F9514E092B07EE3AFE2B /* ItemCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCatalog.swift; sourceTree = "<group>"; };
 		B5922CE792B63A94194529F5 /* SampleTierListFixtureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTierListFixtureTests.swift; sourceTree = "<group>"; };
 		B81B6A52A9E119D2454B51B0 /* CompCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompCard.swift; sourceTree = "<group>"; };
@@ -177,6 +180,7 @@
 		E0A5E961A14C1907B7415058 /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 		E440D81D43DD9CAEC97C9788 /* Position.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Position.swift; path = Position.swift; sourceTree = "<group>"; };
 		E8312C31F75F4E74ECB33800 /* PositionDecodingTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PositionDecodingTests.swift; path = PositionDecodingTests.swift; sourceTree = "<group>"; };
+		EE1D99B422EA38FAE7ED5610 /* HexGridGeometryTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HexGridGeometryTests.swift; path = HexGridGeometryTests.swift; sourceTree = "<group>"; };
 		F32D951052DED0A0E3D81DC9 /* TraitAssetURL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TraitAssetURL.swift; sourceTree = "<group>"; };
 		FAA4F26E863E5EDA109EE167 /* OverlayWindowControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindowControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -257,6 +261,7 @@
 				CE307D191C9F426F508DCB47 /* ItemCatalogTests.swift */,
 				2603245372B84E254C4D6D75 /* ItemBadgeTests.swift */,
 				E8312C31F75F4E74ECB33800 /* PositionDecodingTests.swift */,
+				EE1D99B422EA38FAE7ED5610 /* HexGridGeometryTests.swift */,
 			);
 			path = TFTMacTests;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 				539E5861C7FC73C5E9CE6468 /* TraitChip.swift */,
 				AF1F29C5CC72F79500436B72 /* ItemBadge.swift */,
 				166A61A82AA2EADD870457D9 /* TraitBadge.swift */,
+				B3E9B385800FAB93FDE2BDBC /* HexCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -520,6 +526,7 @@
 				BFEA49A30CCA6C1587B0414E /* ItemCatalogTests.swift in Sources */,
 				446065B38EF3970E471E617C /* ItemBadgeTests.swift in Sources */,
 				04522707F20B5822B164ACE1 /* PositionDecodingTests.swift in Sources */,
+				0CD936F10D3A2256C2A288F2 /* HexGridGeometryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +574,7 @@
 				2862D0BE2293896C960CDC44 /* ItemBadge.swift in Sources */,
 				4683DDAF597086F27D2C935B /* TraitBadge.swift in Sources */,
 				4F738CB188869BF0DD677650 /* Position.swift in Sources */,
+				F111E133D475AACA578CE343 /* HexCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
