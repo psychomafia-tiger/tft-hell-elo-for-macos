@@ -306,3 +306,24 @@ class TestEmitComp:
     def test_champions_list_present(self, sample_bucket: dict) -> None:
         comp = emit_comp(sample_bucket, "Psionic Carry")
         assert isinstance(comp["champions"], list)
+
+    def test_positioning_field_present(self, sample_bucket: dict) -> None:
+        """Schema 1.4.0: every comp must have a positioning[] field."""
+        # Add rarity so champions get cost > 0 → positioning_aggregator emits entries
+        bucket = {**sample_bucket, "champion_rarity": {"TFT17_Viktor": 4, "TFT17_Syndra": 3}}
+        comp = emit_comp(bucket, "Psionic Carry")
+        assert "positioning" in comp
+        assert isinstance(comp["positioning"], list)
+
+    def test_positioning_entries_have_required_keys(self, sample_bucket: dict) -> None:
+        bucket = {**sample_bucket, "champion_rarity": {"TFT17_Viktor": 4, "TFT17_Syndra": 3}}
+        comp = emit_comp(bucket, "Psionic Carry")
+        if comp["positioning"]:
+            entry = comp["positioning"][0]
+            assert {"championId", "pos", "frequency"} <= entry.keys()
+            assert 0 <= entry["pos"] <= 27
+
+
+class TestSchemaVersion:
+    def test_schema_is_1_4_0(self) -> None:
+        assert SCHEMA_VERSION == "1.4.0"

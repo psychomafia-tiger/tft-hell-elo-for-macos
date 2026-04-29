@@ -156,7 +156,7 @@ def build_parser() -> argparse.ArgumentParser:
     """Build CLI argument parser."""
     p = argparse.ArgumentParser(
         prog="tft-aggregate",
-        description="Fetch VN2 Challenger TFT matches → emit tier-list.json (schema 1.2.0)",
+        description="Fetch VN2 Challenger TFT matches → emit tier-list.json (schema 1.4.0)",
     )
     p.add_argument(
         "--region", default=os.environ.get("RIOT_REGION", "vn2"),

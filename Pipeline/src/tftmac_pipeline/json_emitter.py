@@ -10,7 +10,9 @@ Schema changelog:
   1.0.0 — initial schema
   1.1.0 — adds `anomalies[]` per comp + `region` at root
   1.2.0 — adds `traits[]` per comp (trait-signature grouping, T4 integration)
-           Existing App Codable decodes 1.2.0 (ignores unknown fields).
+  1.4.0 — adds `positioning[]` per comp (Phase 4 hex grid). 1.3.0 skipped —
+           was reserved for a richer item-detail bump that didn't ship.
+           Existing App Codable decodes 1.4.0 (ignores unknown fields).
 """
 from __future__ import annotations
 
@@ -21,8 +23,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Tuple
 
+from .positioning_aggregator import aggregate_positions
+
 # Current schema version emitted by this module and run_aggregator.
-SCHEMA_VERSION = "1.2.0"
+SCHEMA_VERSION = "1.4.0"
 
 # PII patterns that must never appear in output
 _PII_PATTERNS = [
@@ -63,6 +67,13 @@ class TraitEntry:
 
 
 @dataclass
+class PositionEntry:
+    championId: str
+    pos: int        # 0-27 (4 rows × 7 cols)
+    frequency: float  # 1.0 = rule-inferred, <1.0 = measured modal
+
+
+@dataclass
 class CompEntry:
     comp_id: str
     name: str
@@ -74,6 +85,7 @@ class CompEntry:
     champions: list[ChampionEntry] = field(default_factory=list)
     anomalies: list[AnomalyEntry] = field(default_factory=list)
     traits: list[TraitEntry] = field(default_factory=list)
+    positioning: list[PositionEntry] = field(default_factory=list)
 
 
 @dataclass
@@ -110,6 +122,10 @@ def _trait_to_dict(trait: TraitEntry) -> dict:
     return {"count": trait.count, "name": trait.name, "style": trait.style}
 
 
+def _position_to_dict(p: PositionEntry) -> dict:
+    return {"championId": p.championId, "pos": p.pos, "frequency": p.frequency}
+
+
 def _comp_to_dict(comp: CompEntry) -> dict:
     return {
         "comp_id": comp.comp_id,
@@ -122,6 +138,7 @@ def _comp_to_dict(comp: CompEntry) -> dict:
         "champions": [_champion_to_dict(c) for c in comp.champions],
         "anomalies": [_anomaly_to_dict(a) for a in comp.anomalies],
         "traits": [_trait_to_dict(t) for t in comp.traits],
+        "positioning": [_position_to_dict(p) for p in comp.positioning],
     }
 
 
@@ -307,6 +324,11 @@ def emit_comp(grouped_comp: dict, derived_name: str) -> dict:
     sig: Tuple = grouped_comp["trait_signature"]
     placements: list = grouped_comp["placements"]
     n = len(placements) if placements else 1
+    champions = _emit_champions_from_bucket(grouped_comp)
+    traits = [
+        {"name": name, "count": count, "style": _style_for(count)}
+        for name, count in sig
+    ]
     return {
         "comp_id": _slugify(derived_name),
         "name": derived_name,
@@ -315,10 +337,10 @@ def emit_comp(grouped_comp: dict, derived_name: str) -> dict:
         "avg_placement": round(sum(placements) / n, 4) if placements else 8.0,
         "top_4_rate": round(sum(1 for p in placements if p <= 4) / n, 4),
         "sample_size": grouped_comp["sample_size"],
-        "champions": _emit_champions_from_bucket(grouped_comp),
+        "champions": champions,
         "anomalies": [],   # populated by anomaly_aggregator in future phases
-        "traits": [
-            {"name": name, "count": count, "style": _style_for(count)}
-            for name, count in sig
-        ],
+        "traits": traits,
+        # Phase 4 schema 1.4.0: rule-based hex positioning. See
+        # positioning_aggregator for the inference rules.
+        "positioning": aggregate_positions(champions, traits),
     }
