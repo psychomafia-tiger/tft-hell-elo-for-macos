@@ -6,8 +6,8 @@ import SwiftUI
 /// 1. **Traits** — TraitChip rows (2 × max 4, sorted by count DESC).
 /// 2. **Carousel picks** — carry portrait icons with `>` separators.
 /// 3. **LV.9 options** — non-carry 4+ cost portrait icons with LV.9 label.
-///
-/// Per plan: hex-board positioning deferred to v0.2.
+/// 4. **Positioning** — 4×7 hex board with champion portraits at modal hexes
+///    (schema 1.4.0+; rendered only when `comp.positioning` non-empty).
 struct ExpandedCardView: View {
     let comp: Comp
 
@@ -18,6 +18,10 @@ struct ExpandedCardView: View {
             carouselSection
             Divider().background(Theme.Colors.borderDefault)
             lv9Section
+            if !comp.positioning.isEmpty {
+                Divider().background(Theme.Colors.borderDefault)
+                PositioningSection(positioning: comp.positioning)
+            }
         }
     }
 
