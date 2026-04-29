@@ -56,9 +56,9 @@ struct ChampionPortrait: View {
                         .stroke(costBorderColor(champion.cost), lineWidth: 2)
                 )
 
-            if champion.isCarry && !champion.items.isEmpty {
+            if !champion.items.isEmpty {
                 itemsOverlay
-                    .padding(.bottom, 2)  // tiny inset so badges don't kiss the border
+                    .padding(.bottom, 2)
             }
         }
         .overlay(alignment: .top) {

@@ -269,12 +269,13 @@ def _emit_champions_from_bucket(bucket: dict) -> list[dict]:
         else:
             star_level = 1
 
-        # Build item list filtered by ≥40% agreement
+        # Build item list filtered by ≥30% agreement (lowered from 40% to surface
+        # items on more champions — consistent with TFTactics showing BIS on all units)
         raw_items = items_per_champ.get(cid, {})
         item_list = [
             {"id": str(item_id), "agreement": round(item_freq / sample_size, 4)}
             for item_id, item_freq in sorted(raw_items.items(), key=lambda x: -x[1])
-            if item_freq / sample_size >= 0.40
+            if item_freq / sample_size >= 0.30
         ]
         result.append({
             "id": cid,

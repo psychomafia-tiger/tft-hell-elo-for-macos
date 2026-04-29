@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2.0",
   "patch_version": "16.8",
-  "last_updated": "2026-04-28T10:41:37Z",
+  "last_updated": "2026-04-29T08:03:53Z",
   "data_window_hours": 12,
   "elo_bracket": "CHALLENGER",
   "region": "KR",
@@ -50,6 +50,10 @@
             {
               "id": "TFT_Item_RedBuff",
               "agreement": 0.4286
+            },
+            {
+              "id": "TFT_Item_WarmogsArmor",
+              "agreement": 0.381
             }
           ]
         },
@@ -93,6 +97,10 @@
             {
               "id": "TFT_Item_StatikkShiv",
               "agreement": 0.5714
+            },
+            {
+              "id": "TFT_Item_JeweledGauntlet",
+              "agreement": 0.3333
             }
           ]
         },
@@ -178,6 +186,14 @@
             {
               "id": "TFT_Item_FrozenHeart",
               "agreement": 0.4545
+            },
+            {
+              "id": "TFT_Item_AdaptiveHelm",
+              "agreement": 0.3636
+            },
+            {
+              "id": "TFT_Item_Redemption",
+              "agreement": 0.3636
             }
           ]
         },
@@ -218,6 +234,10 @@
             {
               "id": "TFT_Item_GuinsoosRageblade",
               "agreement": 0.9091
+            },
+            {
+              "id": "TFT_Item_MadredsBloodrazor",
+              "agreement": 0.3636
             }
           ]
         },
@@ -337,6 +357,10 @@
             {
               "id": "TFT_Item_MadredsBloodrazor",
               "agreement": 0.5
+            },
+            {
+              "id": "TFT_Item_RabadonsDeathcap",
+              "agreement": 0.3
             }
           ]
         },
@@ -372,6 +396,10 @@
             {
               "id": "TFT_Item_JeweledGauntlet",
               "agreement": 0.4
+            },
+            {
+              "id": "TFT_Item_StatikkShiv",
+              "agreement": 0.3
             }
           ]
         },
@@ -499,6 +527,10 @@
             {
               "id": "TFT_Item_SpearOfShojin",
               "agreement": 0.4444
+            },
+            {
+              "id": "TFT_Item_BlueBuff",
+              "agreement": 0.3333
             }
           ]
         },
@@ -507,7 +539,12 @@
           "cost": 3,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_RedBuff",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Rhaast",
@@ -521,7 +558,12 @@
           "cost": 5,
           "is_carry": false,
           "star_level": 1,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_Crownguard",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Karma",
@@ -595,6 +637,10 @@
             {
               "id": "TFT_Item_RabadonsDeathcap",
               "agreement": 0.5
+            },
+            {
+              "id": "TFT_Item_BlueBuff",
+              "agreement": 0.375
             }
           ]
         },
@@ -990,6 +1036,10 @@
             {
               "id": "TFT_Item_StatikkShiv",
               "agreement": 0.5
+            },
+            {
+              "id": "TFT_Item_SpearOfShojin",
+              "agreement": 0.3333
             }
           ]
         },
@@ -998,7 +1048,12 @@
           "cost": 2,
           "is_carry": true,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_TearOfTheGoddess",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_IvernMinion",
@@ -1027,6 +1082,10 @@
             {
               "id": "TFT_Item_GargoyleStoneplate",
               "agreement": 0.5
+            },
+            {
+              "id": "TFT_Item_Crownguard",
+              "agreement": 0.3333
             }
           ]
         },
@@ -1051,6 +1110,10 @@
             {
               "id": "TFT_Item_ArchangelsStaff",
               "agreement": 0.5
+            },
+            {
+              "id": "TFT_Item_PowerGauntlet",
+              "agreement": 0.3333
             }
           ]
         },
@@ -1063,6 +1126,22 @@
             {
               "id": "TFT_Item_DragonsClaw",
               "agreement": 0.5
+            },
+            {
+              "id": "TFT_Item_SteraksGage",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_IonicSpark",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_NightHarvester",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_GargoyleStoneplate",
+              "agreement": 0.3333
             }
           ]
         },
@@ -1157,6 +1236,10 @@
             {
               "id": "TFT_Item_JeweledGauntlet",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_StatikkShiv",
+              "agreement": 0.3333
             }
           ]
         },
@@ -1185,14 +1268,32 @@
           "cost": 5,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_GargoyleStoneplate",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_FrozenHeart",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Blitzcrank",
           "cost": 7,
           "is_carry": false,
           "star_level": 1,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_UnstableConcoction",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_ThiefsGloves",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Nunu",
@@ -1285,6 +1386,10 @@
             {
               "id": "TFT17_Item_PsyOps_GrenadeMod",
               "agreement": 0.5
+            },
+            {
+              "id": "TFT_Item_RedBuff",
+              "agreement": 0.3333
             }
           ]
         },
@@ -1301,6 +1406,14 @@
             {
               "id": "TFT_Item_Redemption",
               "agreement": 0.5
+            },
+            {
+              "id": "TFT_Item_AdaptiveHelm",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_WarmogsArmor",
+              "agreement": 0.3333
             }
           ]
         },
@@ -1321,6 +1434,10 @@
             {
               "id": "TFT17_Item_PsyOps_DroneMod",
               "agreement": 0.5
+            },
+            {
+              "id": "TFT_Item_RabadonsDeathcap",
+              "agreement": 0.3333
             }
           ]
         },
@@ -1333,6 +1450,14 @@
             {
               "id": "TFT_Item_StatikkShiv",
               "agreement": 0.5
+            },
+            {
+              "id": "TFT_Item_SpearOfShojin",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_MadredsBloodrazor",
+              "agreement": 0.3333
             }
           ]
         },
@@ -1423,14 +1548,40 @@
           "cost": 5,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_JeweledGauntlet",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Bard",
           "cost": 7,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_JeweledGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Leviathan",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_PowerGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_EmptyBag",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_AdaptiveHelm",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Blitzcrank",
@@ -1441,6 +1592,10 @@
             {
               "id": "TFT_Item_ThiefsGloves",
               "agreement": 0.8333
+            },
+            {
+              "id": "TFT_Item_EmptyBag",
+              "agreement": 0.3333
             }
           ]
         },
@@ -1473,6 +1628,14 @@
             {
               "id": "TFT_Item_StatikkShiv",
               "agreement": 0.5
+            },
+            {
+              "id": "TFT_Item_JeweledGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_HextechGunblade",
+              "agreement": 0.3333
             }
           ]
         },
@@ -1492,6 +1655,10 @@
             {
               "id": "TFT_Item_FrozenHeart",
               "agreement": 1.0
+            },
+            {
+              "id": "TFT_Item_WarmogsArmor",
+              "agreement": 0.3333
             }
           ]
         },
@@ -3978,6 +4145,14 @@
             {
               "id": "TFT_Item_JeweledGauntlet",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_Morellonomicon",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_PowerGauntlet",
+              "agreement": 0.3333
             }
           ]
         },
@@ -3994,6 +4169,14 @@
             {
               "id": "TFT_Item_FrozenHeart",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_Redemption",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_WarmogsArmor",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4010,6 +4193,18 @@
             {
               "id": "TFT_Item_Bloodthirster",
               "agreement": 1.0
+            },
+            {
+              "id": "TFT_Item_SteraksGage",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_GuardianAngel",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_TitansResolve",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4022,6 +4217,10 @@
             {
               "id": "TFT_Item_WarmogsArmor",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_RedBuff",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4030,14 +4229,56 @@
           "cost": 7,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_Crownguard",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_JeweledGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_HextechGunblade",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Morellonomicon",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_StatikkShiv",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_IonicSpark",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RabadonsDeathcap",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Shen",
           "cost": 7,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_SpectralGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_GuinsoosRageblade",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Crownguard",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Morgana",
@@ -4120,7 +4361,20 @@
           "cost": 2,
           "is_carry": true,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_PowerGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT17_Item_Artifact_EkkoArtifact",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_JeweledGauntlet",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_IvernMinion",
@@ -4134,7 +4388,20 @@
           "cost": 2,
           "is_carry": true,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_SteraksGage",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_BrambleVest",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Crownguard",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Illaoi",
@@ -4149,6 +4416,14 @@
             {
               "id": "TFT_Item_BrambleVest",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_RedBuff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_GargoyleStoneplate",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4157,7 +4432,32 @@
           "cost": 5,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_ThiefsGloves",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RedBuff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_GargoyleStoneplate",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_StatikkShiv",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Morellonomicon",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RabadonsDeathcap",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Leblanc",
@@ -4176,6 +4476,10 @@
             {
               "id": "TFT_Item_MadredsBloodrazor",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_NeedlesslyLargeRod",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4184,7 +4488,32 @@
           "cost": 7,
           "is_carry": false,
           "star_level": 1,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_ThiefsGloves",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_AdaptiveHelm",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_PowerGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT17_Item_FavoredEmblemItem",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RedBuff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_JeweledGauntlet",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Summon",
@@ -4198,14 +4527,36 @@
           "cost": 1,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_GargoyleStoneplate",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Redemption",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_AdaptiveHelm",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Nunu",
           "cost": 5,
           "is_carry": false,
           "star_level": 1,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_FrozenHeart",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_ChainVest",
+              "agreement": 0.3333
+            }
+          ]
         }
       ],
       "anomalies": [],
@@ -4273,7 +4624,36 @@
           "cost": 3,
           "is_carry": true,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_LastWhisper",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_PowerGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT17_Item_DarkStarEmblemItem",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_MadredsBloodrazor",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_NeedlesslyLargeRod",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_BlueBuff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_JeweledGauntlet",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Maokai",
@@ -4292,6 +4672,18 @@
             {
               "id": "TFT_Item_NightHarvester",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_FrozenHeart",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_SpectralGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RedBuff",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4308,6 +4700,22 @@
             {
               "id": "TFT_Item_InfinityEdge",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_Deathblade",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT5_Item_GiantSlayerRadiant",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_MadredsBloodrazor",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_PowerGauntlet",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4316,14 +4724,28 @@
           "cost": 3,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT17_Item_PrimordianEmblemItem",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Galio",
           "cost": 5,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_Crownguard",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_GiantsBelt",
+              "agreement": 0.3333
+            }
+          ]
         }
       ],
       "anomalies": [],
@@ -4381,7 +4803,20 @@
           "cost": 1,
           "is_carry": true,
           "star_level": 3,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_AdaptiveHelm",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RedBuff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Redemption",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Belveth",
@@ -4400,6 +4835,18 @@
             {
               "id": "TFT_Item_Quicksilver",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_RunaansHurricane",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_UnstableConcoction",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT5_Item_RunaansHurricaneRadiant",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4412,6 +4859,34 @@
             {
               "id": "TFT_Item_UnstableConcoction",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_InfinityEdge",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_HextechGunblade",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_ThiefsGloves",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RapidFireCannon",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_ArchangelsStaff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_GuardianAngel",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_PowerGauntlet",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4420,21 +4895,64 @@
           "cost": 2,
           "is_carry": false,
           "star_level": 3,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_Morellonomicon",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Artifact_LichBane",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_GuardianAngel",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_NeedlesslyLargeRod",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Maokai",
           "cost": 3,
           "is_carry": false,
           "star_level": 3,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_Artifact_SilvermereDawn",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Redemption",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RedBuff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_FrozenHeart",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_AdaptiveHelm",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Kindred",
           "cost": 5,
           "is_carry": false,
           "star_level": 1,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_BFSword",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Aatrox",
@@ -4497,7 +5015,20 @@
           "cost": 1,
           "is_carry": true,
           "star_level": 3,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_ThiefsGloves",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_GuinsoosRageblade",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RapidFireCannon",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Aatrox",
@@ -4508,6 +5039,18 @@
             {
               "id": "TFT_Item_WarmogsArmor",
               "agreement": 1.0
+            },
+            {
+              "id": "TFT_Item_Bloodthirster",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT17_EkkoOffering_AnomalyItem",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RedBuff",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4544,6 +5087,26 @@
             {
               "id": "TFT_Item_GuardianAngel",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_ThiefsGloves",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_InfinityEdge",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_UnstableConcoction",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_JeweledGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_BFSword",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4556,6 +5119,34 @@
             {
               "id": "TFT_Item_GargoyleStoneplate",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT5_Item_ThiefsGlovesRadiant",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT5_Item_WarmogsArmorRadiant",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT5_Item_SunfireCapeRadiant",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_AdaptiveHelm",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT17_EkkoOffering_AnomalyItem",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Redemption",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_WarmogsArmor",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4571,7 +5162,32 @@
           "cost": 5,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_InfinityEdge",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_PowerGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Artifact_CappaJuice",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_ThiefsGloves",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Leviathan",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_AdaptiveHelm",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Riven",
@@ -4582,6 +5198,22 @@
             {
               "id": "TFT_Item_ThiefsGloves",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_UnstableConcoction",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Bloodthirster",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_AdaptiveHelm",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Crownguard",
+              "agreement": 0.3333
             }
           ]
         }
@@ -4663,6 +5295,14 @@
             {
               "id": "TFT_Item_RedBuff",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_GargoyleStoneplate",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Crownguard",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4679,6 +5319,18 @@
             {
               "id": "TFT_Item_RunaansHurricane",
               "agreement": 1.0
+            },
+            {
+              "id": "TFT_Item_Deathblade",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_MadredsBloodrazor",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_HextechGunblade",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4699,6 +5351,10 @@
             {
               "id": "TFT_Item_GuardianAngel",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT4_Item_OrnnInfinityForce",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4707,14 +5363,52 @@
           "cost": 3,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_Crownguard",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_WarmogsArmor",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Redemption",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_FrozenHeart",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_AdaptiveHelm",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Kindred",
           "cost": 5,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_MadredsBloodrazor",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_GuinsoosRageblade",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RapidFireCannon",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_InfinityEdge",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Shen",
@@ -4789,28 +5483,84 @@
           "cost": 2,
           "is_carry": true,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_BFSword",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RabadonsDeathcap",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_SpearOfShojin",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RapidFireCannon",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_IvernMinion",
           "cost": 2,
           "is_carry": true,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT5_Item_ThiefsGlovesRadiant",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT5_Item_GargoyleStoneplateRadiant",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT5_Item_LastWhisperRadiant",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Mordekaiser",
           "cost": 2,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT5_Item_WarmogsArmorRadiant",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_IonicSpark",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Redemption",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Illaoi",
           "cost": 3,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_WarmogsArmor",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Redemption",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_GargoyleStoneplate",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Karma",
@@ -4821,6 +5571,34 @@
             {
               "id": "TFT_Item_StatikkShiv",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_BlueBuff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Morellonomicon",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_JeweledGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_PowerGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RabadonsDeathcap",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_MadredsBloodrazor",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Quicksilver",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4829,7 +5607,16 @@
           "cost": 5,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_FrozenHeart",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_AdaptiveHelm",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Leblanc",
@@ -4844,6 +5631,10 @@
             {
               "id": "TFT_Item_GuinsoosRageblade",
               "agreement": 1.0
+            },
+            {
+              "id": "TFT4_Item_OrnnZhonyasParadox",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4911,6 +5702,34 @@
             {
               "id": "TFT_Item_Deathblade",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT4_Item_OrnnDeathsDefiance",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_InfinityEdge",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_MadredsBloodrazor",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_LastWhisper",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Bloodthirster",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_UnstableConcoction",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_PowerGauntlet",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4927,6 +5746,30 @@
             {
               "id": "TFT_Item_Crownguard",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_TitansResolve",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_BrambleVest",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RedBuff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_GargoyleStoneplate",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_NightHarvester",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_WarmogsArmor",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4935,7 +5778,12 @@
           "cost": 2,
           "is_carry": true,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_StatikkShiv",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Maokai",
@@ -4950,6 +5798,14 @@
             {
               "id": "TFT_Item_RedBuff",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT17_EkkoOffering_AnomalyItem",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Crownguard",
+              "agreement": 0.3333
             }
           ]
         },
@@ -4958,7 +5814,20 @@
           "cost": 3,
           "is_carry": false,
           "star_level": 3,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_SpearOfShojin",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RabadonsDeathcap",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_PowerGauntlet",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Pyke",
@@ -5011,7 +5880,20 @@
           "cost": 1,
           "is_carry": true,
           "star_level": 3,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_ThiefsGloves",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_JeweledGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RunaansHurricane",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Veigar",
@@ -5022,6 +5904,34 @@
             {
               "id": "TFT_Item_SpearOfShojin",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_JeweledGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Leviathan",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_PowerGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_ArchangelsStaff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_BlueBuff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_StatikkShiv",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RabadonsDeathcap",
+              "agreement": 0.3333
             }
           ]
         },
@@ -5030,14 +5940,32 @@
           "cost": 1,
           "is_carry": true,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_RapidFireCannon",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_SpearOfShojin",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_HextechGunblade",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_IvernMinion",
           "cost": 2,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_GiantsBelt",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Rammus",
@@ -5052,6 +5980,26 @@
             {
               "id": "TFT_Item_RedBuff",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT17_EkkoOffering_AnomalyItem",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_WarmogsArmor",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Crownguard",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_AdaptiveHelm",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_IonicSpark",
+              "agreement": 0.3333
             }
           ]
         },
@@ -5074,14 +6022,48 @@
           "cost": 7,
           "is_carry": false,
           "star_level": 1,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_ArchangelsStaff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_MadredsBloodrazor",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RapidFireCannon",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_SpearOfShojin",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Leviathan",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Sona",
           "cost": 7,
           "is_carry": false,
           "star_level": 1,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_StatikkShiv",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Artifact_LichBane",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_SpearOfShojin",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Teemo",
@@ -5151,7 +6133,20 @@
           "cost": 1,
           "is_carry": true,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_ArchangelsStaff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_HextechGunblade",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT17_Item_PsyOps_SympatheticImplantMod",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Pyke",
@@ -5191,6 +6186,14 @@
             {
               "id": "TFT_Item_NightHarvester",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_BrambleVest",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_WarmogsArmor",
+              "agreement": 0.3333
             }
           ]
         },
@@ -5207,6 +6210,22 @@
             {
               "id": "TFT_Item_MadredsBloodrazor",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT17_Item_PsyOps_DroneMod",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RabadonsDeathcap",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_ArchangelsStaff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_StatikkShiv",
+              "agreement": 0.3333
             }
           ]
         },
@@ -5219,6 +6238,18 @@
             {
               "id": "TFT17_Item_FlexTraitEmblemItem",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_GargoyleStoneplate",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_IonicSpark",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Bloodthirster",
+              "agreement": 0.3333
             }
           ]
         },
@@ -5231,6 +6262,30 @@
             {
               "id": "TFT_Item_ArchangelsStaff",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_BlueBuff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_MadredsBloodrazor",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_StatikkShiv",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RapidFireCannon",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT17_Item_PsyOps_SympatheticImplantMod",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RecurveBow",
+              "agreement": 0.3333
             }
           ]
         },
@@ -5341,6 +6396,22 @@
             {
               "id": "TFT_Item_FrozenHeart",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT5_Item_FrozenHeartRadiant",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Redemption",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_WarmogsArmor",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RedBuff",
+              "agreement": 0.3333
             }
           ]
         },
@@ -5361,6 +6432,18 @@
             {
               "id": "TFT_Item_RapidFireCannon",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_TitansResolve",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_LastWhisper",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_InfinityEdge",
+              "agreement": 0.3333
             }
           ]
         },
@@ -5369,7 +6452,24 @@
           "cost": 7,
           "is_carry": false,
           "star_level": 1,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_TitansResolve",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT17_AnimaSquadItem_Tier2_Annihilator",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RapidFireCannon",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Crownguard",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Vex",
@@ -5388,6 +6488,14 @@
             {
               "id": "TFT_Item_MadredsBloodrazor",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_UnstableConcoction",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT17_EkkoOffering_AnomalyItem",
+              "agreement": 0.3333
             }
           ]
         },
@@ -5396,14 +6504,64 @@
           "cost": 7,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_AdaptiveHelm",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_BrambleVest",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_FrozenHeart",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_ThiefsGloves",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RapidFireCannon",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_BlueBuff",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Graves",
           "cost": 7,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT4_Item_OrnnDeathsDefiance",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_SteraksGage",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_InfinityEdge",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_MadredsBloodrazor",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Deathblade",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_PowerGauntlet",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Morgana",
@@ -5418,6 +6576,14 @@
             {
               "id": "TFT_Item_EmptyBag",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_JeweledGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RabadonsDeathcap",
+              "agreement": 0.3333
             }
           ]
         }
@@ -5518,6 +6684,30 @@
             {
               "id": "TFT_Item_WarmogsArmor",
               "agreement": 1.0
+            },
+            {
+              "id": "TFT_Item_BrambleVest",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT17_EkkoOffering_AnomalyItem",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Crownguard",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RedBuff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT5_Item_GargoyleStoneplateRadiant",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_GargoyleStoneplate",
+              "agreement": 0.3333
             }
           ]
         },
@@ -5533,7 +6723,16 @@
           "cost": 7,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_SpearOfShojin",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_AdaptiveHelm",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Blitzcrank",
@@ -5544,6 +6743,34 @@
             {
               "id": "TFT_Item_Bloodthirster",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_JeweledGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_FrozenHeart",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_ThiefsGloves",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Quicksilver",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RabadonsDeathcap",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RedBuff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_IonicSpark",
+              "agreement": 0.3333
             }
           ]
         },
@@ -5556,6 +6783,26 @@
             {
               "id": "TFT_Item_GuinsoosRageblade",
               "agreement": 1.3333
+            },
+            {
+              "id": "TFT_Item_MadredsBloodrazor",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_StatikkShiv",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_HextechGunblade",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RabadonsDeathcap",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_JeweledGauntlet",
+              "agreement": 0.3333
             }
           ]
         },
@@ -5564,14 +6811,32 @@
           "cost": 7,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_RedBuff",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Morgana",
           "cost": 7,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_SteraksGage",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_FrozenHeart",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_AdaptiveHelm",
+              "agreement": 0.3333
+            }
+          ]
         }
       ],
       "anomalies": [],
@@ -5654,7 +6919,16 @@
           "cost": 2,
           "is_carry": true,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT17_Item_FavoredEmblemItem",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RedBuff",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Mordekaiser",
@@ -5683,6 +6957,18 @@
             {
               "id": "TFT_Item_Crownguard",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_WarmogsArmor",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_BrambleVest",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_Redemption",
+              "agreement": 0.3333
             }
           ]
         },
@@ -5695,6 +6981,22 @@
             {
               "id": "TFT_Item_FrozenHeart",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_WarmogsArmor",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_GargoyleStoneplate",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RedBuff",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_AdaptiveHelm",
+              "agreement": 0.3333
             }
           ]
         },
@@ -5711,6 +7013,22 @@
             {
               "id": "TFT_Item_RunaansHurricane",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT17_AnimaSquadItem_Tier2_EchoingBatblades",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_LastWhisper",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_HextechGunblade",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_InfinityEdge",
+              "agreement": 0.3333
             }
           ]
         },
@@ -5719,7 +7037,16 @@
           "cost": 7,
           "is_carry": false,
           "star_level": 2,
-          "items": []
+          "items": [
+            {
+              "id": "TFT_Item_RapidFireCannon",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RecurveBow",
+              "agreement": 0.3333
+            }
+          ]
         },
         {
           "id": "TFT17_Jhin",
@@ -5734,6 +7061,18 @@
             {
               "id": "TFT_Item_InfinityEdge",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_HextechGunblade",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_PowerGauntlet",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT17_AnimaSquadItem_Tier1_SavageSlicer",
+              "agreement": 0.3333
             }
           ]
         },
@@ -5746,6 +7085,22 @@
             {
               "id": "TFT_Item_ThiefsGloves",
               "agreement": 0.6667
+            },
+            {
+              "id": "TFT_Item_NightHarvester",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_BrambleVest",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_RunaansHurricane",
+              "agreement": 0.3333
+            },
+            {
+              "id": "TFT_Item_BlueBuff",
+              "agreement": 0.3333
             }
           ]
         }
@@ -5805,6 +7160,6 @@
       ]
     }
   ],
-  "updated_at": "2026-04-28T10:41:37.455357+00:00",
+  "updated_at": "2026-04-29T08:03:53.312056+00:00",
   "match_count": 98
 }
