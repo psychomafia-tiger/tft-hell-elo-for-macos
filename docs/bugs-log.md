@@ -146,3 +146,34 @@ Append-only log of bugs encountered, fixed, and deferred. New entries go at the 
 - **Fix**: changed loop in `comp_grouping.py` to prefer `unit.itemNames`, fall back to `unit.items` for older sets. Added a pipeline test that asserts non-empty `items[]` in the trait-bucket producer output.
 - **Lesson**: when forking a data path (Phase 2 trait-bucket vs legacy Jaccard), audit the **producer side** for parity with the legacy reader. The Jaccard path's `champion_aggregator.py` reads `itemNames` correctly; the new path missed the field. Same class as Bug #007 (cost: 0). Future phases that fork pipeline paths must run a quick output diff (e.g. unique itemId count) against legacy output before declaring parity.
 
+
+## Bug #009 — TraitChip vertical pill layout (HStack compression + no lineLimit)
+
+- **Status**: ✅ Fixed (phase-03-rich-comp-details, commit `2312312`, 2026-04-28)
+- **Phase**: phase-03-rich-comp-details
+- **Symptom**: Comps with 8-9 traits (e.g. APTrait DarkStar) showed trait chips as tall vertical pills instead of horizontal capsules. Text appeared rotated 90°.
+- **Root cause**: No `.lineLimit(1)` on `TraitChip.Text`. In a compressed `HStack`, SwiftUI allowed text to wrap → chip grew taller than wide → Capsule shape rendered as vertical pill. Triggered only when trait count exceeded card width (≥8 traits × ~80px > 400px card).
+- **Fix**: Added `.lineLimit(1)` to `TraitChip` text + `.prefix(6)` cap in `traitsRow`. Moot after traits moved to expanded card.
+- **Lesson**: Always add `.lineLimit(1)` to text inside HStack chips. SwiftUI will compress width first, then wrap text vertically — this is a silent layout trap.
+
+---
+
+## Bug #010 — TraitBadge icon not centered (ZStack alignment propagation)
+
+- **Status**: ✅ Fixed (phase-03-rich-comp-details, commit `60d94cf`, 2026-04-29)
+- **Phase**: phase-03-rich-comp-details
+- **Symptom**: Trait icons in expanded card section appeared in the bottom-right corner of badge tile instead of centered.
+- **Root cause**: Initial `TraitBadge` used `ZStack(alignment: .bottomTrailing)` to position count pip. In SwiftUI, alignment on the ZStack applies to ALL children unless overridden — so the icon also snapped to `.bottomTrailing`.
+- **Fix**: Use layered overlays instead of single ZStack: `badgeTile.overlay{iconView}.overlay(alignment:.bottomTrailing){countPip}`. Each layer has independent alignment.
+- **Lesson**: When one ZStack child needs non-default alignment, use `.overlay()` chains instead of setting alignment on the parent ZStack — it affects all children.
+
+---
+
+## Bug #011 — Items only showing on isCarry champions despite pipeline emitting items for all
+
+- **Status**: ✅ Fixed (phase-03-rich-comp-details, commit `83fa7b4`, 2026-04-29)
+- **Phase**: phase-03-rich-comp-details
+- **Symptom**: Most champion portraits showed no item badges even though the pipeline emitted `items[]` for non-carry champions (e.g. tanks, supports).
+- **Root cause**: `ChampionPortrait.portraitStack` guarded itemsOverlay with `if champion.isCarry && !champion.items.isEmpty`. The `isCarry` gate blocked items on all non-carry units. TFTactics shows BIS items on ANY champion with consistent item data — carry designation is irrelevant.
+- **Fix**: Removed `isCarry` gate → `if !champion.items.isEmpty`. Also lowered pipeline agreement threshold 40% → 30% to surface items on more champions. Result: 197/340 champions have items in sample.
+- **Lesson**: Don't conflate "carry role for UI emphasis" with "has item data". The pipeline independently tracks items per champion regardless of carry status. UI display gate should only check data presence.

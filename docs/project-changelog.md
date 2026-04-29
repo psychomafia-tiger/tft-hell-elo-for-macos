@@ -5,6 +5,45 @@ Append-only — never replace or edit prior entries.
 
 ---
 
+## [phase-03-rich-comp-details] — 2026-04-29
+
+### Added
+
+- **`TraitBadge.swift`** — 26pt icon-only trait badge for expanded card. Async icon load via `AssetCache` + count pip at bottom-right corner. `.help()` surfaces display name on hover (must-have tooltip UX).
+- **Traits in expanded card** — `ExpandedCardView` now renders `TraitBadge` single-row (all traits fit: 9 × 30px < 400px), replacing placeholder text.
+- **Carousel picks as portrait icons** — `ExpandedCardView.carouselSection` shows `ChampionPortrait(size:32)` with chevron separators.
+- **LV.9 options as portrait icons** — `ExpandedCardView.lv9Section` shows "LV.9 ›" prefix + portrait icons for overflow (9th+) or non-carry 4+ cost champions.
+- **`ItemBadge.size` parameter** — configurable badge size (default 12pt); portrait overlay uses 16pt.
+
+### Changed
+
+- **Traits moved out of collapsed card** — `traitsRow` removed from `CompCard.body`; now only visible in expanded section. Matches TFTactics collapsed-card behavior.
+- **Item display gate**: removed `isCarry` requirement — items show on **any** champion with consistent item data. Matches TFTactics BIS display logic.
+- **Pipeline item threshold**: 40% → **30% agreement** for item emission. Result: 197/340 champions have items in sample (was ~40/340).
+- **8-champion cap**: `CompCard.championsRow` capped at `.prefix(8)`; 9th+ routes to LV.9 Options.
+- **`ExpandedCardView.lv9Champions`**: prioritizes overflow champions (9th+) over non-carry high-cost fallback.
+- **Inactive traits filtered**: `ExpandedCardView.sortedTraits` hides `count < 2` non-unique traits (mirrors TFTactics "don't show unactivated synergies").
+- **`sample-tier-list.json`**: regenerated from KR fixture (min_sample=3, threshold=30%). 39 comps, 197/340 champions with items.
+
+### Fixed
+
+- **Bug #009**: `TraitChip` vertical pill layout — `lineLimit(1)` + `.prefix(6)` prevent HStack compression wrapping.
+- **Bug #010**: `TraitBadge` icon not centered — `ZStack(.bottomTrailing)` → `.overlay{iconView}` + `.overlay(.bottomTrailing){countPip}`.
+- **Bug #011**: Items only showing on `isCarry` champions despite pipeline emitting items for all — removed `isCarry` gate from `ChampionPortrait`.
+
+### Commits
+
+- `2312312` fix(ui): prevent TraitChip text wrapping + cap traits row at 6 chips
+- `c6a1b24` feat(ui): hide traitsRow from collapsed card — defer to expanded view
+- `9b07626` feat(ui): show traits in expanded card as 2-row chip grid; remove dead traitsRow
+- `57f015f` feat(ui): expanded card — portrait icons for carousel + LV.9 sections
+- `f4f6a8f` feat(ui): TraitBadge — 26pt icon-only badge with .help() tooltip on hover
+- `60d94cf` fix(ui+data): TraitBadge centering, filter inactive traits, regen sample
+- `91c017a` fix(ui): larger item badges + 8-champ cap + lv9 overflow
+- `83fa7b4` fix(ui+pipeline): show items on all champions, lower threshold to 30%
+
+---
+
 ## [phase-03-tftactics-portrait-redesign] — 2026-04-28
 
 ### Added

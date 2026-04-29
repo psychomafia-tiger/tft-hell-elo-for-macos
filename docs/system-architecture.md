@@ -1,6 +1,6 @@
 # System Architecture — TFT Hell Elo
 
-Last updated: 2026-04-28
+Last updated: 2026-04-29
 
 ---
 
@@ -79,9 +79,12 @@ flowchart LR
 |------|------|
 | `TierListPopover` | Root MenuBarExtra view. Reads `@EnvironmentObject DataManager`. |
 | `CompListView` | Scrollable comp list. Renders `BannerBar` + `UpdateRequiredOverlay`. |
-| `CompCard` (`CompCardV2`) | Per-comp card: header row + traits row + champion row + anomalies row. |
-| `ChampionPortrait` | Renders Set 17 champion artwork via `AssetCache` async load. **Phase 3:** cost-color border (always, 1=gray/2=green/3=blue/4=purple/5=gold) + 3-item overlay on carry portraits. Falls back to cost-colored placeholder circle on cache miss / load failure. |
-| `ItemBadge` | 12×12pt async-loading item icon. Class-tinted fallback (tank=blue, ad=red, ap=purple, utility=green, unknown=gray). |
+| `CompCard` (`CompCardV2`) | Collapsed: header + champion row (max 8) + anomalies. Click → expands `ExpandedCardView`. |
+| `ChampionPortrait` | Async portrait via `AssetCache`. Cost-color border (always). Item overlay (16pt `ItemBadge` with dark pill bg) on any champion with items data. |
+| `ItemBadge` | Configurable-size (default 12pt) async item icon. Class-tinted fallback. |
+| `TraitBadge` | 26pt icon-only trait badge for expanded card. Count pip overlay + `.help()` tooltip with display name. |
+| `TraitChip` | Text pill chip (icon + label). Still used for non-expanded contexts (unused in collapsed card as of phase-03). |
+| `ExpandedCardView` | Inline panel when card expanded: TRAITS (TraitBadge row, count≥2 filter), CAROUSEL PICKS (portrait icons + chevrons), LV.9 OPTIONS (overflow 9th+ champions or non-carry 4+ cost). |
 | `CompCardAnomaliesRow` | Chip row for Set 17 EkkoOffering anomaly recommendations. Hidden when empty. |
 | `UpdateRequiredOverlay` | Full-screen overlay when `bannerState == .updateRequired`. |
 | `OverlayWindowController` | NSPanel lifecycle owner (eager-init for < 50ms first-show). |
@@ -171,7 +174,8 @@ App/TFTMac/
 │   ├── CompCard.swift             — Phase 2: trait chips row
 │   ├── ChampionPortrait.swift     — Phase 3: cost border (always) + 3-item overlay on carry
 │   ├── TraitChip.swift            — Phase 2 trait badge with async icon
-│   ├── ItemBadge.swift            — Phase 3: 12pt async item badge with class-tinted fallback
+│   ├── ItemBadge.swift            — configurable-size async item badge with class-tinted fallback
+│   ├── TraitBadge.swift           — Phase 4 (rich comp): 26pt icon-only trait badge + count pip + .help() tooltip
 │   ├── CompCardAnomaliesRow.swift
 │   ├── UpdateRequiredOverlay.swift
 │   └── OverlayWindowController.swift
@@ -210,6 +214,7 @@ data/
 - Asset pipeline deep-dive (Phase 1): `docs/asset-pipeline-architecture.md`
 - Trait aggregation deep-dive (Phase 2): `docs/trait-aggregation-architecture.md`
 - Portrait redesign deep-dive (Phase 3): `docs/portrait-redesign-architecture.md`
+- Rich comp details (Phase 4): see changelog `[phase-03-rich-comp-details]` + bugs-log #009-#011
 - v0.1 design spec: `docs/design-v0.1-menu-bar-popover.md`
 - Naming conventions: `docs/naming-conventions.md`
 - Bugs log: `docs/bugs-log.md`
