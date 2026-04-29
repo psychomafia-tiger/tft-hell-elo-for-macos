@@ -6,17 +6,18 @@ import Foundation
 /// `traits` is populated by Phase 02 pipeline (schema 1.2.0 trait activation).
 ///
 /// Forward-compat decoder:
-///   v1.0.0 (no `anomalies`, no `traits`) → both empty arrays.
-///   v1.1.0 (with `anomalies`, no `traits`) → traits empty array.
-///   v1.2.0 (with `anomalies` + `traits`) → fully populated.
+///   v1.0.0 (no `anomalies`, no `traits`, no `positioning`) → all empty arrays.
+///   v1.1.0 (with `anomalies`) → traits + positioning empty.
+///   v1.2.0 (with `anomalies` + `traits`) → positioning empty.
+///   v1.4.0 (with `anomalies` + `traits` + `positioning`) → fully populated.
 ///
 /// Custom `init(from:)` required because:
-/// 1. `anomalies` and `traits` use `decodeIfPresent ?? []` for forward-compat
+/// 1. `anomalies`, `traits`, and `positioning` use `decodeIfPresent ?? []` for forward-compat
 /// 2. Existing `top_4_rate` → `top4Rate` snake_case conversion still handled
 ///    by JSONDecoder `.convertFromSnakeCase` at container level
 ///
-/// Explicit memberwise init with `anomalies` and `traits` defaulting to `[]`
-/// so existing test fixtures (CompCardV2Tests, ExpandedCardViewTests) compile
+/// Explicit memberwise init with `anomalies`, `traits`, and `positioning` defaulting
+/// to `[]` so existing test fixtures (CompCardV2Tests, ExpandedCardViewTests) compile
 /// unchanged.
 struct Comp: Encodable {
     let compId: String
@@ -29,6 +30,7 @@ struct Comp: Encodable {
     let champions: [Champion]
     let anomalies: [Anomaly]        // populated from schema v1.1.0+
     let traits: [TraitActivation]   // populated from schema v1.2.0+
+    let positioning: [Position]     // populated from schema v1.4.0+
 
     init(
         compId: String,
@@ -40,7 +42,8 @@ struct Comp: Encodable {
         sampleSize: Int,
         champions: [Champion],
         anomalies: [Anomaly] = [],
-        traits: [TraitActivation] = []
+        traits: [TraitActivation] = [],
+        positioning: [Position] = []
     ) {
         self.compId = compId
         self.name = name
@@ -52,6 +55,7 @@ struct Comp: Encodable {
         self.champions = champions
         self.anomalies = anomalies
         self.traits = traits
+        self.positioning = positioning
     }
 }
 
@@ -67,6 +71,7 @@ extension Comp: Decodable {
         case champions
         case anomalies
         case traits
+        case positioning
     }
 
     init(from decoder: Decoder) throws {
@@ -83,6 +88,8 @@ extension Comp: Decodable {
         self.anomalies = (try? c.decodeIfPresent([Anomaly].self, forKey: .anomalies)) ?? []
         // Forward-compat: key absent in v1.0.0/v1.1.0 bundled JSON → default to []
         self.traits = (try? c.decodeIfPresent([TraitActivation].self, forKey: .traits)) ?? []
+        // Forward-compat: key absent in v1.0.0–v1.2.0 bundled JSON → default to []
+        self.positioning = (try? c.decodeIfPresent([Position].self, forKey: .positioning)) ?? []
     }
 }
 

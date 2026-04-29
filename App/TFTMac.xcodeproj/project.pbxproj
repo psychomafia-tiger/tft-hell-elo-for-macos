@@ -10,6 +10,7 @@
 		01241F0C078DCE19F0D4EB54 /* FilterBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A098A4082EC9835F25BCB6 /* FilterBar.swift */; };
 		028589211DF59B8873B64796 /* TraitCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8237EA39030E50F973B39DBB /* TraitCatalog.swift */; };
 		02EBBB7E015E608365E806FA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D86BC5ED70D3AD253DEE69 /* DataManager.swift */; };
+		04522707F20B5822B164ACE1 /* PositionDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8312C31F75F4E74ECB33800 /* PositionDecodingTests.swift */; };
 		074C53FB79598B7787DBF0C3 /* HotkeyRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B28BDF2730EE506D4EC3F5 /* HotkeyRegistrationTests.swift */; };
 		0969AD5F3AD9FC366F0DADD0 /* Comp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5ABAB08CC8CA23E71E2ED6 /* Comp.swift */; };
 		1887F0E047449B1139366DAF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4253A261F0CB1BD35211BA94 /* README.md */; };
@@ -35,6 +36,7 @@
 		471AEAD45FB29AF924771442 /* Anomaly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09008D91D764EA968EAB5D13 /* Anomaly.swift */; };
 		47FBC478CC0318655F47B82B /* TierListDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903FB369DDE0BBE4B8A7726E /* TierListDecodingTests.swift */; };
 		4C9B6EA02D94F682CE9EF128 /* TraitActivationDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A541949C011588F6C3AEBDC /* TraitActivationDecodingTests.swift */; };
+		4F738CB188869BF0DD677650 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = E440D81D43DD9CAEC97C9788 /* Position.swift */; };
 		531088914ED113C13B273139 /* SchemaVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74AA61E19A17A0D70054DE /* SchemaVersionTests.swift */; };
 		53653C1EB595AA2AA3A54A50 /* AssetCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA115C2517FEE2DCF4EE12B /* AssetCache.swift */; };
 		57E1AB0930EBE8BDC235DEAB /* ItemAssetURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8438AC7DD0CAC57803AAC228 /* ItemAssetURL.swift */; };
@@ -173,6 +175,8 @@
 		DE1248534A41D65219C7AECC /* TraitCatalogTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TraitCatalogTests.swift; sourceTree = "<group>"; };
 		DF5D9991300696D33DE47790 /* OverlayWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindowController.swift; sourceTree = "<group>"; };
 		E0A5E961A14C1907B7415058 /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
+		E440D81D43DD9CAEC97C9788 /* Position.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Position.swift; path = Position.swift; sourceTree = "<group>"; };
+		E8312C31F75F4E74ECB33800 /* PositionDecodingTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PositionDecodingTests.swift; path = PositionDecodingTests.swift; sourceTree = "<group>"; };
 		F32D951052DED0A0E3D81DC9 /* TraitAssetURL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TraitAssetURL.swift; sourceTree = "<group>"; };
 		FAA4F26E863E5EDA109EE167 /* OverlayWindowControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindowControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -198,6 +202,7 @@
 				84741D0080D548EB46DC80AE /* TierList.swift */,
 				09008D91D764EA968EAB5D13 /* Anomaly.swift */,
 				D2A7A6F79271F144219B84E1 /* TraitActivation.swift */,
+				E440D81D43DD9CAEC97C9788 /* Position.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				BF3A67185F95F6118B993DF9 /* ItemAssetURLTests.swift */,
 				CE307D191C9F426F508DCB47 /* ItemCatalogTests.swift */,
 				2603245372B84E254C4D6D75 /* ItemBadgeTests.swift */,
+				E8312C31F75F4E74ECB33800 /* PositionDecodingTests.swift */,
 			);
 			path = TFTMacTests;
 			sourceTree = "<group>";
@@ -513,6 +519,7 @@
 				A7830D2CF332B44C5D75A209 /* ItemAssetURLTests.swift in Sources */,
 				BFEA49A30CCA6C1587B0414E /* ItemCatalogTests.swift in Sources */,
 				446065B38EF3970E471E617C /* ItemBadgeTests.swift in Sources */,
+				04522707F20B5822B164ACE1 /* PositionDecodingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +566,7 @@
 				57E1AB0930EBE8BDC235DEAB /* ItemAssetURL.swift in Sources */,
 				2862D0BE2293896C960CDC44 /* ItemBadge.swift in Sources */,
 				4683DDAF597086F27D2C935B /* TraitBadge.swift in Sources */,
+				4F738CB188869BF0DD677650 /* Position.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
