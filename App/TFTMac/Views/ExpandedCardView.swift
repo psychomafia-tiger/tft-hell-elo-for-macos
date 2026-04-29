@@ -108,11 +108,16 @@ struct ExpandedCardView: View {
         }
     }
 
+    /// Champions to show in LV.9 section:
+    /// 1. Overflow champions from the main row (9th+) — these are the cap victims.
+    /// 2. Fallback: non-carry 4+ cost champions (the usual flex picks at LV.9).
+    /// 3. Last resort: first 3 non-carry champions.
     private var lv9Champions: [Champion] {
+        let overflow = Array(comp.champions.dropFirst(8))
+        if !overflow.isEmpty { return overflow }
         let highCost = comp.champions.filter { !$0.isCarry && $0.cost >= 4 }
-        return highCost.isEmpty
-            ? Array(comp.champions.filter { !$0.isCarry }.prefix(3))
-            : highCost
+        if !highCost.isEmpty { return highCost }
+        return Array(comp.champions.filter { !$0.isCarry }.prefix(3))
     }
 
     // MARK: - Helpers

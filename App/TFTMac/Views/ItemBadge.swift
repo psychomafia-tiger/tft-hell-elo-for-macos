@@ -16,8 +16,9 @@ import SwiftUI
 struct ItemBadge: View {
 
     let itemId: String
+    /// Badge side length. Default 12pt for inline use; pass 16pt for portrait overlay.
+    var size: CGFloat = 12
 
-    /// Loaded NSImage, nil while loading or on miss.
     @State private var image: NSImage?
 
     var body: some View {
@@ -30,8 +31,8 @@ struct ItemBadge: View {
                 fallback
             }
         }
-        .frame(width: 12, height: 12)
-        .clipShape(RoundedRectangle(cornerRadius: 2))
+        .frame(width: size, height: size)
+        .clipShape(RoundedRectangle(cornerRadius: max(2, size * 0.15)))
         .task {
             guard image == nil,
                   let token = ItemCatalog.iconToken(forId: itemId),

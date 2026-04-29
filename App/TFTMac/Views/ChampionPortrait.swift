@@ -70,14 +70,18 @@ struct ChampionPortrait: View {
         .frame(height: size + 6)
     }
 
-    /// 3-item HStack overlay. Pipeline already filters top-3 ≥0.40 agreement,
-    /// but `.prefix(3)` is defensive in case more slip through.
+    /// 3-item HStack overlay at bottom of portrait. 16pt badges with a
+    /// semi-transparent dark pill background so icons pop on any portrait color.
     private var itemsOverlay: some View {
-        HStack(spacing: 1) {
+        HStack(spacing: 2) {
             ForEach(champion.items.prefix(3), id: \.id) { item in
-                ItemBadge(itemId: item.id)
+                ItemBadge(itemId: item.id, size: 16)
             }
         }
+        .padding(.horizontal, 2)
+        .padding(.vertical, 1)
+        .background(.black.opacity(0.45))
+        .clipShape(RoundedRectangle(cornerRadius: 4))
     }
 
     @ViewBuilder
