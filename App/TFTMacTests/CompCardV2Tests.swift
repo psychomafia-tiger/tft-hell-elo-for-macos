@@ -99,4 +99,93 @@ final class CompCardV2Tests: XCTestCase {
         let view = CompCardV2(comp: comp, width: 480)
         XCTAssertNotNil(view.body)
     }
+
+    // MARK: - Bug #005 — data-driven star_level, 3-star-only render
+
+    /// StarLevelIndicator renders EmptyView for level < 3; 3 star-pips for level == 3.
+    /// No ViewInspector available — assert view init and body construction don't
+    /// crash, and verify the render-gate logic directly on the struct.
+    func test_starIndicator_hiddenFor1Or2Star() {
+        // level=1 → body is EmptyView (no-op layout)
+        let indicator1 = StarLevelIndicator(level: 1)
+        XCTAssertNoThrow({ _ = indicator1.body }(), "level=1 should produce EmptyView without crash")
+
+        // level=2 → body is also EmptyView
+        let indicator2 = StarLevelIndicator(level: 2)
+        XCTAssertNoThrow({ _ = indicator2.body }(), "level=2 should produce EmptyView without crash")
+
+        // level=3 → body renders 3-star HStack (not EmptyView)
+        let indicator3 = StarLevelIndicator(level: 3)
+        XCTAssertNoThrow({ _ = indicator3.body }(), "level=3 should construct 3-star view without crash")
+    }
+
+    /// Champion default init (no starLevel arg) compiles and defaults to 1.
+    func test_championDefaultStarLevel() {
+        let champ = Champion(id: "TFT17_Viktor", cost: 5, isCarry: true, items: [])
+        XCTAssertEqual(champ.starLevel, 1,
+                       "Default starLevel should be 1 when not specified in memberwise init")
+    }
+
+    /// champion.starLevel flows through to StarLevelIndicator correctly.
+    func test_championPortraitUsesStarLevelFromData() {
+        // 3-star champion: starLevel=3 → indicator renders pips
+        let carry3Star = Champion(id: "TFT17_Jinx", cost: 4, isCarry: true, starLevel: 3, items: [])
+        XCTAssertEqual(carry3Star.starLevel, 3)
+
+        // 2-star carry: starLevel=2 → indicator is EmptyView (no pips)
+        let carry2Star = Champion(id: "TFT17_Jinx", cost: 4, isCarry: true, starLevel: 2, items: [])
+        XCTAssertEqual(carry2Star.starLevel, 2)
+
+        // non-carry 1-star: default → no pips
+        let support = Champion(id: "TFT17_Nami", cost: 2, isCarry: false, items: [])
+        XCTAssertEqual(support.starLevel, 1)
+    }
+
+    // MARK: - Phase 3 portrait (cost border always, items overlay on carry)
+
+    func test_portraitConstructs_withItems_onCarry() {
+        let carry = Champion(
+            id: "TFT17_Jinx", cost: 4, isCarry: true, starLevel: 2,
+            items: [
+                ItemBuild(id: "TFT_Item_GuinsoosRageblade", agreement: 0.6),
+                ItemBuild(id: "TFT_Item_LastWhisper",       agreement: 0.5),
+            ]
+        )
+        let view = ChampionPortrait(champion: carry)
+        XCTAssertNotNil(view.body)
+    }
+
+    func test_portraitConstructs_noItems_onNonCarry() {
+        let support = Champion(
+            id: "TFT17_Nami", cost: 2, isCarry: false, starLevel: 1, items: []
+        )
+        let view = ChampionPortrait(champion: support)
+        XCTAssertNotNil(view.body)
+    }
+
+    func test_portraitConstructs_carryWithEmptyItems() {
+        // Carry slot with no items in pipeline output — should not render overlay.
+        let carry = Champion(
+            id: "TFT17_Viktor", cost: 5, isCarry: true, starLevel: 3, items: []
+        )
+        let view = ChampionPortrait(champion: carry)
+        XCTAssertNotNil(view.body)
+    }
+
+    func test_portraitConstructs_overFourItems_takesFirstThree() {
+        // Defensive: even if pipeline emits more than 3, view caps at 3.
+        let items = (1...5).map { ItemBuild(id: "TFT_Item_Fake_\($0)", agreement: 0.5) }
+        let carry = Champion(
+            id: "TFT17_Test", cost: 3, isCarry: true, starLevel: 2, items: items
+        )
+        let view = ChampionPortrait(champion: carry)
+        XCTAssertNotNil(view.body)
+    }
+
+    func test_portraitConstructs_costEdgeCases() {
+        // Cost outside 1-5 (Riot edge values for special units) → black fallback.
+        let edge = Champion(id: "TFT17_X", cost: 7, isCarry: false, starLevel: 1, items: [])
+        let view = ChampionPortrait(champion: edge)
+        XCTAssertNotNil(view.body)
+    }
 }

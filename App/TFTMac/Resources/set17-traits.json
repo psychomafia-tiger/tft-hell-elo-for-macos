@@ -1,0 +1,192 @@
+[
+  {
+    "apiName": "TFT17_VexUniqueTrait",
+    "displayName": "Doomer",
+    "iconToken": "doomer"
+  },
+  {
+    "apiName": "TFT17_ASTrait",
+    "displayName": "Challenger",
+    "iconToken": "challenger"
+  },
+  {
+    "apiName": "TFT17_MissFortuneUndeterminedTrait",
+    "displayName": "Choose Trait",
+    "iconToken": "missfortuneundetermindedtrait"
+  },
+  {
+    "apiName": "TFT17_Stargazer_Wolf",
+    "displayName": "Stargazer",
+    "iconToken": "stargazer"
+  },
+  {
+    "apiName": "TFT17_APTrait",
+    "displayName": "Replicator",
+    "iconToken": "replicator"
+  },
+  {
+    "apiName": "TFT17_PsyOps",
+    "displayName": "Psionic",
+    "iconToken": "psyops"
+  },
+  {
+    "apiName": "TFT17_JhinUniqueTrait",
+    "displayName": "Eradicator",
+    "iconToken": "singularity"
+  },
+  {
+    "apiName": "TFT17_Timebreaker",
+    "displayName": "Timebreaker",
+    "iconToken": "timebreaker"
+  },
+  {
+    "apiName": "TFT17_MissFortuneUniqueTrait",
+    "displayName": "Gun Goddess",
+    "iconToken": "gungoddess"
+  },
+  {
+    "apiName": "TFT17_AnimaSquad",
+    "displayName": "Anima",
+    "iconToken": "animatech"
+  },
+  {
+    "apiName": "TFT17_Fateweaver",
+    "displayName": "Fateweaver",
+    "iconToken": "fateweaver"
+  },
+  {
+    "apiName": "TFT17_ZedUniqueTrait",
+    "displayName": "Galaxy Hunter",
+    "iconToken": "galaxyhunter"
+  },
+  {
+    "apiName": "TFT17_ShenUniqueTrait",
+    "displayName": "Bulwark",
+    "iconToken": "bulwark"
+  },
+  {
+    "apiName": "TFT17_SonaUniqueTrait",
+    "displayName": "Commander",
+    "iconToken": "commander"
+  },
+  {
+    "apiName": "TFT17_Stargazer_Medallion",
+    "displayName": "Stargazer",
+    "iconToken": "stargazer"
+  },
+  {
+    "apiName": "TFT17_Stargazer_Huntress",
+    "displayName": "Stargazer",
+    "iconToken": "stargazer"
+  },
+  {
+    "apiName": "Set17_CarouselMarket_EmpoweredHexTrait",
+    "displayName": "God-Blessed",
+    "iconToken": "godblessed"
+  },
+  {
+    "apiName": "TFT17_Stargazer_Serpent",
+    "displayName": "Stargazer",
+    "iconToken": "stargazer"
+  },
+  {
+    "apiName": "TFT17_Stargazer_Shield",
+    "displayName": "Stargazer",
+    "iconToken": "stargazer"
+  },
+  {
+    "apiName": "TFT17_Stargazer_Fountain",
+    "displayName": "Stargazer",
+    "iconToken": "stargazer"
+  },
+  {
+    "apiName": "TFT17_AssassinTrait",
+    "displayName": "Rogue",
+    "iconToken": "rogue"
+  },
+  {
+    "apiName": "TFT17_DarkStar",
+    "displayName": "Dark Star",
+    "iconToken": "darkstar"
+  },
+  {
+    "apiName": "TFT17_Primordian",
+    "displayName": "Primordian",
+    "iconToken": "primordian"
+  },
+  {
+    "apiName": "TFT17_SpaceGroove",
+    "displayName": "Space Groove",
+    "iconToken": "spacegroove"
+  },
+  {
+    "apiName": "TFT17_ADMIN",
+    "displayName": "Arbiter",
+    "iconToken": "arbiter"
+  },
+  {
+    "apiName": "TFT17_Stargazer_Mountain",
+    "displayName": "Stargazer",
+    "iconToken": "stargazer"
+  },
+  {
+    "apiName": "TFT17_SummonTrait",
+    "displayName": "Shepherd",
+    "iconToken": "shepherd"
+  },
+  {
+    "apiName": "TFT17_RhaastUniqueTrait",
+    "displayName": "Redeemer",
+    "iconToken": "redeemer"
+  },
+  {
+    "apiName": "TFT17_Astronaut",
+    "displayName": "Meeple",
+    "iconToken": "astronaut"
+  },
+  {
+    "apiName": "TFT17_ManaTrait",
+    "displayName": "Conduit",
+    "iconToken": "channeler"
+  },
+  {
+    "apiName": "TFT17_Mecha",
+    "displayName": "Mecha",
+    "iconToken": "mecha"
+  },
+  {
+    "apiName": "TFT17_GravesTrait",
+    "displayName": "Factory New",
+    "iconToken": "factorynew"
+  },
+  {
+    "apiName": "TFT17_Stargazer",
+    "displayName": "Stargazer",
+    "iconToken": "stargazer"
+  },
+  {
+    "apiName": "TFT17_FlexTrait",
+    "displayName": "Voyager",
+    "iconToken": "voyager"
+  },
+  {
+    "apiName": "TFT17_BlitzcrankUniqueTrait",
+    "displayName": "Party Animal",
+    "iconToken": "partyanimal"
+  },
+  {
+    "apiName": "TFT17_DRX",
+    "displayName": "N.O.V.A.",
+    "iconToken": "nova"
+  },
+  {
+    "apiName": "TFT17_FioraUniqueTrait",
+    "displayName": "Divine Duelist",
+    "iconToken": "divineduelist"
+  },
+  {
+    "apiName": "TFT17_MorganaUniqueTrait",
+    "displayName": "Dark Lady",
+    "iconToken": "darklady"
+  }
+]

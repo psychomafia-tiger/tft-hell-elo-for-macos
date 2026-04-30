@@ -1,6 +1,6 @@
 # System Architecture — TFT Hell Elo
 
-Last updated: 2026-04-25
+Last updated: 2026-04-30
 
 ---
 
@@ -16,14 +16,14 @@ TFT Hell Elo is a native macOS menu bar app (`MenuBarExtra(.window)`) that displ
 flowchart LR
     subgraph pipeline ["Data pipeline (GitHub Actions cron, 12h)"]
         R["Riot TFT API\n(League-v1 + Match-v1)"] --> AG["Python aggregator\ntftmac_pipeline"]
-        AG --> TL["data/tier-list.json\n(committed to repo, schema 1.1.0)"]
+        AG --> TL["data/tier-list.json\n(committed to repo, schema 1.4.0)"]
     end
 
     subgraph app ["macOS app (TFTMac target)"]
         TL -->|"HTTPS raw.githubusercontent.com"| RF["RemoteFetcher\n(actor, 10s timeout)"]
         RF --> DM["DataManager\n(@MainActor ObservableObject)"]
         DC["DiskCache\n(~/Library/Caches/…)"] <--> DM
-        BU["Bundled sample-tier-list.json\n(schema 1.0.0, fallback)"] --> DM
+        BU["Bundled sample-tier-list.json\n(schema 1.4.0, fallback)"] --> DM
         DM -->|"@Published tierList"| UI["SwiftUI views\n(TierListPopover + OverlayPanel)"]
     end
 
@@ -52,6 +52,9 @@ flowchart LR
 | `RemoteFetcher` | `Services/RemoteFetcher.swift` | `actor`; HTTPS fetch with 10s timeout + 1 retry |
 | `DiskCache` | `Services/DiskCache.swift` | Atomic read/write to `~/Library/Caches/io.psychomafia.tfthellelo/tier-list.json` |
 | `SchemaCompatibilityGate` | `Services/SchemaCompatibilityGate.swift` | Pure gate: `.ok` or `.updateRequired` based on major schema version |
+| `AssetCache` | `Services/AssetCache.swift` | URLSession + disk cache (~/Library/Caches/io.psychomafia.tfthellelo.assets/); 30-day TTL via mtime; 50MB LRU; SHA-256 URL→filename. Returns nil on 4xx/5xx/timeout for graceful UI fallback. |
+| `ChampionAssetURL` | `Services/ChampionAssetURL.swift` | Pure URL builder for CommunityDragon Set 17 portraits. Pattern: `tft17_{lower}/hud/tft17_{lower}_square.tft_set17.png`. |
+| `ChampionCatalog` | `Generated/ChampionCatalog.swift` | Data-driven from bundled `Resources/set17-champions.json` (59 entries). `displayName(forId:)` lookup. |
 
 **Fetch chain priority (refresh()):**
 1. `RemoteFetcher` → schema gate → cache write → publish `.fresh`
@@ -65,9 +68,10 @@ flowchart LR
 | Model | Notes |
 |-------|-------|
 | `TierList` | Root decode target. Contains `schemaVersion`, `region`, `comps[]`. |
-| `Comp` | Per-comp stats + `champions[]` + `anomalies[]`. Custom `init(from:)` with `decodeIfPresent ?? []` for anomalies (forward-compat). |
+| `Comp` | Per-comp stats + `champions[]` + `anomalies[]` + `traits[]` + `positioning[]`. Custom `init(from:)` with `decodeIfPresent ?? []` (forward-compat). |
 | `Champion` | `id`, `cost`, `isCarry`, `items[]`. |
 | `Anomaly` | `id` (TFT17_EkkoOffering_* string), `agreement` (0–1). |
+| `Position` | Phase 4: `championId`, `pos` (0-27), `frequency`. Computed `row = pos/7`, `col = pos%7`. |
 | `SchemaVersion` | `isCompatible(with:)` — major match + minor within 10-window. |
 
 ### View layer (`App/TFTMac/Views/`)
@@ -76,7 +80,13 @@ flowchart LR
 |------|------|
 | `TierListPopover` | Root MenuBarExtra view. Reads `@EnvironmentObject DataManager`. |
 | `CompListView` | Scrollable comp list. Renders `BannerBar` + `UpdateRequiredOverlay`. |
-| `CompCard` (`CompCardV2`) | Per-comp card: header row + `CompCardItemsRow` + `CompCardAnomaliesRow`. |
+| `CompCard` (`CompCardV2`) | Collapsed: header + champion row (max 8) + anomalies. Click → expands `ExpandedCardView`. |
+| `ChampionPortrait` | Async portrait via `AssetCache`. Cost-color border (always). Item overlay (16pt `ItemBadge` with dark pill bg) on any champion with items data. |
+| `ItemBadge` | Configurable-size (default 12pt) async item icon. Class-tinted fallback. |
+| `TraitBadge` | 26pt icon-only trait badge for expanded card. Count pip overlay + `.help()` tooltip with display name. |
+| `TraitChip` | Text pill chip (icon + label). Still used for non-expanded contexts (unused in collapsed card as of phase-03). |
+| `ExpandedCardView` | Inline panel when card expanded: TRAITS (TraitBadge row, count≥2 filter), CAROUSEL PICKS (portrait icons + chevrons), LV.9 OPTIONS (overflow 9th+ champions or non-carry 4+ cost), POSITIONING (Phase 4 hex grid, only when comp.positioning non-empty). |
+| `HexGridView` / `HexCell` / `PositioningSection` | Phase 4: 4×7 pointy-top hex board. `HexGeometry` provides offset coord math. Each `HexCell` async-loads a champion portrait clipped to a circle inside the hex outline. Empty hexes render as outline only. |
 | `CompCardAnomaliesRow` | Chip row for Set 17 EkkoOffering anomaly recommendations. Hidden when empty. |
 | `UpdateRequiredOverlay` | Full-screen overlay when `bannerState == .updateRequired`. |
 | `OverlayWindowController` | NSPanel lifecycle owner (eager-init for < 50ms first-show). |
@@ -101,14 +111,14 @@ See `docs/data-pipeline-architecture.md` for the full deep-dive.
 flowchart LR
     A["Riot TFT-League-v1\nVN2 Challenger PUUIDs"] --> B["Riot TFT-Match-v1\nMatch IDs + Details"]
     B --> C["Python tftmac_pipeline\naggregator + tier_calculator\nanomaly_aggregator"]
-    C --> D["data/tier-list.json\nschema 1.1.0"]
+    C --> D["data/tier-list.json\nschema 1.4.0"]
     D --> E["GitHub Actions\ntft-data-refresh.yml\n12h cron"]
     E --> D
 ```
 
-- **Aggregator:** `Pipeline/src/tftmac_pipeline/` — 7 modules. Jaccard-based comp grouping, S/A/B/C tier classification, EkkoOffering anomaly aggregation.
+- **Aggregator:** `Pipeline/src/tftmac_pipeline/` — 8 modules. Trait-combo-signature comp grouping (Phase 2), S/A/B/C tier classification, EkkoOffering anomaly aggregation. Legacy Jaccard path (`comp_pipeline.run_pipeline`) retained but unused by `build_tier_list_payload`.
 - **Workflow:** `.github/workflows/tft-data-refresh.yml` — SHA-pinned, repo guard, PII grep guard, hand-rolled commit. Designed for public repo safety.
-- **Schema:** 1.1.0 (additive over 1.0.0). App uses forward-compat decoder; `appSchema = 1.0.0` in `SchemaCompatibilityGate` so both bundled (1.0.0) and remote (1.1.0) pass the gate.
+- **Schema:** 1.4.0 (additive — `comp.traits[]` from 1.2.0, `comp.positioning[]` from 1.4.0; 1.3.0 reserved/unshipped). App uses forward-compat decoder; `appSchema = 1.0.0` in `SchemaCompatibilityGate` so bundled (1.4.0) + legacy remote (1.0.0/1.1.0/1.2.0) all pass the gate.
 
 ---
 
@@ -144,31 +154,56 @@ App/TFTMac/
 │   ├── DataManager.swift          — fetch orchestrator, @Published state
 │   ├── RemoteFetcher.swift        — HTTPS actor
 │   ├── DiskCache.swift            — file-backed cache
-│   └── SchemaCompatibilityGate.swift
+│   ├── SchemaCompatibilityGate.swift
+│   ├── AssetCache.swift           — URLSession + disk cache for portraits (30d TTL, 50MB LRU)
+│   ├── ChampionAssetURL.swift     — CommunityDragon Set 17 portrait URL builder
+│   ├── TraitAssetURL.swift        — CommunityDragon trait icon URL builder
+│   └── ItemAssetURL.swift         — CommunityDragon item icon URL builder (Phase 3)
+├── Generated/
+│   ├── ChampionCatalog.swift      — data-driven displayName lookup (loads bundled JSON)
+│   ├── TraitCatalog.swift         — Set 17 trait apiName → display + iconToken (Phase 2)
+│   └── ItemCatalog.swift          — Set 17 item apiName → display + iconToken + itemClass (Phase 3, JSON-driven)
 ├── Models/
 │   ├── TierList.swift
-│   ├── Comp.swift                 — forward-compat anomalies decoder
+│   ├── Comp.swift                 — forward-compat anomalies + traits decoder
 │   ├── Champion.swift
 │   ├── Anomaly.swift
+│   ├── TraitActivation.swift      — Phase 2 (name + count + tier_current)
+│   ├── Position.swift             — Phase 4 (championId + pos 0-27 + frequency)
 │   └── SchemaVersion.swift
 ├── Views/
 │   ├── TierListPopover.swift
 │   ├── CompListView.swift
-│   ├── CompCard.swift
+│   ├── CompCard.swift             — Phase 2: trait chips row
+│   ├── ChampionPortrait.swift     — Phase 3: cost border (always) + 3-item overlay on carry
+│   ├── TraitChip.swift            — Phase 2 trait badge with async icon
+│   ├── ItemBadge.swift            — configurable-size async item badge with class-tinted fallback
+│   ├── TraitBadge.swift           — Phase 3 (rich comp): 26pt icon-only trait badge + count pip + .help() tooltip
+│   ├── HexCell.swift              — Phase 4: HexGeometry + HexagonShape + single hex with portrait
+│   ├── HexGridView.swift          — Phase 4: 4×7 board + PositioningSection wrapper
 │   ├── CompCardAnomaliesRow.swift
 │   ├── UpdateRequiredOverlay.swift
 │   └── OverlayWindowController.swift
 └── Resources/
-    └── sample-tier-list.json      — bundled fallback (schema 1.0.0)
+    ├── sample-tier-list.json      — bundled fallback (schema 1.4.0)
+    ├── set17-champions.json       — 59 Set 17 champion IDs + display names
+    ├── set17-traits.json          — 38 Set 17 traits (apiName → displayName + iconToken)
+    └── set17-items.json           — Phase 3: 183 Set 17 items (apiName → displayName + iconToken + itemClass)
 
 Pipeline/src/tftmac_pipeline/
 ├── riot_client.py                 — async Riot API client
 ├── tier_calculator.py             — S/A/B/C classify()
 ├── anomaly_aggregator.py
 ├── champion_aggregator.py
-├── comp_pipeline.py
-├── json_emitter.py
-└── run_aggregator.py              — CLI entrypoint
+├── comp_pipeline.py               — legacy Jaccard path (retained, unused by build_tier_list_payload)
+├── comp_grouping.py               — Phase 2 trait-combo-signature grouping
+├── comp_name_resolver.py          — Phase 2 curated trait combo → semantic name
+├── positioning_aggregator.py      — Phase 4: rule-based hex inference (cost + carry + traits)
+├── json_emitter.py                — Phase 4: emits comp.traits[] + comp.positioning[] + schema 1.4.0
+└── run_aggregator.py              — CLI entrypoint + build_tier_list_payload
+
+Pipeline/data/
+└── trait_name_map.json            — curated trait combo → semantic comp name (~6 entries)
 
 .github/workflows/
 └── tft-data-refresh.yml           — 12h cron, public-repo defensive design
@@ -182,6 +217,11 @@ data/
 ## Cross-references
 
 - Data pipeline deep-dive: `docs/data-pipeline-architecture.md`
+- Asset pipeline deep-dive (Phase 1): `docs/asset-pipeline-architecture.md`
+- Trait aggregation deep-dive (Phase 2): `docs/trait-aggregation-architecture.md`
+- Portrait redesign deep-dive (Phase 3): `docs/portrait-redesign-architecture.md`
+- Rich comp details (Phase 3 sub-phase): see changelog `[phase-03-rich-comp-details]` + bugs-log #009-#011
+- Positioning hex grid deep-dive (Phase 4): `docs/positioning-architecture.md`
 - v0.1 design spec: `docs/design-v0.1-menu-bar-popover.md`
 - Naming conventions: `docs/naming-conventions.md`
 - Bugs log: `docs/bugs-log.md`

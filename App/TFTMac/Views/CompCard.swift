@@ -39,7 +39,6 @@ struct CompCardV2: View {
         VStack(alignment: .leading, spacing: 8) {
             topRow
             championsRow
-            CompCardItemsRow(comp: comp)
             CompCardAnomaliesRow(anomalies: comp.anomalies)  // Phase 03: anomaly chips
             if isExpanded {
                 Divider().background(Theme.Colors.borderDefault)
@@ -86,13 +85,17 @@ struct CompCardV2: View {
         }
     }
 
-    /// Horizontal row of ALL champion portraits in the comp. Wraps via HStack
-    /// for v0.1 (max ~8 champions in TFT comps — fits 480px width at 40px
-    /// portrait + gap). Phase 2 may adopt `LazyHStack` if 8+ emerges.
+    /// Horizontal strip of `TraitChip` badges, one per active trait in the comp.
+    /// Sorted by activation count descending (most-active trait first) so the
+    /// dominant synergy reads left-to-right without scanning. Hidden when
+    /// `comp.traits` is empty — forward-compatible with v1.1.0 schema that
+    /// omits the `traits` key (defaults to `[]`).
+    /// Max 8 champions in collapsed row (TFTactics convention).
+    /// Champion 9+ shown in ExpandedCardView LV.9 section.
     private var championsRow: some View {
         HStack(spacing: Theme.Spacing.gapChampionIcons) {
-            ForEach(comp.champions, id: \.id) { champ in
-                ChampionPortrait(champion: champ, tierColor: tierColor)
+            ForEach(comp.champions.prefix(8), id: \.id) { champ in
+                ChampionPortrait(champion: champ)
             }
             Spacer(minLength: 0)
         }

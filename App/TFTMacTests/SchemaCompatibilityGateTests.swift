@@ -48,6 +48,13 @@ final class SchemaCompatibilityGateTests: XCTestCase {
         XCTAssertEqual(gate.check(tl), .ok)
     }
 
+    /// Phase 2 — schema 1.2.0 (trait-aware comps) must pass the gate
+    /// (data minor 2 >= app minor 0, within 10-minor forward window).
+    func testRemoteSchema120IsOk() {
+        let tl = tierList(schema: SchemaVersion(major: 1, minor: 2, patch: 0))
+        XCTAssertEqual(gate.check(tl), .ok)
+    }
+
     /// Schema 1.5.0 passes (data minor 5, within 10-minor forward window from 0).
     func testSchema150IsOk() {
         let tl = tierList(schema: SchemaVersion(major: 1, minor: 5, patch: 0))

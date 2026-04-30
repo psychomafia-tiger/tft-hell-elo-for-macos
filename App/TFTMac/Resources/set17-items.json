@@ -1,0 +1,917 @@
+{
+  "TFT_Item_AdaptiveHelm": {
+    "displayName": "Adaptive Helm",
+    "iconToken": "tft_item_adaptivehelm.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_AegisOfTheLegion": {
+    "displayName": "Aegis of the Legion",
+    "iconToken": "tft_item_aegisofthelegion.tft_set13",
+    "itemClass": "ad"
+  },
+  "TFT_Item_ArchangelsStaff": {
+    "displayName": "Archangel's Staff",
+    "iconToken": "tft_item_archangelsstaff.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_Artifact_AegisOfDawn": {
+    "displayName": "Aegis of Dawn",
+    "iconToken": "tft_item_artifact_aegisofdawn.tft_set16",
+    "itemClass": "tank"
+  },
+  "TFT_Item_Artifact_AegisOfDusk": {
+    "displayName": "Aegis of Dusk",
+    "iconToken": "tft_item_artifact_aegisofdusk.tft_set16",
+    "itemClass": "tank"
+  },
+  "TFT_Item_Artifact_BlightingJewel": {
+    "displayName": "Blighting Jewel",
+    "iconToken": "tft_item_artifact_blightingjewel.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_Artifact_CappaJuice": {
+    "displayName": "Cappa Juice",
+    "iconToken": "tft16_artifact_kappajuice.tft_set16",
+    "itemClass": "ap"
+  },
+  "TFT_Item_Artifact_CursedBlade": {
+    "displayName": "Cursed Blade",
+    "iconToken": "tft_item_artifact_cursedblade",
+    "itemClass": "utility"
+  },
+  "TFT_Item_Artifact_CursedVampiricScepter": {
+    "displayName": "Corrupt Vampiric Scepter",
+    "iconToken": "tft_item_artifact_cursedvampiricscepter.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_Artifact_Dawncore": {
+    "displayName": "Dawncore",
+    "iconToken": "tft_item_artifact_dawncore.tft_set15",
+    "itemClass": "ap"
+  },
+  "TFT_Item_Artifact_EternalPact": {
+    "displayName": "Eternal Pact",
+    "iconToken": "tft16_artifact_eternalpact.tft_set16",
+    "itemClass": "ap"
+  },
+  "TFT_Item_Artifact_Fishbones": {
+    "displayName": "Fishbones",
+    "iconToken": "tft_item_artifact_fishbones.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Artifact_ForbiddenIdol": {
+    "displayName": "Forbidden Idol",
+    "iconToken": "tft_item_artifact_forbiddenidol.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_Artifact_HellfireHatchet": {
+    "displayName": "Hellfire Hatchet",
+    "iconToken": "tft_item_artifact_hellfirehatchet.tft_set16",
+    "itemClass": "ad"
+  },
+  "TFT_Item_Artifact_HorizonFocus": {
+    "displayName": "Horizon Focus",
+    "iconToken": "tft_item_artifact_horizonfocus.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_Artifact_InnervatingLocket": {
+    "displayName": "Innervating Locket",
+    "iconToken": "tft_item_artifact_innervatinglocket.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_Artifact_LesserMirroredPersona": {
+    "displayName": "Lesser Mirrored Persona",
+    "iconToken": "tft16_artifact_lessermirroredpersona.tft_set16",
+    "itemClass": "ap"
+  },
+  "TFT_Item_Artifact_LichBane": {
+    "displayName": "Lich Bane",
+    "iconToken": "tft_item_artifact_lichbane",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Artifact_LightshieldCrest": {
+    "displayName": "Lightshield Crest",
+    "iconToken": "tft_item_artifact_lightshieldcrest.tft_set13",
+    "itemClass": "tank"
+  },
+  "TFT_Item_Artifact_LudensTempest": {
+    "displayName": "Luden's Tempest",
+    "iconToken": "tft_item_artifact_ludenstempest.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Artifact_MendingEchoes": {
+    "displayName": "Mending Echoes",
+    "iconToken": "tft16_artifact_mendingechoes.tft_set16",
+    "itemClass": "utility"
+  },
+  "TFT_Item_Artifact_MirroredPersona": {
+    "displayName": "Mirrored Persona",
+    "iconToken": "tft16_artifact_mirroredpersona.tft_set16",
+    "itemClass": "ap"
+  },
+  "TFT_Item_Artifact_Mittens": {
+    "displayName": "Mittens",
+    "iconToken": "tft_item_artifact_mittens.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Artifact_NavoriFlickerblades": {
+    "displayName": "Flickerblades",
+    "iconToken": "tft_item_artifact_navoriflickerplade.tft_tft14_5",
+    "itemClass": "ap"
+  },
+  "TFT_Item_Artifact_ProwlersClaw": {
+    "displayName": "Prowler's Claw",
+    "iconToken": "tft_item_artifact_prowlersclaw.tft_set13",
+    "itemClass": "ad"
+  },
+  "TFT_Item_Artifact_RapidFirecannon": {
+    "displayName": "Rapid Firecannon",
+    "iconToken": "tft_item_artifact_rapidfirecannon.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Artifact_SeekersArmguard": {
+    "displayName": "Seeker's Armguard",
+    "iconToken": "tft_item_artifact_seekersarmguard.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_Artifact_ShadowPuppet": {
+    "displayName": "Shadow Puppet",
+    "iconToken": "tft16_artifact_shadowpuppet.tft_set16",
+    "itemClass": "utility"
+  },
+  "TFT_Item_Artifact_SilvermereDawn": {
+    "displayName": "Silvermere Dawn",
+    "iconToken": "tft_item_artifact_silvermeredawn.tft_set13",
+    "itemClass": "ad"
+  },
+  "TFT_Item_Artifact_SpectralCutlass": {
+    "displayName": "Spectral Cutlass",
+    "iconToken": "tft_item_artifact_spectralcutlass.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Artifact_StatikkShiv": {
+    "displayName": "Statikk Shiv",
+    "iconToken": "tft_item_artifact_stattikshiv.tft_tft14_5",
+    "itemClass": "ap"
+  },
+  "TFT_Item_Artifact_SuspiciousTrenchCoat": {
+    "displayName": "Suspicious Trench Coat",
+    "iconToken": "tft_item_artifact_suspicioustrenchcoat.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_Artifact_TalismanOfAscension": {
+    "displayName": "Talisman Of Ascension",
+    "iconToken": "tft_item_artifact_talismanofascension.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_Artifact_TheIndomitable": {
+    "displayName": "The Indomitable",
+    "iconToken": "tft_item_artifact_theindomitable.tft_tft14_5",
+    "itemClass": "tank"
+  },
+  "TFT_Item_Artifact_TitanicHydra": {
+    "displayName": "Titanic Hydra",
+    "iconToken": "tft_item_artifact_titanichydra.tft_tft14_5",
+    "itemClass": "ad"
+  },
+  "TFT_Item_Artifact_UnendingDespair": {
+    "displayName": "Unending Despair",
+    "iconToken": "tft_item_artifact_unendingdespair.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_Artifact_VoidGauntlet": {
+    "displayName": "Void Gauntlet",
+    "iconToken": "tft16_artifact_voidgauntlet.tft_set16",
+    "itemClass": "utility"
+  },
+  "TFT_Item_Artifact_WitheringRelic": {
+    "displayName": "Withered Relic",
+    "iconToken": "tft_item_artifact_witheringrelic.tft_set16",
+    "itemClass": "utility"
+  },
+  "TFT_Item_Artifact_WitsEnd": {
+    "displayName": "Wit's End",
+    "iconToken": "tft_item_artifact_witsend.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_BFSword": {
+    "displayName": "B.F. Sword",
+    "iconToken": "tft_item_bfsword.tft_set13",
+    "itemClass": "ad"
+  },
+  "TFT_Item_BansheesVeil": {
+    "displayName": "Banshee's Veil",
+    "iconToken": "tft_item_bansheesveil.tft_set13",
+    "itemClass": "ad"
+  },
+  "TFT_Item_BladeOfTheRuinedKing": {
+    "displayName": "TFT_item_name_BladeOfTheRuinedKing",
+    "iconToken": "tft_item_bladeoftheruinedking",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Bloodthirster": {
+    "displayName": "Bloodthirster",
+    "iconToken": "tft_item_bloodthirster.tft_set13",
+    "itemClass": "ad"
+  },
+  "TFT_Item_BlueBuff": {
+    "displayName": "Blue Buff",
+    "iconToken": "tft_item_bluebuff.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_BrambleVest": {
+    "displayName": "Bramble Vest",
+    "iconToken": "tft_item_bramblevest.tft_set13",
+    "itemClass": "tank"
+  },
+  "TFT_Item_CarouselOfChaos_TimeUndilator": {
+    "displayName": "Time Undilator",
+    "iconToken": "tft16_carouselofchaos_timeundiltor.tft_set16_carouselofchaos",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Catalyst": {
+    "displayName": "TFT_item_name_Catalyst",
+    "iconToken": "tft_item_giantslayer",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_ChainVest": {
+    "displayName": "Chain Vest",
+    "iconToken": "tft_item_chainvest.tft_set13",
+    "itemClass": "tank"
+  },
+  "TFT_Item_Chalice": {
+    "displayName": "Chalice of Power",
+    "iconToken": "tft_item_chalice.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_ChonccsChalice": {
+    "displayName": "Choncc's Chalice",
+    "iconToken": "ct_items_chalice",
+    "itemClass": "utility"
+  },
+  "TFT_Item_ChonccsCrown": {
+    "displayName": "Choncc's Crown",
+    "iconToken": "ct_items_crown",
+    "itemClass": "utility"
+  },
+  "TFT_Item_ChonccsSpork": {
+    "displayName": "Choncc's Spork",
+    "iconToken": "ct_items_septer",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_CorruptedDeathblade": {
+    "displayName": "Deathblade",
+    "iconToken": "tft_item_deathblade.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_CorruptedGargoyleStoneplate": {
+    "displayName": "Gargoyle Stoneplate",
+    "iconToken": "tft_item_gargoylestoneplate.tft_set13",
+    "itemClass": "tank"
+  },
+  "TFT_Item_CorruptedGuinsoosRageblade": {
+    "displayName": "Guinsoo's Rageblade",
+    "iconToken": "tft_item_guinsoosrageblade.tft_set13",
+    "itemClass": "ad"
+  },
+  "TFT_Item_CorruptedHandOfJustice": {
+    "displayName": "Hand Of Justice",
+    "iconToken": "tft_item_unstableconcoction.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_CorruptedInfinityEdge": {
+    "displayName": "Infinity Edge",
+    "iconToken": "tft_item_infinityedge.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_CorruptedJeweledGauntlet": {
+    "displayName": "Jeweled Gauntlet",
+    "iconToken": "tft_item_jeweledgauntlet.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_CorruptedRabadonsDeathcap": {
+    "displayName": "Rabadon's Deathcap",
+    "iconToken": "tft_item_rabadonsdeathcap.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_CorruptedRedemption": {
+    "displayName": "Spirit Visage",
+    "iconToken": "tft_item_spiritvisagerr.tft_tft14_5",
+    "itemClass": "utility"
+  },
+  "TFT_Item_CorruptedSpearOfShojin": {
+    "displayName": "Spear of Shojin",
+    "iconToken": "tft_item_spearofshojin.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_CorruptedWarmogsArmor": {
+    "displayName": "Warmog's Armor",
+    "iconToken": "tft_item_warmogsarmor.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_CrestOfCinders": {
+    "displayName": "Crest Of Cinders",
+    "iconToken": "crest_of_cinders",
+    "itemClass": "utility"
+  },
+  "TFT_Item_Crownguard": {
+    "displayName": "Crownguard",
+    "iconToken": "tft_item_crownguard.tft_set13",
+    "itemClass": "tank"
+  },
+  "TFT_Item_CursedBlade": {
+    "displayName": "tft_item_name_CursedBlade",
+    "iconToken": "tft_item_cursedblade",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Darkin": {
+    "displayName": "tft_item_name_Darkin",
+    "iconToken": "tft_item_darkin",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Deathblade": {
+    "displayName": "Deathblade",
+    "iconToken": "tft_item_deathblade.tft_set13",
+    "itemClass": "ad"
+  },
+  "TFT_Item_DebugBase": {
+    "displayName": "MissingNo",
+    "iconToken": "tft_item_debugbase.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_DebugCrit": {
+    "displayName": "Critical Hit!",
+    "iconToken": "tft_item_debugcrit.tft_set13",
+    "itemClass": "ad"
+  },
+  "TFT_Item_DebugDamage": {
+    "displayName": "Portable Pain",
+    "iconToken": "tft_item_debugdamage.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_DebugDamageAmp": {
+    "displayName": "Damage Amp",
+    "iconToken": "tft_item_debugdamageamp.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_DebugFirstHit": {
+    "displayName": "Ace",
+    "iconToken": "tft_item_debugfirsthit.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_DebugMana": {
+    "displayName": "The Tears of My Enemies",
+    "iconToken": "tft_item_debugmana.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_DebugShield": {
+    "displayName": "Pengu's Protection",
+    "iconToken": "tft_item_debugshield.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_DebugStun": {
+    "displayName": "Hammer to the Face",
+    "iconToken": "tft_item_debugstun.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_DebugTaunt": {
+    "displayName": "Taunt",
+    "iconToken": "tft_item_debugtaunt.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_DebugUnitID": {
+    "displayName": "Do You Know Who I Am?",
+    "iconToken": "tft_item_debugunitid.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_DragonsClaw": {
+    "displayName": "Dragon's Claw",
+    "iconToken": "tft_item_dragonsclaw.tft_set13",
+    "itemClass": "tank"
+  },
+  "TFT_Item_EternalFlame": {
+    "displayName": "The Eternal Flame",
+    "iconToken": "tft_item_eternalflame.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_ForceOfNature": {
+    "displayName": "Tactician's Crown",
+    "iconToken": "tft_item_forceofnature.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_FreeBFSword": {
+    "displayName": "B.F. Sword",
+    "iconToken": "icon_bfsword",
+    "itemClass": "ad"
+  },
+  "TFT_Item_FreeDeathblade": {
+    "displayName": "Deathblade",
+    "iconToken": "tft_item_deathblade",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_FreeVengeance": {
+    "displayName": "tft_item_name_SwordOfTheDivine2",
+    "iconToken": "tft_item_repeatingcrossbow",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_FrozenHeart": {
+    "displayName": "Protector's Vow",
+    "iconToken": "tft_item_frozenheart.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_FrozenMallet": {
+    "displayName": "TFT_item_name_FrozenMallet",
+    "iconToken": "tft_item_frozenmallet",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_FryingPan": {
+    "displayName": "Frying Pan",
+    "iconToken": "tft_item_fryingpan.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GargoyleStoneplate": {
+    "displayName": "Gargoyle Stoneplate",
+    "iconToken": "tft_item_gargoylestoneplate.tft_set13",
+    "itemClass": "tank"
+  },
+  "TFT_Item_GiantsBelt": {
+    "displayName": "Giant's Belt",
+    "iconToken": "tft_item_giantsbelt.tft_set13",
+    "itemClass": "tank"
+  },
+  "TFT_Item_GrantCompletedAnvil": {
+    "displayName": "Completed Item Anvil",
+    "iconToken": "tft_armorykeycompleted_square",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantCompletedItem1": {
+    "displayName": "1 completed item",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantCompletedItem2": {
+    "displayName": "@ItemsToGive@ completed items",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantCompletedItem3": {
+    "displayName": "@ItemsToGive@ completed items",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantComponent1": {
+    "displayName": "1 component",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantComponent2": {
+    "displayName": "@ItemsToGive@ components",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantComponent3": {
+    "displayName": "@ItemsToGive@ components",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantComponent4": {
+    "displayName": "@ItemsToGive@ components",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantComponent5": {
+    "displayName": "@ItemsToGive@ components",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantComponent6": {
+    "displayName": "@ItemsToGive@ components",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantComponent7": {
+    "displayName": "@ItemsToGive@ components",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantComponent8": {
+    "displayName": "@ItemsToGive@ components",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantComponent9": {
+    "displayName": "@ItemsToGive@ components",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantComponentAnvil": {
+    "displayName": "Component Item Key",
+    "iconToken": "tft_armorykeycomponent_square",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantOrbs1": {
+    "displayName": "1 loot orb",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantOrbs2": {
+    "displayName": "@OrbsToGive@ loot orbs",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantOrbs3": {
+    "displayName": "@OrbsToGive@ loot orbs",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantOrbs4": {
+    "displayName": "@OrbsToGive@ loot orbs",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantOrbs5": {
+    "displayName": "@OrbsToGive@ loot orbs",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantOrbs6": {
+    "displayName": "@OrbsToGive@ loot orbs",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantOrbs7": {
+    "displayName": "@OrbsToGive@ loot orbs",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantOrbs8": {
+    "displayName": "@OrbsToGive@ loot orbs",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantOrbs9": {
+    "displayName": "@OrbsToGive@ loot orbs",
+    "iconToken": "assistrandomcomponent",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantOrnnAnvil": {
+    "displayName": "Artifact Anvil",
+    "iconToken": "tft_armorykeyornn_square",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GrantTomeOfTraits": {
+    "displayName": "Tome of Traits",
+    "iconToken": "tft5_emblemarmorykey_square",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_GuardianAngel": {
+    "displayName": "Edge of Night",
+    "iconToken": "tft_item_guardianangel.tft_set13",
+    "itemClass": "tank"
+  },
+  "TFT_Item_GuinsoosRageblade": {
+    "displayName": "Guinsoo's Rageblade",
+    "iconToken": "tft_item_guinsoosrageblade.tft_set13",
+    "itemClass": "ad"
+  },
+  "TFT_Item_Hex_Inferno": {
+    "displayName": "tft_item_name_InfernoHexBuff",
+    "iconToken": "tft_item_hex_inferno",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Hex_Mountain": {
+    "displayName": "tft_item_name_MountainHexBuff",
+    "iconToken": "tft_item_hex_mountain",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Hex_Ocean": {
+    "displayName": "tft_item_name_OceanHexBuff",
+    "iconToken": "tft_item_hex_ocean",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Hex_Wind": {
+    "displayName": "tft_item_name_WindHexBuff",
+    "iconToken": "tft_item_hex_wind",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_HextechChestguard": {
+    "displayName": "tft_item_name_HextechChestguard",
+    "iconToken": "tft_item_hextechchestguard",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_HextechGunblade": {
+    "displayName": "Hextech Gunblade",
+    "iconToken": "tft_item_hextechgunblade.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_Hush": {
+    "displayName": "tft_item_name_Hush",
+    "iconToken": "tft_item_hush",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_IcebornGauntlet": {
+    "displayName": "tft_item_name_FrozenFist",
+    "iconToken": "tft_item_iceborngauntlet",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_InfinityEdge": {
+    "displayName": "Infinity Edge",
+    "iconToken": "tft_item_infinityedge.tft_set13",
+    "itemClass": "ad"
+  },
+  "TFT_Item_IonicSpark": {
+    "displayName": "Ionic Spark",
+    "iconToken": "tft_item_ionicspark.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_IsYordle": {
+    "displayName": "tft_item_name_Mittens",
+    "iconToken": "tft_item_mittens",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_JammedSlot": {
+    "displayName": "Jammed!",
+    "iconToken": "tft_item_jammed",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_JeweledGauntlet": {
+    "displayName": "Jeweled Gauntlet",
+    "iconToken": "tft_item_jeweledgauntlet.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_KnightsVow": {
+    "displayName": "Knight's Vow",
+    "iconToken": "tft_item_knightsvow",
+    "itemClass": "tank"
+  },
+  "TFT_Item_LastWhisper": {
+    "displayName": "Last Whisper",
+    "iconToken": "tft_item_lastwhisper.tft_set13",
+    "itemClass": "ad"
+  },
+  "TFT_Item_Leviathan": {
+    "displayName": "Nashor's Tooth",
+    "iconToken": "tft_item_leviathan.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_LocketOfTheIronSolari": {
+    "displayName": "Locket of the Iron Solari",
+    "iconToken": "tft_item_locketoftheironsolari.tft_set13",
+    "itemClass": "tank"
+  },
+  "TFT_Item_MacaoMode_HextechSniper": {
+    "displayName": "Hextech Sniper Rifle",
+    "iconToken": "tft_item_shroud.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_MadredsBloodrazor": {
+    "displayName": "Giant Slayer",
+    "iconToken": "tft_item_madredsbloodrazor.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Moonstone": {
+    "displayName": "Moonstone Renewer",
+    "iconToken": "tft_item_moonstone.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_Morellonomicon": {
+    "displayName": "Morellonomicon",
+    "iconToken": "tft_item_morellonomicon.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_MortalReminder": {
+    "displayName": "game_item_displayname_3033",
+    "iconToken": "tft_item_mortalreminder",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_NeedlesslyLargeRod": {
+    "displayName": "Needlessly Large Rod",
+    "iconToken": "tft_item_needlesslylargerod.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_NegatronCloak": {
+    "displayName": "Negatron Cloak",
+    "iconToken": "tft_item_negatroncloak.tft_set13",
+    "itemClass": "tank"
+  },
+  "TFT_Item_NightHarvester": {
+    "displayName": "Steadfast Heart",
+    "iconToken": "tft_item_nightharvester.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_PhantomDancer": {
+    "displayName": "TFT_item_name_PhantomDancer",
+    "iconToken": "tft_item_phantomdancer",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_PowerGauntlet": {
+    "displayName": "Striker's Flail",
+    "iconToken": "tft_item_powergauntlet.tft_set13",
+    "itemClass": "ad"
+  },
+  "TFT_Item_Quicksilver": {
+    "displayName": "Quicksilver",
+    "iconToken": "tft_item_quicksilver.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_RabadonsDeathcap": {
+    "displayName": "Rabadon's Deathcap",
+    "iconToken": "tft_item_rabadonsdeathcap.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_RadiantVirtue": {
+    "displayName": "Virtue of the Martyr",
+    "iconToken": "tft_item_radiantvirtue.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_RapidFireCannon": {
+    "displayName": "Red Buff",
+    "iconToken": "tft_item_rapidfirecannon.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_RecurveBow": {
+    "displayName": "Recurve Bow",
+    "iconToken": "tft_item_recurvebow.tft_set13",
+    "itemClass": "ad"
+  },
+  "TFT_Item_RedBuff": {
+    "displayName": "Sunfire Cape",
+    "iconToken": "tft_item_redbuff.tft_set13",
+    "itemClass": "tank"
+  },
+  "TFT_Item_Redemption": {
+    "displayName": "Spirit Visage",
+    "iconToken": "tft_item_spiritvisagerr.tft_tft14_5",
+    "itemClass": "utility"
+  },
+  "TFT_Item_RunaansHurricane": {
+    "displayName": "Kraken's Fury",
+    "iconToken": "tft_item_krakenslayer.tft_tft14_5",
+    "itemClass": "ad"
+  },
+  "TFT_Item_SentinelSwarm": {
+    "displayName": "Sentinel Swarm",
+    "iconToken": "tft_item_sentinelswarm.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_SeraphsEmbrace": {
+    "displayName": "Blue Buff",
+    "iconToken": "blue_buff",
+    "itemClass": "ap"
+  },
+  "TFT_Item_Shroud": {
+    "displayName": "Shroud of Stillness",
+    "iconToken": "tft_item_shroud.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_SparringGloves": {
+    "displayName": "Sparring Gloves",
+    "iconToken": "tft_item_sparringgloves.tft_set13",
+    "itemClass": "ad"
+  },
+  "TFT_Item_Spatula": {
+    "displayName": "Spatula",
+    "iconToken": "tft_item_spatula.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_SpearOfShojin": {
+    "displayName": "Spear of Shojin",
+    "iconToken": "tft_item_spearofshojin.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_SpectralGauntlet": {
+    "displayName": "Evenshroud",
+    "iconToken": "tft_item_spectralgauntlet.tft_set13",
+    "itemClass": "tank"
+  },
+  "TFT_Item_SpellThiefsEdge": {
+    "displayName": "tft_item_name_SpellThiefsEdge",
+    "iconToken": "tft_item_spellthiefsedge",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Spite": {
+    "displayName": "Spite",
+    "iconToken": "tft_item_spite.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_StatikkShiv": {
+    "displayName": "Void Staff",
+    "iconToken": "tft_item_voidstaff.tft_tft14_5",
+    "itemClass": "ad"
+  },
+  "TFT_Item_SteraksGage": {
+    "displayName": "Sterak's Gage",
+    "iconToken": "tft_item_steraksgage.tft_set13",
+    "itemClass": "tank"
+  },
+  "TFT_Item_SupportKnightsVow": {
+    "displayName": "Knight's Vow",
+    "iconToken": "tft_item_supportknightsvow.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_SwordOfTheDivine": {
+    "displayName": "tft_item_name_SwordOfTheDivine2",
+    "iconToken": "tft_item_swordofthedivine",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_TacticiansRing": {
+    "displayName": "Tactician's Cape",
+    "iconToken": "tft_item_tacticiansring.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_TacticiansScepter": {
+    "displayName": "Tactician's Shield",
+    "iconToken": "tft_item_tacticiansscepter.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_TearOfTheGoddess": {
+    "displayName": "Tear of the Goddess",
+    "iconToken": "tft_item_tearofthegoddess.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_ThiefsGloves": {
+    "displayName": "Thief's Gloves",
+    "iconToken": "tft_item_thiefsgloves.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_ThiefsGloves_AcademyCopy1": {
+    "displayName": "Thief's Gloves",
+    "iconToken": "tft_item_thiefsgloves.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_ThiefsGloves_AcademyCopy2": {
+    "displayName": "Thief's Gloves",
+    "iconToken": "tft_item_thiefsgloves.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Thornmail": {
+    "displayName": "game_item_displayname_3075",
+    "iconToken": "tft_item_thornmail",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_TitanicHydra": {
+    "displayName": "Zz'Rot Portal",
+    "iconToken": "tft_item_titanichydra.tft_set13",
+    "itemClass": "ad"
+  },
+  "TFT_Item_TitansResolve": {
+    "displayName": "Titan's Resolve",
+    "iconToken": "tft_item_titansresolve.tft_set13",
+    "itemClass": "tank"
+  },
+  "TFT_Item_Unknown": {
+    "displayName": "Spatula",
+    "iconToken": "tft_item_unknown",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_UnstableConcoction": {
+    "displayName": "Hand Of Justice",
+    "iconToken": "tft_item_unstableconcoction.tft_set13",
+    "itemClass": "ap"
+  },
+  "TFT_Item_UnstableTreasureChest": {
+    "displayName": "Unstable Treasure Chest",
+    "iconToken": "tft_item_unstabletreasurechest.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_UnusableSlot": {
+    "displayName": "Unusable Slot",
+    "iconToken": "tft_item_unusableslot.tft_set13",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Vengeance": {
+    "displayName": "tft_item_name_SwordOfTheDivine2",
+    "iconToken": "tft_item_repeatingcrossbow",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_WarmogsArmor": {
+    "displayName": "Warmog's Armor",
+    "iconToken": "tft_item_warmogsarmor.tft_set13",
+    "itemClass": "tank"
+  },
+  "TFT_Item_YoumuusGhostblade": {
+    "displayName": "Youmuu's Ghostblade",
+    "iconToken": "tft_item_youmuusghostblade",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_Yuumi": {
+    "displayName": "TFT_item_name_Yuumi",
+    "iconToken": "tft_item_yuumi",
+    "itemClass": "unknown"
+  },
+  "TFT_Item_ZekesHerald": {
+    "displayName": "Zeke's Herald",
+    "iconToken": "tft_item_zekesherald.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_Zephyr": {
+    "displayName": "Zephyr",
+    "iconToken": "tft_item_zephyr.tft_set13",
+    "itemClass": "utility"
+  },
+  "TFT_Item_ZhonyasHourglass": {
+    "displayName": "TFT_item_name_ZhonyasHourglass",
+    "iconToken": "tft_item_zhonyashourglass",
+    "itemClass": "unknown"
+  }
+}

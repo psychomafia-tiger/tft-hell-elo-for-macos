@@ -1,4 +1,4 @@
-"""Schema 1.1.0 JSON emitter — dataclasses → tier-list.json.
+"""Schema 1.2.0 JSON emitter — dataclasses → tier-list.json.
 
 Produces deterministic output: sort_keys=True + indent=2 so git diffs are
 readable and byte-equality tests are reliable across runs.
@@ -6,8 +6,13 @@ readable and byte-equality tests are reliable across runs.
 PII safety: output fields are aggregated stats only. No puuid, riotIdGameName,
 or RGAPI key fragments propagate to output. Security assertion in emit().
 
-Schema 1.1.0 is additive over 1.0.0: adds `anomalies[]` per comp + `region`
-at root. Existing App Codable decodes 1.1.0 (ignores unknown fields).
+Schema changelog:
+  1.0.0 — initial schema
+  1.1.0 — adds `anomalies[]` per comp + `region` at root
+  1.2.0 — adds `traits[]` per comp (trait-signature grouping, T4 integration)
+  1.4.0 — adds `positioning[]` per comp (Phase 4 hex grid). 1.3.0 skipped —
+           was reserved for a richer item-detail bump that didn't ship.
+           Existing App Codable decodes 1.4.0 (ignores unknown fields).
 """
 from __future__ import annotations
 
@@ -16,7 +21,12 @@ import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Tuple
 
+from .positioning_aggregator import aggregate_positions
+
+# Current schema version emitted by this module and run_aggregator.
+SCHEMA_VERSION = "1.4.0"
 
 # PII patterns that must never appear in output
 _PII_PATTERNS = [
@@ -45,7 +55,22 @@ class ChampionEntry:
     id: str
     cost: int
     is_carry: bool
+    star_level: int = 1
     items: list[ItemBuild] = field(default_factory=list)
+
+
+@dataclass
+class TraitEntry:
+    name: str
+    count: int   # num_units activating the trait
+    style: str   # "bronze" | "silver" | "gold" | "chromatic"
+
+
+@dataclass
+class PositionEntry:
+    championId: str
+    pos: int        # 0-27 (4 rows × 7 cols)
+    frequency: float  # 1.0 = rule-inferred, <1.0 = measured modal
 
 
 @dataclass
@@ -59,6 +84,8 @@ class CompEntry:
     sample_size: int
     champions: list[ChampionEntry] = field(default_factory=list)
     anomalies: list[AnomalyEntry] = field(default_factory=list)
+    traits: list[TraitEntry] = field(default_factory=list)
+    positioning: list[PositionEntry] = field(default_factory=list)
 
 
 @dataclass
@@ -82,12 +109,21 @@ def _champion_to_dict(champ: ChampionEntry) -> dict:
         "id": champ.id,
         "cost": champ.cost,
         "is_carry": champ.is_carry,
+        "star_level": champ.star_level,
         "items": [_item_to_dict(i) for i in champ.items],
     }
 
 
 def _anomaly_to_dict(anomaly: AnomalyEntry) -> dict:
     return {"id": anomaly.id, "agreement": anomaly.agreement}
+
+
+def _trait_to_dict(trait: TraitEntry) -> dict:
+    return {"count": trait.count, "name": trait.name, "style": trait.style}
+
+
+def _position_to_dict(p: PositionEntry) -> dict:
+    return {"championId": p.championId, "pos": p.pos, "frequency": p.frequency}
 
 
 def _comp_to_dict(comp: CompEntry) -> dict:
@@ -101,6 +137,8 @@ def _comp_to_dict(comp: CompEntry) -> dict:
         "sample_size": comp.sample_size,
         "champions": [_champion_to_dict(c) for c in comp.champions],
         "anomalies": [_anomaly_to_dict(a) for a in comp.anomalies],
+        "traits": [_trait_to_dict(t) for t in comp.traits],
+        "positioning": [_position_to_dict(p) for p in comp.positioning],
     }
 
 
@@ -149,8 +187,17 @@ def emit(output: TierListOutput, path: Path) -> None:
         output: Fully populated TierListOutput dataclass.
         path: Destination path (parent directory must exist).
     """
-    as_dict = tier_list_to_dict(output)
-    json_text = json.dumps(as_dict, sort_keys=True, indent=2, ensure_ascii=False)
+    emit_dict(tier_list_to_dict(output), path)
+
+
+def emit_dict(payload: dict, path: Path) -> None:
+    """Write a pre-built payload dict to path as deterministic JSON.
+
+    Same atomicity + PII guarantees as `emit()`. Used by callers that need
+    to attach extra top-level keys (e.g. bug #004 `updated_at` / `match_count`
+    aliases) before serialisation.
+    """
+    json_text = json.dumps(payload, sort_keys=True, indent=2, ensure_ascii=False)
 
     # PII safety gate — never write output containing raw identifiers
     _check_pii(json_text)
@@ -167,3 +214,133 @@ def emit(output: TierListOutput, path: Path) -> None:
 def make_last_updated() -> str:
     """Return current UTC time as ISO8601 string (no microseconds)."""
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+# ---------------------------------------------------------------------------
+# Schema 1.2.0 helpers — trait-signature grouped comp emission
+# ---------------------------------------------------------------------------
+
+def _style_for(count: int) -> str:
+    """Map trait activation count to Riot bronze/silver/gold/chromatic style tier.
+
+    Concrete example: Psionic at 4 units → "gold"; at 2 units → "silver".
+    Thresholds match Riot's in-game trait breakpoint display UX.
+    """
+    if count >= 6:
+        return "chromatic"
+    if count >= 4:
+        return "gold"
+    if count >= 2:
+        return "silver"
+    return "bronze"
+
+
+def _slugify(name: str) -> str:
+    """Convert human-readable comp name to kebab-case ID.
+
+    "Psionic Carry" → "psionic-carry"; "Viktor's Edge" → "viktors-edge"
+    """
+    return name.lower().replace(" ", "-").replace("'", "")
+
+
+def _emit_champions_from_bucket(bucket: dict) -> list[dict]:
+    """Build champions list from a trait-signature bucket (T3 shape).
+
+    Bucket keys used: champion_freq (dict[cid → int]),
+    items_per_champion (dict[cid → dict[item_id → int]]),
+    champion_rarity (dict[cid → int], optional — rarity 0-6 → cost = rarity+1),
+    champion_star_counts (dict[cid → dict[int → int]], optional — modal star level).
+
+    A champion is considered carry if it appears in the top-3 by frequency.
+    Items are filtered to those appearing in ≥40% of the bucket's appearances.
+
+    Cost: derived from rarity if bucket provides champion_rarity (rarity+1).
+    Fallback to 1 when rarity data absent (avoids the previous cost=0 placeholder).
+    Star level: modal observed tier from champion_star_counts; default 1.
+    """
+    sample_size = max(bucket["sample_size"], 1)
+    champion_freq: dict = bucket.get("champion_freq", {})
+    items_per_champ: dict = bucket.get("items_per_champion", {})
+    champion_rarity: dict = bucket.get("champion_rarity", {})
+    champion_star_counts: dict = bucket.get("champion_star_counts", {})
+
+    # Sort by frequency descending; top-3 are considered potential carries
+    sorted_champs = sorted(champion_freq.items(), key=lambda x: -x[1])
+    carry_ids = {cid for cid, _ in sorted_champs[:3]}
+
+    result = []
+    for cid, freq in sorted_champs:
+        agreement = round(freq / sample_size, 4)
+        if agreement < 0.25:
+            # Skip champions that appear in fewer than 25% of instances
+            continue
+
+        # Derive cost from rarity if available; else default 1 (not 0)
+        rarity = champion_rarity.get(cid)
+        cost = (rarity + 1) if rarity is not None else 1
+
+        # Modal star level from observed tier distribution; default 1
+        star_tier_counts: dict = champion_star_counts.get(cid, {})
+        if star_tier_counts:
+            star_level = max(star_tier_counts, key=lambda k: star_tier_counts[k])
+        else:
+            star_level = 1
+
+        # Build item list filtered by ≥30% agreement (lowered from 40% to surface
+        # items on more champions — consistent with TFTactics showing BIS on all units)
+        raw_items = items_per_champ.get(cid, {})
+        item_list = [
+            {"id": str(item_id), "agreement": round(item_freq / sample_size, 4)}
+            for item_id, item_freq in sorted(raw_items.items(), key=lambda x: -x[1])
+            if item_freq / sample_size >= 0.30
+        ]
+        result.append({
+            "id": cid,
+            "cost": cost,
+            "is_carry": cid in carry_ids,
+            "star_level": star_level,
+            "items": item_list,
+        })
+    return result
+
+
+def emit_comp(grouped_comp: dict, derived_name: str) -> dict:
+    """Emit a single comp dict from a trait-signature bucket (schema 1.2.0).
+
+    Args:
+        grouped_comp: Bucket from group_comps_by_trait_signature() — keys:
+            trait_signature (tuple), sample_size (int), placements (list[int]),
+            champion_freq (dict), items_per_champion (dict).
+        derived_name: Human-readable name from resolve_comp_name().
+
+    Returns:
+        Plain dict matching schema 1.2.0 comp shape. tier and play_rate are
+        placeholder values ("C" / 0.0) — callers must fill them downstream
+        after computing total_participants and calling tier_calculator.
+
+    Concrete example: sig=(("Set17_Psionic",4),("Set17_Dominator",2)),
+    placements=[1,2,3,5] → avg_placement=2.75, top_4_rate=0.75, sample_size=4.
+    """
+    sig: Tuple = grouped_comp["trait_signature"]
+    placements: list = grouped_comp["placements"]
+    n = len(placements) if placements else 1
+    champions = _emit_champions_from_bucket(grouped_comp)
+    traits = [
+        {"name": name, "count": count, "style": _style_for(count)}
+        for name, count in sig
+    ]
+    return {
+        "comp_id": _slugify(derived_name),
+        "name": derived_name,
+        "tier": "C",       # placeholder — filled by tier_calculator downstream
+        "play_rate": 0.0,  # placeholder — filled downstream after total_participants
+        "avg_placement": round(sum(placements) / n, 4) if placements else 8.0,
+        "top_4_rate": round(sum(1 for p in placements if p <= 4) / n, 4),
+        "sample_size": grouped_comp["sample_size"],
+        "champions": champions,
+        "anomalies": [],   # populated by anomaly_aggregator in future phases
+        "traits": traits,
+        # Phase 4 schema 1.4.0: rule-based hex positioning. See
+        # positioning_aggregator for the inference rules.
+        "positioning": aggregate_positions(champions, traits),
+    }

@@ -1,0 +1,9 @@
+{
+  "_comment": "Maps trait combo signatures to semantic comp names. Key = sorted trait names joined by '+'. Value = display name. Riot Match-v5 emits TFT17_ prefix; resolver _strip_prefix handles both Set17_ and TFT17_.",
+  "TFT17_Dominator+TFT17_Marksman": "Dominator Marksmen",
+  "TFT17_Conduit+TFT17_Psionic": "Psionic Conduits",
+  "TFT17_Quickdraw+TFT17_Storm": "Storm Quickdraw",
+  "TFT17_Marauder+TFT17_Primordian": "Primordian Marauders",
+  "TFT17_Bastion+TFT17_Vanguard": "Bastion Wall",
+  "TFT17_Scholar+TFT17_Sorcerer": "Sorcerer Scholars"
+}

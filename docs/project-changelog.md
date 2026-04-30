@@ -5,6 +5,233 @@ Append-only — never replace or edit prior entries.
 
 ---
 
+## [phase-04-positioning-hex-grid] — 2026-04-30
+
+### Added
+
+- **`positioning_aggregator.py`** (Pipeline) — rule-based hex assignment from cost + carry status + active comp traits. Returns `[{championId, pos, frequency=1.0}]`. Replaces the unavailable Riot `pos` field for Set 17 (verified absent on a 98-match KR fixture). Algorithm: archetype classification (frontline_heavy / backline_heavy / flex) + per-cost slot allocation with collision walk.
+- **`Position.swift`** (App) — Codable struct with `championId / pos (0-27) / frequency`; computed `row = pos/7`, `col = pos%7`.
+- **`Comp.positioning [Position]`** (App) — forward-compat `decodeIfPresent ?? []` for v1.0.0–v1.3.0 fixtures.
+- **`HexCell.swift`** (App) — `HexGeometry` math (offset coords + total size) + `HexagonShape` pointy-top + `HexCell` view (hex outline + circle-clipped portrait).
+- **`HexGridView.swift`** (App) — 4×7 board with `ZStack(.topLeading)` + 28 cells positioned via `HexGeometry.center` + `PositioningSection` labeled wrapper.
+- **`ExpandedCardView` integration** — `PositioningSection` appended after LV.9 Options when `comp.positioning` non-empty.
+- **Research doc**: `plans/260426-1752-tftactics-feature-parity/research/match-v5-positioning.md` — fixture verification + fallback design.
+- **Architecture doc**: `docs/positioning-architecture.md` — Mermaid data flow + assignment rules + concrete "Storm Quickdraw" worked example.
+
+### Changed
+
+- **Schema bumped**: 1.2.0 → **1.4.0**. 1.3.0 reserved/unshipped (was a planned item-detail bump that didn't happen). `comp.positioning[]` array added; existing fields untouched.
+- **`json_emitter.SCHEMA_VERSION`** = `"1.4.0"`. New `PositionEntry` dataclass + `_position_to_dict` serialiser.
+- **`emit_comp`**: now invokes `aggregate_positions(champions, traits)` after building champions/traits.
+- **`sample-tier-list.json`** regenerated from KR fixture (98 matches, min_sample=3) → 39 comps, every comp populated with positioning (`9` placed champions on average).
+- **Hardcoded test assertions** bumped 1.2.0 → 1.4.0: `DataManagerTests`, `TierListDecodingTests`, `SampleTierListFixtureTests` (new `testFixtureSchemaIs1_4_0` + `testFixtureCompsHavePositioning`).
+
+### Architecture impact
+
+- App now feature-complete vs TFTactics Windows reference for the Champions tab.
+- v0.1 ship-ready pending Traits + Search tabs (deferred to v0.2 per plan).
+- Forward-compat path is the load-bearing invariant: future v0.2/v0.3 schemas can add `positioning[].frequency < 1.0` (when Riot ships real position data) without any App-side changes.
+
+### Tests
+
+- 14 new pipeline tests (`test_positioning_aggregator.py`).
+- 3 new emitter tests (`test_json_emitter.py`: schema constant, positioning field, entry shape).
+- 4 new Swift decoding tests (`PositionDecodingTests.swift`).
+- 5 new geometry tests (`HexGridGeometryTests.swift`).
+- 1 new fixture invariant (`SampleTierListFixtureTests.testFixtureCompsHavePositioning`).
+- Full suite: 204 pipeline + 138 app tests, all green.
+
+### Commits
+
+- `50c7c76` feat(pipeline): rule-based positioning_aggregator (Phase 4 fallback)
+- `22d1451` feat(pipeline): emit positioning per comp (schema 1.4.0)
+- `21a686b` feat(app): Position model + Comp.positioning forward-compat decode
+- `98cab8a` feat(app): HexGeometry math + HexCell view + HexagonShape
+- `ece9288` feat(app): HexGridView 4x7 board + PositioningSection wrapper
+- `248ea0b` feat(app): wire PositioningSection into ExpandedCardView
+- `1ebe40e` data: refresh sample-tier-list.json to schema 1.4.0 (positioning)
+- `6249e77` test(app): bump hardcoded schema assertions 1.2.0 → 1.4.0
+
+---
+
+## [phase-03-rich-comp-details] — 2026-04-29
+
+### Added
+
+- **`TraitBadge.swift`** — 26pt icon-only trait badge for expanded card. Async icon load via `AssetCache` + count pip at bottom-right corner. `.help()` surfaces display name on hover (must-have tooltip UX).
+- **Traits in expanded card** — `ExpandedCardView` now renders `TraitBadge` single-row (all traits fit: 9 × 30px < 400px), replacing placeholder text.
+- **Carousel picks as portrait icons** — `ExpandedCardView.carouselSection` shows `ChampionPortrait(size:32)` with chevron separators.
+- **LV.9 options as portrait icons** — `ExpandedCardView.lv9Section` shows "LV.9 ›" prefix + portrait icons for overflow (9th+) or non-carry 4+ cost champions.
+- **`ItemBadge.size` parameter** — configurable badge size (default 12pt); portrait overlay uses 16pt.
+
+### Changed
+
+- **Traits moved out of collapsed card** — `traitsRow` removed from `CompCard.body`; now only visible in expanded section. Matches TFTactics collapsed-card behavior.
+- **Item display gate**: removed `isCarry` requirement — items show on **any** champion with consistent item data. Matches TFTactics BIS display logic.
+- **Pipeline item threshold**: 40% → **30% agreement** for item emission. Result: 197/340 champions have items in sample (was ~40/340).
+- **8-champion cap**: `CompCard.championsRow` capped at `.prefix(8)`; 9th+ routes to LV.9 Options.
+- **`ExpandedCardView.lv9Champions`**: prioritizes overflow champions (9th+) over non-carry high-cost fallback.
+- **Inactive traits filtered**: `ExpandedCardView.sortedTraits` hides `count < 2` non-unique traits (mirrors TFTactics "don't show unactivated synergies").
+- **`sample-tier-list.json`**: regenerated from KR fixture (min_sample=3, threshold=30%). 39 comps, 197/340 champions with items.
+
+### Fixed
+
+- **Bug #009**: `TraitChip` vertical pill layout — `lineLimit(1)` + `.prefix(6)` prevent HStack compression wrapping.
+- **Bug #010**: `TraitBadge` icon not centered — `ZStack(.bottomTrailing)` → `.overlay{iconView}` + `.overlay(.bottomTrailing){countPip}`.
+- **Bug #011**: Items only showing on `isCarry` champions despite pipeline emitting items for all — removed `isCarry` gate from `ChampionPortrait`.
+
+### Commits
+
+- `2312312` fix(ui): prevent TraitChip text wrapping + cap traits row at 6 chips
+- `c6a1b24` feat(ui): hide traitsRow from collapsed card — defer to expanded view
+- `9b07626` feat(ui): show traits in expanded card as 2-row chip grid; remove dead traitsRow
+- `57f015f` feat(ui): expanded card — portrait icons for carousel + LV.9 sections
+- `f4f6a8f` feat(ui): TraitBadge — 26pt icon-only badge with .help() tooltip on hover
+- `60d94cf` fix(ui+data): TraitBadge centering, filter inactive traits, regen sample
+- `91c017a` fix(ui): larger item badges + 8-champ cap + lv9 overflow
+- `83fa7b4` fix(ui+pipeline): show items on all champions, lower threshold to 30%
+
+---
+
+## [phase-03-tftactics-portrait-redesign] — 2026-04-28
+
+### Added
+
+- **Bundled `set17-items.json`** (183 entries: apiName → displayName + iconToken + itemClass) generated from CommunityDragon `en_us.json`.
+- **`ItemAssetURL.swift`** (Services/) — CDragon CDN URL builder using verified pattern `game/assets/maps/tft/icons/items/hexcore/<token>.png` (set suffix `.tft_set13` / `.tft_set17` preserved per item).
+- **`ItemBadge.swift`** (Views/) — 12×12pt async-loading view via `AssetCache` with class-tinted RoundedRectangle fallback (tank=blue, ad=red, ap=purple, utility=green, unknown=gray "?").
+- **`Pipeline/scripts/generate-set17-items.py`** — CDragon → set17-items.json gen script. Skips items with null/empty name (e.g. `TFT_Item_Blank`). Manual OVERRIDES dict for ~30 known items + keyword heuristic on description for itemClass.
+- **23 new tests** across phases: 1 pipeline (Phase 0 itemNames extraction), 3 ItemAssetURL + 6 ItemCatalog (Phase 1), 8 ItemBadge (Phase 2), 5 ChampionPortrait extensions (Phase 3).
+
+### Changed
+
+- **`ChampionPortrait` border ring**: tier-color (S/A/B/C, carry-only) → **cost-color (always)** per TFT canonical convention (1=gray, 2=green, 3=blue, 4=purple, 5=gold).
+- **Carry champions** now show 3 `ItemBadge`s overlaid on bottom of portrait (ZStack alignment `.bottom`).
+- **`ItemCatalog`** refactored from hardcoded 17-entry dict → bundled JSON load with `iconToken` and `itemClass` fields.
+- **Removed `tierColor:` parameter** from `ChampionPortrait.init` — all callers updated to drop argument.
+
+### Fixed
+
+- **Bug #008**: Pipeline `comp_grouping.py` now reads `unit.itemNames` (Set 17 string format like `TFT_Item_GargoyleStoneplate`) instead of `unit.items` (legacy int format that Riot leaves empty). `items[]` in `tier-list.json` is now populated for every champion.
+
+### Removed
+
+- **`CompCardItemsRow.swift`** — legacy text format ("Illaoi → Gargoyle Stoneplate 49%") replaced by portrait overlay. Plus stale comment refs in `CompCardAnomaliesRow.swift` and `ChampionPortrait.swift`.
+
+### Architecture impact
+
+- **New deep-dive doc**: `docs/portrait-redesign-architecture.md`.
+- **AssetCache cumulative footprint estimate**: ~1.5MB (champions + traits + items at typical scale). Well under 50MB LRU ceiling.
+- **Cold-launch fetch count**: ~1184 (37 comps × 8 champions × ≤4 fetches). Async parallel via URLSession default config; 30-60s to fully populate at typical CDragon p50 latency. Subsequent launches >99% cache hit.
+
+### Commits
+
+- `6bd35f9` fix(pipeline): read unit.itemNames (Set 17 Riot API) in trait-bucket producer (bug #008)
+- `7e88d2d` feat(app): set17 item asset metadata + CDragon URL builder
+- `24806a9` feat(app): ItemBadge view (12pt async icon + class-tinted fallback)
+- `601355f` feat(app): TFTactics-style portrait — cost border always, 3-item overlay on carry
+- `93ac39e` docs: handoff portrait redesign phase 0-3 done, phase 4 pending
+
+---
+
+## [phase-02-trait-centric-comp] — 2026-04-27
+
+### Added
+
+- **Pipeline trait grouping**: `comp_grouping.py` (`group_comps_by_trait_signature`) replaces Jaccard-on-champion-set as primary comp identifier. Sorted-tuple-of-(name, tier_current) per participant.
+- **Pipeline name resolver**: `comp_name_resolver.py` (`resolve_comp_name`) reads curated `Pipeline/data/trait_name_map.json` (~6 entries, will grow). Falls back to top-2 trait apiNames stripped of `TFT17_` / `Set17_` prefix.
+- **Swift `TraitActivation` model** + `Comp.traits[]` field with forward-compat `decodeIfPresent ?? []`.
+- **Swift `TraitCatalog`** loads bundled `set17-traits.json` (38 Set 17 traits from CommunityDragon `cdragon/tft/en_us.json`). Maps `apiName → (displayName, iconToken)`.
+- **Swift `TraitAssetURL`** builder for CDragon trait icons (`trait_icon_17_<token>.tft_set17.png` — verified suffix via probe).
+- **Swift `TraitChip` view** — async-loading badge (count + 16pt icon + display name) using `AssetCache` + `Theme.Fonts.monoCaption`.
+- **Pipeline test**: `test_star_level_aggregation.py` — 16 cases covering modal star aggregation + cost-from-rarity fix in trait-bucket emission path.
+
+### Changed
+
+- **Schema 1.1.0 → 1.2.0** (additive). New field `comp.traits: [{name, count, tier_current}, ...]`. Forward-compat decoder retains 1.0.0/1.1.0 support — `traits[]` defaults to `[]` when key absent.
+- **`build_tier_list_payload`** rewires to use trait-signature grouping. Iterates buckets, calls `resolve_comp_name`, computes `play_rate = bucket.sample_size / total_participants`.
+- **`CompCard.body`** renders trait chips row between `topRow` and `championsRow`, sorted by activation count descending. Hidden when `comp.traits` is empty.
+- **`_strip_prefix` regex** handles both `Set17_` and `TFT17_` (Discovery: real Riot API uses `TFT17_*`, not `Set17_*` as the design doc assumed).
+- **Bundled fixture `sample-tier-list.json`** regenerated from KR fixture via `build_tier_list_payload` at schema 1.2.0 — 32 comps with populated traits[]. Threshold `min_sample` relaxed to 3 for small-fixture demo (production uses 10).
+- **Test suite refactor** — `SampleTierListFixtureTests`, `DataManagerTests`, `TierListDecodingTests` rewritten from hardcoded synthetic-fixture assertions (count=10, S=4 A=4 B=2) to invariant-based shape checks (≥1 comp, schema=1.2.0, traits[] non-empty for ≥1 comp). Future fixture refreshes no longer require test edits.
+
+### Fixed
+
+- **Bug #005 — star_level data-driven + 3-star-only render**:
+  - Pipeline: `aggregate_champions` aggregates modal `tier` per champion across top-4 placements (Riot Match-v5 `units[].tier`). Emits `star_level: int` in champion dict.
+  - `json_emitter._emit_champions_from_bucket` now derives real `cost` from rarity (was hardcoded 0 — handoff TODO #4) AND `star_level` from `champion_star_counts` (defaults 1 — full counts pending Phase 3 `comp_grouping.py` enrichment).
+  - Swift `Champion.starLevel: Int` (default 1) with custom `init(from:)` for forward-compat decode of legacy fixtures.
+  - `StarLevelIndicator` body: `if level >= 3 { 3 stars } else { EmptyView }` per TFTactics convention. `derivedLevel(for:)` marked `@available(*, deprecated)`.
+  - `ChampionPortrait` passes `champion.starLevel` directly (replaces placeholder `StarLevelIndicator.derivedLevel(for: champion)`).
+- **`Champion.CodingKeys` snake-case raw values** — removed mid-fix. Explicit `case isCarry = "is_carry"` short-circuited parent decoder's `.convertFromSnakeCase` strategy → keyNotFound at runtime. Strategy alone now handles snake/camel conversion.
+
+### Architecture impact
+
+- Pipeline grouping reshaped — comp count may collapse (trait similarity tighter than Jaccard). Tier thresholds may need re-tuning post-cron-run on production VN2 data.
+- Champion `cost` previously emitted 0 from new trait-bucket path — fixed in this phase. Real `cost` derived from `champion_rarity + 1`. `star_level` similarly emits from `champion_star_counts` modal (defaults to 1 in trait-bucket path until Phase 3 wires `champion_star_counts` into bucket dict from `comp_grouping.py`).
+- New deep-dive doc: `docs/trait-aggregation-architecture.md`.
+- Curated `trait_name_map.json` keys may MISS on real data (use semantic apiNames like `TFT17_Psionic+TFT17_Conduit`, but real API emits `TFT17_PsyOps`). Phase 3 action: regenerate keys from real apiNames after first cron run.
+
+### Bug fixes
+
+- Bug #005 (star_level over-render) — see `docs/bugs-log.md` (status updated ⏳ Deferred → ✅ Fixed).
+
+### Commits
+
+- `197e432` feat(app): render trait chips row in CompCard
+- `2012053` data: refresh bundled fixture to schema 1.2.0 (trait-aware)
+- `09a1290` fix(app+pipeline): star_level data-driven, 3-star-only render (bug #005)
+- `268be11` feat(app): TraitChip view with async icon load via TraitCatalog (predecessor session)
+- `299ac6d` feat(app): TraitCatalog + TraitAssetURL with verified Set 17 metadata (predecessor session)
+- `a7bc0d1` feat(app): explicit test for schema 1.2.0 acceptance (predecessor session)
+- `7ac2954` feat(app): TraitActivation model + Comp.traits with forward-compat decode (predecessor session)
+- `350d93b` fix(pipeline): TFT17_ prefix support (predecessor session)
+- `a4c1cad` feat(pipeline): wire trait grouping + schema 1.2.0 (predecessor session)
+- `55efa40` feat(pipeline): group_comps_by_trait_signature (predecessor session)
+- `693060b` feat(pipeline): comp_name_resolver curated map (predecessor session)
+- `e1cf46c` feat(pipeline): trait_combo_signature (predecessor session)
+
+---
+
+## [phase-01-champion-portraits] — 2026-04-26
+
+### Added
+
+- `AssetCache` service (URLSession + 30-day disk cache, 50MB LRU eviction). SHA-256 URL → filename. Returns nil on 4xx/5xx/timeout for graceful UI fallback.
+- `ChampionAssetURL` builder for CommunityDragon Set 17 CDN. Pattern: `tft17_{lower}/hud/tft17_{lower}_square.tft_set17.png`.
+- Bundled `set17-champions.json` (59 Set 17 IDs with curated displayNames — Kai'Sa, Bel'Veth, Cho'Gath, etc.).
+- New tests: `AssetCacheTests`, `ChampionAssetURLTests`, `ChampionCatalogDataDrivenTests`, `test_aggregator_metadata`.
+
+### Changed
+
+- `ChampionPortrait` renders real CommunityDragon artwork via `.task` async load (was: cost-colored placeholder circles only).
+- `ChampionCatalog` now data-driven from bundled JSON (was: 15-entry hand-coded dict).
+- Tier thresholds relaxed: S = ≥5% play / ≤4.3 avg (was: ≥10% / ≤4.0). Live VN2 data now emits 2 S-tier comps.
+- Pipeline schema unchanged (`1.1.0`).
+
+### Fixed
+
+- **Bug #004**: aggregator now populates top-level `updated_at` + `match_count` fields. App's HeaderBar will show real "X min ago" timestamp on next pipeline run (was: "—").
+
+### Architecture impact
+
+- New Services layer member: `AssetCache.shared` singleton.
+- Disk cache directory: `~/Library/Caches/io.psychomafia.tfthellelo.assets/`.
+- Bundle size +3KB (`set17-champions.json`). No asset bundling — all artwork lazy-fetched.
+- New deep-dive doc: `docs/asset-pipeline-architecture.md`.
+
+### Commits
+
+- `3768b97` fix(pipeline): populate updated_at + match_count metadata (bug #004)
+- `3089cb5` test(pipeline): cover build_tier_list_payload with real matches
+- `d5874b4` tune(pipeline): relax S-tier to 5% play / 4.3 avg (VN2 meta — bug #C1)
+- `bf285a1` feat(app): ChampionAssetURL builder for CommunityDragon CDN
+- `e4004d5` feat(app): AssetCache service with disk persistence + LRU eviction
+- `b35a848` feat(app): data-driven Set 17 champion catalog (~50+ entries)
+- `6605802` feat(app): ChampionPortrait loads real Set 17 art from CommunityDragon
+
+---
+
 ## [v0.2-data-pipeline] — 2026-04-25
 
 ### Added

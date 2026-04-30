@@ -2,14 +2,14 @@ import SwiftUI
 
 /// Horizontal chip row showing the top anomaly recommendations for a comp.
 ///
-/// Rendered between `CompCardItemsRow` and the expand divider in `CompCardV2.body`.
+/// Rendered between the champion row and the expand divider in `CompCardV2.body`.
 /// Only visible when `anomalies` is non-empty — `EmptyView()` otherwise,
 /// so card layout is unchanged for comps with no anomaly data (e.g. bundled v1.0.0).
 ///
 /// Pipeline guarantees at most 3 anomalies per comp (top-3 by agreement).
 /// Each chip shows: sparkles icon + truncated display name + agreement %.
 ///
-/// DRY note: mirrors `CompCardItemsRow` horizontal layout pattern.
+/// DRY note: mirrors horizontal layout pattern used in champion / trait rows.
 struct CompCardAnomaliesRow: View {
     let anomalies: [Anomaly]
 

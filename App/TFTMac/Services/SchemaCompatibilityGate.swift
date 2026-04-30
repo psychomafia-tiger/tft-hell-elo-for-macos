@@ -28,6 +28,7 @@ enum SchemaCompatibilityDecision {
 /// App schema = 1.0.0 so:
 ///   - Bundled 1.0.0 → ok (same)
 ///   - Remote 1.1.0 → ok (data minor 1 >= app minor 0, within 10-minor window)
+///   - Remote 1.2.0 → ok (Phase 2 trait-aware schema, data minor 2, within window)
 ///   - Hypothetical 2.0.0 → updateRequired (major mismatch)
 struct SchemaCompatibilityGate {
 
