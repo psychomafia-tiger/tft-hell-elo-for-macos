@@ -5,6 +5,55 @@ Append-only — never replace or edit prior entries.
 
 ---
 
+## [phase-04-positioning-hex-grid] — 2026-04-30
+
+### Added
+
+- **`positioning_aggregator.py`** (Pipeline) — rule-based hex assignment from cost + carry status + active comp traits. Returns `[{championId, pos, frequency=1.0}]`. Replaces the unavailable Riot `pos` field for Set 17 (verified absent on a 98-match KR fixture). Algorithm: archetype classification (frontline_heavy / backline_heavy / flex) + per-cost slot allocation with collision walk.
+- **`Position.swift`** (App) — Codable struct with `championId / pos (0-27) / frequency`; computed `row = pos/7`, `col = pos%7`.
+- **`Comp.positioning [Position]`** (App) — forward-compat `decodeIfPresent ?? []` for v1.0.0–v1.3.0 fixtures.
+- **`HexCell.swift`** (App) — `HexGeometry` math (offset coords + total size) + `HexagonShape` pointy-top + `HexCell` view (hex outline + circle-clipped portrait).
+- **`HexGridView.swift`** (App) — 4×7 board with `ZStack(.topLeading)` + 28 cells positioned via `HexGeometry.center` + `PositioningSection` labeled wrapper.
+- **`ExpandedCardView` integration** — `PositioningSection` appended after LV.9 Options when `comp.positioning` non-empty.
+- **Research doc**: `plans/260426-1752-tftactics-feature-parity/research/match-v5-positioning.md` — fixture verification + fallback design.
+- **Architecture doc**: `docs/positioning-architecture.md` — Mermaid data flow + assignment rules + concrete "Storm Quickdraw" worked example.
+
+### Changed
+
+- **Schema bumped**: 1.2.0 → **1.4.0**. 1.3.0 reserved/unshipped (was a planned item-detail bump that didn't happen). `comp.positioning[]` array added; existing fields untouched.
+- **`json_emitter.SCHEMA_VERSION`** = `"1.4.0"`. New `PositionEntry` dataclass + `_position_to_dict` serialiser.
+- **`emit_comp`**: now invokes `aggregate_positions(champions, traits)` after building champions/traits.
+- **`sample-tier-list.json`** regenerated from KR fixture (98 matches, min_sample=3) → 39 comps, every comp populated with positioning (`9` placed champions on average).
+- **Hardcoded test assertions** bumped 1.2.0 → 1.4.0: `DataManagerTests`, `TierListDecodingTests`, `SampleTierListFixtureTests` (new `testFixtureSchemaIs1_4_0` + `testFixtureCompsHavePositioning`).
+
+### Architecture impact
+
+- App now feature-complete vs TFTactics Windows reference for the Champions tab.
+- v0.1 ship-ready pending Traits + Search tabs (deferred to v0.2 per plan).
+- Forward-compat path is the load-bearing invariant: future v0.2/v0.3 schemas can add `positioning[].frequency < 1.0` (when Riot ships real position data) without any App-side changes.
+
+### Tests
+
+- 14 new pipeline tests (`test_positioning_aggregator.py`).
+- 3 new emitter tests (`test_json_emitter.py`: schema constant, positioning field, entry shape).
+- 4 new Swift decoding tests (`PositionDecodingTests.swift`).
+- 5 new geometry tests (`HexGridGeometryTests.swift`).
+- 1 new fixture invariant (`SampleTierListFixtureTests.testFixtureCompsHavePositioning`).
+- Full suite: 204 pipeline + 138 app tests, all green.
+
+### Commits
+
+- `50c7c76` feat(pipeline): rule-based positioning_aggregator (Phase 4 fallback)
+- `22d1451` feat(pipeline): emit positioning per comp (schema 1.4.0)
+- `21a686b` feat(app): Position model + Comp.positioning forward-compat decode
+- `98cab8a` feat(app): HexGeometry math + HexCell view + HexagonShape
+- `ece9288` feat(app): HexGridView 4x7 board + PositioningSection wrapper
+- `248ea0b` feat(app): wire PositioningSection into ExpandedCardView
+- `1ebe40e` data: refresh sample-tier-list.json to schema 1.4.0 (positioning)
+- `6249e77` test(app): bump hardcoded schema assertions 1.2.0 → 1.4.0
+
+---
+
 ## [phase-03-rich-comp-details] — 2026-04-29
 
 ### Added

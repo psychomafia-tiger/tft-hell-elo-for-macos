@@ -177,3 +177,18 @@ Append-only log of bugs encountered, fixed, and deferred. New entries go at the 
 - **Root cause**: `ChampionPortrait.portraitStack` guarded itemsOverlay with `if champion.isCarry && !champion.items.isEmpty`. The `isCarry` gate blocked items on all non-carry units. TFTactics shows BIS items on ANY champion with consistent item data — carry designation is irrelevant.
 - **Fix**: Removed `isCarry` gate → `if !champion.items.isEmpty`. Also lowered pipeline agreement threshold 40% → 30% to surface items on more champions. Result: 197/340 champions have items in sample.
 - **Lesson**: Don't conflate "carry role for UI emphasis" with "has item data". The pipeline independently tracks items per champion regardless of carry status. UI display gate should only check data presence.
+
+---
+
+## Bug #012 — Hardcoded SchemaVersion(major:1, minor:2) in Swift tests
+
+- **Status**: ✅ Fixed (phase-04-positioning-hex-grid, commit `6249e77`, 2026-04-30)
+- **Phase**: phase-04-positioning-hex-grid
+- **Symptom**: 3 unit tests failed after schema bump 1.2.0 → 1.4.0: `DataManagerTests.testInitialTierListIsFromBundledJSON`, `DataManagerTests.testLoadBundledJSONReturnsTierList`, `TierListDecodingTests.testFixtureDecodes`. Each asserted `SchemaVersion(major: 1, minor: 2, patch: 0)` against the bundled fixture which is now 1.4.0.
+- **Root cause**: Schema-version assertions were hardcoded numeric literals rather than reading the live constant. Whenever the pipeline bumps schema, every Swift test with a literal must change in lockstep — easy to miss.
+- **Fix**: `sed -i '' 's/SchemaVersion(major: 1, minor: 2, patch: 0)/SchemaVersion(major: 1, minor: 4, patch: 0)/g'` across both files.
+- **Lesson**: For schema-bound tests, prefer one of: (a) assert via `SchemaCompatibilityGate.appSchema` so a single source of truth drives everything, or (b) assert only major version (forward-compat is the contract — minor bumps shouldn't break). Plain literals work but require discipline at every bump.
+
+## Phase 4 bug summary
+
+No new app/pipeline runtime bugs introduced. Bug #012 was a self-inflicted test-maintenance hit caught by the regression suite within the same session.
