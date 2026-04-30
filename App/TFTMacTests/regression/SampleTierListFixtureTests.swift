@@ -6,6 +6,7 @@ import XCTest
 ///
 /// Phase 2 (T10) refreshed the bundled fixture from synthetic 10-comp v1.0.0
 /// to real KR data emitted via `build_tier_list_payload` at schema 1.2.0.
+/// Phase 4 bumped the fixture to schema 1.4.0 (positioning hex grid).
 /// Assertions here are invariant-based (shape + presence) rather than
 /// hardcoded counts so future fixture refreshes don't break the suite.
 final class SampleTierListFixtureTests: XCTestCase {
@@ -20,12 +21,12 @@ final class SampleTierListFixtureTests: XCTestCase {
         return try d.decode(TierList.self, from: data)
     }
 
-    func testFixtureSchemaIs1_2_0() throws {
+    func testFixtureSchemaIs1_4_0() throws {
         let tierList = try loadFixture()
         XCTAssertEqual(
             tierList.schemaVersion,
-            SchemaVersion(major: 1, minor: 2, patch: 0),
-            "Fixture schema must be 1.2.0 (Phase 2 trait-aware contract)"
+            SchemaVersion(major: 1, minor: 4, patch: 0),
+            "Fixture schema must be 1.4.0 (Phase 4 positioning contract)"
         )
     }
 
@@ -34,7 +35,16 @@ final class SampleTierListFixtureTests: XCTestCase {
         let withTraits = tierList.comps.filter { !$0.traits.isEmpty }
         XCTAssertGreaterThan(
             withTraits.count, 0,
-            "Schema 1.2.0 fixture must populate traits[] on at least one comp"
+            "Schema 1.2.0+ fixture must populate traits[] on at least one comp"
+        )
+    }
+
+    func testFixtureCompsHavePositioning() throws {
+        let tierList = try loadFixture()
+        let withPositioning = tierList.comps.filter { !$0.positioning.isEmpty }
+        XCTAssertGreaterThan(
+            withPositioning.count, 0,
+            "Schema 1.4.0 fixture must populate positioning[] on at least one comp"
         )
     }
 
