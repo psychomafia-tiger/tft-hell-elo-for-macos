@@ -155,6 +155,6 @@ final class TierListDecodingTests: XCTestCase {
         let tierList = try decoder().decode(TierList.self, from: data)
         XCTAssertGreaterThan(tierList.comps.count, 0, "Fixture should contain ≥1 comp")
         XCTAssertTrue(tierList.comps.allSatisfy { $0.sampleSize > 0 })
-        XCTAssertEqual(tierList.schemaVersion, SchemaVersion(major: 1, minor: 2, patch: 0))
+        XCTAssertEqual(tierList.schemaVersion, SchemaVersion(major: 1, minor: 4, patch: 0))
     }
 }

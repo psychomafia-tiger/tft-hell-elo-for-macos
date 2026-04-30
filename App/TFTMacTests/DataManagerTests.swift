@@ -13,7 +13,7 @@ final class DataManagerTests: XCTestCase {
     func testLoadBundledJSONReturnsTierList() {
         let tierList = DataManager.loadBundledJSON()
         XCTAssertGreaterThan(tierList.comps.count, 0, "Bundled fixture should have ≥1 comp")
-        XCTAssertEqual(tierList.schemaVersion, SchemaVersion(major: 1, minor: 2, patch: 0))
+        XCTAssertEqual(tierList.schemaVersion, SchemaVersion(major: 1, minor: 4, patch: 0))
         XCTAssertEqual(tierList.eloBracket, "CHALLENGER")
         let firstComp = tierList.comps.first
         XCTAssertNotNil(firstComp)
@@ -46,7 +46,7 @@ final class DataManagerTests: XCTestCase {
     func testInitialTierListIsFromBundledJSON() {
         let dm = DataManager()
         XCTAssertGreaterThan(dm.tierList.comps.count, 0)
-        XCTAssertEqual(dm.tierList.schemaVersion, SchemaVersion(major: 1, minor: 2, patch: 0))
+        XCTAssertEqual(dm.tierList.schemaVersion, SchemaVersion(major: 1, minor: 4, patch: 0))
     }
 
     /// On init, bannerState starts as .fresh (before any fetch attempt resolves).
